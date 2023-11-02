@@ -47,9 +47,16 @@
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
+  <!-- <link rel="stylesheet" type="text/css" href="./resources/style.css" media="screen"/> -->
 </head>
 <body>
 
+<section class="section">
+  <div>
+  <a href="https://portal.cs.cornell.edu/"><img id="logo" src="./resources/portal_light.png"
+    alt="Portal Group Logo"/></a>
+  </div>
+</section>
 
 <section class="hero">
   <div class="hero-body">
@@ -193,30 +200,19 @@
 <section class="section">
   <div class="container is-max-desktop">
 
-    <div class="columns is-centered">
-    </div>
-
-    <!-- Animation. -->
+    <!-- Method Overview. -->
     <div class="columns is-centered">
       <div class="column is-full-width">
         <h2 class="title is-3">Method Overview</h2>
-        <div class="content has-tet-justified">
-          <center><span class='ms'>Demo2Code</span> generates robot task code from language instructions and demonstrations through a two-stage process.
-          </center>
+        <div class="content has-text-justified">
+          <p><span class='ms'>Demo2Code</span> generates robot task code from language instructions and demonstrations through a two-stage process.</p>
         </div>
         <!-- Stage 1 -->
         <h3 class="title is-4">(1) Recursive Summarization: summarize demonstrations to task specifications</h3>
-        <div class="content has-text-justified">
-          <p>
-            We can also animate the scene by interpolating the deformation latent codes of two input
-            frames. Use the slider here to linearly interpolate between the left frame and the right
-            frame.
-          </p>
-        </div>
         <div class="columns is-vcentered">
-          <div class="column is-full-width has-text-centered">
-            <img src="./resources/stage1.png"
-                 class="interpolation-image"
+          <div class="column is-full-width has-text-justified">
+            <div class="content has-text-justified">
+              <img src="./resources/stage1.png"
                  alt="Interpolate start reference image."/>
               <p>
                   In stage 1, the LLM first summarizes each demonstration individually. 
@@ -224,22 +220,17 @@
               </p>
               <p>       In the example, the LLM is asked to perform some intermediate reasoning (e.g. identifying the order of the high-level action) before outputting the specification (starting at "Make a burger...")
               </p>
+            </div>
           </div>
         </div>
         <br/>
         <!--/ State 1 -->
+        <!-- Stage 2 -->
         <h3 class="title is-4">(2) Recursive expansion: synthesize code from the task specification</h3>
-        <div class="content has-text-justified">
-          <p>
-            We can also animate the scene by interpolating the deformation latent codes of two input
-            frames. Use the slider here to linearly interpolate between the left frame and the right
-            frame.
-          </p>
-        </div>
         <div class="columns is-vcentered">
-          <div class="column is-full-width has-text-centered">
-            <img src="./resources/stage2.png"
-                 class="interpolation-image"
+          <div class="column is-full-width has-text-justified">
+            <div class="content has-text-justified">
+              <img src="./resources/stage2.png"
                  alt="Interpolate start reference image."/>
               <p>
                   In stage 2, given a task specification, the LLM first generates high-level task code that can call undefined functions. 
@@ -249,58 +240,169 @@
                   In the example, the function <span style="font-family: monospace; color:blue; font-weight: bold;">cook_obj_at_loc</span> is an initially undefined function that the LLM calls when it first generates the high-level task code. 
                   In contrast, the function <span style="font-family: monospace; color:#FF7F50; font-weight: bold;">move_then_pick</span> is a function that only uses existing available APIs.
               </p>
-          
+            </div>
           </div>
         </div>
         <br/>
-        <!-- Stage 2 -->
         <!--/ Stage 2 -->
 
       </div>
     </div>
-    <!--/ Animation. -->
+    <!--/ Method Overview. -->
 
 
-    <!-- Concurrent Work. -->
+    <!-- Qualitative Results. -->
     <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3">Related Links</h2>
-
-        <div class="content has-text-justified">
-          <!-- <p>
-            There's a lot of excellent work that was introduced around the same time as ours.
-          </p>
+        <h2 class="title is-3">Qualitative Results</h2>
+        <div class="content has-text-centered">
           <p>
-            <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.
+            <span class='ms'>Demo2Code</span> can successfully complete various cooking task while accommodating to a user's preference.
           </p>
-          <p>
-            <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>
-            both use deformation fields to model non-rigid scenes.
-          </p>
-          <p>
-            Some works model videos with a NeRF by directly modulating the density, such as <a href="https://video-nerf.github.io/">Video-NeRF</a>, <a href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a href="https://neural-3d-video.github.io/">DyNeRF</a>
-          </p>
-          <p>
-            There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
-          </p> -->
+        <div class="content has-text-centered">
+          <div class="grid-container">
+            <div class="grid-item">Code Execution Result</div>
+            <div class="grid-item"><img src="./resources/basic_burger.gif"
+             alt="Gif showing the robot making a burger with a patty and a lettuce in Robotouille simulator"/></div>
+            <div class="grid-item"><img src="./resources/basic_burger_plus_tomato.gif"
+             alt="Gif showing the robot making a burger with a patty and a lettuce and a tomato in Robotouille simulator"/></div>
+            <div class="grid-item"><img src="./resources/cheese_burger.gif"
+             alt="Gif showing the robot making a burger with a patty and cheese in Robotouille simulator"/></div>
+            <div class="grid-item">Language Instruction</div>
+            <div class="grid-item" style="grid-column: 2/5; grid-row: 2">"Make a burger"</div>
+            <div class="grid-item">Preference Shown In Demos</div>
+            <div class="grid-item">With a patty and a lettuce</div>
+            <div class="grid-item">With a patty and a lettuce <b>and a tomato</b></div>
+            <div class="grid-item">With a patty and <b>cheese</b></div>
+        </div>
+        
+    
+        <div class="mobile-grid-container">
+            <div class="grid-item"><img src="./resources/basic_burger.gif"
+             alt="Gif showing the robot making a burger with a patty and a lettuce in Robotouille simulator"/></div>
+            <div class="grid-item">Language Instruction: "Make a burger"</div>
+            <div class="grid-item">Preference Shown In Demos: With a patty and a lettuce</div>
+            <div class="grid-item"><img src="./resources/basic_burger_plus_tomato.gif"
+             alt="Gif showing the robot making a burger with a patty and a lettuce and a tomato in Robotouille simulator"/></div>
+            <div class="grid-item">Lang: "Make a burger"</div>
+            <div class="grid-item">Pref: With a patty and a lettuce</div>
+            <div class="grid-item"><img src="./resources/cheese_burger.gif"
+             alt="Gif showing the robot making a burger with a patty and cheese in Robotouille simulator"/></div>
+            <div class="grid-item">Lang: "Make a burger"</div>
+            <div class="grid-item">Pref: With a patty and <b>cheese</b></div>
         </div>
       </div>
     </div>
-    <!--/ Concurrent Work. -->
+    <!--/ Qualitative Work -->
+
+    <!-- Detailed Results -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Detailed Results</h2>
+        <div class="content has-text-justified">
+          <p><span class='ms'>Demo2Code</span> is compared against three other methods.</p>
+          <ul style="margin-left: 10%; margin-right: 10%; text-align: left;">
+            <li><span class="ms" style="font-weight:bold;">Lang2Code</span>: a prior work <a href="https://arxiv.org/abs/2209.07753">CodeAsPolicies</a>, which generates code only from language instruction</li>
+            <li><span class="ms" style="font-weight:bold;">DemoNoLang2Code</span>: an ablation method, which generates code from demonstrations only without a language instruction</li>
+            <li><span class="ms" style="font-weight:bold;">Spec2Code</span>: an oracle method, which generates code detailed specifications on how to complete a task</li>
+          </ul>  
+        </div>
+        <!-- Robotouille -->
+        <h3 class="title is-4">(1) <a href="https://github.com/portal-cornell/robotouille"></a><span class="ms">Robotouille</span>, Cooking Task Simulator</a></h3>
+        <div class="columns is-vcentered">
+          <div class="column is-full-width has-text-justified">
+            <div class="content has-text-justified">
+              <img src="./resources/robotouille_result.png"
+                alt="Interpolate start reference image."/>
+                <h5>Demo2Code can infer different users' preferences.</h5>
+                <p>
+                  In this <span class="ms">Robotouille</span> example, <span class="ms">Demo2Code</span> is able to summarize demonstrations and identify different users' preferences on how to make a burger (e.g. whether to include lettuce or cheese). 
+                  Then, it generates personalized burger cooking code to use the user's preferred ingredients.
+                </p>
+            </div>
+          </div>
+        </div>
+        <br/>
+        <!--/ Robotouille -->
+        <!-- Tabletop -->
+        <h3 class="title is-4">(2) Tabletop Manipulation Simulator</h3>
+        <div class="columns is-vcentered">
+          <div class="column is-full-width has-text-justified">
+            <div class="content has-text-justified">
+              <img src="./resources/tabletop_result.png"
+                alt="Interpolate start reference image."/>
+                <h5>Demo2Code can ground ambiguous language instruction.</h5>
+                <p>
+                  In this tabletop example, <span class="ms">Demo2Code</span> successfully extracts specificity in tabletop tasks. 
+                  Although the language instruction just ambiguously says "next to", it correctly infers from the goal is "left of". 
+                  In contrast,  <span class="ms">Lang2Code</span> lacks demonstrations and randomly chooses a spatial location while <span class="ms">DemoNoLang2Code</span> lacks context in what object to move.          
+                </p>
+            </div>
+          </div>
+        </div>
+        <br/>
+        <!--/ Tabletop -->
+        <!-- Tabletop -->
+        <h3 class="title is-4">(3) <a href="https://epic-kitchens.github.io/2023">EPIC-Kitchens</a> Dataset</h3>
+        <div class="columns is-vcentered">
+          <div class="column is-full-width has-text-justified">
+            <div class="content has-text-justified">
+              <img src="./resources/epick_result.png"
+                alt="Interpolate start reference image."/>
+                <h5><span class="ms">Demo2Code</span> can apply to real-world video demonstrations and identify different users' styles.</h5>
+                <p>
+                  In this tabletop example, <span class="ms">Demo2Code</span> successfully extracts specificity in tabletop tasks. 
+                  Although the language instruction just ambiguously says "next to", it correctly infers from the goal is "left of". 
+                  In contrast,  <span class="ms">Lang2Code</span> lacks demonstrations and randomly chooses a spatial location while <span class="ms">DemoNoLang2Code</span> lacks context in what object to move.          
+                </p>
+            </div>
+          </div>
+        </div>
+        <br/>
+        <!--/ Tabletop -->
+      </div>
+    </div>
+    <!--/ Detailed Results -->
 
   </div>
 </section>
 
 
 <section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
-    <pre><code>@article{park2021nerfies,
-  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
-  title     = {Nerfies: Deformable Neural Radiance Fields},
-  journal   = {ICCV},
-  year      = {2021},
-}</code></pre>
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-centered has-text-centered">Paper</h2>
+            <div class="columns is-centered">
+              <div class="column is-12-mobile is-4-tablet is-4-desktop">
+                <div class="content">
+                  <a href="https://arxiv.org/abs/2305.16744">
+                    <img class="layered-paper-big" src="./resources/paper_overview.png" alt="Paper thumbnail" style="float: right"/>
+                  </a>
+                </div>
+              </div>
+              <div class="column is-11">
+                <div class="content">
+                  <a href="https://arxiv.org/abs/2305.16744"><h3>Demo2Code: From Summarizing Demonstrations
+                      to Synthesizing Code via Extended Chain-of-Thought</h3></a>
+                  <p>Huaxiaoyue Wang, Gonzalo Gonzalez-Pumariega, Yash Sharma, Sanjiban Choudhury</p>
+                  <pre>
+                    <code>
+@misc{wang2023demo2code,
+title={Demo2Code: From Summarizing Demonstrations to Synthesizing Code via Extended Chain-of-Thought}, 
+author={Huaxiaoyue Wang and Gonzalo Gonzalez-Pumariega and Yash Sharma and Sanjiban Choudhury},
+year={2023},
+eprint={2305.16744},
+archivePrefix={arXiv},
+primaryClass={cs.RO}
+}
+                    </code>
+                  </pre>
+                </div>
+              </div>
+            </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -317,15 +419,10 @@
       </a>
     </div>
     <div class="columns is-centered">
-      <div class="column is-8">
+      <div class="column is-8 has-text-centered">
         <div class="content">
           <p>
-            This website is licensed under a <a rel="license"
-                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-          <p>
-            Website template borrowed from <a href="https://github.com/nerfies/nerfies.github.io">NeRFies</a>
+            Website template is partly borrowed from <a href="https://github.com/nerfies/nerfies.github.io">NeRFies</a>, <a href="http://web.mit.edu/phillipi/">Phillip Isola</a> & <a href="http://richzhang.github.io/">Richard Zhang</a>'s <a href="http://richzhang.github.io/colorization/">colorful project</a>, and <a href="https://github.com/jasonyzhang/webpage-template">Jason Zhang</a>.
           </p>
         </div>
       </div>
