@@ -51,7 +51,7 @@
 </head>
 <body>
 
-<section class="section">
+<section class="section" style="margin-bottom: 0;">
   <div>
   <a href="https://portal.cs.cornell.edu/"><img id="logo" src="./resources/portal_light.png"
     alt="Portal Group Logo"/></a>
@@ -144,8 +144,10 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <img id="teaser" height="100%" src="./resources/method_overview.png"
-                alt="Demo2Code: Method overview"/>
+      <div class="content has-text-centered">
+      <img id="teaser" height="100%" src="./resources/main.gif"
+            alt="Demo2Code: Method overview"/>
+      </div>
       <h2 class="subtitle has-text-centered">
         <span class='ms'>Demo2Code</span> converts language and demonstrations to task code that the robot can execute. 
         The framework <b>recursively summarizes</b> both down to a task specification, then <b>recursively expands</b> the specification to an executable task code.
@@ -206,6 +208,8 @@
       <div class="column is-full-width">
         <h2 class="title is-3">Method Overview</h2>
         <div class="content has-text-justified">
+          <img id="overview" height="100%" src="./resources/method_overview.png"
+          alt="Demo2Code: Method overview"/>
           <p><span class='ms'>Demo2Code</span> generates robot task code from language instructions and demonstrations through a two-stage process.</p>
         </div>
         <!-- Stage 1 -->
