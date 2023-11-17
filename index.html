@@ -125,7 +125,7 @@
               </span>
               <!-- Dataset Link. -->
               <!-- <span class="link-block">
-                <a href="https://drive.google.com/drive/u/0/folders/1DruTl1zxbZM55htjyAnqbikf9xut_M8I"
+                <a href=""
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="far fa-images"></i>
@@ -218,8 +218,9 @@
         <div class="columns is-vcentered">
           <div class="column is-full-width has-text-justified">
             <div class="content has-text-justified">
-              <img src="./resources/stage1.png"
-                 alt="Interpolate start reference image."/>
+              <video id="teaser" height="100%" autoplay loop muted>
+                <source src="./resources/demo2code_stage1.mp4" type="video/mp4">
+              </video>        
               <p>
                   In stage 1, the LLM first summarizes each demonstration individually. 
                   Once all demonstrations are sufficiently summarized, they are then jointly summarized in the final step as the task specification.
@@ -236,8 +237,10 @@
         <div class="columns is-vcentered">
           <div class="column is-full-width has-text-justified">
             <div class="content has-text-justified">
-              <img src="./resources/stage2.png"
-                 alt="Interpolate start reference image."/>
+              <video id="teaser" height="100%" autoplay loop muted>
+                <source src="./resources/demo2code_stage2.mp4" type="video/mp4">
+              </video>
+        
               <p>
                   In stage 2, given a task specification, the LLM first generates high-level task code that can call undefined functions. 
                   It then recursively expands each undefined function until eventually terminating with only calls to the existing APIs imported from the robot's low-level action and perception libraries. 
