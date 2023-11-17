@@ -12,7 +12,7 @@ body {
         align-items: center;
         grid-gap: 10px;
         padding: 0;
-        width: 75%;
+        width: 100%;
     }
 
     .mobile-grid-container{

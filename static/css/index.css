@@ -10,7 +10,7 @@ body {
     align-items: center;
     grid-gap: 10px;
     padding: 0;
-    width: 75%;
+    width: 90%;
   }
 
   .mobile-grid-container{
@@ -23,7 +23,9 @@ body {
     top: 1.75%;
     left: 1%;
   }
-
+  #cornell-logo {
+    
+  }
 }
 
 @media screen and (max-width: 760px) {
@@ -74,6 +76,10 @@ body {
 .teaser .hero-body {
   padding-top: 0;
   padding-bottom: 3rem;
+}
+
+.hero-body {
+  margin-top: -20px;
 }
 
 .teaser {
