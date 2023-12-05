@@ -1,5 +1,6 @@
 body {
   font-family: 'Noto Sans', sans-serif;
+  font-size: 16px; /* Updated font size */
 }
 
 @media screen {
@@ -22,9 +23,6 @@ body {
     position: fixed;
     top: 1.75%;
     left: 1%;
-  }
-  #cornell-logo {
-    
   }
 }
 
@@ -203,33 +201,4 @@ body {
 
 .results-carousel video {
   margin: 0;
-}
-
-
-.interpolation-panel {
-  background: #f5f5f5;
-  border-radius: 10px;
-}
-
-.interpolation-panel .interpolation-image {
-  width: 100%;
-  border-radius: 5px;
-}
-
-.interpolation-video-column {
-}
-
-.interpolation-panel .slider {
-  margin: 0 !important;
-}
-
-.interpolation-panel .slider {
-  margin: 0 !important;
-}
-
-#interpolation-image-wrapper {
-  width: 100%;
-}
-#interpolation-image-wrapper img {
-  border-radius: 5px;
 }

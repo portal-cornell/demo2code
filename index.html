@@ -210,7 +210,7 @@
               through a two-stage process.</p>
           </div>
           <!-- Stage 1 -->
-          <h3 class="title is-4">(1) Recursive Summarization: summarize demonstrations to task specifications</h3>
+          <h3 class="title is-4 has-text-centered">(1) Recursive Summarization: summarize demonstrations to task specifications</h3>
           <div class="columns is-vcentered">
             <div class="column is-full-width has-text-justified">
               <div class="content has-text-justified">
@@ -231,7 +231,7 @@
           <br />
           <!--/ State 1 -->
           <!-- Stage 2 -->
-          <h3 class="title is-4">(2) Recursive expansion: synthesize code from the task specification</h3>
+          <h3 class="title is-4 has-text-centered">(2) Recursive expansion: synthesize code from the task specification</h3>
           <div class="columns is-vcentered">
             <div class="column is-full-width has-text-justified">
               <div class="content has-text-justified">
@@ -267,11 +267,29 @@
       <!-- Qualitative Results. -->
       <div class="columns is-centered">
         <div class="column is-full-width">
-          <h2 class="title is-3 has-text-centered">Generalizes to multiple tasks!</h2>
+          <h2 class="title is-3 has-text-centered"><a
+            href="https://github.com/portal-cornell/robotouille/">Robotouille: Kitchen Simulator</a></h2>
+          <div class="content has-text-justified">
+            <div class="columns">
+              <div class="column is-two-third">
+                <ul style="text-align: left;" class="robot-bullets">
+                  <li>Open-source game!</li>
+                  <li>Procedurally generated and configurable environments</li>
+                  <li>Endless customization with new assets, tasks and actions</li>
+                  <li>Reasons in high-level task planning space</li>
+                </ul>
+              </div>
+              <div class="column is-one-third">
+                <img src="resources/robot_front.png">
+              </div>
+            </div>
+          </div>
 
-          <div class="content has-text-centered">
+          <h2 class="title is-3 has-text-centered"><span class='ms'>Demo2Code</span> generalizes to multiple tasks!</h2>
+
+          <div class="content has-text-justified">
             <p>
-              <span class='ms'>Demo2Code</span> can successfully complete various tasks like cooking, tabletop
+              We can successfully complete various tasks like cooking, tabletop
               manipulation and dish washing while accommodating to a
               user's preferences.
             </p>
@@ -288,28 +306,33 @@
                 generates code from demonstrations only without a language instruction</li>
             </ul>
           </div>
+          <div class="content has-text-justified">
+            <p>
+              <span class="ms">Demo2Code</span> can generate accurate policies for <span style="color: blueviolet"><b>language instructions</b></span> with <span style="color: rgb(159, 159, 159)"><b>preferences implicit in demonstrations</b></span>
+            </p>
+
+          </div>
 
           <div class="content has-text-centered">
             <div class="content has-text-centered">
               <!-- Robotouille -->
-              <h3 class="title is-3 has-text-centered">Demo2Code + <a
+              <h3 class="title is-4 has-text-centered">Demo2Code + <a
                   href="https://github.com/portal-cornell/robotouille/">Robotouille</a></h3>
-              <h4 class="title is-4 has-text-centered">Make a burger ...</h4>
               <div class="columns is-centered">
                 <div class="column is-one-third">
                   <img src="./resources/basic_burger.gif"
                     alt="Gif showing the robot making a burger with a patty and a lettuce in Robotouille simulator" />
-                  <h4 class="title is-4 has-text-centered">... with a patty and lettuce</h4>
+                  <h4 class="title is-6 has-text-centered" style="color: blueviolet"> Make a burger<span style="color: rgb(159, 159, 159)"> with a patty and lettuce </span></h4>
                 </div>
                 <div class="column is-one-third">
                   <img src="./resources/basic_burger_plus_tomato.gif"
                     alt="Gif showing the robot making a burger with a patty and a lettuce and a tomato in Robotouille simulator" />
-                  <h4 class="title is-4 has-text-centered">... with patty, lettuce and tomato</h4>
+                  <h4 class="title is-6 has-text-centered" style="color: blueviolet"> Make a burger<span style="color: rgb(159, 159, 159)"> with patty, lettuce and tomato </span></h4>
                 </div>
                 <div class="column is-one-third">
                   <img src="./resources/cheese_burger.gif"
                     alt="Gif showing the robot making a burger with a patty and cheese in Robotouille simulator" />
-                  <h4 class="title is-4 has-text-centered">... with a patty and cheese</h4>
+                  <h4 class="title is-6 has-text-centered" style="color: blueviolet"> Make a burger<span style="color: rgb(159, 159, 159)"> ... with a patty and cheese</span></h4>
                 </div>
               </div>
 
@@ -332,29 +355,29 @@
               <br /> -->
               <!--/ Robotouille -->
               <!-- Tabletop -->
-              <h3 class="title is-3 has-text-centered"> Tabletop Manipulation Simulator</h3>
+              <h3 class="title is-4 has-text-centered"> Tabletop Manipulation Simulator</h3>
               <div class="columns is-centered">
                 <div class="column is-one-third">
                   <video autoplay loop muted>
                     <source src="./resources/tabletop_next_to.webm" alt="Place purple cylinder next to green block"
                       type="video/webm">
                   </video>
-                  <h4 class="title is-6 has-text-centered">Place purple cylinder next to green block</h4>
+                    <h4 class="title is-6 has-text-centered" style="color: blueviolet">Place purple cylinder next to green block <span style="color: rgb(159, 159, 159)">, i.e., to its left</span></h4>
                 </div>
                 <div class="column is-one-third">
                   <video autoplay loop muted>
                     <source src="./resources/tabletop_on_hidden.webm" alt="Place blue block on red cylinder"
                       type="video/webm">
                   </video>
-                  <h4 class="title is-6 has-text-centered">Place blue block on red cylinder</h4>
-                  <code></code>
+                  <h4 class="title is-6 has-text-centered" style="color: blueviolet">Place blue block on red cylinder <span style="color: rgb(159, 159, 159)"> by unstacking the gray and yellow cubes</span></h4>
+                  <!-- <code></code> -->
                 </div>
                 <div class="column is-one-third">
                   <video autoplay loop muted>
                     <source src="./resources/tabletop_stack_two.webm" alt="Stack all objects into two stack"
                       type="video/webm">
                   </video>
-                  <h4 class="title is-6 has-text-centered">Stack all objects into two stacks</h4>
+                  <h4 class="title is-6 has-text-centered" style="color: blueviolet">Stack all objects into two stacks <span style="color: rgb(159, 159, 159)"> by category</span></h4>
                 </div>
               </div>
               <div class="columns is-vcentered">
