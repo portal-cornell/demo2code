@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="Demo2Code: From Summarizing Demonstrations to Synthesizing Code via Extended Chain-of-Thought">
+    content="Demo2Code: From Summarizing Demonstrations to Synthesizing Code via Extended Chain-of-Thought">
   <meta name="keywords" content="demo2code, chain-of-thought">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Demo2Code</title>
-  <meta property="og:image" content="./resources/method_overview.png"/>
+  <meta property="og:image" content="./resources/method_overview.png" />
   <meta property="og:title" content="Demo2Code" />
-  <meta property="og:description" content="Demo2Code: From Summarizing Demonstrations to Synthesizing Code via Extended Chain-of-Thought" />
+  <meta property="og:description"
+    content="Demo2Code: From Summarizing Demonstrations to Synthesizing Code via Extended Chain-of-Thought" />
   <!-- Twitter automatically scrapes this. Go to https://cards-dev.twitter.com/validator?
       if you update and want to force Twitter to re-scrape. -->
-  <meta property="twitter:card"          content="summary" />
-  <meta property="twitter:title"         content="Demo2Code" />
-  <meta property="twitter:description"   content="Demo2Code: From Summarizing Demonstrations to Synthesizing Code via Extended Chain-of-Thought" />
-  <meta property="twitter:image"         content="./resources/method_overview.png" />
+  <meta property="twitter:card" content="summary" />
+  <meta property="twitter:title" content="Demo2Code" />
+  <meta property="twitter:description"
+    content="Demo2Code: From Summarizing Demonstrations to Synthesizing Code via Extended Chain-of-Thought" />
+  <meta property="twitter:image" content="./resources/method_overview.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <script>
@@ -30,15 +33,13 @@
     gtag('config', 'G-PYVRSFMDRL');
   </script>
 
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-        rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
   <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
   <link rel="icon" href="./static/images/favicon.svg">
 
@@ -49,62 +50,63 @@
   <script src="./static/js/index.js"></script>
   <!-- <link rel="stylesheet" type="text/css" href="./resources/style.css" media="screen"/> -->
 </head>
+
 <body>
 
-<section class="section" style="margin-bottom: 0;">
-  <div>
-  <a href="https://portal.cs.cornell.edu/"><img id="logo" src="./resources/portal_light.png"
-    alt="Portal Group Logo"/></a>
-  </div>
-</section>
+  <section class="section" style="margin-bottom: 0;">
+    <div>
+      <a href="https://portal.cs.cornell.edu/"><img id="logo" src="./resources/portal_light.png"
+          alt="Portal Group Logo" /></a>
+    </div>
+  </section>
 
-<section class="hero">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Demo2Code: From Summarizing Demonstrations to Synthesizing Code via Extended Chain-of-Thought</h1>
-          <h3 class="title is-4 conference-authors"><a target="_blank" href="https://neurips.cc/Conferences/2023">NeurIPS 2023</a></h3>
-          <div class="is-size-5 publication-authors">
-            <span class="author-block">
-              <a href="https://lunay0yuki.github.io/">Huaxiaoyue Wang</a>,</span>
-            <span class="author-block">
-              <a href="https://github.com/chalo2000">Gonzalo Gonzalez-Pumariega</a>,</span>
-            <span class="author-block">
-              <a href="https://yash-s20.github.io/">Yash Sharma</a>,
-            </span>
-            <span class="author-block">
-              <a href="https://www.sanjibanchoudhury.com/">Sanjiban Choudhury</a>
-            </span>
-          </div>
-
-          <div class="is-size-5 publication-authors">
-            <span class="author-block">Cornell University</span>
-          </div>
-
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
           <div class="column has-text-centered">
-            <div class="publication-links">
-              <!-- PDF Link. -->
-              <span class="link-block">
-                <a href="https://arxiv.org/pdf/2305.16744"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
+            <h1 class="title is-1 publication-title">Demo2Code: From Summarizing Demonstrations to Synthesizing Code via
+              Extended Chain-of-Thought</h1>
+            <h3 class="title is-4 conference-authors"><a target="_blank"
+                href="https://neurips.cc/Conferences/2023">NeurIPS 2023</a></h3>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://lunay0yuki.github.io/">Huaxiaoyue Wang</a>,</span>
+              <span class="author-block">
+                <a href="https://github.com/chalo2000">Gonzalo Gonzalez-Pumariega</a>,</span>
+              <span class="author-block">
+                <a href="https://yash-s20.github.io/">Yash Sharma</a>,
+              </span>
+              <span class="author-block">
+                <a href="https://www.sanjibanchoudhury.com/">Sanjiban Choudhury</a>
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">Cornell University</span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/pdf/2305.16744" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
                       <i class="fas fa-file-pdf"></i>
-                  </span>
-                  <span>Paper</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="https://arxiv.org/abs/2305.16744"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2305.16744" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
                       <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
-              <!-- Video Link. -->
-              <!-- <span class="link-block">
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <!-- Video Link. -->
+                <!-- <span class="link-block">
                 <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
@@ -113,18 +115,18 @@
                   <span>Video</span>
                 </a>
               </span> -->
-              <!-- Code Link. -->
-              <span class="link-block">
-                <a href="https://github.com/portal-cornell/demo2code"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href="https://github.com/portal-cornell/demo2code"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
                       <i class="fab fa-github"></i>
-                  </span>
-                  <span>Code</span>
+                    </span>
+                    <span>Code</span>
                   </a>
-              </span>
-              <!-- Dataset Link. -->
-              <!-- <span class="link-block">
+                </span>
+                <!-- Dataset Link. -->
+                <!-- <span class="link-block">
                 <a href=""
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
@@ -132,62 +134,65 @@
                   </span>
                   <span>Data</span>
                   </a> -->
-            </div>
+              </div>
 
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <div class="content has-text-centered">
-      <video id="main_video" height="90%" autoplay loop muted>
-        <source src="./resources/main.mp4" type="video/mp4">
-      </video>
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <div class="content has-text-centered">
+          <video id="main_video" height="90%" autoplay loop muted>
+            <source src="./resources/main.mp4" type="video/mp4">
+          </video>
+        </div>
+        <h2 class="subtitle has-text-centered">
+          <span class='ms'>Demo2Code</span> converts language and demonstrations to task code that the robot can
+          execute.
+          The framework <b>recursively summarizes</b> both down to a task specification, then <b>recursively expands</b>
+          the specification to an executable task code.
+        </h2>
       </div>
-      <h2 class="subtitle has-text-centered">
-        <span class='ms'>Demo2Code</span> converts language and demonstrations to task code that the robot can execute. 
-        The framework <b>recursively summarizes</b> both down to a task specification, then <b>recursively expands</b> the specification to an executable task code.
-      </h2>
     </div>
-  </div>
-</section>
+  </section>
 
 
-<section class="section">
-  <div class="container is-max-desktop">
-    <!-- Abstract. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>Language instructions and demonstrations are two natural ways for users to teach
-          robots personalized tasks. Recent progress in Large Language Models (LLMs)
-          has shown impressive performance in translating language instructions into code
-          for robotic tasks. However, translating demonstrations into task code continues to
-          be a challenge due to the length and complexity of both demonstrations and code,
-          making learning a direct mapping intractable. </p>
-          <p>This paper presents Demo2Code,
-          a novel framework that generates robot task code from demonstrations via an
-          extended chain-of-thought and defines a common latent specification to connect
-          the two. Our framework employs a robust two-stage process: (1) a recursive
-          summarization technique that condenses demonstrations into concise specifications,
-          and (2) a code synthesis approach that expands each function recursively from
-          the generated specifications. We conduct extensive evaluation on various robot
-          task benchmarks, <b>including a novel game benchmark <a href="https://github.com/portal-cornell/robotouille/">Robotouille</a>, designed to
-          simulate diverse cooking tasks in a kitchen environment.</b></p>
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>Language instructions and demonstrations are two natural ways for users to teach
+              robots personalized tasks. Recent progress in Large Language Models (LLMs)
+              has shown impressive performance in translating language instructions into code
+              for robotic tasks. However, translating demonstrations into task code continues to
+              be a challenge due to the length and complexity of both demonstrations and code,
+              making learning a direct mapping intractable. </p>
+            <p>This paper presents Demo2Code,
+              a novel framework that generates robot task code from demonstrations via an
+              extended chain-of-thought and defines a common latent specification to connect
+              the two. Our framework employs a robust two-stage process: (1) a recursive
+              summarization technique that condenses demonstrations into concise specifications,
+              and (2) a code synthesis approach that expands each function recursively from
+              the generated specifications. We conduct extensive evaluation on various robot
+              task benchmarks, <b>including a novel game benchmark <a
+                  href="https://github.com/portal-cornell/robotouille/">Robotouille</a>, designed to
+                simulate diverse cooking tasks in a kitchen environment.</b></p>
 
+          </div>
         </div>
       </div>
-    </div>
-    <!--/ Abstract. -->
+      <!--/ Abstract. -->
 
-    <!-- Paper video. TODO: add when we make a video (also add the icon next to paper and code)--> 
-    <!-- <div class="columns is-centered has-text-centered">
+      <!-- Paper video. TODO: add when we make a video (also add the icon next to paper and code)-->
+      <!-- <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Video</h2>
         <div class="publication-video">
@@ -196,204 +201,239 @@
         </div>
       </div>
     </div> -->
-    <!--/ Paper video. -->
-  </div>
-</section>
-
-
-<section class="section">
-  <div class="container is-max-desktop">
-
-    <!-- Method Overview. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3 has-text-centered">Method Overview</h2>
-        <div class="content has-text-justified">
-          <img id="overview" height="60%" src="./resources/method_overview.png"
-          alt="Demo2Code: Method overview"/>
-          <p><span class='ms'>Demo2Code</span> generates robot task code from language instructions and demonstrations through a two-stage process.</p>
-        </div>
-        <!-- Stage 1 -->
-        <h3 class="title is-4">(1) Recursive Summarization: summarize demonstrations to task specifications</h3>
-        <div class="columns is-vcentered">
-          <div class="column is-full-width has-text-justified">
-            <div class="content has-text-justified">
-              <video id="teaser" height="70%" autoplay loop muted>
-                <source src="./resources/demo2code_stage1.mp4" type="video/mp4">
-              </video>        
-              <p>
-                  In stage 1, the LLM first summarizes each demonstration individually. 
-                  Once all demonstrations are sufficiently summarized, they are then jointly summarized in the final step as the task specification.
-              </p>
-              <p>       In the example, the LLM is asked to perform some intermediate reasoning (e.g. identifying the order of the high-level action) before outputting the specification (starting at "Make a burger...")
-              </p>
-            </div>
-          </div>
-        </div>
-        <br/>
-        <!--/ State 1 -->
-        <!-- Stage 2 -->
-        <h3 class="title is-4">(2) Recursive expansion: synthesize code from the task specification</h3>
-        <div class="columns is-vcentered">
-          <div class="column is-full-width has-text-justified">
-            <div class="content has-text-justified">
-              <video id="teaser" height="70%" autoplay loop muted>
-                <source src="./resources/demo2code_stage2.mp4" type="video/mp4">
-              </video>
-        
-              <p>
-                  In stage 2, given a task specification, the LLM first generates high-level task code that can call undefined functions. 
-                  It then recursively expands each undefined function until eventually terminating with only calls to the existing APIs imported from the robot's low-level action and perception libraries. 
-              </p>
-              <p>
-                  In the example, the function <span style="font-family: monospace; color:blue; font-weight: bold;">cook_obj_at_loc</span> is an initially undefined function that the LLM calls when it first generates the high-level task code. 
-                  In contrast, the function <span style="font-family: monospace; color:#FF7F50; font-weight: bold;">move_then_pick</span> is a function that only uses existing available APIs.
-              </p>
-            </div>
-          </div>
-        </div>
-        <br/>
-        <!--/ Stage 2 -->
-
-      </div>
+      <!--/ Paper video. -->
     </div>
-    <!--/ Method Overview. -->
+  </section>
 
 
-    <!-- Qualitative Results. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3 has-text-centered">Demo2Code + <a href="https://github.com/portal-cornell/robotouille/">Robotouille</a></h2>
-        <div class="content has-text-centered">
-          <p>
-            <span class='ms'>Demo2Code</span> can successfully complete various cooking task while accommodating to a user's preference.
-          </p>
-        <div class="content has-text-centered">
-          <div class="grid-container">
-            <div class="grid-item">Code Execution Result</div>
-            <div class="grid-item"><img src="./resources/basic_burger.gif"
-             alt="Gif showing the robot making a burger with a patty and a lettuce in Robotouille simulator"/></div>
-            <div class="grid-item"><img src="./resources/basic_burger_plus_tomato.gif"
-             alt="Gif showing the robot making a burger with a patty and a lettuce and a tomato in Robotouille simulator"/></div>
-            <div class="grid-item"><img src="./resources/cheese_burger.gif"
-             alt="Gif showing the robot making a burger with a patty and cheese in Robotouille simulator"/></div>
-            <div class="grid-item">Language Instruction</div>
-            <div class="grid-item" style="grid-column: 2/5; grid-row: 2">"Make a burger"</div>
-            <div class="grid-item">Preference Shown In Demos</div>
-            <div class="grid-item">With a patty and a lettuce</div>
-            <div class="grid-item">With a patty and a lettuce <b>and a tomato</b></div>
-            <div class="grid-item">With a patty and <b>cheese</b></div>
-        </div>
-        
-    
-        <div class="mobile-grid-container">
-            <div class="grid-item"><img src="./resources/basic_burger.gif"
-             alt="Gif showing the robot making a burger with a patty and a lettuce in Robotouille simulator"/></div>
-            <div class="grid-item">Language Instruction: "Make a burger"</div>
-            <div class="grid-item">Preference Shown In Demos: With a patty and a lettuce</div>
-            <div class="grid-item"><img src="./resources/basic_burger_plus_tomato.gif"
-             alt="Gif showing the robot making a burger with a patty and a lettuce and a tomato in Robotouille simulator"/></div>
-            <div class="grid-item">Lang: "Make a burger"</div>
-            <div class="grid-item">Pref: With a patty and a lettuce</div>
-            <div class="grid-item"><img src="./resources/cheese_burger.gif"
-             alt="Gif showing the robot making a burger with a patty and cheese in Robotouille simulator"/></div>
-            <div class="grid-item">Lang: "Make a burger"</div>
-            <div class="grid-item">Pref: With a patty and <b>cheese</b></div>
+  <section class="section">
+    <div class="container is-max-desktop">
+
+      <!-- Method Overview. -->
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3 has-text-centered">Method Overview</h2>
+          <div class="content has-text-justified">
+            <img id="overview" height="60%" src="./resources/method_overview.png" alt="Demo2Code: Method overview" />
+            <p><span class='ms'>Demo2Code</span> generates robot task code from language instructions and demonstrations
+              through a two-stage process.</p>
+          </div>
+          <!-- Stage 1 -->
+          <h3 class="title is-4">(1) Recursive Summarization: summarize demonstrations to task specifications</h3>
+          <div class="columns is-vcentered">
+            <div class="column is-full-width has-text-justified">
+              <div class="content has-text-justified">
+                <video id="stage1" height="70%" autoplay loop muted>
+                  <source src="./resources/demo2code_stage1.mp4" type="video/mp4">
+                </video>
+                <p>
+                  In stage 1, the LLM first summarizes each demonstration individually.
+                  Once all demonstrations are sufficiently summarized, they are then jointly summarized in the final
+                  step as the task specification.
+                </p>
+                <p> In the example, the LLM is asked to perform some intermediate reasoning (e.g. identifying the order
+                  of the high-level action) before outputting the specification (starting at "Make a burger...")
+                </p>
+              </div>
+            </div>
+          </div>
+          <br />
+          <!--/ State 1 -->
+          <!-- Stage 2 -->
+          <h3 class="title is-4">(2) Recursive expansion: synthesize code from the task specification</h3>
+          <div class="columns is-vcentered">
+            <div class="column is-full-width has-text-justified">
+              <div class="content has-text-justified">
+                <video id="stage2" height="70%" autoplay loop muted>
+                  <source src="./resources/demo2code_stage2.mp4" type="video/mp4">
+                </video>
+
+                <p>
+                  In stage 2, given a task specification, the LLM first generates high-level task code that can call
+                  undefined functions.
+                  It then recursively expands each undefined function until eventually terminating with only calls to
+                  the existing APIs imported from the robot's low-level action and perception libraries.
+                </p>
+                <p>
+                  In the example, the function <span
+                    style="font-family: monospace; color:blue; font-weight: bold;">cook_obj_at_loc</span> is an
+                  initially undefined function that the LLM calls when it first generates the high-level task code.
+                  In contrast, the function <span
+                    style="font-family: monospace; color:#FF7F50; font-weight: bold;">move_then_pick</span> is a
+                  function that only uses existing available APIs.
+                </p>
+              </div>
+            </div>
+          </div>
+          <br />
+          <!--/ Stage 2 -->
+
         </div>
       </div>
-    </div>
-    <!--/ Qualitative Work -->
+      <!--/ Method Overview. -->
 
-    <!-- Detailed Results -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Outperforms on multiple tasks!</h2> <!--this can be changed to "generalize" on multiple tasks-->
-        <div class="content has-text-justified">
-          <p><span class='ms'>Demo2Code</span> is compared against two other methods.</p>
-          <ul style="margin-left: 10%; margin-right: 10%; text-align: left;">
-            <li><span class="ms" style="font-weight:bold;">Lang2Code</span>: a prior work <a href="https://arxiv.org/abs/2209.07753">CodeAsPolicies</a>, which generates code only from language instruction</li>
-            <li><span class="ms" style="font-weight:bold;">DemoNoLang2Code</span>: an ablation method, which generates code from demonstrations only without a language instruction</li>
-          </ul>  
-        </div>
-        <!-- Robotouille -->
-        <h3 class="title is-4 has-text-centered"><a href="https://github.com/portal-cornell/robotouille"><span class="ms">Robotouille</span></a>: Cooking Task Simulator</h3>
-        <div class="columns is-vcentered">
-          <div class="column is-full-width has-text-justified">
-            <div class="content has-text-justified">
-              <img src="./resources/robotouille_result.png"
-                alt="Interpolate start reference image."/>
-                <h5>Demo2Code can infer different users' preferences.</h5>
-                <p>
-                  In this <span class="ms">Robotouille</span> example, <span class="ms">Demo2Code</span> is able to summarize demonstrations and identify different users' preferences on how to make a burger (e.g. whether to include lettuce or cheese). 
-                  Then, it generates personalized burger cooking code to use the user's preferred ingredients.
-                </p>
-            </div>
-          </div>
-        </div>
-        <br/>
-        <!--/ Robotouille -->
-        <!-- Tabletop -->
-        <h3 class="title is-4 has-text-centered"> Tabletop Manipulation Simulator</h3>
-        <div class="columns is-vcentered">
-          <div class="column is-full-width has-text-justified">
-            <div class="content has-text-justified">
-              <img src="./resources/tabletop_result.png"
-                alt="Interpolate start reference image."/>
-                <h5>Demo2Code can ground ambiguous language instruction.</h5>
-                <p>
-                  In this tabletop example, <span class="ms">Demo2Code</span> successfully extracts specificity in tabletop tasks. 
-                  Although the language instruction just ambiguously says "next to", it correctly infers from the goal is "left of". 
-                  In contrast,  <span class="ms">Lang2Code</span> lacks demonstrations and randomly chooses a spatial location while <span class="ms">DemoNoLang2Code</span> lacks context in what object to move.          
-                </p>
-            </div>
-          </div>
-        </div>
-        <br/>
-        <!--/ Tabletop -->
-        <!-- Tabletop -->
-        <h3 class="title is-4 has-text-centered"><a href="https://epic-kitchens.github.io/2023">EPIC-Kitchens</a>: Real-Life Chores</h3>
-        <div class="columns is-vcentered">
-          <div class="column is-full-width has-text-justified">
-            <div class="content has-text-justified">
-              <img src="./resources/epick_result.png"
-                alt="Interpolate start reference image."/>
-                <h5><span class="ms">Demo2Code</span> can apply to real-world video demonstrations and identify different users' styles.</h5>
-                <p>
-                  In this tabletop example, <span class="ms">Demo2Code</span> successfully extracts specificity in tabletop tasks. 
-                  Although the language instruction just ambiguously says "next to", it correctly infers from the goal is "left of". 
-                  In contrast,  <span class="ms">Lang2Code</span> lacks demonstrations and randomly chooses a spatial location while <span class="ms">DemoNoLang2Code</span> lacks context in what object to move.          
-                </p>
-            </div>
-          </div>
-        </div>
-        <br/>
-        <!--/ Tabletop -->
-      </div>
-    </div>
-    <!--/ Detailed Results -->
 
-  </div>
-</section>
+      <!-- Qualitative Results. -->
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3 has-text-centered">Generalizes to multiple tasks!</h2>
 
-<section class="section" id="BibTeX">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-centered has-text-centered">Paper</h2>
-            <div class="columns is-centered">
-              <div class="column is-12-mobile is-4-tablet is-4-desktop">
-                <div class="content">
-                  <a href="https://arxiv.org/abs/2305.16744">
-                    <img class="layered-paper-big" src="./resources/paper_overview.png" alt="Paper thumbnail" style="float: right"/>
-                  </a>
+          <div class="content has-text-centered">
+            <p>
+              <span class='ms'>Demo2Code</span> can successfully complete various tasks like cooking, tabletop
+              manipulation and dish washing while accommodating to a
+              user's preferences.
+            </p>
+
+          </div>
+          <!--this can be changed to "generalize" on multiple tasks-->
+          <div class="content has-text-justified">
+            <p><span class='ms'>Demo2Code</span> is compared against two other methods.</p>
+            <ul style="margin-left: 10%; margin-right: 10%; text-align: left;">
+              <li><span class="ms" style="font-weight:bold;">Lang2Code</span>: a prior work <a
+                  href="https://arxiv.org/abs/2209.07753">CodeAsPolicies</a>, which generates code only from
+                language instruction</li>
+              <li><span class="ms" style="font-weight:bold;">DemoNoLang2Code</span>: an ablation method, which
+                generates code from demonstrations only without a language instruction</li>
+            </ul>
+          </div>
+
+          <div class="content has-text-centered">
+            <div class="content has-text-centered">
+              <!-- Robotouille -->
+              <h3 class="title is-3 has-text-centered">Demo2Code + <a
+                  href="https://github.com/portal-cornell/robotouille/">Robotouille</a></h3>
+              <h4 class="title is-4 has-text-centered">Make a burger ...</h4>
+              <div class="columns is-centered">
+                <div class="column is-one-third">
+                  <img src="./resources/basic_burger.gif"
+                    alt="Gif showing the robot making a burger with a patty and a lettuce in Robotouille simulator" />
+                  <h4 class="title is-4 has-text-centered">... with a patty and lettuce</h4>
+                </div>
+                <div class="column is-one-third">
+                  <img src="./resources/basic_burger_plus_tomato.gif"
+                    alt="Gif showing the robot making a burger with a patty and a lettuce and a tomato in Robotouille simulator" />
+                  <h4 class="title is-4 has-text-centered">... with patty, lettuce and tomato</h4>
+                </div>
+                <div class="column is-one-third">
+                  <img src="./resources/cheese_burger.gif"
+                    alt="Gif showing the robot making a burger with a patty and cheese in Robotouille simulator" />
+                  <h4 class="title is-4 has-text-centered">... with a patty and cheese</h4>
                 </div>
               </div>
-              <div class="column is-8">
-                <div class="content">
-                  <a href="https://arxiv.org/abs/2305.16744"><h3>Demo2Code: From Summarizing Demonstrations
-                      to Synthesizing Code via Extended Chain-of-Thought</h3></a>
-                  <p>Huaxiaoyue Wang, Gonzalo Gonzalez-Pumariega, Yash Sharma, Sanjiban Choudhury</p>
-                  <pre>
+
+              <!-- <h3 class="title is-4 has-text-centered"><a href="https://github.com/portal-cornell/robotouille"><span
+                    class="ms">Robotouille</span></a>: Cooking Task Simulator</h3>
+              <div class="columns is-vcentered">
+                <div class="column is-full-width has-text-justified">
+                  <div class="content has-text-justified">
+                    <img src="./resources/robotouille_result.png" alt="Interpolate start reference image." />
+                    <h5>Demo2Code can infer different users' preferences.</h5>
+                    <p>
+                      In this <span class="ms">Robotouille</span> example, <span class="ms">Demo2Code</span> is able to
+                      summarize demonstrations and identify different users' preferences on how to make a burger (e.g.
+                      whether to include lettuce or cheese).
+                      Then, it generates personalized burger cooking code to use the user's preferred ingredients.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <br /> -->
+              <!--/ Robotouille -->
+              <!-- Tabletop -->
+              <h3 class="title is-3 has-text-centered"> Tabletop Manipulation Simulator</h3>
+              <div class="columns is-centered">
+                <div class="column is-one-third">
+                  <video autoplay loop muted>
+                    <source src="./resources/tabletop_next_to.webm" alt="Place purple cylinder next to green block"
+                      type="video/webm">
+                  </video>
+                  <h4 class="title is-6 has-text-centered">Place purple cylinder next to green block</h4>
+                </div>
+                <div class="column is-one-third">
+                  <video autoplay loop muted>
+                    <source src="./resources/tabletop_on_hidden.webm" alt="Place blue block on red cylinder"
+                      type="video/webm">
+                  </video>
+                  <h4 class="title is-6 has-text-centered">Place blue block on red cylinder</h4>
+                  <code></code>
+                </div>
+                <div class="column is-one-third">
+                  <video autoplay loop muted>
+                    <source src="./resources/tabletop_stack_two.webm" alt="Stack all objects into two stack"
+                      type="video/webm">
+                  </video>
+                  <h4 class="title is-6 has-text-centered">Stack all objects into two stacks</h4>
+                </div>
+              </div>
+              <div class="columns is-vcentered">
+                <div class="column is-full-width has-text-justified">
+                  <div class="content has-text-justified">
+                    <!-- <img src="./resources/tabletop_result.png" alt="Interpolate start reference image." /> -->
+                    <h5>Demo2Code can ground ambiguous language instruction.</h5>
+                    <p>
+                      In the first example here, <span class="ms">Demo2Code</span> successfully extracts specificity in
+                      tabletop tasks.
+                      Although the language instruction just ambiguously says "next to", it correctly infers from the
+                      goal is "left of" from the demonstrations. Other baselines and methods fail to infer this.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <br />
+              <!--/ Tabletop -->
+              <!-- Tabletop -->
+              <h3 class="title is-4 has-text-centered">How preferences are captured: <a
+                  href="https://epic-kitchens.github.io/2023">EPIC-Kitchens</a></h3>
+              <div class="columns is-vcentered">
+                <div class="column is-full-width has-text-justified">
+                  <div class="content has-text-justified">
+                    <img src="./resources/epick_result.png" alt="Interpolate start reference image." />
+                    <h5><span class="ms">Demo2Code</span> can apply to real-world video demonstrations and identify
+                      different users' styles.</h5>
+                    <p>
+                      User 22 to first scrub objects one at a time, then rinse them one by one.
+                      <br />
+                      In contrast, User 30 prefers to scrub and rinse each object one by one.
+                      <br />
+                      <span class="ms">Demo2Code</span> can capture and translate these implicit preferences to code.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <br />
+              <!--/ Tabletop -->
+            </div>
+          </div>
+          <!--/ Detailed Results -->
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-centered has-text-centered">Paper</h2>
+          <div class="columns is-centered">
+            <div class="column is-12-mobile is-4-tablet is-4-desktop">
+              <div class="content">
+                <a href="https://arxiv.org/abs/2305.16744">
+                  <img class="layered-paper-big" src="./resources/paper_overview.png" alt="Paper thumbnail"
+                    style="float: right" />
+                </a>
+              </div>
+            </div>
+            <div class="column is-8">
+              <div class="content">
+                <a href="https://arxiv.org/abs/2305.16744">
+                  <h3>Demo2Code: From Summarizing Demonstrations
+                    to Synthesizing Code via Extended Chain-of-Thought</h3>
+                </a>
+                <p>Huaxiaoyue Wang, Gonzalo Gonzalez-Pumariega, Yash Sharma, Sanjiban Choudhury</p>
+                <pre>
 <code>@misc{wang2023demo2code,
 title={Demo2Code: From Summarizing Demonstrations to Synthesizing
       Code via Extended Chain-of-Thought}, 
@@ -405,49 +445,54 @@ archivePrefix={arXiv},
 primaryClass={cs.RO}
 }</code>
                   </pre>
-                </div>
               </div>
             </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section>
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <div class="content has-text-centered">
-          <h4 class="title is-3">Acknowledgements</h4>
-          <p>
-            We sincerely thank <a href="https://github.com/nicolethean">Nicole Thean (@nicolethean)</a> for creating our art assets for <span class="ms">Robotouille</span>!
-          </p>
+  <section>
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <div class="content has-text-centered">
+            <h4 class="title is-3">Acknowledgements</h4>
+            <p>
+              We sincerely thank <a href="https://github.com/nicolethean">Nicole Thean (@nicolethean)</a> for creating
+              our art assets for <span class="ms">Robotouille</span>!
+            </p>
+          </div>
+        </div>
+      </div>
+  </section>
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <a class="icon-link" href="https://arxiv.org/pdf/2305.16744.pdf">
+          <i class="fas fa-file-pdf"></i>
+        </a>
+        <a class="icon-link" href="https://github.com/portal-cornell" class="external-link" disabled>
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      <div class="columns is-centered">
+        <div class="column is-8 has-text-centered">
+          <div class="content">
+            <p>
+              Website template is partly borrowed from <a
+                href="https://github.com/nerfies/nerfies.github.io">NeRFies</a>, <a
+                href="http://web.mit.edu/phillipi/">Phillip Isola</a> & <a href="http://richzhang.github.io/">Richard
+                Zhang</a>'s <a href="http://richzhang.github.io/colorization/">colorful project</a>, and <a
+                href="https://github.com/jasonyzhang/webpage-template">Jason Zhang</a>.
+            </p>
+          </div>
         </div>
       </div>
     </div>
-</section>
-<footer class="footer">
-  <div class="container">
-    <div class="content has-text-centered">
-      <a class="icon-link"
-         href="https://arxiv.org/pdf/2305.16744.pdf">
-        <i class="fas fa-file-pdf"></i>
-      </a>
-      <a class="icon-link" href="https://github.com/portal-cornell" class="external-link" disabled>
-        <i class="fab fa-github"></i>
-      </a>
-    </div>
-    <div class="columns is-centered">
-      <div class="column is-8 has-text-centered">
-        <div class="content">
-          <p>
-            Website template is partly borrowed from <a href="https://github.com/nerfies/nerfies.github.io">NeRFies</a>, <a href="http://web.mit.edu/phillipi/">Phillip Isola</a> & <a href="http://richzhang.github.io/">Richard Zhang</a>'s <a href="http://richzhang.github.io/colorization/">colorful project</a>, and <a href="https://github.com/jasonyzhang/webpage-template">Jason Zhang</a>.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
+  </footer>
 
 </body>
+
 </html>
