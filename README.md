@@ -43,7 +43,7 @@
   </p>
 
   <a href="https://github.com/portal-cornell/demo2code">
-    <video src="README_assets/main.mp4" alt="Logo" width="600" height="200">
+    <img src="README_assets/main.gif" alt="Logo">
   </a>
 </div>
 
