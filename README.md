@@ -43,7 +43,7 @@
   </p>
 
   <a href="https://github.com/portal-cornell/demo2code">
-    <img src="README_assets/method_overview.png" alt="Logo" width="600" height="200">
+    <video src="README_assets/main.mp4" alt="Logo" width="600" height="200">
   </a>
 </div>
 
@@ -54,7 +54,7 @@ This is the offical implementation for NeurIPS 2023 paper, **Demo2Code: From Sum
 
 We are finalizing the codebase, and we are excited to share our data and code with you soon!
 
-In the meantime, please check out our project page and our novel customizable multi-task cooking environment **Robotouille**!
+In the meantime, please check out our project page and **our novel customizable multi-task cooking environment: [Robotouille](https://github.com/portal-cornell/robotouille/)**!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
