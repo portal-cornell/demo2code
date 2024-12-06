@@ -1,0 +1,8 @@
+pick_up("pan_1")
+pick_up("sponge_1")
+go_to("sink_1")
+turn_on("tap_1")
+soap("pan_1")
+rinse("pan_1")
+turn_off("tap_1")
+place("pan_1", "dishrack_1")

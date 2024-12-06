@@ -1,0 +1,37 @@
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the objects ('cyan cylinder' has moved). 
+I will summarize the state trajectory into low-level actions.
+The low-level actions are the most compact form, so I should stop summarizing after this. 
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 1], at state 2, the robot moved 'cyan cylinder'.
+* At state 3, the robot picked up and placed 'brown cylinder' on top of 'cyan cylinder'. 
+* At state 4, the robot picked up and placed 'blue cylinder' on top of 'brown cylinder'. 
+* At state 5, the robot picked up and placed 'gray cylinder' on top of 'blue cylinder'.
+
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the objects ('brown cylinder' is to the left of 'cyan cylinder'). 
+I will summarize the state trajectory into low-level actions.
+The low-level actions are the most compact form, so I should stop summarizing after this. 
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 2], at state 2, the robot moved 'cyan cylinder'.
+* At state 3, the robot picked up and placed 'gray cylinder' on top of 'cyan cylinder'. 
+* At state 4, the robot picked up and placed 'brown cylinder' on top of 'gray cylinder'.
+* At state 5, the robot picked up and placed 'blue cylinder' on top of 'brown cylinder'.
+
+==========================summary -> spec==========================
+[[Reasoning:]]
+In both scenarios, the robot starts by moving the 'cyan cylinder'. Then, in both scenarios, the robot stacks the cylinders in the order of ['brown cylinder', 'blue cylinder', 'gray cylinder'].
+
+Based on this, we can conclude that the robot needs to move the 'cyan cylinder' first, and then stack the cylinders in the order of ['brown cylinder', 'blue cylinder', 'gray cylinder'].
+[[Task Specification:]]
+1. Move the cyan cylinder.
+2. Stack the cylinders in the order of ['brown cylinder', 'blue cylinder', 'gray cylinder'].
+

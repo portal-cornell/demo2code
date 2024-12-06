@@ -1,0 +1,30 @@
+objects=['cyan block', 'pink block', 'green block', 'yellow block', 'yellow cylinder', 'brown cylinder', 'gray cylinder', 'purple cylinder']
+"""
+[Scenario 1]
+Place the green block on the purple cylinder.
+
+State 2:
+'pink block' is on top of 'table'
+'pink block' has moved
+'pink block' is not on top of 'green block'
+'pink block' is not on top of 'yellow block'
+'pink block' is not on top of 'gray cylinder'
+
+State 3:
+'yellow block' is on top of 'table'
+'yellow block' has moved
+'yellow block' is not on top of 'green block'
+'yellow block' is in front of 'brown cylinder'
+'yellow block' is not on top of 'gray cylinder'
+'brown cylinder' is behind 'yellow block'
+
+State 4:
+'gray cylinder' is on top of 'table'
+'gray cylinder' has moved
+'gray cylinder' is not on top of 'green block'
+
+State 5:
+'green block' is not on top of 'table'
+'green block' has moved
+'green block' is on top of 'purple cylinder'
+"""

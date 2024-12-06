@@ -1,0 +1,3 @@
+cylinder_names = get_all_obj_names_that_match_type(type_name="cylinder", objects_list=get_obj_names())
+stack_order = ['blue cylinder', 'purple cylinder', 'cyan cylinder', 'pink cylinder']
+stack_without_height_limit(objects_to_stack=[cylinder for cylinder in stack_order if cylinder in cylinder_names])

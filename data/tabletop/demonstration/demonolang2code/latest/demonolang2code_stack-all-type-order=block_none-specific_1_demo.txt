@@ -1,0 +1,39 @@
+objects=['gray block', 'blue block', 'brown block', 'green block', 'blue cylinder', 'yellow cylinder', 'purple cylinder']
+"""
+Initial State (State 1):
+'gray block' has not moved
+'blue block' is on top of 'table'
+'blue block' has not moved
+'blue block' is not on top of 'gray block'
+'brown block' is on top of 'table'
+'brown block' has not moved
+'brown block' is not on top of 'gray block'
+'brown block' is not on top of 'blue block'
+'green block' is on top of 'table'
+'green block' has not moved
+'green block' is not on top of 'gray block'
+'green block' is not on top of 'blue block'
+'green block' is not on top of 'brown block'
+
+[Scenario 1]
+State 2:
+'gray block' has moved
+
+State 3:
+'blue block' is not on top of 'table'
+'blue block' has moved
+'blue block' is on top of 'gray block'
+
+State 4:
+'brown block' is not on top of 'table'
+'brown block' has moved
+'brown block' is on top of 'gray block'
+'brown block' is on top of 'blue block'
+
+State 5:
+'green block' is not on top of 'table'
+'green block' has moved
+'green block' is on top of 'gray block'
+'green block' is on top of 'blue block'
+'green block' is on top of 'brown block'
+"""

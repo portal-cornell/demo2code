@@ -1,0 +1,6 @@
+"""
+Wash objects at the sink. All cleaned objects should be placed in the drying rack.
+Objects to clean
+    - jug_1 at counter_1
+    - jug_2 at near-sink_1
+"""

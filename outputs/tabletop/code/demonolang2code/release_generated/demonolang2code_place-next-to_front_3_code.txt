@@ -1,0 +1,4 @@
+# must use parse position to get edge position
+edge_pos = parse_position('bottom edge')
+put_first_on_second('red block', edge_pos)
+put_first_on_second('red block', 'in front of pink cylinder')

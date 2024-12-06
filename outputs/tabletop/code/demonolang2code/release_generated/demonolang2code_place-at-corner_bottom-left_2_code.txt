@@ -1,0 +1,2 @@
+corner_pos = parse_position('bottom left corner')
+put_first_on_second('pink block', corner_pos)

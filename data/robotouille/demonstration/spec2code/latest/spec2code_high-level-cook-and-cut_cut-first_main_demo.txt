@@ -1,0 +1,20 @@
+```
+"""
+Cook a patty and cut a lettuce.
+Specifically, first cut a lettuce, then cook a patty.
+
+Specifically:
+Get a list of all the lettuces in the kitchen.
+Get a list of all the patties in the kitchen.
+
+Decide a lettuce to cut.
+Get a list of all the available cutting boards in the kitchen.
+Decide a cutting board to go to.
+Cut the lettuce at that cutting board.
+
+Decide a patty to cook.
+Get a list of all the available stoves in the kitchen.
+Decide a stove to go to. 
+Cook that patty at that stove.
+"""
+```

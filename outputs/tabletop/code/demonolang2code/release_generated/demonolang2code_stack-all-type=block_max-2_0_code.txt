@@ -1,0 +1,10 @@
+# First, determine the final stacking order based on the given order
+blocks_to_enforce_order = ['brown block', 'orange block', 'red block']
+blocks_without_order = ['cyan block']
+final_order = determine_final_stacking_order(objects_to_enforce_order=blocks_to_enforce_order, objects_without_order=blocks_without_order)
+
+# Then, place the blocks in the determined order from left to right
+x_position = 0
+for block in final_order:
+    put_first_on_second(block, [x_position, 0])
+    x_position += 1

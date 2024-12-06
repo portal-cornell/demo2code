@@ -1,0 +1,3 @@
+# must use parse position to get corner position
+corner_pos = parse_position('bottom left corner')
+put_first_on_second('cyan block', corner_pos)

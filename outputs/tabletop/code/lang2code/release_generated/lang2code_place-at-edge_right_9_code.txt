@@ -1,0 +1,4 @@
+edge_name = np.random.choice(ALL_EDGES_LIST)
+# must use parse position to get edge position
+edge_pos = parse_position(edge_name)
+put_first_on_second('cyan cylinder', edge_pos)

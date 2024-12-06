@@ -1,0 +1,11 @@
+# Move 'orange block' to the right of 'pink cylinder'
+put_first_on_second('orange block', 'right of pink cylinder')
+
+# Move 'brown block'
+put_first_on_second('brown block', 'table')
+
+# Move 'green block'
+put_first_on_second('green block', 'table')
+
+# Place 'purple block' on top of 'pink cylinder'
+put_first_on_second('purple block', 'pink cylinder')

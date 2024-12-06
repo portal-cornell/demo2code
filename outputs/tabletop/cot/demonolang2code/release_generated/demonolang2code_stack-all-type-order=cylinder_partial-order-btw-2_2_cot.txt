@@ -1,0 +1,37 @@
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the objects ('pink cylinder' has moved). 
+I will summarize the state trajectory into low-level actions.
+The low-level actions are the most compact form, so I should stop summarizing after this. 
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 1], at state 2, the robot moved 'pink cylinder'.
+* At state 3, the robot picked up and placed 'red cylinder' on top of 'pink cylinder'. 
+* At state 4, the robot picked up and placed 'purple cylinder' on top of 'red cylinder'. 
+* At state 5, the robot picked up and placed 'cyan cylinder' on top of 'purple cylinder'.
+
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the objects ('cyan cylinder' has moved). 
+I will summarize the state trajectory into low-level actions.
+The low-level actions are the most compact form, so I should stop summarizing after this. 
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 2], at state 2, the robot moved 'cyan cylinder'.
+* At state 3, the robot picked up and placed 'pink cylinder' on top of 'cyan cylinder'. 
+* At state 4, the robot picked up and placed 'red cylinder' on top of 'cyan cylinder'. 
+* At state 5, the robot picked up and placed 'purple cylinder' on top of 'red cylinder'.
+
+==========================summary -> spec==========================
+[[Reasoning:]]
+In [Scenario 1], based on States 2-5, in the first stack, the cylinders from bottom to top is ['pink cylinder', 'red cylinder', 'purple cylinder', 'cyan cylinder'].
+In [Scenario 2], based on States 2-5, in the first stack, the cylinders from bottom to top is ['cyan cylinder', 'pink cylinder', 'red cylinder', 'purple cylinder'].
+
+Between the order of cylinders in these two scenarios, the ordering that stays the same is ['red cylinder', 'purple cylinder'].
+[[Task Specification:]]
+Stack all cylinders into one stack. Also make sure that the stacking enforces the bottom to top order between these cylinders: ['red cylinder', 'purple cylinder'].
+

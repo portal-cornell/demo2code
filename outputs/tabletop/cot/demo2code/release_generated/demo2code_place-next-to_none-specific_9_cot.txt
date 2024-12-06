@@ -1,0 +1,33 @@
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the objects ('cyan block' is to the right of 'pink block'). 
+I will summarize the state trajectory into low-level actions.
+The low-level actions are the most compact form, so I should stop summarizing after this. 
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 1], at state 2, the robot picked up and placed 'pink block' to the right of 'brown cylinder'.
+
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the objects ('pink block' is to the left of 'brown cylinder'). 
+I will summarize the state trajectory into low-level actions.
+The low-level actions are the most compact form, so I should stop summarizing after this. 
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 2], at state 2, the robot picked up and placed 'pink block' to the left of 'brown cylinder'.
+
+==========================summary -> spec==========================
+[[Reasoning:]]
+Because the goal is to place the "pink block" next to the "brown cylinder", we need to consider the relative position between them.
+
+In [Scenario 1], the "pink block" is placed to the right of the "brown cylinder".
+In [Scenario 2], the "pink block" is placed to the left of the "brown cylinder".
+
+Based on these two scenarios, we can conclude that the "pink block" can be placed on either side of the "brown cylinder".
+[[Task Specification:]]
+Place the pink block on either side of the brown cylinder.
+

@@ -1,0 +1,13 @@
+# Move the yellow cylinder and place it to the left of the red block on top of the table.
+yellow_cylinder_pos = parse_position('left of the red block')
+put_first_on_second('yellow cylinder', yellow_cylinder_pos)
+
+# Move the green cylinder and place it behind the red block on top of the table.
+green_cylinder_pos = parse_position('behind the red block')
+put_first_on_second('green cylinder', green_cylinder_pos)
+
+# Move the orange block and place it on top of the table.
+put_first_on_second('orange block', 'table')
+
+# Move the gray block and place it on top of the gray cylinder.
+put_first_on_second('gray block', 'gray cylinder')

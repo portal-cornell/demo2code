@@ -1,0 +1,97 @@
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the objects (is_in_hand(`sponge_1`), dirty(`mezzaluna_1`), etc.). 
+I will summarize the state trajectory into low-level actions.
+Low-level actions are not compacted enough yet because low-level actions can still be combined into high-level subtasks. 
+The new trajectory will NOT be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+no
+[[Summarized trajectory:]]
+* In [Scenario 1], at state 1-2, the robot picked up mezzaluna_1. 
+* At state 2-3, the robot soaped mezzaluna_1 until it became soapy because mezzaluna_1 was dirty.
+* At state 3-4, the robot moved mezzaluna_1 from sink_1 to sink_2.
+* At state 4-5, the robot moved peeler:potato_1 from sink_1 to sink_2.
+* At state 5-6, the robot picked up peeler:potato_1.
+* At state 6-7, the robot soaped peeler:potato_1 until it became soapy.
+* At state 7-8, the robot moved peeler:potato_1 from sink_1 to sink_2.
+* At state 8-9, the robot moved knife_1 from sink_1 to sink_2.
+* At state 9-10, the robot picked up knife_1.
+* At state 10-11, the robot soaped knife_1 until it became soapy.
+* At state 11-12, the robot moved knife_1 from sink_1 to sink_2.
+* At state 12-13, the robot moved board:cutting_1 from sink_1 to sink_2.
+* At state 13-14, the robot picked up board:cutting_1.
+* At state 14-15, the robot soaped board:cutting_1 until it became soapy.
+* At state 15-16, the robot moved board:cutting_1 from sink_1 to sink_2.
+* At state 16-17, the robot turned on tap_1.
+* At state 17-18, the robot picked up board:cutting_1.
+* At state 18-19, the robot rinsed board:cutting_1 until it became clean.
+* At state 19-20, the robot placed board:cutting_1 in dryingrack_1.
+* At state 20-21, the robot picked up mezzaluna_1.
+* At state 21-22, the robot rinsed mezzaluna_1 until it became clean.
+* At state 22-23, the robot placed mezzaluna_1 in dryingrack_1.
+* At state 23-24, the robot picked up peeler:potato_1.
+* At state 24-25, the robot rinsed peeler:potato_1 until it became clean.
+* At state 25-26, the robot placed peeler:potato_1 in dryingrack_1.
+* At state 26-27, the robot picked up knife_1.
+* At state 27-28, the robot rinsed knife_1 until it became clean.
+* At state 28-29, the robot placed knife_1 in dryingrack_1.
+* At state 29-30, the robot turned off tap_1.
+
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains low-level actions because the trajectory mentions "picked up", "moved", "soaped", "rinsed", etc. 
+I will summarize the low-level action trajectory into high-level subtasks. 
+High-level subtasks are compacted enough because they cannot be combined together without losing important information.
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 1], at state 1-2, the robot picked up mezzaluna_1.
+* At state 2-3, the robot soaped mezzaluna_1 until it became soapy.
+* At state 3-4, the robot moved mezzaluna_1, peeler:potato_1, knife_1, and board:cutting_1 from sink_1 to sink_2.
+* At state 4-5, the robot picked up peeler:potato_1.
+* At state 5-6, the robot soaped peeler:potato_1 until it became soapy.
+* At state 6-7, the robot moved peeler:potato_1 from sink_1 to sink_2.
+* At state 7-8, the robot moved knife_1 from sink_1 to sink_2.
+* At state 8-9, the robot picked up knife_1.
+* At state 9-10, the robot soaped knife_1 until it became soapy.
+* At state 10-11, the robot moved knife_1 from sink_1 to sink_2.
+* At state 11-12, the robot moved board:cutting_1 from sink_1 to sink_2.
+* At state 12-13, the robot picked up board:cutting_1.
+* At state 13-14, the robot soaped board:cutting_1 until it became soapy.
+* At state 14-15, the robot moved board:cutting_1 from sink_1 to sink_2.
+* At state 15-16, the robot turned on tap_1.
+* At state 16-19, the robot picked up board:cutting_1, mezzaluna_1, peeler:potato_1, and knife_1.
+* At state 19-20, the robot rinsed board:cutting_1 until it became clean and placed it in dryingrack_1.
+* At state 20-21, the robot rinsed mezzaluna_1 until it became clean and placed it in dryingrack_1.
+* At state 21-22, the robot rinsed peeler:potato_1 until it became clean and placed it in dryingrack_1.
+* At state 22-23, the robot rinsed knife_1 until it became clean and placed it in dryingrack_1.
+* At state 23-24, the robot turned off tap_1.
+
+==========================summary -> spec==========================
+[[Reasoning:]]
+* There are 4 objects that need to be washed: [mezzaluna_1, peeler:potato_1, knife_1, board:cutting_1]
+* The list of high-level actions that happened in order is: [pick up, soap, move, pick up, soap, move, move, pick up, soap, move, move, pick up, soap, move, turn on tap, pick up, rinse, place, rinse, place, rinse, place, rinse, place, turn off tap]
+* The actions [pick up, soap, move, rinse, place] are repeated for each object, so we can use a loop.
+* The objects are moved from sink_1 to sink_2 before rinsing and placing them in the drying rack.
+* Rinsing involves the use of tap water, which is why it is turned on at some point before the rinse cycle, and turned off after.
+[[Task Specification:]]
+Wash objects in sink. All clean objects must be placed in drying rack.
+Specifically -
+
+Get a list of all objects to wash
+For each object in all objects:
+  Pick up object
+  Soap object until it becomes soapy
+  Move object from sink_1 to sink_2
+For each object in all objects:
+  Pick up object
+  Rinse object until it becomes clean
+  Place object in dryingrack_1
+Turn on tap_1
+For each object in all objects:
+  Pick up object
+  Rinse object until it becomes clean
+  Place object in dryingrack_1
+Turn off tap_1
+

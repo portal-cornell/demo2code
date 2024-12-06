@@ -1,0 +1,26 @@
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the objects ('gray block' has moved). 
+I will summarize the state trajectory into low-level actions.
+The low-level actions are the most compact form, so I should stop summarizing after this. 
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 1], at state 2, the robot moved 'gray block'.
+* At state 3, the robot picked up and placed 'red block' on top of 'gray block'. 
+* At state 4, the robot picked up and placed 'green block' on top of 'gray block'. 
+* At state 5, the robot picked up and placed 'orange block' on top of 'gray block'. 
+* At state 6, the robot moved 'cyan cylinder'.
+* At state 7, the robot picked up and placed 'orange cylinder' on top of 'cyan cylinder'. 
+* At state 8, the robot picked up and placed 'purple cylinder' on top of 'cyan cylinder'.
+
+==========================summary -> spec==========================
+[[Reasoning:]]
+Based on States 2-5, in the first stack, the blocks from bottom to top is ['gray block', 'red block', 'green block', 'orange block'].
+Based on States 6-8, in the first stack, the cylinders from bottom to top is ['cyan cylinder', 'orange cylinder', 'purple cylinder'].
+
+Because the blocks and cylinders are stacked separately, we assume that the blocks and cylinders should be stacked independently.
+[[Task Specification:]]
+Stack all blocks into one stack and stack all cylinders into another stack.
+

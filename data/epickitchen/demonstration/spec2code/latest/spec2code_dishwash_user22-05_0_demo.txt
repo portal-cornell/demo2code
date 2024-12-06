@@ -1,0 +1,14 @@
+"""
+Wash objects at the sink. All cleaned objects should be placed on the dishrack.
+Specifically -
+Get a list of all objects to wash
+Pick up scrub_1
+For each object in all objects:
+    Scrub object
+    Place object in sink_2
+Turn on tap_1
+For each object in all objects:
+    Rinse object
+    Place object in dishrack_1
+Turn off tap_1
+"""

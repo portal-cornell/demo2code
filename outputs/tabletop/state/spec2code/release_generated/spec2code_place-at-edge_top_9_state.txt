@@ -1,0 +1,5 @@
+<state-2>
+is_at:pink cylinder,top edge:1
+
+<init-state>
+is_at:pink cylinder,top edge:0

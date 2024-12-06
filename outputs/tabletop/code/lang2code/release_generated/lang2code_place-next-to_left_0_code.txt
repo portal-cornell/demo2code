@@ -1,0 +1,2 @@
+location_pos = parse_position('right of the purple cylinder')
+put_first_on_second('cyan block', location_pos)

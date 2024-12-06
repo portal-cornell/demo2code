@@ -1,0 +1,73 @@
+<state-2>
+on_top_of:brown block,table:0
+has_moved:brown block:1
+on_top_of:brown block,cyan block:1
+
+<state-3>
+on_top_of:pink block,table:0
+has_moved:pink block:1
+on_top_of:pink block,cyan block:1
+on_top_of:pink block,brown block:1
+
+<state-4>
+on_top_of:blue block,table:0
+has_moved:blue block:1
+on_top_of:blue block,cyan block:1
+on_top_of:blue block,brown block:1
+on_top_of:blue block,pink block:1
+
+<state-5>
+on_top_of:yellow cylinder,table:0
+has_moved:yellow cylinder:1
+
+<state-6>
+is_right_of:cyan block,blue block:1
+is_left_of:cyan block,green cylinder:1
+on_top_of:brown block,blue block:1
+on_top_of:pink block,green cylinder:1
+on_top_of:blue block,table:1
+is_left_of:blue block,cyan block:1
+on_top_of:blue block,cyan block:0
+on_top_of:blue block,brown block:0
+on_top_of:blue block,pink block:0
+is_left_of:blue block,green cylinder:1
+is_at:yellow cylinder,bottom left corner:1
+has_moved:green cylinder:1
+is_right_of:green cylinder,cyan block:1
+is_right_of:green cylinder,blue block:1
+
+<state-7>
+on_top_of:pink block,green cylinder:0
+is_at:yellow cylinder,bottom left corner:0
+on_top_of:blue cylinder,table:0
+has_moved:blue cylinder:1
+on_top_of:blue cylinder,cyan block:1
+on_top_of:blue cylinder,brown block:1
+on_top_of:blue cylinder,pink block:1
+on_top_of:blue cylinder,green cylinder:1
+
+<init-state>
+is_right_of:cyan block,blue block:0
+is_left_of:cyan block,green cylinder:0
+on_top_of:brown block,table:1
+has_moved:brown block:0
+on_top_of:brown block,cyan block:0
+on_top_of:brown block,blue block:0
+on_top_of:pink block,table:1
+has_moved:pink block:0
+on_top_of:pink block,cyan block:0
+on_top_of:pink block,brown block:0
+has_moved:blue block:0
+is_left_of:blue block,cyan block:0
+is_left_of:blue block,green cylinder:0
+on_top_of:yellow cylinder,table:1
+has_moved:yellow cylinder:0
+has_moved:green cylinder:0
+is_right_of:green cylinder,cyan block:0
+is_right_of:green cylinder,blue block:0
+on_top_of:blue cylinder,table:1
+has_moved:blue cylinder:0
+on_top_of:blue cylinder,cyan block:0
+on_top_of:blue cylinder,brown block:0
+on_top_of:blue cylinder,pink block:0
+on_top_of:blue cylinder,green cylinder:0

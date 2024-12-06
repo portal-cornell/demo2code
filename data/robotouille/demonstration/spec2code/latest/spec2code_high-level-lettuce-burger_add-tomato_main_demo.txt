@@ -1,0 +1,39 @@
+```
+"""
+Make a burger.
+The lettuce should be stacked on the tomato.
+The tomato should be stacked on the patty.
+
+Specifically:
+Get a list of all the patties in the kitchen.
+Get a list of all the bottom buns in the kitchen.
+Get a list of all the lettuces in the kitchen.
+Get a list of all the tomatoes in the kitchen.
+Get a list of all the top buns in the kitchen.
+ 
+Decide a patty to cook. 
+Get a list of all the available stoves in the kitchen.
+Decide a stove to go to.
+Cook that patty at that stove.
+
+Decide a bottom bun to use.
+Stack the patty on top of the bottom bun. 
+
+Decide a tomato to cut. 
+Get a list of all the available cutting boards in the kitchen.
+Decide a cutting board to go to.
+Cut that tomato at that cutting board. 
+
+Stack the tomato on top of the patty.
+
+Decide a lettuce to cut. 
+Get a list of all the available cutting boards in the kitchen.
+Decide a cutting board to go to.
+Cut that lettuce at that cutting board. 
+
+Stack the lettuce on top of the tomato.
+
+Decide a top bun to use. 
+Stack the top bun on top of the lettuce.
+"""
+```

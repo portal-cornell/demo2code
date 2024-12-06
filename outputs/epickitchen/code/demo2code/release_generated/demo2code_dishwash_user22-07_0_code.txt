@@ -1,0 +1,26 @@
+objects = get_all_objects()
+
+# Soap objects in sink_1
+for object in objects:
+  pick_up(object)
+  while not is_soapy(object):
+    soap(object)
+  move_object(object, "sink_1", "sink_2")
+
+# Rinse objects and place in dryingrack_1
+for object in objects:
+  pick_up(object)
+  while not is_clean(object):
+    rinse(object)
+  place(object, "dryingrack_1")
+
+turn_on("tap_1")
+
+# Rinse objects again and place in dryingrack_1
+for object in objects:
+  pick_up(object)
+  while not is_clean(object):
+    rinse(object)
+  place(object, "dryingrack_1")
+
+turn_off("tap_1")

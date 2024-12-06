@@ -1,0 +1,4 @@
+# stack the gray block and yellow block
+stack_without_height_limit(objects_to_stack=['gray block', 'yellow block'])
+# move the cyan block freely
+put_first_on_second('cyan block', 'table')

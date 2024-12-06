@@ -1,0 +1,23 @@
+<state-2>
+has_moved:gray block:1
+
+<state-3>
+on_top_of:yellow block,table:0
+has_moved:yellow block:1
+on_top_of:yellow block,gray block:1
+
+<state-4>
+on_top_of:cyan block,table:0
+has_moved:cyan block:1
+on_top_of:cyan block,gray block:1
+on_top_of:cyan block,yellow block:1
+
+<init-state>
+has_moved:gray block:0
+on_top_of:yellow block,table:1
+has_moved:yellow block:0
+on_top_of:yellow block,gray block:0
+on_top_of:cyan block,table:1
+has_moved:cyan block:0
+on_top_of:cyan block,gray block:0
+on_top_of:cyan block,yellow block:0

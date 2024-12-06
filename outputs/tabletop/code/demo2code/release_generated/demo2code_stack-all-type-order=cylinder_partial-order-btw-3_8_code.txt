@@ -1,0 +1,11 @@
+# Based on the instruction, first define the cylinders that have strict ordering
+cylinder_names_with_strick_order_from_bottom_to_top = ['purple cylinder', 'brown cylinder', 'red cylinder']
+# Then, find the rest of the cylinders that don't have strict order
+cylinder_names = get_all_obj_names_that_match_type(type_name="cylinder", objects_list=get_obj_names())
+cylinder_names_without_order = []
+for cylinder in cylinder_names:
+  if cylinder not in cylinder_names_with_strick_order_from_bottom_to_top:
+        cylinder_names_without_order.append(cylinder)
+# Call helper function to determine the final stacking order before stacking the cylinders
+stack_order_from_bottom_to_top = determine_final_stacking_order(objects_to_enforce_order=cylinder_names_with_strick_order_from_bottom_to_top, objects_without_order=cylinder_names_without_order)
+stack_without_height_limit(objects_to_stack=stack_order_from_bottom_to_top)

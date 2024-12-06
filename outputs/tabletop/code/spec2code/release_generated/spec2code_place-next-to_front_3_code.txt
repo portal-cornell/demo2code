@@ -1,0 +1,3 @@
+# must use parse position to get relative position
+location_pos = parse_position('in front of the pink cylinder')
+put_first_on_second('red block', location_pos)

@@ -1,0 +1,4 @@
+def move_then_unstack(obj_to_unstack, obj_at_bottom, unstack_location):
+    if get_curr_location() != unstack_location:
+        move(get_curr_location(), unstack_location)
+    unstack(obj_to_unstack, obj_at_bottom)

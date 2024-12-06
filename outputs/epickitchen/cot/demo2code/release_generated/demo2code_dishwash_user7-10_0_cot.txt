@@ -1,0 +1,49 @@
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the robot (at(`stove_1`)) and the object (is_dirty(`pan_1`)). 
+I will summarize the state trajectory into low-level actions.
+Low-level actions are not compacted enough yet because low-level actions can still be combined into high-level subtasks. 
+The new trajectory will NOT be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+no
+[[Summarized trajectory:]]
+* In [Scenario 1], at state 1-2, the robot picked up pan_1 from stove_1.
+* At state 2-3, the robot moved from stove_1 to sink_1. The robot picked up sponge_1.
+* At state 3-4, the robot turned on tap_1. The robot soaped pan_1 until it became soapy because pan_1 was dirty.
+* At state 4-5, the robot rinsed pan_1 until it became clean.
+* At state 5-6, the robot turned off tap_1. The robot placed pan_1 on dishrack_1.
+
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains low-level actions because the trajectory mentions "picked up", "moved", etc. 
+I will summarize the low-level action trajectory into high-level subtasks. 
+High-level subtasks are compacted enough because they cannot be combined together without losing important information.
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 1], at state 1-3, the robot brought pan_1 from stove_1 to sink_1. The robot also picked up sponge_1.
+* At state 3-4, the robot turned on tap_1 and soaped pan_1 until it became soapy because pan_1 was dirty.
+* At state 4-5, the robot rinsed pan_1 until it became clean.
+* At state 5-6, the robot turned off tap_1 and placed pan_1 on dishrack_1.
+
+==========================summary -> spec==========================
+[[Reasoning:]]
+* There is 1 dish that got washed: [pan_1]
+* The list of high-level actions that happened in order is: [move dish from A to B, pick up sponge, turn on tap, soap, rinse, turn off tap, place dish on dishrack]
+* The actions [pick up sponge, turn on tap, soap, rinse, turn off tap] are repeated for each dish, so we can use a loop.
+* Rinsing involves the use of tap water, which is why it is turned on at some point before the rinse cycle, and turned off after.
+[[Task Specification:]]
+Wash dishes at the sink. All cleaned objects should be placed at the dishrack.
+Specifically -
+
+Get a list of all objects to wash
+For each object in all objects:
+  Bring object from stove_1 to sink_1
+  Pick up sponge_1
+  Turn on tap_1
+  Soap object
+  Rinse object
+  Turn off tap_1
+  Place object on dishrack_1
+

@@ -1,0 +1,32 @@
+```
+"""
+Make two burgers.
+You should cook or cut the ingredients first before stacking anything.
+The lettuce should be stacked on the patty.
+
+Specifically:
+Get a list of all the patties in the kitchen.
+Get a list of all the bottom buns in the kitchen.
+Get a list of all the lettuces in the kitchen.
+Get a list of all the top buns in the kitchen.
+
+Repeat the following twice: 
+    Decide a patty to cook. 
+    Get a list of all the available stoves in the kitchen.
+    Decide a stove to go to. 
+    Cook that patty at that stove.
+
+    Decide a lettuce to cut. 
+    Get a list of all the available cutting boards in the kitchen.
+    Decide a cutting board to go to.
+    Cut that lettuce at that cutting board. 
+
+    Decide a bottom bun to use.
+    Stack the patty to cook on top of the bottom bun to use. 
+
+    Stack the lettuce to cut on top of the patty to cook.
+
+    Decide a top bun to use. 
+    Stack the top bun to use on top of the lettuce to cut.
+"""
+```

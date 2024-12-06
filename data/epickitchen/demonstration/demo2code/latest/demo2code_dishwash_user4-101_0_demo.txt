@@ -1,0 +1,33 @@
+"""
+[Scenario 1]
+Wash dishes at the sink. All cleaned objects should be placed at the kitchentop
+Objects to clean
+    - mug_1 at desk_1
+
+Initial Condition (State 1):
+at(`desk_1`)
+
+State 2:
+is_in_hand(`mug_1`)
+is_dirty(`mug_1`)
+
+State 3:
+at(`sink_1`)
+is_in_hand(`sponge_1`)
+
+State 4:
+is_on(`tap_1`)
+
+State 5:
+is_soapy(`mug_1`)
+
+State 6:
+is_clean(`mug_1`)
+
+State 7:
+is_off(`tap_1`)
+
+State 8:
+at(`kitchentop_1`)
+on(`mug_1`, `kitchentop_1`)
+"""

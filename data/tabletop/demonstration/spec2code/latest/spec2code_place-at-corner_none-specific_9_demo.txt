@@ -1,0 +1,4 @@
+objects=['purple block', 'yellow cylinder', 'orange cylinder']
+"""
+Place the orange cylinder at any random corner.
+"""

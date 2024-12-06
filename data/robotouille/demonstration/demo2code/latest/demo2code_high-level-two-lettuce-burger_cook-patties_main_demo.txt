@@ -1,0 +1,117 @@
+[Scenario 1]
+Cook two patties.
+
+State 2:
+'robot1' is not at 'table19'
+'robot1' is at 'table13'
+
+State 3:
+'patty1' is not at 'table13'
+'robot1' is holding 'patty1'
+
+State 4:
+'robot1' is at 'stove1'
+'robot1' is not at 'table13'
+
+State 5:
+'patty1' is at 'stove1'
+'robot1' is not holding 'patty1'
+
+State 6:
+
+
+State 7:
+
+
+State 8:
+
+
+State 9:
+'patty1' is cooked
+
+State 10:
+'robot1' is not at 'stove1'
+'robot1' is at 'table19'
+
+State 11:
+'patty2' is not at 'table19'
+'robot1' is holding 'patty2'
+
+State 12:
+'robot1' is not at 'table19'
+'robot1' is at 'stove2'
+
+State 13:
+'patty2' is at 'stove2'
+'robot1' is not holding 'patty2'
+
+State 14:
+
+
+State 15:
+
+
+State 16:
+
+
+State 17:
+'patty2' is cooked
+
+[Scenario 2]
+Cook two patties.
+
+State 2:
+'robot1' is at 'table6'
+'robot1' is not at 'table7'
+
+State 3:
+'patty3' is not at 'table6'
+'robot1' is holding 'patty3'
+
+State 4:
+'robot1' is at 'stove3'
+'robot1' is not at 'table6'
+
+State 5:
+'patty3' is at 'stove3'
+'robot1' is not holding 'patty3'
+
+State 6:
+
+
+State 7:
+
+
+State 8:
+
+
+State 9:
+'patty3' is cooked
+
+State 10:
+'robot1' is not at 'stove3'
+'robot1' is at 'table7'
+
+State 11:
+'patty4' is not at 'table7'
+'robot1' is holding 'patty4'
+
+State 12:
+'robot1' is at 'stove4'
+'robot1' is not at 'table7'
+
+State 13:
+'patty4' is at 'stove4'
+'robot1' is not holding 'patty4'
+
+State 14:
+
+
+State 15:
+
+
+State 16:
+
+
+State 17:
+'patty4' is cooked

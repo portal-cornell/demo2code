@@ -1,0 +1,8 @@
+"""
+Wash objects in sink. All clean objects must be placed in drying rack.
+Objects to clean
+    - mezzaluna_1 in sink_1
+    - peeler:potato_1 in sink_1
+    - knife_1 in sink_1
+    - board:cutting_1 in sink_1
+"""

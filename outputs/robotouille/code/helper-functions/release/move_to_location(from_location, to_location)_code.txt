@@ -1,0 +1,37 @@
+def move_to_location(from_location, to_location):
+    # If the robot is already at the destination location, no need to move
+    if from_location == to_location:
+        return
+    # Determine the type of location for from_location and to_location
+    from_location_type = from_location.split()[0]
+    to_location_type = to_location.split()[0]
+    # If the robot is holding an object, it needs to place it down before moving
+    if is_holding(obj):
+        # Determine the object that the robot is holding
+        obj = get_holding_object()
+        # Determine the location to place the object down
+        place_location = get_obj_location(obj)
+        # Place the object down
+        place(obj, place_location)
+    # Move to the destination location
+    if from_location_type == 'table' and to_location_type == 'table':
+        # Move from one table to another table
+        move_from_table_to_table(from_location, to_location)
+    elif from_location_type == 'table' and to_location_type == 'cutting_board':
+        # Move from a table to a cutting board
+        move_from_table_to_cutting_board(from_location, to_location)
+    elif from_location_type == 'table' and to_location_type == 'stove':
+        # Move from a table to a stove
+        move_from_table_to_stove(from_location, to_location)
+    elif from_location_type == 'cutting_board' and to_location_type == 'table':
+        # Move from a cutting board to a table
+        move_from_cutting_board_to_table(from_location, to_location)
+    elif from_location_type == 'cutting_board' and to_location_type == 'stove':
+        # Move from a cutting board to a stove
+        move_from_cutting_board_to_stove(from_location, to_location)
+    elif from_location_type == 'stove' and to_location_type == 'table':
+        # Move from a stove to a table
+        move_from_stove_to_table(from_location, to_location)
+    elif from_location_type == 'stove' and to_location_type == 'cutting_board':
+        # Move from a stove to a cutting board
+        move_from_stove_to_cutting_board(from_location, to_location)

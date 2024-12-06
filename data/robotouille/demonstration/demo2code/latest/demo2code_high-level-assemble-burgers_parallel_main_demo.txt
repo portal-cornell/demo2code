@@ -1,0 +1,139 @@
+"""
+[Scenario 1]
+Make two burgers. Because there are already a stack of two cooked patties, use them to make the burgers.
+
+State 2:
+'patty1' is not at 'table5'
+'patty1' is not on top of 'patty2'
+'robot1' is holding 'patty1'
+
+State 3:
+'robot1' is at 'table2'
+'robot1' is not at 'table5'
+
+State 4:
+'patty1' is at 'table2'
+'patty1' is on top of 'bottom_bun1'
+'robot1' is not holding 'patty1'
+
+State 5:
+'robot1' is not at 'table2'
+'robot1' is at 'table5'
+
+State 6:
+'patty2' is not at 'table5'
+'robot1' is holding 'patty2'
+
+State 7:
+'robot1' is not at 'table5'
+'robot1' is at 'table3'
+
+State 8:
+'patty2' is at 'table3'
+'patty2' is on top of 'bottom_bun2'
+'robot1' is not holding 'patty2'
+
+State 9:
+'robot1' is not at 'table3'
+'robot1' is at 'table4'
+
+State 10:
+'top_bun1' is not at 'table4'
+'top_bun1' is not on top of 'top_bun2'
+'robot1' is holding 'top_bun1'
+
+State 11:
+'robot1' is at 'table2'
+'robot1' is not at 'table4'
+
+State 12:
+'top_bun1' is at 'table2'
+'top_bun1' is on top of 'patty1'
+'robot1' is not holding 'top_bun1'
+
+State 13:
+'robot1' is not at 'table2'
+'robot1' is at 'table4'
+
+State 14:
+'top_bun2' is not at 'table4'
+'robot1' is holding 'top_bun2'
+
+State 15:
+'robot1' is at 'table3'
+'robot1' is not at 'table4'
+
+State 16:
+'top_bun2' is at 'table3'
+'top_bun2' is on top of 'patty2'
+'robot1' is not holding 'top_bun2'
+
+[Scenario 2]
+Make two burgers. Because there are already a stack of two cooked patties, use them to make the burgers.
+
+State 2:
+'patty4' is not at 'table6'
+'patty4' is not on top of 'patty5'
+'robot1' is holding 'patty4'
+
+State 3:
+'robot1' is at 'table3'
+'robot1' is not at 'table6'
+
+State 4:
+'patty4' is at 'table3'
+'patty4' is on top of 'bottom_bun3'
+'robot1' is not holding 'patty4'
+
+State 5:
+'robot1' is not at 'table3'
+'robot1' is at 'table6'
+
+State 6:
+'patty5' is not at 'table6'
+'robot1' is holding 'patty5'
+
+State 7:
+'robot1' is at 'table4'
+'robot1' is not at 'table6'
+
+State 8:
+'patty5' is at 'table4'
+'patty5' is on top of 'bottom_bun4'
+'robot1' is not holding 'patty5'
+
+State 9:
+'robot1' is at 'stove4'
+'robot1' is not at 'table4'
+
+State 10:
+'top_bun3' is not at 'stove4'
+'robot1' is holding 'top_bun3'
+
+State 11:
+'robot1' is at 'table3'
+'robot1' is not at 'stove4'
+
+State 12:
+'top_bun3' is at 'table3'
+'top_bun3' is on top of 'patty4'
+'robot1' is not holding 'top_bun3'
+
+State 13:
+'robot1' is not at 'table3'
+'robot1' is at 'table7'
+
+State 14:
+'top_bun4' is not at 'table7'
+'top_bun4' is not on top of 'top_bun5'
+'robot1' is holding 'top_bun4'
+
+State 15:
+'robot1' is not at 'table7'
+'robot1' is at 'table4'
+
+State 16:
+'top_bun4' is at 'table4'
+'top_bun4' is on top of 'patty5'
+'robot1' is not holding 'top_bun4'
+"""

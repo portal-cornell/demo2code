@@ -1,0 +1,5 @@
+# First, find the yellow block's position
+yellow_block_pos = get_all_obj_names_that_match_type(type_name="block", objects_list=get_obj_names())[0]
+# Then, stack all blocks on top of the yellow block
+for block in ['blue block', 'purple block', 'orange block', 'blue cylinder']:
+  put_first_on_second(block, yellow_block_pos)

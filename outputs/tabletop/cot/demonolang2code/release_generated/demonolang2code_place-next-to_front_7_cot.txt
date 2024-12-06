@@ -1,0 +1,17 @@
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the objects ('red block' is behind 'purple cylinder'). 
+I will summarize the state trajectory into low-level actions.
+The low-level actions are the most compact form, so I should stop summarizing after this. 
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 1], at state 2, the robot moved 'purple cylinder' in front of 'red block'.
+
+==========================summary -> spec==========================
+[[Reasoning:]]
+Based on the trajectory, the robot needs to move the 'purple cylinder' in front of the 'red block'.
+[[Task Specification:]]
+Move the purple cylinder in front of the red block.
+

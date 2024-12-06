@@ -1,0 +1,21 @@
+# Get a list of all the lettuces in the kitchen.
+lettuces = get_all_obj_names_that_match_type('lettuce')
+# Get a list of all the tomatoes in the kitchen.
+tomatoes = get_all_obj_names_that_match_type('tomato')
+# Get a list of all the patties in the kitchen.
+patties = get_all_obj_names_that_match_type('patty')
+
+# Decide a lettuce to use.
+lettuce_to_use = lettuces[0]
+# Decide a tomato to use.
+tomato_to_use = tomatoes[0]
+# Decide a patty to use.
+patty_to_use = patties[0]
+
+# Stack the lettuce on top of the tomato.
+# obj1 should be the lettuce, obj2 should be the tomato.
+stack_obj1_on_obj2(obj1=lettuce_to_use, obj2=tomato_to_use)
+
+# Stack the tomato on top of the patty.
+# obj1 should be the tomato, obj2 should be the patty.
+stack_obj1_on_obj2(obj1=tomato_to_use, obj2=patty_to_use)

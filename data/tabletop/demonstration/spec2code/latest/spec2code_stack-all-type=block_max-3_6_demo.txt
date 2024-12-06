@@ -1,0 +1,4 @@
+objects=['brown block', 'blue block', 'orange block', 'gray block', 'green block', 'yellow block', 'red cylinder']
+"""
+Stack all blocks. However, the maximum height of a stack is 3.
+"""

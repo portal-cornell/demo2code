@@ -1,0 +1,61 @@
+objects=['cyan block', 'pink block', 'yellow block', 'orange block', 'purple cylinder', 'yellow cylinder', 'pink cylinder', 'gray cylinder']
+"""
+[Scenario 1]
+State 2:
+'cyan block' is to the left of 'yellow cylinder'
+'pink block' is in front of 'yellow cylinder'
+'yellow block' is behind 'yellow cylinder'
+'yellow cylinder' has moved
+'yellow cylinder' is to the right of 'cyan block'
+'yellow cylinder' is behind 'pink block'
+'yellow cylinder' is in front of 'yellow block'
+'yellow cylinder' is to the left of 'pink cylinder'
+'pink cylinder' is to the right of 'yellow cylinder'
+
+State 3:
+'purple cylinder' is not on top of 'table'
+'purple cylinder' has moved
+'purple cylinder' is on top of 'yellow cylinder'
+
+State 4:
+'yellow block' is not on top of 'table'
+'yellow block' has moved
+'yellow block' is on top of 'purple cylinder'
+'yellow block' is not behind 'yellow cylinder'
+'yellow block' is on top of 'yellow cylinder'
+'yellow cylinder' is not in front of 'yellow block'
+
+State 5:
+'cyan block' is not on top of 'table'
+'cyan block' has moved
+'cyan block' is on top of 'yellow block'
+'cyan block' is on top of 'purple cylinder'
+'cyan block' is not to the left of 'yellow cylinder'
+'cyan block' is on top of 'yellow cylinder'
+'yellow cylinder' is not to the right of 'cyan block'
+
+State 6:
+'gray cylinder' has moved
+
+State 7:
+'pink block' is not on top of 'table'
+'pink block' has moved
+'pink block' is not in front of 'yellow cylinder'
+'pink block' is on top of 'gray cylinder'
+'yellow cylinder' is not behind 'pink block'
+
+State 8:
+'yellow cylinder' is not to the left of 'pink cylinder'
+'pink cylinder' is not on top of 'table'
+'pink cylinder' has moved
+'pink cylinder' is on top of 'pink block'
+'pink cylinder' is not to the right of 'yellow cylinder'
+'pink cylinder' is on top of 'gray cylinder'
+
+State 9:
+'orange block' is not on top of 'table'
+'orange block' has moved
+'orange block' is on top of 'pink block'
+'orange block' is on top of 'pink cylinder'
+'orange block' is on top of 'gray cylinder'
+"""

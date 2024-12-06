@@ -1,0 +1,54 @@
+objects=['cyan block', 'purple cylinder', 'cyan cylinder', 'pink cylinder', 'orange cylinder']
+"""
+[Scenario 1]
+State 2:
+'cyan block' is to the left of 'pink cylinder'
+'pink cylinder' has moved
+'pink cylinder' is to the right of 'cyan block'
+
+State 3:
+'cyan cylinder' is not on top of 'table'
+'cyan cylinder' has moved
+'cyan cylinder' is on top of 'pink cylinder'
+
+State 4:
+'orange cylinder' is not on top of 'table'
+'orange cylinder' has moved
+'orange cylinder' is on top of 'cyan cylinder'
+'orange cylinder' is on top of 'pink cylinder'
+
+State 5:
+'purple cylinder' is not on top of 'table'
+'purple cylinder' has moved
+'purple cylinder' is on top of 'cyan cylinder'
+'purple cylinder' is on top of 'pink cylinder'
+'purple cylinder' is on top of 'orange cylinder'
+
+[Scenario 2]
+State 2:
+'cyan block' is in front of 'pink cylinder'
+'pink cylinder' has moved
+'pink cylinder' is behind 'cyan block'
+'pink cylinder' is to the left of 'orange cylinder'
+'orange cylinder' is to the right of 'pink cylinder'
+
+State 3:
+'cyan cylinder' is not on top of 'table'
+'cyan cylinder' has moved
+'cyan cylinder' is on top of 'pink cylinder'
+
+State 4:
+'purple cylinder' is not on top of 'table'
+'purple cylinder' has moved
+'purple cylinder' is on top of 'cyan cylinder'
+'purple cylinder' is on top of 'pink cylinder'
+
+State 5:
+'pink cylinder' is not to the left of 'orange cylinder'
+'orange cylinder' is not on top of 'table'
+'orange cylinder' has moved
+'orange cylinder' is on top of 'purple cylinder'
+'orange cylinder' is on top of 'cyan cylinder'
+'orange cylinder' is not to the right of 'pink cylinder'
+'orange cylinder' is on top of 'pink cylinder'
+"""

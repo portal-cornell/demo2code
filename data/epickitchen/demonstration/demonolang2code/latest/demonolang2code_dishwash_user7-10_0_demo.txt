@@ -1,0 +1,25 @@
+"""
+[Scenario 1]
+Initial Condition (State 1):
+at(`stove_1`)
+on(`pan_1`, `stove_1`)
+
+State 2:
+is_in_hand(`pan_1`)
+is_dirty(`pan_1`)
+
+State 3:
+at(`sink_1`)
+is_in_hand(`sponge_1`)
+
+State 4:
+is_soapy(`pan_1`)
+is_on(`tap_1`)
+
+State 5:
+is_clean(`pan_1`)
+
+State 6:
+is_off(`tap_1`)
+on(`pan_1`, `dishrack_1`)
+"""

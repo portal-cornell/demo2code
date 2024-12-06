@@ -1,0 +1,14 @@
+"""
+Wash dishes at the sink. All cleaned objects should be placed at the kitchentop.
+Specifically -
+Get a list of all objects to wash
+For each object in all objects:
+    Bring object from A to sink_1
+    Pick_up object
+    Turn on tap_1
+    Scrub object if object is dirty
+    Rinse object
+    Turn off tap_1
+    Bring object from sink_1 to kitchentop_1
+    Place object on kitchentop_1
+"""

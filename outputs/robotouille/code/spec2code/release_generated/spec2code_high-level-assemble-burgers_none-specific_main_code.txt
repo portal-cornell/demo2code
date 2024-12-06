@@ -1,0 +1,25 @@
+# Get a list of all the patties in the kitchen.
+patties = get_all_obj_names_that_match_type('patty')
+# Filter and get a list of all the cooked patties from all the patties.
+cooked_patties = [patty for patty in patties if is_cooked(patty)]
+
+# Get a list of all the bottom buns in the kitchen.
+bottom_buns = get_all_obj_names_that_match_type('bottom_bun')
+# Get a list of all the top buns in the kitchen.
+top_buns = get_all_obj_names_that_match_type('top_bun')
+
+# For two burgers, do
+for i in range(2):
+    # Decide a patty to use from the cooked patties.
+    patty_to_use = cooked_patties[i]
+    # Decide a bottom bun to use.
+    bottom_bun_to_use = bottom_buns[i]
+    # Stack the patty on top of the bottom bun.
+    # obj1 should be the patty, obj2 should be the bottom bun.
+    stack_obj1_on_obj2(obj1=patty_to_use, obj2=bottom_bun_to_use)
+
+    # Decide a top bun to use.
+    top_bun_to_use = top_buns[i]
+    # Stack the top bun on top of the patty.
+    # obj1 should be the top bun, obj2 should be the patty.
+    stack_obj1_on_obj2(obj1=top_bun_to_use, obj2=patty_to_use)

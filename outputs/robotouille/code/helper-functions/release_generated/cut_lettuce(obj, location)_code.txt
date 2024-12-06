@@ -1,0 +1,18 @@
+def cut_lettuce(obj, location):
+    # To cut lettuce, the robot first needs to be holding lettuce
+    if not is_holding(obj):
+        # If the robot is not holding lettuce, there are 2 scenarios: 
+        #   (1) if lettuce is in a stack ,unstack lettuce
+        #   (2) else, pick up lettuce.
+        if is_in_a_stack(obj):
+            # Because lettuce is in a stack, robot need to move then unstack the lettuce from the obj_at_bottom first
+            obj_at_bottom = get_obj_that_is_underneath(obj_at_top=obj)
+            # move then unstack: first you move to the obj_at_bottom's location, then you unstack lettuce from obj_at_bottom
+            move_then_unstack(obj_to_unstack=obj, obj_at_bottom=obj_at_bottom, unstack_location=get_obj_location(obj_at_bottom))
+        else:
+            # move_then_pick: first you move to lettuce's location, then you pick lettuce up
+            move_then_pick(obj=obj, pick_location=get_obj_location(obj))
+    # move then place: first you move to the location to cut lettuce at, then you place lettuce at that location
+    move_then_place(obj=obj, place_location=location)
+    # cut the lettuce until it is cut
+    cut_until_is_cut(obj=obj)

@@ -1,0 +1,4 @@
+def move_then_stack(obj_to_stack, obj_at_bottom, stack_location):
+    if get_curr_location() != stack_location:
+        move(get_curr_location(), stack_location)
+    stack(obj_to_stack, obj_at_bottom)

@@ -1,0 +1,37 @@
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the objects ('orange block' is in front of 'gray block'). 
+I will summarize the state trajectory into low-level actions.
+The low-level actions are the most compact form, so I should stop summarizing after this. 
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 1], at state 2, the robot moved 'gray block'.
+* At state 3, the robot picked up and placed 'cyan block' on top of 'gray block'. 
+* At state 4, the robot picked up and placed 'blue block' on top of 'gray block'. 
+* At state 5, the robot picked up and placed 'orange block' on top of 'blue block'.
+
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the objects ('orange block' has moved). 
+I will summarize the state trajectory into low-level actions.
+The low-level actions are the most compact form, so I should stop summarizing after this. 
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 2], at state 2, the robot moved 'orange block'.
+* At state 3, the robot picked up and placed 'cyan block' on top of 'orange block'. 
+* At state 4, the robot moved 'blue block'.
+* At state 5, the robot picked up and placed 'gray block' on top of 'blue block'.
+
+==========================summary -> spec==========================
+[[Reasoning:]]
+In [Scenario 1], based on States 2-5, the blocks are stacked as follows: ['gray block', 'cyan block', 'blue block', 'orange block'].
+In [Scenario 2], based on States 2-5, the blocks are stacked as follows: ['orange block', 'cyan block', 'blue block', 'gray block'].
+
+The only difference between the two scenarios is the starting block. The rest of the stacking order remains the same.
+[[Task Specification:]]
+Stack all blocks in the following order: ['gray block', 'cyan block', 'blue block', 'orange block'].
+

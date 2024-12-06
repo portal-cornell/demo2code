@@ -1,0 +1,11 @@
+# Move the green cylinder
+put_first_on_second('green cylinder', 'table')
+
+# Place the brown cylinder on top of the green cylinder
+put_first_on_second('brown cylinder', 'green cylinder')
+
+# Place the pink cylinder on top of the green cylinder
+put_first_on_second('pink cylinder', 'green cylinder')
+
+# Place the blue cylinder at the left edge on top of the green cylinder
+put_first_on_second('blue cylinder', 'left edge of green cylinder')

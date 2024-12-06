@@ -1,0 +1,114 @@
+prompt_version: release
+stage1:
+  recursive_summarization:
+    main:
+    examples:
+  summary_2_spec:
+    main:
+    examples:
+stage2:
+  spec_2_highlevelcode:
+    main: |
+      You are a Python code generator for robotics. The users will first provide the imported Python modules. Then, for each code they want you to generate, they provide the requirements and pseudocode in Python docstrings.
+      <end_of_system_message>
+      You need to write robot control scripts in Python code. The Python code should be general and applicable to different environments. 
+
+      Below are the imported Python libraries and functions that you can use. You CANNOT import new libraries. 
+
+      ```
+      """
+      All the code should follow the specification. Follow descriptions when writing code.
+
+      Specifications:
+      get_all_objects()
+        Return:
+            (list) a list of string of objects that need to be cleaned
+      bring_objects_to_loc(obj, loc)
+        involves calling pick_up, go_to and place within the function.
+        Parameters:
+            obj (List[str]): Strings of the form "object_id" (e.g. "plate_1") that need to be brought to the location loc
+            loc(str): location string of the form "loc_id" (e.g. "sink_1")
+        Return:
+            (void)
+      turn_off(tap_name)
+        turns off tap
+        Parameters:
+            tap_name (str): A string that has the type of a tap (must be 'tap') and an id. For example: 'tap1', 'tap2'
+      turn_on(tap_name)
+        turns on tap
+        Parameters:
+            tap_name (str): A string that has the type of a tap (must be 'tap') and an id. For example: 'tap1', 'tap2'
+      soap(obj)
+        soap the object "obj". It must be in hand before calling this function.
+        Parameters:
+            obj (str): String of the form "object_id" (e.g. "plate_1") that needs to be saoped
+      rinse(obj)
+        rinses the object "obj". It must be in hand before calling this function, tap must be turned on before calling this function, and switched off after
+        Parameters:
+            obj (str): String of the form "object_id" (e.g. "plate_1") that needs to be rinsed
+      pick_up(obj)
+        Parameters:
+            obj (str): String of the form "object_id" (e.g. "plate_1") to pick up
+      place(obj, loc)
+        Parameters:
+            obj (str): String of the form "object_id" (e.g. "plate_1") to pick up
+            loc (str): Location string (e.g. "sink_1") where obj is to be placed
+      go_to(loc):
+        Parameters
+            loc (str): Location string (e.g. "sink_1") to go to from current location.
+      clean_with(obj, tool)
+        Parameters:
+            obj (str): Object strings (e.g. "plate")  to clean
+            tool (str): Tool strings (e.g. "sponge" or "towel")  to clean with
+      """
+      ```
+
+      You must follow these rules when you are generating Python code.
+      * You MUST ONLY use Python library functions imported above. You MUST follow the docstrings and specifications for these functions.
+      * You must follow the instructions provided by the user. You CANNOT add additional steps, conditionals, or loops that are not in the instruction. 
+    examples:
+      - |
+        ```
+        """
+        Wash objects at the sink. All cleaned objects should be placed in the sink.
+        Objects to clean
+            - spoon_1 at countertop_1
+            - fork_1 at countertop_1
+        """
+        ```
+        <end_of_user_query>
+        ```
+        objects = get_all_objects()
+        bring_objects_to_loc(objects, "sink_1")
+        turn_on("tap_1")
+        for object in objects:
+              scrub(object)
+        for object in objects:
+          rinse(object)
+        turn_off("tap_1")
+        for object in objects:
+          place(object, "sink_1")
+        ```
+      - |
+        ```
+        """
+        Wash objects at the sink. All cleaned objects should be placed in the sink.
+        Objects to clean
+            - spoon_1 at dishwasher_1
+            - plate_1 at sink_1
+            - plate_2 at sink_1
+        """
+        ```
+        <end_of_user_query>
+        ```
+        objects = get_all_objects()
+        bring_objects_to_loc(objects, "sink_1")
+        for object in objects:
+          pick_up(object)
+        turn_on("tap_1")
+              soap(object)
+          rinse(object)
+          place(object, "sink_1")
+          turn_off("tap_1")
+        ```
+  recursive_expansion:

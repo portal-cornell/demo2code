@@ -1,0 +1,2 @@
+blocks_to_stack = ['purple block', 'pink block']
+stack_without_height_limit(objects_to_stack=blocks_to_stack)

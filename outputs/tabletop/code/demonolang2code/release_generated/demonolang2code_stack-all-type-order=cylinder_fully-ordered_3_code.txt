@@ -1,0 +1,2 @@
+cylinder_names_with_order_from_bottom_to_top = ['blue cylinder', 'red cylinder', 'green cylinder', 'brown cylinder']
+stack_without_height_limit(objects_to_stack=cylinder_names_with_order_from_bottom_to_top)

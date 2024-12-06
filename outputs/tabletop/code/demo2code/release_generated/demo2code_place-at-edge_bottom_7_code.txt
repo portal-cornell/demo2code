@@ -1,0 +1,2 @@
+edge_pos = parse_position('bottom edge')
+put_first_on_second('cyan block', edge_pos)

@@ -1,0 +1,9 @@
+objects=['pink block', 'blue block', 'purple block', 'orange cylinder', 'cyan cylinder']
+"""
+[Scenario 1]
+Place the pink block at the corner.
+
+State 2:
+'pink block' has moved
+'pink block' is at 'bottom right corner'
+"""

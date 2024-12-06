@@ -1,0 +1,35 @@
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the objects ('cyan cylinder' has moved). 
+I will summarize the state trajectory into low-level actions.
+The low-level actions are the most compact form, so I should stop summarizing after this. 
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 1], at state 2, the robot moved 'cyan cylinder'.
+* At state 3, the robot picked up and placed 'red cylinder' on top of 'cyan cylinder'. 
+* At state 4, the robot picked up and placed 'orange cylinder' on top of 'red cylinder'. 
+* At state 5, the robot picked up and placed 'yellow cylinder' on top of 'orange cylinder'.
+
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the objects ('yellow cylinder' has moved). 
+I will summarize the state trajectory into low-level actions.
+The low-level actions are the most compact form, so I should stop summarizing after this. 
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 2], at state 2, the robot moved 'yellow cylinder'.
+* At state 3, the robot picked up and placed 'cyan cylinder' on top of 'yellow cylinder'. 
+* At state 4, the robot picked up and placed 'red cylinder' on top of 'yellow cylinder'. 
+* At state 5, the robot picked up and placed 'orange cylinder' on top of 'red cylinder'.
+
+==========================summary -> spec==========================
+[[Reasoning:]]
+In both scenarios, the robot needs to stack the cylinders in the order of ['cyan cylinder', 'red cylinder', 'orange cylinder', 'yellow cylinder'].
+
+[[Task Specification:]]
+Stack the cylinders in the order of ['cyan cylinder', 'red cylinder', 'orange cylinder', 'yellow cylinder'].
+

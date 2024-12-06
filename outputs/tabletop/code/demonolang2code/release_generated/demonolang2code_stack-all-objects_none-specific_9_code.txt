@@ -1,0 +1,5 @@
+object_names = get_obj_names()
+# split the objects into individual stacks
+stacks = [object_names[i:i+1] for i in range(0, len(object_names))]
+for stack in stacks:
+  stack_without_height_limit(objects_to_stack=stack)

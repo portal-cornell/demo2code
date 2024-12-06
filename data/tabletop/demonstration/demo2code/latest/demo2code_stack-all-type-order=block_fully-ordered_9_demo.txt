@@ -1,0 +1,26 @@
+objects=['red block', 'blue block', 'orange block', 'green block', 'cyan cylinder', 'green cylinder']
+"""
+[Scenario 1]
+Stack all blocks into one stack, while enforcing the order between blocks if there is a requirement.
+
+State 2:
+'orange block' has moved
+
+State 3:
+'green block' is not on top of 'table'
+'green block' has moved
+'green block' is on top of 'orange block'
+
+State 4:
+'blue block' is not on top of 'table'
+'blue block' has moved
+'blue block' is on top of 'orange block'
+'blue block' is on top of 'green block'
+
+State 5:
+'red block' is not on top of 'table'
+'red block' has moved
+'red block' is on top of 'blue block'
+'red block' is on top of 'orange block'
+'red block' is on top of 'green block'
+"""

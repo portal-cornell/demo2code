@@ -1,0 +1,51 @@
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory is incomplete as it only contains the scenario and the state number. There is no information about the actions or the state predicates. Therefore, it cannot be summarized further.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+no
+[[Summarized trajectory:]]
+N/A
+
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the objects ('purple block' has moved). 
+I will summarize the state trajectory into low-level actions.
+The low-level actions are the most compact form, so I should stop summarizing after this. 
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 2], at state 2, the robot moved 'purple block'.
+* At state 3, the robot picked up and placed 'gray block' on top of 'purple block'. 
+* At state 4, the robot picked up and placed 'brown block' on top of 'gray block'. 
+* At state 5, the robot picked up and placed 'orange block' on top of 'brown block'.
+
+==========================summarizing demo==========================
+[[Reasoning:]]
+There is no input trajectory provided. Therefore, there is nothing to summarize.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+N/A
+[[Summarized trajectory:]]
+N/A
+
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory is already in the form of low-level actions, so there is no need to summarize it further.
+The new trajectory is already sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 2], at state 2, the robot moved 'purple block'.
+* At state 3, the robot picked up and placed 'gray block' on top of 'purple block'. 
+* At state 4, the robot picked up and placed 'brown block' on top of 'gray block'. 
+* At state 5, the robot picked up and placed 'orange block' on top of 'brown block'.
+
+==========================summary -> spec==========================
+[[Reasoning:]]
+Since there is only one scenario provided, we cannot determine any patterns or repetitions. We will simply describe the trajectory as is.
+[[Task Specification:]]
+1. Move the purple block.
+2. Place the gray block on top of the purple block.
+3. Place the brown block on top of the gray block.
+4. Place the orange block on top of the brown block.
+

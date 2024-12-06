@@ -1,0 +1,12 @@
+def move_to_pick_up_object(obj):
+    # If the robot is already holding the object, no need to move
+    if is_holding(obj):
+        return
+    # If the object is in a stack, unstack it first
+    if is_in_a_stack(obj):
+        obj_at_bottom = get_obj_that_is_underneath(obj_at_top=obj)
+        move_then_unstack(obj_to_unstack=obj, obj_at_bottom=obj_at_bottom, unstack_location=get_obj_location(obj_at_bottom))
+    # Move to the location of the object
+    move_to_location(get_obj_location(obj))
+    # Pick up the object
+    pick_up_object(obj)

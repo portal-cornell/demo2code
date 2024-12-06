@@ -1,0 +1,9 @@
+<state-2>
+has_moved:pink cylinder:1
+on_top_of:pink cylinder,brown block:1
+on_top_of:pink cylinder,cyan block:0
+
+<init-state>
+has_moved:pink cylinder:0
+on_top_of:pink cylinder,brown block:0
+on_top_of:pink cylinder,cyan block:1

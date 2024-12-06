@@ -1,0 +1,168 @@
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the robot ('robot1' is holding 'chicken1') and the status of the objects ('chicken1' is not at 'table15'). 
+I will summarize the state trajectory into low-level actions. 
+Low-level actions are not compacted enough yet because low-level actions can still be combined into high-level subtasks. 
+The new trajectory will NOT be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+no
+[[Summarized trajectory:]]
+* In [Scenario 1], at state 2, the robot moved from 'table19' to 'table15'.
+* At state 3, the robot picked up 'chicken1'.
+* At state 4, the robot moved from 'table15' to 'stove1'.
+* At state 5, the robot placed 'chicken1' at location 'stove1'.
+* At state 6-9, the robot had cooked 'chicken1'.
+* At state 10, the robot picked up 'chicken1'.
+* At state 11, the robot moved from 'stove1' to 'table3'.
+* At state 12, the robot placed 'chicken1' on top of 'bottom_bun1' at location 'table3'.
+* At state 13, the robot moved from 'table3' to 'table1'.
+* At state 14, the robot picked up 'lettuce1'.
+* At state 15, the robot moved from 'table1' to 'cutting_board1'.
+* At state 16, the robot placed 'lettuce1' at location 'cutting_board1'.
+* At state 17-19, the robot had cut 'lettuce1'.
+* At state 20, the robot picked up 'lettuce1'.
+* At state 21, the robot moved from 'cutting_board1' to 'table3'.
+* At state 22, the robot placed 'lettuce1' on top of 'chicken1' at location 'table3'.
+* At state 23, the robot moved from 'table3' to 'table5'.
+* At state 24, the robot picked up 'top_bun1'.
+* At state 25, the robot moved from 'table5' to 'table3'.
+* At state 26, the robot placed 'top_bun1' on top of 'lettuce1' at location 'table3'.
+* At state 27, the robot moved from 'table3' to 'table17'.
+* At state 28, the robot picked up 'chicken2'.
+* At state 29, the robot moved from 'table17' to 'stove1'.
+* At state 30, the robot placed 'chicken2' at location 'stove1'.
+* At state 31-34, the robot had cooked 'chicken2'.
+* At state 35, the robot picked up 'chicken2'.
+* At state 36, the robot moved from 'stove1' to 'table6'.
+* At state 37, the robot placed 'chicken2' on top of 'bottom_bun2' at location 'table6'.
+* At state 38, the robot moved from 'table6' to 'table18'.
+* At state 39, the robot picked up 'lettuce2'.
+* At state 40, the robot moved from 'table18' to 'cutting_board1'.
+* At state 41, the robot placed 'lettuce2' at location 'cutting_board1'.
+* At state 42-44, the robot had cut 'lettuce2'.
+* At state 45, the robot picked up 'lettuce2'.
+* At state 46, the robot moved from 'cutting_board1' to 'table6'.
+* At state 47, the robot placed 'lettuce2' on top of 'chicken2' at location 'table6'.
+* At state 48, the robot moved from 'table6' to 'table7'.
+* At state 49, the robot picked up 'top_bun2'.
+* At state 50, the robot moved from 'table7' to 'table6'.
+* At state 51, the robot placed 'top_bun2' on top of 'lettuce2' at location 'table6'.
+
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the robot ('robot1' is holding 'chicken3') and the status of the objects ('chicken3' is not at 'table5'). 
+I will summarize the state trajectory into low-level actions. 
+Low-level actions are not compacted enough yet because low-level actions can still be combined into high-level subtasks. 
+The new trajectory will NOT be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+no
+[[Summarized trajectory:]]
+* In [Scenario 2], at state 2, the robot moved from 'table7' to 'table5'.
+* At state 3, the robot picked up 'chicken3'.
+* At state 4, the robot moved from 'table5' to 'stove3'.
+* At state 5, the robot placed 'chicken3' at location 'stove3'.
+* At state 6-9, the robot had cooked 'chicken3'.
+* At state 10, the robot picked up 'chicken3'.
+* At state 11, the robot moved from 'stove3' to 'table3'.
+* At state 12, the robot placed 'chicken3' on top of 'bottom_bun3' at location 'table3'.
+* At state 13, the robot moved from 'table3' to 'table12'.
+* At state 14, the robot picked up 'lettuce3'.
+* At state 15, the robot moved from 'table12' to 'cutting_board3'.
+* At state 16, the robot placed 'lettuce3' at location 'cutting_board3'.
+* At state 17-19, the robot had cut 'lettuce3'.
+* At state 20, the robot picked up 'lettuce3'.
+* At state 21, the robot moved from 'cutting_board3' to 'table3'.
+* At state 22, the robot placed 'lettuce3' on top of 'chicken3' at location 'table3'.
+* At state 23, the robot moved from 'table3' to 'table4'.
+* At state 24, the robot picked up 'top_bun3'.
+* At state 25, the robot moved from 'table4' to 'table3'.
+* At state 26, the robot placed 'top_bun3' on top of 'lettuce3' at location 'table3'.
+* At state 27, the robot moved from 'table3' to 'table13'.
+* At state 28, the robot picked up 'chicken4'.
+* At state 29, the robot moved from 'table13' to 'stove3'.
+* At state 30, the robot placed 'chicken4' at location 'stove3'.
+* At state 31-34, the robot had cooked 'chicken4'.
+* At state 35, the robot picked up 'chicken4'.
+* At state 36, the robot moved from 'stove3' to 'table17'.
+* At state 37, the robot placed 'chicken4' on top of 'bottom_bun4' at location 'table17'.
+* At state 38, the robot moved from 'table16' to 'table17'.
+* At state 39, the robot picked up 'lettuce4'.
+* At state 40, the robot moved from 'table17' to 'cutting_board3'.
+* At state 41, the robot placed 'lettuce4' at location 'cutting_board3'.
+* At state 42-44, the robot had cut 'lettuce4'.
+* At state 45, the robot picked up 'lettuce4'.
+* At state 46, the robot moved from 'cutting_board3' to 'table17'.
+* At state 47, the robot placed 'lettuce4' on top of 'chicken4' at location 'table17'.
+* At state 48, the robot moved from 'table15' to 'table17'.
+* At state 49, the robot picked up 'top_bun4'.
+* At state 50, the robot moved from 'table17' to 'table15'.
+* At state 51, the robot placed 'top_bun4' on top of 'lettuce4' at location 'table15'.
+
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains low-level actions because the trajectory mentions "moved", "picked up", etc. 
+I will summarize the low-level action trajectory into high-level subtasks. 
+High-level subtask trajectory is the most compacted form that cannot be summarized anymore.
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 1], at state 2-9, the subtask is "cook chicken". This subtask contains: 1. moving to pick up 'chicken1' (state 2-3) 2. moving to place 'chicken1' on 'stove1' (state 4-5) 3. cooking 'chicken1' until it is cooked (state 6-9)
+* At state 10-12, the subtask is "stack chicken on top of bottom bun". This subtask contains: 1. picking up 'chicken1' (state 10) 2. moving to stack 'chicken1' on 'bottom_bun1' (state 11-12)
+* At state 13-22, the subtask is "cut lettuce". This subtask contains: 1. picking up 'lettuce1' (state 14) 2. moving to place 'lettuce1' on 'cutting_board1' (state 15-16) 3. cutting 'lettuce1' until it is cut (state 17-19) 4. picking up 'lettuce1' (state 20) 5. moving to stack 'lettuce1' on top of 'chicken1' (state 21-22)
+* At state 23-26, the subtask is "stack top bun on top of lettuce". This subtask contains: 1. moving to pick up 'top_bun1' (state 24) 2. moving to stack 'top_bun1' on top of 'lettuce1' (state 25-26)
+* At state 27-34, the subtask is "cook chicken". This subtask contains: 1. moving to pick up 'chicken2' (state 28) 2. moving to place 'chicken2' on 'stove1' (state 29-30) 3. cooking 'chicken2' until it is cooked (state 31-34)
+* At state 35-37, the subtask is "stack chicken on top of bottom bun". This subtask contains: 1. picking up 'chicken2' (state 35) 2. moving to stack 'chicken2' on 'bottom_bun2' (state 36-37)
+* At state 38-47, the subtask is "cut lettuce". This subtask contains: 1. picking up 'lettuce2' (state 39) 2. moving to place 'lettuce2' on 'cutting_board1' (state 40-41) 3. cutting 'lettuce2' until it is cut (state 42-44) 4. picking up 'lettuce2' (state 45) 5. moving to stack 'lettuce2' on top of 'chicken2' (state 46-47)
+* At state 48-51, the subtask is "stack top bun on top of lettuce". This subtask contains: 1. moving to pick up 'top_bun2' (state 49) 2. moving to stack 'top_bun2' on top of 'lettuce2' (state 50-51)
+
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains low-level actions because the trajectory mentions "moved", "picked up", etc. 
+I will summarize the low-level action trajectory into high-level subtasks. 
+High-level subtask trajectory is the most compacted form that cannot be summarized anymore.
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 2], at state 2-9, the subtask is "cook chicken". This subtask contains: 1. moving to pick up 'chicken3' (state 2-3) 2. moving to place 'chicken3' on 'stove3' (state 4-5) 3. cooking 'chicken3' until it is cooked (state 6-9)
+* At state 10-22, the subtask is "stack chicken and lettuce on top of bottom bun". This subtask contains: 1. picking up 'chicken3' (state 10) 2. moving to stack 'chicken3' on 'bottom_bun3' (state 11-12) 3. moving to pick up 'lettuce3' (state 13-14) 4. moving to place 'lettuce3' on 'cutting_board3' (state 15-16) 5. cutting 'lettuce3' until it is cut (state 17-19) 6. picking up 'lettuce3' (state 20) 7. moving to stack 'lettuce3' on top of 'chicken3' (state 21-22)
+* At state 23-26, the subtask is "stack top bun on top of lettuce". This subtask contains: 1. moving to pick up 'top_bun3' (state 24-25) 2. moving to stack 'top_bun3' on top of 'lettuce3' (state 26)
+* At state 27-34, the subtask is "cook chicken". This subtask contains: 1. moving to pick up 'chicken4' (state 28-29) 2. moving to place 'chicken4' on 'stove3' (state 30) 3. cooking 'chicken4' until it is cooked (state 31-34)
+* At state 35-47, the subtask is "stack chicken and lettuce on top of bottom bun". This subtask contains: 1. picking up 'chicken4' (state 35) 2. moving to stack 'chicken4' on 'bottom_bun4' (state 36-37) 3. moving to pick up 'lettuce4' (state 38-39) 4. moving to place 'lettuce4' on 'cutting_board3' (state 40-41) 5. cutting 'lettuce4' until it is cut (state 42-44) 6. picking up 'lettuce4' (state 45) 7. moving to stack 'lettuce4' on top of 'chicken4' (state 46-47)
+* At state 48-51, the subtask is "stack top bun on top of lettuce". This subtask contains: 1. moving to pick up 'top_bun4' (state 49-50) 2. moving to stack 'top_bun4' on top of 'lettuce4' (state 51)
+
+==========================summary -> spec==========================
+[[Reasoning:]]
+* In [Scenario 1]'s unique kitchen environment, the subtasks were executed in this order: ['cook chicken', 'stack chicken on top of bottom bun', 'cut lettuce', 'stack top bun on top of lettuce', 'cook chicken', 'stack chicken on top of bottom bun', 'cut lettuce', 'stack top bun on top of lettuce'].
+* In [Scenario 2]'s unique kitchen environment, the subtasks were executed in this order: ['cook chicken', 'stack chicken and lettuce on top of bottom bun', 'stack top bun on top of lettuce', 'cook chicken', 'stack chicken and lettuce on top of bottom bun', 'stack top bun on top of lettuce'].
+* 'stack chicken on top of bottom bun' and 'stack chicken and lettuce on top of bottom bun' are essentially the same subtask. 
+* Both scenarios are executing the subtasks in the same order.
+* There is no repetition or loop in the subtask ordering for any individual scenario.
+[[Task Specification:]]
+Specifically:
+Get a list of all the chickens in the kitchen.
+Get a list of all the lettuces in the kitchen.
+Get a list of all the bottom buns in the kitchen.
+Get a list of all the top buns in the kitchen.
+
+Decide a chicken to use.
+Get a list of all the available stoves in the kitchen.
+Decide a stove to go to.
+Cook that chicken at that stove.
+
+Decide a bottom bun to use.
+Stack the chicken on top of the bottom bun.
+
+Decide a lettuce to use.
+Get a list of all the available cutting boards in the kitchen.
+Decide a cutting board to go to.
+Cut that lettuce at that cutting board.
+Pick up that lettuce.
+Move to stack that lettuce on top of the chicken.
+
+Decide a top bun to use.
+Stack the top bun on top of the lettuce.
+
+Repeat the above steps for the second chicken, lettuce, and bun.
+

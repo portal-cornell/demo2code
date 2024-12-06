@@ -1,0 +1,29 @@
+objects=['yellow block', 'green block', 'cyan cylinder', 'red cylinder', 'blue cylinder', 'purple cylinder', 'brown cylinder']
+"""
+[Scenario 1]
+State 2:
+'cyan cylinder' has moved
+'cyan cylinder' is to the right of 'red cylinder'
+'red cylinder' is to the left of 'cyan cylinder'
+
+State 3:
+'cyan cylinder' is not to the right of 'red cylinder'
+'red cylinder' is not on top of 'table'
+'red cylinder' has moved
+'red cylinder' is not to the left of 'cyan cylinder'
+'red cylinder' is on top of 'cyan cylinder'
+
+State 4:
+'blue cylinder' is not on top of 'table'
+'blue cylinder' has moved
+'blue cylinder' is on top of 'cyan cylinder'
+'blue cylinder' is on top of 'red cylinder'
+
+State 5:
+'purple cylinder' has moved
+
+State 6:
+'brown cylinder' is not on top of 'table'
+'brown cylinder' has moved
+'brown cylinder' is on top of 'purple cylinder'
+"""

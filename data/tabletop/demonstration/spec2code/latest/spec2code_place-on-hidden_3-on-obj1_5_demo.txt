@@ -1,0 +1,8 @@
+objects=['red block', 'gray block', 'orange block', 'gray cylinder', 'red cylinder', 'yellow cylinder', 'green cylinder']
+"""
+Place the gray block on the gray cylinder. However, the yellow cylinder then the green cylinder then the orange block are on the gray block. Thus, do the following steps:
+1. place the yellow cylinder on the table
+2. place the green cylinder on the table
+3. place the orange block on the table
+4. place the gray block on the gray cylinder
+"""

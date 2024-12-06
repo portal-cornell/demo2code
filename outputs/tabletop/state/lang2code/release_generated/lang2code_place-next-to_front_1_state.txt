@@ -1,0 +1,9 @@
+<state-2>
+is_behind:green block,gray cylinder:1
+has_moved:gray cylinder:1
+is_in_front_of:gray cylinder,green block:1
+
+<init-state>
+is_behind:green block,gray cylinder:0
+has_moved:gray cylinder:0
+is_in_front_of:gray cylinder,green block:0

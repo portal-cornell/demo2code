@@ -1,0 +1,5 @@
+block_names = get_all_obj_names_that_match_type(type_name="block", objects_list=get_obj_names())
+block_names.sort(reverse=True)
+for i in range(len(block_names)):
+  shifted_block_names = block_names[i:] + block_names[:i]
+  stack_without_height_limit(objects_to_stack=shifted_block_names)

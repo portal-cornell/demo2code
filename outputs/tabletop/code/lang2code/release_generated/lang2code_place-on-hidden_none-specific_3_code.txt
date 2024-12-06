@@ -1,0 +1,1 @@
+put_first_on_second('blue cylinder', 'cyan block')

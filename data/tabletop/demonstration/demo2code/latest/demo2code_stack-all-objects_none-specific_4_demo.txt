@@ -1,0 +1,40 @@
+objects=['pink block', 'brown block', 'orange block', 'green cylinder', 'cyan cylinder', 'orange cylinder', 'yellow cylinder']
+"""
+[Scenario 1]
+Stack all objects into two stacks, and objects may need to be categorized in the stacks.
+
+State 2:
+'cyan cylinder' has moved
+
+State 3:
+'orange block' is not on top of 'table'
+'orange block' has moved
+'orange block' is on top of 'cyan cylinder'
+
+State 4:
+'yellow cylinder' is not on top of 'table'
+'yellow cylinder' has moved
+'yellow cylinder' is on top of 'orange block'
+'yellow cylinder' is on top of 'cyan cylinder'
+
+State 5:
+'pink block' is not on top of 'table'
+'pink block' has moved
+'pink block' is on top of 'orange block'
+'pink block' is on top of 'cyan cylinder'
+'pink block' is on top of 'yellow cylinder'
+
+State 6:
+'orange cylinder' has moved
+
+State 7:
+'brown block' is not on top of 'table'
+'brown block' has moved
+'brown block' is on top of 'orange cylinder'
+
+State 8:
+'green cylinder' is not on top of 'table'
+'green cylinder' has moved
+'green cylinder' is on top of 'brown block'
+'green cylinder' is on top of 'orange cylinder'
+"""

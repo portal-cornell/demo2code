@@ -1,0 +1,108 @@
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of objects (is_in_hand, is_soapy, etc.) and the state of the environment (is_empty, is_not_empty, etc.).
+I will summarize the state trajectory into low-level actions.
+Low-level actions are not compacted enough yet because low-level actions can still be combined into high-level subtasks.
+The new trajectory will NOT be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+no
+[[Summarized trajectory:]]
+* In [Scenario 1], at state 2-4, the robot added soap_1 to bowl_1.
+* At state 4-5, the robot moved bowl_1 from sink_1 to sink_2 and made it soapy.
+* At state 6-7, the robot made sponge_1 foamy and used it to make bowl_2 soapy.
+* At state 8-9, the robot moved bowl_2 from sink_1 to sink_2 and made it soapy.
+* At state 9-10, the robot used the foamy sponge_1 to make plate_1 soapy.
+* At state 11-12, the robot moved plate_1 from sink_1 to sink_2 and made it soapy.
+* At state 12-13, the robot used the foamy sponge_1 to make glass_1 soapy.
+* At state 14-15, the robot moved glass_1 from sink_1 to sink_2 and made it soapy.
+* At state 15-16, the robot used the foamy sponge_1 to make glass_2 soapy.
+* At state 17-18, the robot moved glass_2 from sink_1 to sink_2 and made it soapy.
+* At state 18-19, the robot turned on tap_1 and picked up glass_1.
+* At state 19-20, the robot cleaned glass_1 and placed it in the dishrack_1.
+* At state 21-22, the robot picked up glass_2.
+* At state 22-23, the robot cleaned glass_2 and placed it in the dishrack_1.
+* At state 23-24, the robot picked up bowl_1.
+* At state 24-25, the robot cleaned bowl_1 and placed it in the dishrack_1.
+* At state 25-26, the robot picked up bowl_2.
+* At state 26-27, the robot cleaned bowl_2 and placed it in the dishrack_1.
+* At state 27-28, the robot picked up plate_1.
+* At state 28-29, the robot cleaned plate_1 and placed it in the dishrack_1.
+* At state 29-30, the robot turned off tap_1.
+
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains low-level actions because it mentions specific actions performed by the robot, such as "added soap_1 to bowl_1" and "cleaned glass_1". 
+I will summarize the low-level action trajectory into high-level subtasks. 
+High-level subtasks are not compacted enough because there are still multiple actions performed within each subtask. 
+The new trajectory will NOT be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+no
+[[Summarized trajectory:]]
+* In [Scenario 1], at state 2-5, the robot added soap_1 to bowl_1 and moved it from sink_1 to sink_2, making it soapy.
+* At state 6-9, the robot made sponge_1 foamy and used it to make bowl_2 soapy.
+* At state 9-12, the robot used the foamy sponge_1 to make plate_1 soapy.
+* At state 12-15, the robot used the foamy sponge_1 to make glass_1 soapy.
+* At state 15-18, the robot used the foamy sponge_1 to make glass_2 soapy.
+* At state 18-19, the robot turned on tap_1 and picked up glass_1.
+* At state 19-20, the robot cleaned glass_1 and placed it in the dishrack_1.
+* At state 21-22, the robot picked up glass_2.
+* At state 22-23, the robot cleaned glass_2 and placed it in the dishrack_1.
+* At state 23-24, the robot picked up bowl_1.
+* At state 24-25, the robot cleaned bowl_1 and placed it in the dishrack_1.
+* At state 25-26, the robot picked up bowl_2.
+* At state 26-27, the robot cleaned bowl_2 and placed it in the dishrack_1.
+* At state 27-28, the robot picked up plate_1.
+* At state 28-29, the robot cleaned plate_1 and placed it in the dishrack_1.
+* At state 29-30, the robot turned off tap_1.
+
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains low-level actions because it mentions specific actions performed by the robot, such as "added soap_1 to bowl_1" and "cleaned glass_1". 
+I will summarize the low-level action trajectory into high-level subtasks. 
+High-level subtasks are not applicable in this case because the actions performed by the robot are already at a high level of abstraction and cannot be further summarized.
+The new trajectory is already sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 1], at state 2-5, the robot added soap_1 to bowl_1 and moved it from sink_1 to sink_2, making it soapy.
+* At state 6-9, the robot made sponge_1 foamy and used it to make bowl_2 soapy.
+* At state 9-12, the robot used the foamy sponge_1 to make plate_1 soapy.
+* At state 12-15, the robot used the foamy sponge_1 to make glass_1 soapy.
+* At state 15-18, the robot used the foamy sponge_1 to make glass_2 soapy.
+* At state 18-19, the robot turned on tap_1 and picked up glass_1.
+* At state 19-20, the robot cleaned glass_1 and placed it in the dishrack_1.
+* At state 21-22, the robot picked up glass_2.
+* At state 22-23, the robot cleaned glass_2 and placed it in the dishrack_1.
+* At state 23-24, the robot picked up bowl_1.
+* At state 24-25, the robot cleaned bowl_1 and placed it in the dishrack_1.
+* At state 25-26, the robot picked up bowl_2.
+* At state 26-27, the robot cleaned bowl_2 and placed it in the dishrack_1.
+* At state 27-28, the robot picked up plate_1.
+* At state 28-29, the robot cleaned plate_1 and placed it in the dishrack_1.
+* At state 29-30, the robot turned off tap_1.
+
+==========================summary -> spec==========================
+[[Reasoning:]]
+* There are 4 objects that got cleaned: [glass_1, glass_2, bowl_1, plate_1]
+* The list of high level actions that happened in order is: [add soap to bowl_1, move bowl_1 from sink_1 to sink_2, make sponge_1 foamy, use foamy sponge_1 to make bowl_2 soapy, use foamy sponge_1 to make plate_1 soapy, use foamy sponge_1 to make glass_1 soapy, use foamy sponge_1 to make glass_2 soapy, pick up glass_1, clean glass_1, place glass_1 in dishrack_1, pick up glass_2, clean glass_2, place glass_2 in dishrack_1, pick up bowl_1, clean bowl_1, place bowl_1 in dishrack_1, pick up bowl_2, clean bowl_2, place bowl_2 in dishrack_1, pick up plate_1, clean plate_1, place plate_1 in dishrack_1, turn off tap_1]
+* The actions [pick up, clean, place] are repeated for each object, so we can use a loop.
+* The actions [use foamy sponge_1 to make object soapy] are repeated for each object, so we can use a loop.
+* The actions [pick up, clean, place] are specific to each object, so we cannot use a loop for them.
+* The actions [add soap to bowl_1, move bowl_1 from sink_1 to sink_2] are specific to bowl_1, so we cannot use a loop for them.
+* The actions [make sponge_1 foamy] is specific to sponge_1, so we cannot use a loop for it.
+* Turning on and off the tap is specific to the scenario and not a repeated action.
+[[Task Specification:]]
+Clean objects using a foamy sponge and place them in the dishrack.
+Specifically -
+
+Add soap to bowl_1
+Move bowl_1 from sink_1 to sink_2
+Make sponge_1 foamy
+For each object in [bowl_2, plate_1, glass_1, glass_2]:
+  Use foamy sponge_1 to make object soapy
+For each object in [glass_1, glass_2, bowl_1, bowl_2, plate_1]:
+  Pick up object
+  Clean object
+  Place object in dishrack_1
+Turn off tap_1
+

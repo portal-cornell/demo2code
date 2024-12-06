@@ -1,0 +1,26 @@
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the objects ('brown block' is on top of 'table'). 
+I will summarize the state trajectory into low-level actions.
+The low-level actions are the most compact form, so I should stop summarizing after this. 
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 1], at state 2, the robot moved 'brown block'.
+* At state 3, the robot picked up and placed 'yellow block' behind 'green block'. 
+* At state 4, the robot moved 'green cylinder'.
+* At state 5, the robot picked up and placed 'pink cylinder' on top of 'yellow cylinder'.
+
+==========================summary -> spec==========================
+[[Reasoning:]]
+Based on States 2-3, the robot needs to move the 'brown block' and place the 'yellow block' behind the 'green block'.
+Based on States 4-5, the robot needs to move the 'green cylinder' and place the 'pink cylinder' on top of the 'yellow cylinder'.
+
+There is no repetition or loop in this scenario.
+[[Task Specification:]]
+1. Move the brown block.
+2. Place the yellow block behind the green block.
+3. Move the green cylinder.
+4. Place the pink cylinder on top of the yellow cylinder.
+

@@ -1,0 +1,31 @@
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the objects ('cyan block' is to the left of 'pink cylinder'). 
+I will summarize the state trajectory into low-level actions.
+The low-level actions are the most compact form, so I should stop summarizing after this. 
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 1], at state 2, the robot moved 'pink cylinder' to the right edge, making it to the right of 'cyan block'.
+
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the objects ('pink block' is behind 'pink cylinder'). 
+I will summarize the state trajectory into low-level actions.
+The low-level actions are the most compact form, so I should stop summarizing after this. 
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 2], at state 2, the robot moved 'pink cylinder'.
+
+==========================summary -> spec==========================
+[[Reasoning:]]
+In [Scenario 1], the 'pink cylinder' is moved to the right edge, making it to the right of 'cyan block'. 
+In [Scenario 2], the 'pink cylinder' is moved, but there is no mention of its position relative to the 'cyan block'.
+
+Since there is no consistent information about the relative position of the 'pink cylinder' and 'cyan block' across scenarios, we cannot make any assumptions about their relationship.
+[[Task Specification:]]
+Move the pink cylinder.
+

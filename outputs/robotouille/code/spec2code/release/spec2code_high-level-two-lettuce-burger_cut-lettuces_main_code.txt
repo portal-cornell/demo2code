@@ -1,0 +1,13 @@
+# Get a list of all the lettuces in the kitchen.
+lettuces = get_all_obj_names_that_match_type('lettuce')
+
+# For two lettuces, do
+for i in range(2):
+  # Decide a lettuce to cut.
+  lettuce_to_cut = lettuces[i]
+  # Get a list of all the available cutting boards in the kitchen.
+  cutting_boards = get_all_location_names_that_match_type('cutting_board')
+  # Decide a cutting board to go to.
+  cutting_board_to_cut_at = cutting_boards[i]
+  # Cut that lettuce at that cutting board.
+  cut_object_at_location(obj=lettuce_to_cut, location=cutting_board_to_cut_at)

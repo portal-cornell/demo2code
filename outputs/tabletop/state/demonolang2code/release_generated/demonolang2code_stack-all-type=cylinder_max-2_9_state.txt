@@ -1,0 +1,17 @@
+<state-2>
+on_top_of:red cylinder,table:0
+has_moved:red cylinder:1
+on_top_of:red cylinder,blue cylinder:1
+
+<state-3>
+on_top_of:pink cylinder,table:0
+has_moved:pink cylinder:1
+on_top_of:pink cylinder,yellow cylinder:1
+
+<init-state>
+on_top_of:red cylinder,table:1
+has_moved:red cylinder:0
+on_top_of:red cylinder,blue cylinder:0
+on_top_of:pink cylinder,table:1
+has_moved:pink cylinder:0
+on_top_of:pink cylinder,yellow cylinder:0

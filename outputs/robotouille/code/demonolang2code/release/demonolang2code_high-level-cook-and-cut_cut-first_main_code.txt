@@ -1,0 +1,25 @@
+# Move from 'table1' to 'table2'.
+move_to_location(from_location='table1', to_location='table2')
+
+# Get a list of all the lettuces in the kitchen.
+lettuces = get_all_obj_names_that_match_type('lettuce')
+# Get a list of all the patties in the kitchen.
+patties = get_all_obj_names_that_match_type('patty')
+
+# Decide a lettuce to use.
+lettuce_to_use = lettuces[0]
+# Get a list of all the available cutting boards in the kitchen. 
+cutting_boards = get_all_location_names_that_match_type('cutting_board')
+# Decide a cutting board to go to.
+cutting_board_to_cut_at = cutting_boards[0]
+# Cut that lettuce at that cutting board.
+cut_object_at_location(obj=lettuce_to_use, location=cutting_board_to_cut_at)
+
+# Decide a patty to use.
+patty_to_use = patties[0]
+# Get a list of all the available stoves in the kitchen. 
+stoves = get_all_location_names_that_match_type('stove')
+# Decide a stove to go to.
+stove_to_cook_at = stoves[0]
+# Cook that patty at that stove.
+cook_object_at_location(obj=patty_to_use, location=stove_to_cook_at)

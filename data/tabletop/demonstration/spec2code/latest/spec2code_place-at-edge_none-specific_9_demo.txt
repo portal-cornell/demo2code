@@ -1,0 +1,4 @@
+objects=['brown block', 'orange block', 'gray block', 'orange cylinder', 'brown cylinder']
+"""
+Place the gray block at any random edge.
+"""

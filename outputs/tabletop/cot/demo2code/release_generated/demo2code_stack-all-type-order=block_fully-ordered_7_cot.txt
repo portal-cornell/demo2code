@@ -1,0 +1,24 @@
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the objects ('yellow block' has moved). 
+I will summarize the state trajectory into low-level actions.
+The low-level actions are the most compact form, so I should stop summarizing after this. 
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 1], at state 2, the robot moved 'yellow block'.
+* At state 3, the robot picked up and placed 'orange block' on top of 'yellow block'. 
+* At state 4, the robot picked up and placed 'blue block' on top of 'orange block'. 
+* At state 5, the robot picked up and placed 'purple block' on top of 'blue block'.
+
+==========================summary -> spec==========================
+[[Reasoning:]]
+Because the task is "Stack all blocks into one stack, while enforcing the order...", we focus on whether there is any ordering requirement.
+
+Based on States 2-5, in the first stack, the blocks from bottom to top is ['yellow block', 'orange block', 'blue block', 'purple block'].
+
+There is a clear ordering requirement between the blocks in this scenario.
+[[Task Specification:]]
+Stack all blocks into one stack. Also make sure that the stacking enforces the bottom to top order between these blocks: ['yellow block', 'orange block', 'blue block', 'purple block'].
+

@@ -1,0 +1,62 @@
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the robot (at(`counter_1`)) and the objects (is_dirty(`mug_1`)). 
+I will summarize the state trajectory into low-level actions.
+Low-level actions are not compacted enough yet because low-level actions can still be combined into high-level subtasks. 
+The new trajectory will NOT be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+no
+[[Summarized trajectory:]]
+* In [Scenario 1], at state 1-2, the robot picked up mug_1 from counter_1.
+* At state 2-3, the robot moved from counter_1 to sink_1.
+* At state 3-4, the robot turned on tap_1. The robot picked up sponge_1, which was foamy.
+* At state 4-5, the robot soaped mug_1 until it became soapy because mug_1 was dirty.
+* At state 5-6, the robot rinsed mug_1 until it became clean.
+* At state 6-7, the robot turned off tap_1. The robot placed mug_1 on counter_1.
+* At state 7-8, the robot moved to counter_1.
+* At state 8-9, the robot picked up jug_1 from counter_1.
+* At state 9-10, the robot moved from counter_1 to sink_1.
+* At state 10-11, the robot turned on tap_1. The robot cleaned jug_1 until it became clean.
+* At state 11-12, the robot turned off tap_1. The robot placed jug_1 on counter_1.
+
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains low-level actions because the trajectory mentions "picked up", "moved", etc. 
+I will summarize the low-level action trajectory into high-level subtasks. 
+High-level subtasks are compacted enough because they cannot be combined together without losing important information.
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 1], at state 1-2, the robot picked up mug_1 from counter_1.
+* At state 2-3, the robot moved from counter_1 to sink_1.
+* At state 3-4, the robot turned on tap_1 and picked up foamy sponge_1.
+* At state 4-5, the robot soaped mug_1 until it became soapy because mug_1 was dirty.
+* At state 5-6, the robot rinsed mug_1 until it became clean.
+* At state 6-7, the robot turned off tap_1 and placed mug_1 on counter_1.
+* At state 7-9, the robot moved to counter_1 and picked up jug_1.
+* At state 9-10, the robot moved from counter_1 to sink_1.
+* At state 10-11, the robot turned on tap_1 and cleaned jug_1 until it became clean.
+* At state 11-12, the robot turned off tap_1 and placed jug_1 on counter_1.
+
+==========================summary -> spec==========================
+[[Reasoning:]]
+* There are 2 objects to clean: [mug_1, jug_1]
+* The list of high-level actions that happened in order is: [pick up mug_1, move from counter_1 to sink_1, turn on tap_1, pick up foamy sponge_1, soap mug_1, rinse mug_1, turn off tap_1, place mug_1 on counter_1, move to counter_1, pick up jug_1, move from counter_1 to sink_1, turn on tap_1, clean jug_1, turn off tap_1, place jug_1 on counter_1]
+* The actions [move from counter_1 to sink_1, turn on tap_1, pick up foamy sponge_1, soap mug_1, rinse mug_1, turn off tap_1, place mug_1 on counter_1] are repeated for each object, so we can use a loop.
+* Rinsing involves the use of tap water, which is why it is turned on at some point before the rinse cycle, and turned off after.
+[[Task Specification:]]
+Wash objects at the sink. All cleaned objects should be placed on the counter.
+Specifically -
+
+Get a list of all objects to wash
+For each object in all objects:
+  Pick up object
+  Move from counter_1 to sink_1
+  Turn on tap_1
+  Pick up foamy sponge_1
+  Soap object
+  Rinse object
+  Turn off tap_1
+  Place object on counter_1
+

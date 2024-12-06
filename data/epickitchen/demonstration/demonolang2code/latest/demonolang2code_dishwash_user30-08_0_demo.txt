@@ -1,0 +1,60 @@
+"""
+[Scenario 1]
+Initial Condition (State 1):
+at(`counter_1`)
+on(`jug_1`, `counter_1`)
+on(`jug_2`, `near-sink_1`)
+in(`washing_bowl_1`, `sink_1`)
+
+State 2:
+is_in_hand(`jug_1`)
+is_dirty(`jug_1`)
+
+State 3:
+at(`sink_1`)
+
+State 4:
+is_on(`tap_1`)
+
+State 5:
+on(`sponge_1`, `near-sink_1`)
+
+State 6:
+is_in_hand(`sponge_1`)
+is_foamy(`washing_bowl_1`)
+
+State 7:
+is_off(`tap_1`)
+
+State 8:
+is_soapy(`jug_1`)
+
+State 9:
+is_on(`tap_1`)
+
+State 10:
+is_clean(`jug_1`)
+
+State 11:
+at(`drying_rack_1`)
+on(`jug_1`, `drying_rack_1`)
+
+State 12:
+at(`sink_1`)
+is_off(`tap_1`)
+
+State 13:
+is_in_hand(`jug_2`)
+isnotdirty(`jug_2`)
+
+State 14:
+is_on(`tap_1`)
+
+State 15:
+is_clean(`jug_2`)
+
+State 16:
+is_off(`tap_1`)
+at(`drying_rack_1`)
+on(`jug_2`, `drying_rack_1`)
+"""

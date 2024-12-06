@@ -1,0 +1,7 @@
+<state-2>
+has_moved:cyan block:1
+is_at:cyan block,bottom left corner:1
+
+<init-state>
+has_moved:cyan block:0
+is_at:cyan block,bottom left corner:0

@@ -1,0 +1,2 @@
+put_first_on_second('cyan cylinder', 'table')
+put_first_on_second('gray cylinder', 'cyan cylinder')

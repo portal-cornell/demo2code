@@ -1,0 +1,8 @@
+objects=['blue block', 'green block', 'gray block', 'red cylinder', 'pink cylinder', 'green cylinder']
+"""
+[Scenario 1]
+State 2:
+'gray block' is to the left of 'red cylinder'
+'red cylinder' has moved
+'red cylinder' is to the right of 'gray block'
+"""

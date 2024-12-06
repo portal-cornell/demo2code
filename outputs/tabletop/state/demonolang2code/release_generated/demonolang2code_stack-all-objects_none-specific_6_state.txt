@@ -1,0 +1,81 @@
+<state-2>
+is_left_of:cyan block,green cylinder:1
+is_right_of:green block,green cylinder:1
+has_moved:green cylinder:1
+is_right_of:green cylinder,cyan block:1
+is_left_of:green cylinder,green block:1
+
+<state-3>
+on_top_of:red cylinder,table:0
+has_moved:red cylinder:1
+on_top_of:red cylinder,green cylinder:1
+
+<state-4>
+on_top_of:cyan block,table:0
+has_moved:cyan block:1
+on_top_of:cyan block,red cylinder:1
+is_left_of:cyan block,green cylinder:0
+on_top_of:cyan block,green cylinder:1
+is_right_of:green cylinder,cyan block:0
+
+<state-5>
+on_top_of:orange block,table:0
+has_moved:orange block:1
+on_top_of:orange block,cyan block:1
+on_top_of:orange block,red cylinder:1
+on_top_of:orange block,green cylinder:1
+
+<state-6>
+has_moved:green block:1
+is_right_of:green block,green cylinder:0
+is_left_of:green cylinder,green block:0
+
+<state-7>
+on_top_of:red block,table:0
+has_moved:red block:1
+on_top_of:red block,green block:1
+
+<state-8>
+on_top_of:brown cylinder,table:0
+has_moved:brown cylinder:1
+on_top_of:brown cylinder,green block:1
+on_top_of:brown cylinder,red block:1
+is_behind:brown cylinder,pink cylinder:0
+is_in_front_of:pink cylinder,brown cylinder:0
+
+<state-9>
+on_top_of:pink cylinder,table:0
+has_moved:pink cylinder:1
+on_top_of:pink cylinder,green block:1
+on_top_of:pink cylinder,red block:1
+on_top_of:pink cylinder,brown cylinder:1
+
+<init-state>
+on_top_of:cyan block,table:1
+has_moved:cyan block:0
+on_top_of:cyan block,red cylinder:0
+on_top_of:cyan block,green cylinder:0
+on_top_of:orange block,table:1
+has_moved:orange block:0
+on_top_of:orange block,cyan block:0
+on_top_of:orange block,red cylinder:0
+on_top_of:orange block,green cylinder:0
+has_moved:green block:0
+on_top_of:red block,table:1
+has_moved:red block:0
+on_top_of:red block,green block:0
+on_top_of:brown cylinder,table:1
+has_moved:brown cylinder:0
+on_top_of:brown cylinder,green block:0
+on_top_of:brown cylinder,red block:0
+is_behind:brown cylinder,pink cylinder:1
+on_top_of:red cylinder,table:1
+has_moved:red cylinder:0
+on_top_of:red cylinder,green cylinder:0
+has_moved:green cylinder:0
+on_top_of:pink cylinder,table:1
+has_moved:pink cylinder:0
+on_top_of:pink cylinder,green block:0
+on_top_of:pink cylinder,red block:0
+is_in_front_of:pink cylinder,brown cylinder:1
+on_top_of:pink cylinder,brown cylinder:0

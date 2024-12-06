@@ -1,0 +1,13 @@
+```
+"""
+Cut a lettuce.
+
+Specifically:
+Get a list of all the lettuces in the kitchen.
+
+Decide a lettuce to cut.
+Get a list of all the available cutting boards in the kitchen.
+Decide a cutting board to go to.
+Cut the lettuce at that cutting board.
+"""
+```

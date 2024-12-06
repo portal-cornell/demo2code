@@ -1,0 +1,37 @@
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the objects ('green cylinder' has moved). 
+I will summarize the state trajectory into low-level actions.
+The low-level actions are the most compact form, so I should stop summarizing after this. 
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 1], at state 2, the robot moved 'green cylinder'.
+* At state 3, the robot picked up and placed 'pink cylinder' on top of 'green cylinder'. 
+* At state 4, the robot picked up and placed 'brown cylinder' on top of 'green cylinder'.
+* At state 5, the robot moved 'gray cylinder' and placed it on top of 'green cylinder', 'brown cylinder', and 'pink cylinder'.
+
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the objects ('blue block' is in front of 'green cylinder'). 
+I will summarize the state trajectory into low-level actions.
+The low-level actions are the most compact form, so I should stop summarizing after this. 
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 2], at state 2, the robot moved 'green cylinder'.
+* At state 3, the robot picked up and placed 'gray cylinder' on top of 'green cylinder'. 
+* At state 4, the robot picked up and placed 'pink cylinder' on top of 'green cylinder'. 
+* At state 5, the robot picked up and placed 'brown cylinder' on top of 'green cylinder'.
+
+==========================summary -> spec==========================
+[[Reasoning:]]
+In both scenarios, the robot first moves the 'green cylinder' and then stacks other cylinders on top of it. The order of the other cylinders being stacked is ['pink cylinder', 'brown cylinder', 'gray cylinder'].
+
+Because the order of stacking the cylinders is the same in both scenarios, we can use a loop to handle the stacking of the cylinders.
+[[Task Specification:]]
+1. Move the green cylinder.
+2. Stack the cylinders ['pink cylinder', 'brown cylinder', 'gray cylinder'] on top of the green cylinder using a loop.
+

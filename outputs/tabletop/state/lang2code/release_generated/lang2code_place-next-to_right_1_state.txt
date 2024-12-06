@@ -1,0 +1,7 @@
+<state-2>
+is_right_of:cyan block,cyan cylinder:1
+is_left_of:cyan cylinder,cyan block:1
+
+<init-state>
+is_right_of:cyan block,cyan cylinder:0
+is_left_of:cyan cylinder,cyan block:0

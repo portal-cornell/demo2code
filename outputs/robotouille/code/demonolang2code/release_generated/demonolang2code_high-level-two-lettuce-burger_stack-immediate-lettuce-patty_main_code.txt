@@ -1,0 +1,45 @@
+# Get a list of all the patties in the kitchen.
+patties = get_all_obj_names_that_match_type('patty')
+# Get a list of all the lettuces in the kitchen.
+lettuces = get_all_obj_names_that_match_type('lettuce')
+# Get a list of all the bottom buns in the kitchen.
+bottom_buns = get_all_obj_names_that_match_type('bottom_bun')
+# Get a list of all the top buns in the kitchen.
+top_buns = get_all_obj_names_that_match_type('top_bun')
+
+# For each patty, lettuce, and bun, do
+for i in range(len(patties)):
+  # Decide a patty to use.
+  patty_to_use = patties[i]
+  # Get a list of all the available stoves in the kitchen.
+  stoves = get_all_location_names_that_match_type('stove')
+  # Decide a stove to go to.
+  stove_to_cook_at = stoves[i]
+  # Cook that patty at that stove.
+  cook_object_at_location(obj=patty_to_use, location=stove_to_cook_at)
+
+  # Decide a patty to use.
+  patty_to_stack = patties[i]
+  # Stack the patty on top of the bottom bun.
+  # obj1 should be the patty, obj2 should be the bottom bun.
+  stack_obj1_on_obj2(obj1=patty_to_stack, obj2=bottom_buns[i])
+
+  # Decide a lettuce to use.
+  lettuce_to_use = lettuces[i]
+  # Get a list of all the available cutting boards in the kitchen.
+  cutting_boards = get_all_location_names_that_match_type('cutting_board')
+  # Decide a cutting board to go to.
+  cutting_board_to_cut_at = cutting_boards[i]
+  # Cut that lettuce at that cutting board.
+  cut_object_at_location(obj=lettuce_to_use, location=cutting_board_to_cut_at)
+  # Pick up that lettuce.
+  pick_up_object(obj=lettuce_to_use)
+  # Stack the lettuce on top of the patty.
+  # obj1 should be the lettuce, obj2 should be the patty.
+  stack_obj1_on_obj2(obj1=lettuce_to_use, obj2=patty_to_stack)
+
+  # Decide a top bun to use.
+  top_bun_to_use = top_buns[i]
+  # Stack the top bun on top of the lettuce.
+  # obj1 should be the top bun, obj2 should be the lettuce.
+  stack_obj1_on_obj2(obj1=top_bun_to_use, obj2=lettuce_to_use)

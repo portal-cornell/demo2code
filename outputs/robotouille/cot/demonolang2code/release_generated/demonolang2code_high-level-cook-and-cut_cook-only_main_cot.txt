@@ -1,0 +1,65 @@
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the robot ('robot1' is holding 'patty1') and the status of the objects ('patty1' is not at 'table1'). 
+I will summarize the state trajectory into low-level actions. 
+Low-level actions are not compacted enough yet because low-level actions can still be combined into high-level subtasks. 
+The new trajectory will NOT be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+no
+[[Summarized trajectory:]]
+* In [Scenario 1], at state 2, the robot picked up 'patty1'.
+* At state 3, the robot moved from 'table1' to 'stove1'.
+* At state 4, the robot placed 'patty1' at location 'stove1'.
+* At state 5-8, the robot had cooked 'patty1'.
+
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the robot ('robot1' is holding 'patty3') and the status of the objects ('patty3' is not at 'table4'). 
+I will summarize the state trajectory into low-level actions. 
+Low-level actions are not compacted enough yet because low-level actions can still be combined into high-level subtasks. 
+The new trajectory will NOT be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+no
+[[Summarized trajectory:]]
+* In [Scenario 2], at state 2, the robot picked up 'patty3'.
+* At state 3, the robot moved from 'table4' to 'stove3'.
+* At state 4, the robot placed 'patty3' at location 'stove3'.
+* At state 5-8, the robot had cooked 'patty3'.
+
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains low-level actions because the trajectory mentions "picked up", "moved", etc. 
+I will summarize the low-level action trajectory into high-level subtasks. 
+High-level subtask trajectory is the most compacted form that cannot be summarized anymore.
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 1], at state 2-8, the subtask is "cook patty". This subtask contains: 1. picking up 'patty1' (state 2) 2. moving to place 'patty1' on 'stove1' (state 3-4) 3. cooking 'patty1' until it is cooked (state 5-8)
+
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains low-level actions because the trajectory mentions "picked up", "moved", etc. 
+I will summarize the low-level action trajectory into high-level subtasks. 
+High-level subtask trajectory is the most compacted form that cannot be summarized anymore.
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 2], at state 2-8, the subtask is "cook patty". This subtask contains: 1. picking up 'patty3' (state 2) 2. moving to place 'patty3' on 'stove3' (state 3-4) 3. cooking 'patty3' until it is cooked (state 5-8)
+
+==========================summary -> spec==========================
+[[Reasoning:]]
+* In [Scenario 1]'s unique kitchen environment, the subtasks were executed in this order: ['cook patty'].
+* In [Scenario 2]'s unique kitchen environment, the subtasks were executed in this order: ['cook patty'].
+* Both scenarios are executing the subtasks in the same order.
+* There is no repetition or loop in the subtask ordering for any individual scenario.
+[[Task Specification:]]
+Specifically:
+Get a list of all the patties in the kitchen.
+
+Decide a patty to use.
+Get a list of all the available stoves in the kitchen.
+Decide a stove to go to.
+Cook that patty at that stove.
+

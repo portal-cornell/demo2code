@@ -1,0 +1,5 @@
+# must use parse position to get relative positions
+left_pos = parse_position('left of the orange block')
+right_pos = parse_position('right of the cyan block')
+put_first_on_second('pink cylinder', left_pos)
+put_first_on_second('pink cylinder', right_pos)

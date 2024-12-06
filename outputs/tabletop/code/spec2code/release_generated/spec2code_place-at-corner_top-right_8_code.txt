@@ -1,0 +1,3 @@
+# must use parse position to get corner position
+corner_pos = parse_position('top right corner')
+put_first_on_second('gray block', corner_pos)

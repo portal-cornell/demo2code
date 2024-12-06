@@ -1,0 +1,11 @@
+# Place the green cylinder on the table
+put_first_on_second('green cylinder', 'table')
+
+# Place the brown cylinder on the table
+put_first_on_second('brown cylinder', 'table')
+
+# Place the gray cylinder on the table
+put_first_on_second('gray cylinder', 'table')
+
+# Place the orange block on the red cylinder
+put_first_on_second('orange block', 'red cylinder')

@@ -1,0 +1,56 @@
+objects=['blue block', 'brown block', 'pink block', 'orange block', 'purple cylinder', 'gray cylinder', 'green cylinder']
+"""
+[Scenario 1]
+Stack all blocks into one stack, while enforcing the order between blocks if there is a requirement.
+
+State 2:
+'blue block' has moved
+'blue block' is to the left of 'orange block'
+'orange block' is to the right of 'blue block'
+
+State 3:
+'brown block' is not on top of 'table'
+'brown block' has moved
+'brown block' is on top of 'blue block'
+
+State 4:
+'pink block' is not on top of 'table'
+'pink block' has moved
+'pink block' is on top of 'blue block'
+'pink block' is on top of 'brown block'
+
+State 5:
+'blue block' is not to the left of 'orange block'
+'orange block' is not on top of 'table'
+'orange block' has moved
+'orange block' is not to the right of 'blue block'
+'orange block' is on top of 'blue block'
+'orange block' is on top of 'brown block'
+'orange block' is on top of 'pink block'
+
+[Scenario 2]
+Stack all blocks into one stack, while enforcing the order between blocks if there is a requirement.
+
+State 2:
+'brown block' has moved
+'brown block' is to the right of 'purple cylinder'
+'purple cylinder' is to the left of 'brown block'
+
+State 3:
+'pink block' is not on top of 'table'
+'pink block' has moved
+'pink block' is on top of 'brown block'
+
+State 4:
+'blue block' is not on top of 'table'
+'blue block' has moved
+'blue block' is on top of 'brown block'
+'blue block' is on top of 'pink block'
+
+State 5:
+'orange block' is not on top of 'table'
+'orange block' has moved
+'orange block' is on top of 'blue block'
+'orange block' is on top of 'brown block'
+'orange block' is on top of 'pink block'
+"""

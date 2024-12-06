@@ -1,0 +1,6 @@
+object_names = get_obj_names()
+# split the objects into 2 stacks. 
+stack_1 = object_names[:4]
+stack_2 = object_names[4:]
+stack_without_height_limit(objects_to_stack=stack_1)
+stack_without_height_limit(objects_to_stack=stack_2)

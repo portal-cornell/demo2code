@@ -1,0 +1,14 @@
+```
+"""
+Cut two lettuces.
+
+Specifically:
+Get a list of all the lettuces in the kitchen.
+
+For two lettuces, do: 
+    Decide a lettuce to cut. 
+    Get a list of all the available cutting boards in the kitchen.
+    Decide a cutting board to go to.
+    Cut that lettuce at that cutting board. 
+"""
+```

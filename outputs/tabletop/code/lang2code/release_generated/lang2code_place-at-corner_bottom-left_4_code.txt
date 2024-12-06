@@ -1,0 +1,4 @@
+corner_name = np.random.choice(ALL_CORNERS_LIST)
+# must use parse position to get corner position
+corner_pos = parse_position(corner_name)
+put_first_on_second('cyan block', corner_pos)

@@ -1,0 +1,4 @@
+stack_1 = ['green cylinder', 'red cylinder', 'cyan block', 'orange block']
+stack_2 = ['green block', 'red block', 'brown cylinder', 'pink cylinder']
+stack_without_height_limit(objects_to_stack=stack_1)
+stack_without_height_limit(objects_to_stack=stack_2)

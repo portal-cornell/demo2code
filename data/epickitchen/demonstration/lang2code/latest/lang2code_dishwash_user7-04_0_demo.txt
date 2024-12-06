@@ -1,0 +1,8 @@
+"""
+Wash dishes at the sink. All cleaned objects should be placed at the dishrack.
+Objects to clean
+    - fork_1 in hand
+    - fork_2 in hand
+    - fork_3 in hand
+    - plate_1 at near-sink
+"""

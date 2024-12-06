@@ -1,0 +1,8 @@
+objects = get_all_objects()
+pick_up("sponge_1")
+for object in objects:
+  soap(object)
+  turn_on("tap_1")
+  rinse(object)
+  turn_off("tap_1")
+  place(object, "dishrack_1")

@@ -1,0 +1,389 @@
+"""
+[Scenario 1]
+
+State 2:
+'robot1' is at 'stove1'
+'robot1' is not at 'table1'
+
+State 3:
+'patty1' is not at 'stove1'
+'robot1' is holding 'patty1'
+
+State 4:
+'robot1' is not at 'stove1'
+'robot1' is at 'stove2'
+
+State 5:
+'patty1' is at 'stove2'
+'robot1' is not holding 'patty1'
+
+State 6:
+
+
+State 7:
+
+
+State 8:
+
+
+State 9:
+'patty1' is cooked
+
+State 10:
+'patty1' is not at 'stove2'
+'robot1' is holding 'patty1'
+
+State 11:
+'robot1' is not at 'stove2'
+'robot1' is at 'table2'
+
+State 12:
+'patty1' is at 'table2'
+'patty1' is on top of 'bottom_bun1'
+'robot1' is not holding 'patty1'
+
+State 13:
+'robot1' is at 'table5'
+'robot1' is not at 'table2'
+
+State 14:
+'lettuce1' is not at 'table5'
+'robot1' is holding 'lettuce1'
+
+State 15:
+'robot1' is at 'cutting_board1'
+'robot1' is not at 'table5'
+
+State 16:
+'lettuce1' is at 'cutting_board1'
+'robot1' is not holding 'lettuce1'
+
+State 17:
+
+
+State 18:
+
+
+State 19:
+'lettuce1' is cut
+
+State 20:
+'lettuce1' is not at 'cutting_board1'
+'robot1' is holding 'lettuce1'
+
+State 21:
+'robot1' is not at 'cutting_board1'
+'robot1' is at 'table2'
+
+State 22:
+'lettuce1' is at 'table2'
+'lettuce1' is on top of 'patty1'
+'robot1' is not holding 'lettuce1'
+
+State 23:
+'robot1' is not at 'table2'
+'robot1' is at 'table4'
+
+State 24:
+'top_bun1' is not at 'table4'
+'robot1' is holding 'top_bun1'
+
+State 25:
+'robot1' is at 'table2'
+'robot1' is not at 'table4'
+
+State 26:
+'top_bun1' is at 'table2'
+'top_bun1' is on top of 'lettuce1'
+'robot1' is not holding 'top_bun1'
+
+State 27:
+'robot1' is at 'table1'
+'robot1' is not at 'table2'
+
+State 28:
+'patty2' is not at 'table1'
+'robot1' is holding 'patty2'
+
+State 29:
+'robot1' is not at 'table1'
+'robot1' is at 'stove2'
+
+State 30:
+'patty2' is at 'stove2'
+'robot1' is not holding 'patty2'
+
+State 31:
+
+
+State 32:
+
+
+State 33:
+
+
+State 34:
+'patty2' is cooked
+
+State 35:
+'patty2' is not at 'stove2'
+'robot1' is holding 'patty2'
+
+State 36:
+'robot1' is not at 'stove2'
+'robot1' is at 'table3'
+
+State 37:
+'patty2' is at 'table3'
+'patty2' is on top of 'bottom_bun2'
+'robot1' is not holding 'patty2'
+
+State 38:
+'robot1' is at 'table7'
+'robot1' is not at 'table3'
+
+State 39:
+'lettuce2' is not at 'table7'
+'robot1' is holding 'lettuce2'
+
+State 40:
+'robot1' is not at 'table7'
+'robot1' is at 'cutting_board1'
+
+State 41:
+'lettuce2' is at 'cutting_board1'
+'robot1' is not holding 'lettuce2'
+
+State 42:
+
+
+State 43:
+
+
+State 44:
+'lettuce2' is cut
+
+State 45:
+'lettuce2' is not at 'cutting_board1'
+'robot1' is holding 'lettuce2'
+
+State 46:
+'robot1' is not at 'cutting_board1'
+'robot1' is at 'table3'
+
+State 47:
+'lettuce2' is at 'table3'
+'lettuce2' is on top of 'patty2'
+'robot1' is not holding 'lettuce2'
+
+State 48:
+'robot1' is at 'table9'
+'robot1' is not at 'table3'
+
+State 49:
+'top_bun2' is not at 'table9'
+'robot1' is holding 'top_bun2'
+
+State 50:
+'robot1' is not at 'table9'
+'robot1' is at 'table3'
+
+State 51:
+'top_bun2' is at 'table3'
+'top_bun2' is on top of 'lettuce2'
+'robot1' is not holding 'top_bun2'
+
+[Scenario 2]
+
+State 2:
+'robot1' is not at 'table8'
+'robot1' is at 'table3'
+
+State 3:
+'patty3' is not at 'table3'
+'robot1' is holding 'patty3'
+
+State 4:
+'robot1' is at 'stove3'
+'robot1' is not at 'table3'
+
+State 5:
+'patty3' is at 'stove3'
+'robot1' is not holding 'patty3'
+
+State 6:
+
+
+State 7:
+
+
+State 8:
+
+
+State 9:
+'patty3' is cooked
+
+State 10:
+'patty3' is not at 'stove3'
+'robot1' is holding 'patty3'
+
+State 11:
+'robot1' is at 'table10'
+'robot1' is not at 'stove3'
+
+State 12:
+'patty3' is at 'table10'
+'patty3' is on top of 'bottom_bun3'
+'robot1' is not holding 'patty3'
+
+State 13:
+'robot1' is not at 'table10'
+'robot1' is at 'table7'
+
+State 14:
+'lettuce3' is not at 'table7'
+'robot1' is holding 'lettuce3'
+
+State 15:
+'robot1' is at 'cutting_board3'
+'robot1' is not at 'table7'
+
+State 16:
+'lettuce3' is at 'cutting_board3'
+'robot1' is not holding 'lettuce3'
+
+State 17:
+
+
+State 18:
+
+
+State 19:
+'lettuce3' is cut
+
+State 20:
+'lettuce3' is not at 'cutting_board3'
+'robot1' is holding 'lettuce3'
+
+State 21:
+'robot1' is at 'table10'
+'robot1' is not at 'cutting_board3'
+
+State 22:
+'lettuce3' is at 'table10'
+'lettuce3' is on top of 'patty3'
+'robot1' is not holding 'lettuce3'
+
+State 23:
+'robot1' is not at 'table10'
+'robot1' is at 'table5'
+
+State 24:
+'top_bun3' is not at 'table5'
+'robot1' is holding 'top_bun3'
+
+State 25:
+'robot1' is at 'table10'
+'robot1' is not at 'table5'
+
+State 26:
+'top_bun3' is at 'table10'
+'top_bun3' is on top of 'lettuce3'
+'robot1' is not holding 'top_bun3'
+
+State 27:
+'robot1' is not at 'table10'
+'robot1' is at 'table6'
+
+State 28:
+'patty4' is not at 'table6'
+'robot1' is holding 'patty4'
+
+State 29:
+'robot1' is at 'stove3'
+'robot1' is not at 'table6'
+
+State 30:
+'patty4' is at 'stove3'
+'robot1' is not holding 'patty4'
+
+State 31:
+
+
+State 32:
+
+
+State 33:
+
+
+State 34:
+'patty4' is cooked
+
+State 35:
+'patty4' is not at 'stove3'
+'robot1' is holding 'patty4'
+
+State 36:
+'robot1' is at 'table12'
+'robot1' is not at 'stove3'
+
+State 37:
+'patty4' is at 'table12'
+'patty4' is on top of 'bottom_bun4'
+'robot1' is not holding 'patty4'
+
+State 38:
+'robot1' is not at 'table12'
+'robot1' is at 'table11'
+
+State 39:
+'lettuce4' is not at 'table11'
+'robot1' is holding 'lettuce4'
+
+State 40:
+'robot1' is at 'cutting_board3'
+'robot1' is not at 'table11'
+
+State 41:
+'lettuce4' is at 'cutting_board3'
+'robot1' is not holding 'lettuce4'
+
+State 42:
+
+
+State 43:
+
+
+State 44:
+'lettuce4' is cut
+
+State 45:
+'lettuce4' is not at 'cutting_board3'
+'robot1' is holding 'lettuce4'
+
+State 46:
+'robot1' is at 'table12'
+'robot1' is not at 'cutting_board3'
+
+State 47:
+'lettuce4' is at 'table12'
+'lettuce4' is on top of 'patty4'
+'robot1' is not holding 'lettuce4'
+
+State 48:
+'robot1' is not at 'table12'
+'robot1' is at 'table9'
+
+State 49:
+'top_bun4' is not at 'table9'
+'robot1' is holding 'top_bun4'
+
+State 50:
+'robot1' is at 'table12'
+'robot1' is not at 'table9'
+
+State 51:
+'top_bun4' is at 'table12'
+'top_bun4' is on top of 'lettuce4'
+'robot1' is not holding 'top_bun4'
+"""

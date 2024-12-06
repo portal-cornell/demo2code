@@ -1,0 +1,8 @@
+desired_condition_met = False
+while not desired_condition_met:
+  put_first_on_second('pink block', 'behind the cyan block')
+  put_first_on_second('purple block', 'on top of the pink block')
+  put_first_on_second('cyan block', 'table')
+  # Check if the desired condition is met
+  if 'purple cylinder' in get_obj_names():
+    desired_condition_met = True

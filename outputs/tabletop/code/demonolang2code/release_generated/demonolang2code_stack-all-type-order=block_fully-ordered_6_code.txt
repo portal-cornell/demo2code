@@ -1,0 +1,8 @@
+# First, find the yellow block
+yellow_block = 'yellow block'
+# Then, find the rest of the blocks
+block_names = get_all_obj_names_that_match_type(type_name="block", objects_list=get_obj_names())
+block_names.remove(yellow_block)
+# Stack all blocks on top of the yellow block
+for block in block_names:
+  put_first_on_second(block, yellow_block)

@@ -1,0 +1,37 @@
+# Get a list of all the patties in the kitchen.
+patties = get_all_obj_names_that_match_type('patty')
+# Get a list of all the bottom buns in the kitchen.
+bottom_buns = get_all_obj_names_that_match_type('bottom_bun')
+# Get a list of all the cheeses in the kitchen.
+cheeses = get_all_obj_names_that_match_type('cheese')
+# Get a list of all the top buns in the kitchen.
+top_buns = get_all_obj_names_that_match_type('top_bun')
+
+# For two burgers, do
+for i in range(2):
+  # Decide a patty to use.
+  patty_to_use = patties[i]
+  # Get a list of all the available stoves in the kitchen. 
+  stoves = get_all_location_names_that_match_type('stove')
+  # Decide a stove to go to.
+  stove_to_cook_at = stoves[i]
+  # Cook that patty at that stove.
+  cook_object_at_location(obj=patty_to_use, location=stove_to_cook_at)
+  
+  # Decide a bottom bun to use.
+  bottom_bun_to_use = bottom_buns[i]
+  # Stack the patty on top of the bottom bun.
+  # obj1 should be the patty, obj2 should be the bottom bun.
+  stack_obj1_on_obj2(obj1=patty_to_use, obj2=bottom_bun_to_use)
+  
+  # Decide a cheese to use.
+  cheese_to_use = cheeses[i]
+  # Stack the cheese on top of the patty.
+  # obj1 should be the cheese, obj2 should be the patty.
+  stack_obj1_on_obj2(obj1=cheese_to_use, obj2=patty_to_use)
+  
+  # Decide a top bun to use.
+  top_bun_to_use = top_buns[i]
+  # Stack the top bun on top of the cheese.
+  # obj1 should be the top bun, obj2 should be the cheese.
+  stack_obj1_on_obj2(obj1=top_bun_to_use, obj2=cheese_to_use)

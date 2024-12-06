@@ -1,0 +1,7 @@
+# Move the green cylinder
+put_first_on_second('green cylinder', 'table')
+
+# Stack the cylinders on top of the green cylinder using a loop
+cylinders_to_stack = ['pink cylinder', 'brown cylinder', 'gray cylinder']
+for cylinder in cylinders_to_stack:
+    put_first_on_second(cylinder, 'green cylinder')

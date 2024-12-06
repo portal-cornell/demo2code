@@ -1,0 +1,39 @@
+<state-2>
+is_left_of:blue block,pink block:1
+has_moved:pink block:1
+is_right_of:pink block,blue block:1
+
+<state-3>
+on_top_of:gray block,table:0
+has_moved:gray block:1
+on_top_of:gray block,pink block:1
+
+<state-4>
+on_top_of:blue block,table:0
+has_moved:blue block:1
+is_left_of:blue block,pink block:0
+on_top_of:blue block,pink block:1
+on_top_of:blue block,gray block:1
+is_right_of:pink block,blue block:0
+
+<state-5>
+on_top_of:green block,table:0
+has_moved:green block:1
+on_top_of:green block,blue block:1
+on_top_of:green block,pink block:1
+on_top_of:green block,gray block:1
+
+<init-state>
+on_top_of:green block,table:1
+has_moved:green block:0
+on_top_of:green block,blue block:0
+on_top_of:green block,pink block:0
+on_top_of:green block,gray block:0
+on_top_of:blue block,table:1
+has_moved:blue block:0
+on_top_of:blue block,pink block:0
+on_top_of:blue block,gray block:0
+has_moved:pink block:0
+on_top_of:gray block,table:1
+has_moved:gray block:0
+on_top_of:gray block,pink block:0

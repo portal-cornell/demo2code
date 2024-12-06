@@ -1,0 +1,3 @@
+"""
+Cook a patty.
+"""

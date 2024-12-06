@@ -1,0 +1,5 @@
+# Based on the instruction, define the blocks that have strict ordering
+block_names_with_strick_order_from_bottom_to_top = ['yellow block', 'orange block', 'brown block', 'purple block']
+# Call helper function to determine the final stacking order before stacking the blocks
+stack_order_from_bottom_to_top = determine_final_stacking_order(objects_to_enforce_order=block_names_with_strick_order_from_bottom_to_top, objects_without_order=[])
+stack_without_height_limit(objects_to_stack=stack_order_from_bottom_to_top)

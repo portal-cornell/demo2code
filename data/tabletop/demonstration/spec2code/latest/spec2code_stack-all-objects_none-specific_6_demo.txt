@@ -1,0 +1,4 @@
+objects=['cyan block', 'orange block', 'green block', 'red block', 'brown cylinder', 'red cylinder', 'green cylinder', 'pink cylinder']
+"""
+Stack all objects into two stacks (where each stack has maximum height of 4). It doesn't matter whether the objects are categorized.
+"""

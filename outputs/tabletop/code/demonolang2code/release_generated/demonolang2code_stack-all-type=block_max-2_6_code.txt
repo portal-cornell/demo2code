@@ -1,0 +1,6 @@
+block_names = get_all_obj_names_that_match_type(type_name="block", objects_list=get_obj_names())
+# split the blocks into 2 stacks. 
+stack_1 = block_names[:len(block_names)//2]
+stack_2 = block_names[len(block_names)//2:]
+stack_without_height_limit(objects_to_stack=stack_1)
+stack_without_height_limit(objects_to_stack=stack_2)

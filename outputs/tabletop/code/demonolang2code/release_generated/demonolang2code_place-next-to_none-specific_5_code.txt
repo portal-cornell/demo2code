@@ -1,0 +1,3 @@
+# must use parse position to get relative position
+location_pos = parse_position('table')
+put_first_on_second('red cylinder', location_pos)

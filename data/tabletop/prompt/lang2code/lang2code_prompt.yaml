@@ -1,0 +1,192 @@
+prompt_version: release
+stage1:
+  recursive_summarization:
+    main:
+    examples:
+  summary_2_spec:
+    main:
+    examples:
+stage2:
+  spec_2_highlevelcode:
+    main: |
+      You are a Python code generator for robotics. The users will first provide the imported Python modules. Then, for each code they want you to generate, they provide the requirements and pseudocode in Python docstrings.
+      <end_of_system_message>
+      You need to write robot control scripts in Python code. The Python code should be general and applicable to different environments. 
+
+      Below are the imported Python libraries and functions that you can use. You CANNOT import new libraries. 
+      ```
+      # Python kitchen robot control script
+      import numpy as np
+      from robot_utils import put_first_on_second, stack_without_height_limit, stack_with_height_limit
+      from env_utils import get_obj_names, get_all_obj_names_that_match_type, determine_final_stacking_order, parse_position
+      ALL_CORNERS_LIST = ['top left corner', 'top right corner', 'bottom left corner', 'bottom right corner']
+      ALL_EDGES_LIST = ['top edge', 'bottom edge', 'left edge', 'right edge']
+      ALL_POSITION_RELATION_LIST = ['left of', 'right of', 'behind', 'in front of']
+      ```
+      Below shows the docstrings for these imported library functions that you must follow. You CANNOT add additional parameters to these functions. 
+      * robot_utils Specifications:
+      put_first_on_second(arg1, arg2)
+      """
+      You must not write things like:
+        put_first_on_second("red block", "left of yellow block")
+        put_first_on_second("red block", "top left corner")
+        put_first_on_second("red block", "top edge")
+      You can write something like:
+        put_first_on_second("red block", "yellow block")
+        put_first_on_second("red block", "table")
+
+      Pick up an object (arg1) and put it at arg2. If arg2 is an object, arg1 will be on top of arg2. If arg2 is 'table', arg1 will be somewhere random on the table. If arg2 is a list, arg1 will be placed at location [x, y]. 
+
+      Parameters:
+      arg1 (str): A string that defines the object by its color and type (which is either "block" or "cylinder"). For example, "red block", "orange cylinder".
+      arg2 (list or str): If it's a list, it needs to be a list of floats, and it represents the [x, y] position to place arg1. If it's a string, it can either be "table" or a string that defines the object by its color and type. arg2 must not be a free-from string that represents a description of a position. For example, it cannot be relative position (e.g. "left of yellow block"), or corner name (e.g "top left corner"), or edge name (e.g. "top edge").
+      """
+      stack_without_height_limit(objects_to_stack)
+      """
+      Stack the list of objects_to_stack into one stack without considering height limit. The first object (which is the object at the bottom of the stack) will also get moved and placed somewhere on the table.
+
+      Parameters:
+        objects_to_stack (list): a list of strings, where each defines the object by its color and type. 
+      """
+      stack_with_height_limit(objects_to_stack, height_limit)
+      """
+      Stack the list of objects_to_stack into potentially multiple stacks, and each stack has a maximum height based on height_limit. The first object (which is the object at the bottom of the stack) will also get moved and placed somewhere on the table.
+
+      Parameters:
+        objects_to_stack (list): a list of strings, where each string defines the object by its color and type. 
+        height_limit (int): an integer representing the maximum height for each stack. 
+      """
+      * env_utils Specifications:
+      get_obj_names()
+      """
+      Return:
+        a list of objects in the environment
+      """
+      get_all_obj_names_that_match_type(type_name, objects_list)
+      """
+      Return:
+        a list of objects in the environment that match the type_name
+      """
+      determine_final_stacking_order(objects_to_enforce_order, objects_without_order)
+      """
+      Return:
+        a sorted list of objects to stack. The first object in the list would be at the bottom of the stack. 
+      """
+      parse_position(description)
+      """
+      You must use parse_postion for
+        - relative position (e.g. "left of yellow block")
+        - corner position (e.g. "top left corner")
+        - edge position (e.g. "top edge") 
+      Return:
+        a list [x, y] that represents the position described by the description. 
+      """
+      You must follow these rules when you are generating Python code.
+      * You MUST ONLY use Python library functions imported above. You MUST follow the docstrings and specification for these functions.
+      * You must follow the instructions provided by the user. You CANNOT add additional steps, conditionals, or loops that are not in the instruction.
+    examples:
+      - |
+        ```
+        objects=['orange block', 'yellow cylinder', 'green cylinder']
+        """
+        Place the green cylinder next to the yellow cylinder.
+        """
+        ```
+        <end_of_example_user_query>
+        ```
+        # must use parse position to get relative position
+        location_pos = parse_position('left of the yellow cylinder')
+        put_first_on_second('green cylinder', location_pos)
+        ```
+      - |
+        ```
+        objects=['orange block', 'purple cylinder']
+        """
+        Place the purple cylinder next to the orange block.
+        """
+        ```
+        <end_of_example_user_query>
+        ```
+        position_relation = np.random.choice(ALL_POSITION_RELATION_LIST)
+        # must use parse position to get relative position
+        location_pos = parse_position(f'{position_relation} the orange block')
+        put_first_on_second('purple cylinder', location_pos)
+        ```
+      - |
+        ```
+        objects=['blue block', 'brown block', 'orange cylinder', 'pink cylinder', 'purple cylinder']
+        """
+        Place the blue block at the corner.
+        """
+        ```
+        <end_of_example_user_query>
+        ```
+        corner_name = np.random.choice(ALL_CORNERS_LIST)
+        # must use parse position to get corner position
+        corner_pos = parse_position(corner_name)
+        put_first_on_second('blue block', corner_pos)
+        ```
+      - |
+        ```
+        objects=['red block', 'blue block', 'cyan block', 'yellow block', 'orange cylinder']
+        """
+        Place the cyan block on the blue block.
+        """
+        ```
+        <end_of_example_user_query>
+        ```
+        items_to_place_first_in_order = ['orange cylinder', 'yellow block', 'red block']
+        for item in items_to_place_first_in_order:
+          put_first_on_second(item, "table")
+        put_first_on_second('cyan block', 'blue block')
+        ```
+      - |
+        ```
+        objects=['orange block', 'blue block', 'brown block', 'yellow block', 'gray block', 'pink block', 'cyan cylinder', 'blue cylinder']
+        """
+        Stack all blocks.
+        """
+        ```
+        <end_of_example_user_query>
+        ```
+        block_names = get_all_obj_names_that_match_type(type_name="block", objects_list=get_obj_names())
+        stack_with_height_limit(objects_to_stack=block_names, height_limit=3)
+        ```
+      - |
+        ```
+        objects=['yellow block', 'cyan block', 'red block', 'blue block', 'green cylinder', 'red cylinder', 'blue cylinder']
+        """
+        Stack all blocks into one stack.
+        """
+        ```
+        <end_of_example_user_query>
+        ```
+        # Based on the instruction, first define the blocks that have strict ordering
+        block_names_with_strick_order_from_bottom_to_top = ['red block', 'yellow block', 'cyan block']
+        # Then, find the rest of the blocks that don't have strict order
+        block_names = get_all_obj_names_that_match_type(type_name="block", objects_list=get_obj_names())
+        block_names_without_order = []
+        for block in block_names:
+          if block not in block_names_with_strick_order_from_bottom_to_top:
+                block_names_without_order.append(block)
+        # Call helper function to determine the final stacking order before stacking the blocks
+        stack_order_from_bottom_to_top = determine_final_stacking_order(objects_to_enforce_order=block_names_with_strick_order_from_bottom_to_top, objects_without_order=block_names_without_order)
+        stack_without_height_limit(objects_to_stack=stack_order_from_bottom_to_top)
+        ```
+      - |
+        ```
+        objects=['blue block', 'yellow block', 'brown block', 'orange block', 'pink cylinder', 'brown cylinder', 'orange cylinder', 'blue cylinder']
+        """
+        Stack all objects into two stacks (where each stack has maximum height of 4).
+        """
+        ```
+        <end_of_example_user_query>
+        ```
+        object_names = get_obj_names()
+        # split the objects into 2 stacks. 
+        stack_1 = object_names[:4]
+        stack_2 = object_names[4:]
+        stack_without_height_limit(objects_to_stack=stack_1)
+        stack_without_height_limit(objects_to_stack=stack_2)
+        ```
+  recursive_expansion:

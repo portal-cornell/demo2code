@@ -1,0 +1,28 @@
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the objects ('orange block' is in front of 'gray cylinder'). 
+I will summarize the state trajectory into low-level actions.
+The low-level actions are the most compact form, so I should stop summarizing after this. 
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 1], at state 2, the robot picked up and placed 'gray cylinder' behind 'orange block'.
+
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the objects ('orange block' is behind 'gray cylinder'). 
+I will summarize the state trajectory into low-level actions.
+The low-level actions are the most compact form, so I should stop summarizing after this. 
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 2], at state 2, the robot picked up and placed 'gray cylinder' in front of 'orange block'.
+
+==========================summary -> spec==========================
+[[Reasoning:]]
+Because two scenarios have two different relative positions between 'gray cylinder' and 'orange block', we assume that the 'gray cylinder' can be anywhere next to 'orange block'.
+[[Task Specification:]]
+Place the gray cylinder at anywhere next to the orange block.
+

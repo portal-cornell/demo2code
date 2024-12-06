@@ -1,0 +1,2 @@
+put_first_on_second('orange cylinder', 'blue cylinder')
+put_first_on_second('purple cylinder', 'left of the red block')

@@ -1,0 +1,49 @@
+<state-2>
+has_moved:purple block:1
+is_in_front_of:purple block,red block:1
+is_behind:red block,purple block:1
+
+<state-3>
+on_top_of:pink block,table:0
+has_moved:pink block:1
+on_top_of:pink block,purple block:1
+
+<state-4>
+on_top_of:green block,table:0
+has_moved:green block:1
+on_top_of:green block,purple block:1
+on_top_of:green block,pink block:1
+
+<state-5>
+has_moved:brown block:1
+
+<state-6>
+is_in_front_of:purple block,red block:0
+on_top_of:red block,table:0
+has_moved:red block:1
+is_behind:red block,purple block:0
+on_top_of:red block,brown block:1
+
+<state-7>
+on_top_of:gray block,table:0
+has_moved:gray block:1
+on_top_of:gray block,brown block:1
+on_top_of:gray block,red block:1
+
+<init-state>
+has_moved:purple block:0
+on_top_of:pink block,table:1
+has_moved:pink block:0
+on_top_of:pink block,purple block:0
+on_top_of:green block,table:1
+has_moved:green block:0
+on_top_of:green block,purple block:0
+on_top_of:green block,pink block:0
+has_moved:brown block:0
+on_top_of:red block,table:1
+has_moved:red block:0
+on_top_of:red block,brown block:0
+on_top_of:gray block,table:1
+has_moved:gray block:0
+on_top_of:gray block,brown block:0
+on_top_of:gray block,red block:0

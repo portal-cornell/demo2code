@@ -1,0 +1,4 @@
+objects=['purple block', 'cyan block', 'blue block', 'green block', 'orange cylinder', 'pink cylinder', 'purple cylinder']
+"""
+Stack all objects into two stacks (where each stack has maximum height of 4). Create one stack that only has blocks, and create another stack that only has cylinders.
+"""

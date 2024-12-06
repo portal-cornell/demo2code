@@ -1,0 +1,83 @@
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the objects (is_not_empty(`sink_1`), is_in_hand(`sponge_1`), etc.).
+I will summarize the state trajectory into low-level actions.
+Low-level actions are not compacted enough yet because low-level actions can still be combined into high-level subtasks.
+The new trajectory will NOT be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+no
+[[Summarized trajectory:]]
+* In [Scenario 1], at state 1-2, the robot picked up sponge_1.
+* At state 2-3, the robot picked up bowl_1 and added soap_1 to it.
+* At state 3-4, the robot soaped bowl_1 until it became soapy.
+* At state 4-5, the robot moved bowl_1 from sink_1 to sink_2.
+* At state 5-6, the robot picked up bowl_2 and soaped it until it became soapy.
+* At state 6-7, the robot moved bowl_2 from sink_1 to sink_2.
+* At state 7-8, the robot picked up plate_1 and soaped it until it became soapy.
+* At state 8-9, the robot moved plate_1 from sink_1 to sink_2.
+* At state 9-10, the robot picked up glass_1 and soaped it until it became soapy.
+* At state 10-11, the robot moved glass_1 from sink_1 to sink_2.
+* At state 11-12, the robot picked up glass_2 and soaped it until it became soapy.
+* At state 12-13, the robot moved glass_2 from sink_1 to sink_2.
+* At state 13-14, the robot turned on tap_1.
+* At state 14-15, the robot picked up glass_1.
+* At state 15-16, the robot cleaned glass_1 until it became clean and placed it in dishrack_1.
+* At state 16-17, the robot picked up glass_2.
+* At state 17-18, the robot cleaned glass_2 until it became clean and placed it in dishrack_1.
+* At state 18-19, the robot picked up bowl_1.
+* At state 19-20, the robot cleaned bowl_1 until it became clean and placed it in dishrack_1.
+* At state 20-21, the robot picked up bowl_2.
+* At state 21-22, the robot cleaned bowl_2 until it became clean and placed it in dishrack_1.
+* At state 22-23, the robot picked up plate_1.
+* At state 23-24, the robot cleaned plate_1 until it became clean and placed it in dishrack_1.
+* At state 24-25, the robot turned off tap_1.
+
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains low-level actions because the trajectory mentions "picked up", "moved", "soaped", "cleaned", etc. 
+I will summarize the low-level action trajectory into high-level subtasks. 
+High-level subtasks are compacted enough because they cannot be combined together without losing important information.
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 1], at state 1-2, the robot picked up sponge_1.
+* At state 2-4, the robot prepared bowl_1 by adding soap_1 and soaping it until it became soapy.
+* At state 4-6, the robot moved bowl_1 from sink_1 to sink_2.
+* At state 6-8, the robot prepared bowl_2 by soaping it until it became soapy.
+* At state 8-10, the robot moved bowl_2 from sink_1 to sink_2.
+* At state 10-12, the robot prepared plate_1 by soaping it until it became soapy.
+* At state 12-14, the robot moved plate_1 from sink_1 to sink_2.
+* At state 14-16, the robot prepared glass_1 by soaping it until it became soapy.
+* At state 16-18, the robot moved glass_1 from sink_1 to sink_2.
+* At state 18-20, the robot prepared glass_2 by soaping it until it became soapy.
+* At state 20-22, the robot moved glass_2 from sink_1 to sink_2.
+* At state 22-24, the robot turned on tap_1.
+* At state 24-25, the robot cleaned glass_1 until it became clean and placed it in dishrack_1.
+* At state 25-26, the robot cleaned glass_2 until it became clean and placed it in dishrack_1.
+* At state 26-27, the robot cleaned bowl_1 until it became clean and placed it in dishrack_1.
+* At state 27-28, the robot cleaned bowl_2 until it became clean and placed it in dishrack_1.
+* At state 28-29, the robot cleaned plate_1 until it became clean and placed it in dishrack_1.
+* At state 29-30, the robot turned off tap_1.
+
+==========================summary -> spec==========================
+[[Reasoning:]]
+* There are 5 objects that need to be washed: [bowl_1, bowl_2, plate_1, glass_1, glass_2]
+* The list of high-level actions that happened in order is: [pick up sponge, prepare object, move object, prepare object, move object, prepare object, move object, prepare object, move object, turn on tap, clean object, place object in dishrack, turn off tap]
+* The actions [prepare object, move object] are repeated for each object, so we can use a loop.
+* Cleaning involves the use of tap water, which is why it is turned on at some point before the cleaning cycle, and turned off after.
+[[Task Specification:]]
+Wash objects at the sink. All cleaned objects should be placed on the dishrack.
+Specifically -
+
+Get a list of all objects to wash
+Pick up sponge_1
+For each object in all objects:
+    Prepare object by soaping it until it becomes soapy
+    Move object from sink_1 to sink_2
+Turn on tap_1
+For each object in all objects:
+    Clean object until it becomes clean
+    Place object in dishrack_1
+Turn off tap_1
+

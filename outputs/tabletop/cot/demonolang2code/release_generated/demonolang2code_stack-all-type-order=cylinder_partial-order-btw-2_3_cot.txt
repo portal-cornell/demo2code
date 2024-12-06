@@ -1,0 +1,36 @@
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the objects ('red cylinder' has moved). 
+I will summarize the state trajectory into low-level actions.
+The low-level actions are the most compact form, so I should stop summarizing after this. 
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 1], at state 2, the robot moved 'red cylinder'.
+* At state 3, the robot picked up and placed 'blue cylinder' on top of 'red cylinder'. 
+* At state 4, the robot moved 'cyan cylinder'. 
+* At state 5, the robot picked up and placed 'pink cylinder' on top of 'cyan cylinder'.
+
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the objects ('red cylinder' has moved). 
+I will summarize the state trajectory into low-level actions.
+The low-level actions are the most compact form, so I should stop summarizing after this. 
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 2], at state 2, the robot moved 'red cylinder'.
+* At state 3, the robot picked up and placed 'pink cylinder' on top of 'red cylinder'. 
+* At state 4, the robot picked up and placed 'blue cylinder' on top of 'pink cylinder'. 
+* At state 5, the robot picked up and placed 'cyan cylinder' on top of 'blue cylinder'.
+
+==========================summary -> spec==========================
+[[Reasoning:]]
+In both scenarios, the robot is stacking cylinders on top of each other. The order of the cylinders being stacked is different in each scenario, but the colors of the cylinders being stacked are the same.
+
+[[Task Specification:]]
+Specifically:
+1. Stack the cylinders in the order of 'red cylinder', 'blue cylinder', 'cyan cylinder', 'pink cylinder'.
+

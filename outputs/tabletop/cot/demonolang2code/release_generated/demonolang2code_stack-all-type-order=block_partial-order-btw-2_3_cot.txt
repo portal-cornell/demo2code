@@ -1,0 +1,35 @@
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the objects ('green block' has moved). 
+I will summarize the state trajectory into low-level actions.
+The low-level actions are the most compact form, so I should stop summarizing after this. 
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 1], at state 2, the robot moved 'green block'.
+* At state 3, the robot picked up and placed 'blue block' on top of 'green block'. 
+* At state 4, the robot picked up and placed 'pink block' on top of 'blue block'. 
+* At state 5, the robot picked up and placed 'purple block' on top of 'pink block'.
+
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the objects ('blue block' has moved). 
+I will summarize the state trajectory into low-level actions.
+The low-level actions are the most compact form, so I should stop summarizing after this. 
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 2], at state 2, the robot moved 'blue block'.
+* At state 3, the robot picked up and placed 'green block' on top of 'blue block'. 
+* At state 4, the robot picked up and placed 'pink block' on top of 'green block'. 
+* At state 5, the robot picked up and placed 'purple block' on top of 'pink block'.
+
+==========================summary -> spec==========================
+[[Reasoning:]]
+In both scenarios, the blocks are stacked in the same order: 'green block', 'blue block', 'pink block', 'purple block'. 
+
+[[Task Specification:]]
+Stack the blocks in the following order: 'green block', 'blue block', 'pink block', 'purple block'.
+

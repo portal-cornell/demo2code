@@ -1,0 +1,12 @@
+objects = get_all_objects()
+for object in objects:
+    pick_up(object)
+    if check_if_dirty(object):
+        scrub(object)
+    place(object, "sink_2")
+turn_on("tap_1")
+for object in objects:
+    pick_up(object)
+    rinse(object)
+    place(object, "dryingrack_1")
+turn_off("tap_1")

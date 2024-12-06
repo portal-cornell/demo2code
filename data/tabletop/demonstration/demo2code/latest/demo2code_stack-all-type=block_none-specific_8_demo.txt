@@ -1,0 +1,19 @@
+objects=['gray block', 'green block', 'orange block', 'cyan cylinder']
+"""
+[Scenario 1]
+Stack all blocks, where enfocing the maximum stack height if there is a requirement.
+
+State 2:
+'gray block' has moved
+
+State 3:
+'green block' is not on top of 'table'
+'green block' has moved
+'green block' is on top of 'gray block'
+
+State 4:
+'orange block' is not on top of 'table'
+'orange block' has moved
+'orange block' is on top of 'gray block'
+'orange block' is on top of 'green block'
+"""

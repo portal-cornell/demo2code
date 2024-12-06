@@ -1,0 +1,5 @@
+"""
+Wash dishes at the sink. All cleaned objects should be placed at the kitchentop.
+Objects to clean
+    - mug_1 at desk_1
+"""

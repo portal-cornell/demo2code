@@ -1,0 +1,51 @@
+objects=['cyan block', 'orange block', 'green block', 'red block', 'brown cylinder', 'red cylinder', 'green cylinder', 'pink cylinder']
+"""
+[Scenario 1]
+State 2:
+'green cylinder' has moved
+
+State 3:
+'red cylinder' is not on top of 'table'
+'red cylinder' has moved
+'red cylinder' is on top of 'green cylinder'
+
+State 4:
+'cyan block' is not on top of 'table'
+'cyan block' has moved
+'cyan block' is on top of 'red cylinder'
+'cyan block' is on top of 'green cylinder'
+
+State 5:
+'orange block' is not on top of 'table'
+'orange block' has moved
+'orange block' is on top of 'cyan block'
+'orange block' is on top of 'red cylinder'
+'orange block' is on top of 'green cylinder'
+
+State 6:
+'green block' has moved
+'green block' is behind 'brown cylinder'
+'brown cylinder' is in front of 'green block'
+
+State 7:
+'red block' is not on top of 'table'
+'red block' has moved
+'red block' is on top of 'green block'
+
+State 8:
+'green block' is not behind 'brown cylinder'
+'brown cylinder' is not on top of 'table'
+'brown cylinder' has moved
+'brown cylinder' is not in front of 'green block'
+'brown cylinder' is on top of 'green block'
+'brown cylinder' is on top of 'red block'
+'brown cylinder' is not behind 'pink cylinder'
+'pink cylinder' is not in front of 'brown cylinder'
+
+State 9:
+'pink cylinder' is not on top of 'table'
+'pink cylinder' has moved
+'pink cylinder' is on top of 'green block'
+'pink cylinder' is on top of 'red block'
+'pink cylinder' is on top of 'brown cylinder'
+"""

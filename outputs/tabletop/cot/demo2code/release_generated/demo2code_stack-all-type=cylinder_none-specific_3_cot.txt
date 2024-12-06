@@ -1,0 +1,22 @@
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the objects ('pink block' is to the right of 'cyan cylinder'). 
+I will summarize the state trajectory into low-level actions.
+The low-level actions are the most compact form, so I should stop summarizing after this. 
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 1], at state 2, the robot moved 'cyan cylinder'.
+* At state 3, the robot picked up and placed 'gray cylinder' on top of 'cyan cylinder'.
+
+==========================summary -> spec==========================
+[[Reasoning:]]
+Because the task is "Stack all cylinders, where enforcing the maximum stack height...", we focus on how high the stacks are.
+
+Based on States 2-3, in the first stack, the cylinders from bottom to top is ['cyan cylinder', 'gray cylinder']. This is 2 cylinders high.
+
+Because there is only 1 stack and the tallest stack is 2 cylinders high, we assume that the maximum height of a stack is 2.
+[[Task Specification:]]
+Stack all cylinders. However, the maximum height of a stack is 2.
+

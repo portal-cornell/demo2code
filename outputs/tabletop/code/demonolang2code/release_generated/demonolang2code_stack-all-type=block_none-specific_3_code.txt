@@ -1,0 +1,2 @@
+put_first_on_second('red block', 'table')
+put_first_on_second('gray block', 'red block')

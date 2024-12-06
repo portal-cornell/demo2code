@@ -1,0 +1,21 @@
+<state-2>
+is_behind:red cylinder,brown cylinder:1
+on_top_of:brown cylinder,table:1
+has_moved:brown cylinder:1
+is_in_front_of:brown cylinder,red cylinder:1
+on_top_of:brown cylinder,yellow cylinder:0
+
+<state-3>
+on_top_of:yellow cylinder,table:0
+has_moved:yellow cylinder:1
+on_top_of:yellow cylinder,cyan block:1
+
+<init-state>
+is_behind:red cylinder,brown cylinder:0
+on_top_of:brown cylinder,table:0
+has_moved:brown cylinder:0
+is_in_front_of:brown cylinder,red cylinder:0
+on_top_of:brown cylinder,yellow cylinder:1
+on_top_of:yellow cylinder,table:1
+has_moved:yellow cylinder:0
+on_top_of:yellow cylinder,cyan block:0

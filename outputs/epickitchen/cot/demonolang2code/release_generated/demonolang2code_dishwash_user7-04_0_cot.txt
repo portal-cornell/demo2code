@@ -1,0 +1,63 @@
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the robot (at(`sink_1`)), objects (is_dirty(`plate_1`)), and taps (is_on(`tap_1`)). 
+I will summarize the state trajectory into low-level actions.
+Low-level actions are not compacted enough yet because low-level actions can still be combined into high-level subtasks. 
+The new trajectory will NOT be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+no
+[[Summarized trajectory:]]
+* In [Scenario 1], at state 2-3, the robot picked up sponge_1. 
+* At state 3-4, the robot soaped fork_1 until it became soapy.
+* At state 4-5, the robot soaped fork_2 until it became soapy.
+* At state 5-6, the robot soaped fork_3 until it became soapy.
+* At state 6-7, the robot turned on tap_1.
+* At state 7-8, the robot rinsed fork_1 until it became clean.
+* At state 8-9, the robot rinsed fork_2 until it became clean.
+* At state 9-10, the robot turned off tap_1 and rinsed fork_3 until it became clean.
+* At state 10-11, the robot placed fork_1, fork_2, and fork_3 on dishrack_1.
+* At state 11-12, the robot moved from near-sink_1 to sink_1 and picked up plate_1.
+* At state 12-13, the robot turned on tap_1, picked up sponge_1, which was foamy.
+* At state 13-14, the robot soaped plate_1 until it became soapy because plate_1 was dirty.
+* At state 14-15, the robot turned on tap_1.
+* At state 15-16, the robot rinsed plate_1 until it became clean and turned off tap_1.
+* At state 16-17, the robot placed plate_1 on dishrack_1.
+
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains low-level actions because the trajectory mentions "picked up", "soaped", "rinsed", etc. 
+I will summarize the low-level action trajectory into high-level subtasks. 
+High-level subtasks are compacted enough because they cannot be combined together without losing important information.
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* At state 2-3, the robot picked up sponge_1.
+* At state 3-5, the robot soaped fork_1, fork_2, and fork_3 until they became soapy.
+* At state 6-9, the robot turned on tap_1 and rinsed fork_1, fork_2, and fork_3 until they became clean. The robot turned off tap_1.
+* At state 10-11, the robot placed fork_1, fork_2, and fork_3 on dishrack_1.
+* At state 11-12, the robot moved from near-sink_1 to sink_1 and picked up plate_1.
+* At state 12-13, the robot turned on tap_1 and picked up sponge_1, which was foamy.
+* At state 13-14, the robot soaped plate_1 until it became soapy because plate_1 was dirty.
+* At state 14-16, the robot turned on tap_1, rinsed plate_1 until it became clean, and turned off tap_1.
+* At state 16-17, the robot placed plate_1 on dishrack_1.
+
+==========================summary -> spec==========================
+[[Reasoning:]]
+* There are 4 dishes that got washed: [fork_1, fork_2, fork_3, plate_1]
+* The list of high level actions that happened in order is: [pick up sponge, soap, rinse, place, move, pick up, soap, rinse, place]
+* The actions [soap, rinse, place] are repeated for each dish, so we can use a loop.
+* Rinsing involves the use of tap water, which is why it is turned on at some point before the rinse cycle, and turned off after.
+[[Task Specification:]]
+Wash objects at a sink. All cleaned objects should be placed on the dishrack.
+Specifically -
+
+Get a list of all objects to wash
+Pick up sponge_1
+For each object in all objects:
+  Soap object
+  Turn on tap_1
+  Rinse object
+  Turn off tap_1
+  Place object on dishrack_1
+

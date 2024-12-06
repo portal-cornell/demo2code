@@ -1,0 +1,9 @@
+<state-2>
+on_top_of:blue block,table:0
+has_moved:blue block:1
+on_top_of:blue block,green block:1
+
+<init-state>
+on_top_of:blue block,table:1
+has_moved:blue block:0
+on_top_of:blue block,green block:0

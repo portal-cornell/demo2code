@@ -1,0 +1,3 @@
+block_names = get_all_obj_names_that_match_type(type_name="block", objects_list=get_obj_names())
+cylinder_names = get_all_obj_names_that_match_type(type_name="cylinder", objects_list=get_obj_names())
+stack_with_height_limit(objects_to_stack=block_names + cylinder_names, height_limit=3)

@@ -1,0 +1,18 @@
+objects = get_all_objects()
+scrub_1 = objects[0]
+forks = objects[1:]
+pick_up(scrub_1)
+for fork in forks:
+    if is_dirty(fork):
+        scrub(fork)
+turn_on("tap_1")
+for fork in forks:
+    rinse(fork)
+place(forks, "dishrack_1")
+move_object("plate_1", "sink_1")
+pick_up("plate_1")
+if is_dirty("plate_1"):
+    scrub("plate_1")
+rinse("plate_1")
+place("plate_1", "dishrack_1")
+turn_off("tap_1")

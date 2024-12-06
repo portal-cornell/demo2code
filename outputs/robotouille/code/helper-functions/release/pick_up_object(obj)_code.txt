@@ -1,0 +1,7 @@
+def pick_up_object(obj):
+    # To pick up an object, the robot needs to not hold anything yet.
+    if is_holding(obj):
+        # Because the robot is already holding obj, picking up must have been successful already
+        return
+    # move_then_pick: first you move to obj's location, then you pick obj up
+    move_then_pick(obj=obj, pick_location=get_obj_location(obj))

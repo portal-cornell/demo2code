@@ -1,0 +1,61 @@
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because it describes the status of objects (is_in_hand, dirty, is_soapy, etc.).
+I will summarize the state trajectory into low-level actions.
+Low-level actions are not compacted enough yet because low-level actions can still be combined into high-level subtasks.
+The new trajectory will NOT be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+no
+[[Summarized trajectory:]]
+* In [Scenario 1], at state 2-3, the robot soaped mezzaluna_1 until it became soapy because mezzaluna_1 was dirty.
+* At state 3-4, the robot placed mezzaluna_1 in sink_2.
+* At state 5-6, the robot placed peeler:potato_1 in sink_1.
+* At state 6-7, the robot soaped peeler:potato_1 until it became soapy.
+* At state 7-8, the robot placed peeler:potato_1 in sink_2.
+* At state 9-10, the robot placed knife_1 in sink_1.
+* At state 10-11, the robot soaped knife_1 until it became soapy.
+* At state 11-12, the robot placed knife_1 in sink_2.
+* At state 13-14, the robot placed board:cutting_1 in sink_1.
+* At state 14-15, the robot soaped board:cutting_1 until it became soapy.
+* At state 15-16, the robot placed board:cutting_1 in sink_2.
+* At state 17-30, the robot turned on tap_1, cleaned board:cutting_1, mezzaluna_1, peeler:potato_1, and knife_1, and placed them in dryingrack_1. The robot turned off tap_1.
+
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains low-level actions because it mentions specific actions performed by the robot, such as "soaped," "placed," "cleaned," etc. 
+I will summarize the low-level action trajectory into high-level subtasks. 
+High-level subtasks are not applicable in this case because the actions are already at a high level and cannot be further summarized.
+The new trajectory is already sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 1], at state 2-4, the robot soaped mezzaluna_1 until it became soapy because mezzaluna_1 was dirty. The robot placed mezzaluna_1 in sink_2.
+* At state 5-8, the robot placed peeler:potato_1 in sink_1. The robot soaped peeler:potato_1 until it became soapy. The robot placed peeler:potato_1 in sink_2.
+* At state 9-12, the robot placed knife_1 in sink_1. The robot soaped knife_1 until it became soapy. The robot placed knife_1 in sink_2.
+* At state 13-16, the robot placed board:cutting_1 in sink_1. The robot soaped board:cutting_1 until it became soapy. The robot placed board:cutting_1 in sink_2.
+* At state 17-30, the robot turned on tap_1, cleaned board:cutting_1, mezzaluna_1, peeler:potato_1, and knife_1, and placed them in dryingrack_1. The robot turned off tap_1.
+
+==========================summary -> spec==========================
+[[Reasoning:]]
+* There are 4 objects that got washed: [mezzaluna_1, peeler:potato_1, knife_1, board:cutting_1]
+* The list of high level actions that happened in order is: [soap, place in sink_2, soap, place in sink_2, soap, place in sink_2, soap, place in sink_2, turn on tap, clean objects, place in dryingrack_1, turn off tap]
+* The actions [soap, place in sink_2] are repeated for each object, so we can use a loop.
+* The objects are placed in sink_1 before soaping, and then placed in sink_2 after soaping.
+* The objects are cleaned one by one after turning on the tap, and then placed in the drying rack.
+* Turning on the tap is done before cleaning the objects, and turning off the tap is done after cleaning the objects.
+[[Task Specification:]]
+Wash objects and place them in a drying rack.
+Specifically -
+
+Get a list of all objects to wash
+For each object in all objects:
+  Soap object
+  Place object in sink_1
+  Soap object
+  Place object in sink_2
+Turn on tap_1
+For each object in all objects:
+  Clean object
+  Place object in dryingrack_1
+Turn off tap_1
+

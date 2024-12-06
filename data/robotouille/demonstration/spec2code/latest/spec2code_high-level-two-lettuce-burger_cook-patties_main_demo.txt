@@ -1,0 +1,14 @@
+```
+"""
+Cook two patties.
+
+Specifically:
+Get a list of all the patties in the kitchen.
+
+For two patties, do: 
+    Decide a patty to cook. 
+    Get a list of all the available stoves in the kitchen.
+    Decide a stove to go to. 
+    Cook that patty at that stove.
+"""
+```

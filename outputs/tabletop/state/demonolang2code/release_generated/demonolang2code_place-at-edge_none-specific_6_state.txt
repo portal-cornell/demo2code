@@ -1,0 +1,9 @@
+<state-2>
+is_behind:blue block,purple block:1
+has_moved:purple block:1
+is_in_front_of:purple block,blue block:1
+
+<init-state>
+is_behind:blue block,purple block:0
+has_moved:purple block:0
+is_in_front_of:purple block,blue block:0

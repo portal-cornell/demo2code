@@ -1,0 +1,10 @@
+objects = get_all_objects()
+for object in objects:
+    bring_objects_to_loc([object], "sink_1")
+    pick_up(object)
+    turn_on("tap_1")
+    clean_with(object, "sponge")
+    rinse(object)
+    turn_off("tap_1")
+    bring_objects_to_loc([object], "kitchentop_1")
+    place(object, "kitchentop_1")

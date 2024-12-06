@@ -1,0 +1,120 @@
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the robot ('robot1' is at 'stove1') and the status of the objects ('patty1' is not at 'stove1'). 
+I will summarize the state trajectory into low-level actions. 
+Low-level actions are not compacted enough yet because low-level actions can still be combined into high-level subtasks. 
+The new trajectory will NOT be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+no
+[[Summarized trajectory:]]
+* In [Scenario 1], at state 2, the robot moved from 'table1' to 'stove1'.
+* At state 3, the robot picked up 'patty1'.
+* At state 4, the robot moved from 'stove1' to 'stove4'.
+* At state 5, the robot placed 'patty1' at location 'stove4'.
+* At state 6-9, the robot had cooked 'patty1'.
+* At state 10, the robot moved from 'stove4' to 'table2'.
+* At state 11, the robot picked up 'lettuce1'.
+* At state 12, the robot moved from 'table2' to 'cutting_board1'.
+* At state 13, the robot placed 'lettuce1' at location 'cutting_board1'.
+* At state 14-16, the robot had cut 'lettuce1'.
+* At state 17, the robot moved from 'cutting_board1' to 'stove4'.
+* At state 18, the robot picked up 'patty1'.
+* At state 19, the robot moved from 'stove4' to 'table3'.
+* At state 20, the robot placed 'patty1' on top of 'bottom_bun1' at location 'table3'.
+* At state 21, the robot moved from 'table3' to 'cutting_board1'.
+* At state 22, the robot picked up 'lettuce1'.
+* At state 23, the robot moved from 'cutting_board1' to 'table3'.
+* At state 24, the robot placed 'lettuce1' on top of 'patty1' at location 'table3'.
+* At state 25, the robot moved from 'table3' to 'table4'.
+* At state 26, the robot picked up 'top_bun1'.
+* At state 27, the robot moved from 'table4' to 'table3'.
+* At state 28, the robot placed 'top_bun1' on top of 'lettuce1' at location 'table3'.
+
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the robot ('robot1' is holding 'patty3') and the status of the objects ('patty3' is not at 'table7'). 
+I will summarize the state trajectory into low-level actions. 
+Low-level actions are not compacted enough yet because low-level actions can still be combined into high-level subtasks. 
+The new trajectory will NOT be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+no
+[[Summarized trajectory:]]
+* In [Scenario 2], at state 2, the robot picked up 'patty3'.
+* At state 3, the robot moved from 'table7' to 'stove3'.
+* At state 4, the robot placed 'patty3' at location 'stove3'.
+* At state 5-8, the robot had cooked 'patty3'.
+* At state 9, the robot moved from 'stove3' to 'cutting_board5'.
+* At state 10, the robot picked up 'lettuce3'.
+* At state 11, the robot moved from 'cutting_board5' to 'cutting_board3'.
+* At state 12, the robot placed 'lettuce3' at location 'cutting_board3'.
+* At state 13-15, the robot had cut 'lettuce3'.
+* At state 16, the robot moved from 'cutting_board3' to 'stove3'.
+* At state 17, the robot picked up 'patty3'.
+* At state 18, the robot moved from 'stove3' to 'table4'.
+* At state 19, the robot placed 'patty3' on top of 'bottom_bun3' at location 'table4'.
+* At state 20, the robot moved from 'table4' to 'cutting_board3'.
+* At state 21, the robot picked up 'lettuce3'.
+* At state 22, the robot moved from 'cutting_board3' to 'table4'.
+* At state 23, the robot placed 'lettuce3' on top of 'patty3' at location 'table4'.
+* At state 24, the robot moved from 'table4' to 'cutting_board4'.
+* At state 25, the robot picked up 'top_bun3'.
+* At state 26, the robot moved from 'cutting_board4' to 'table4'.
+* At state 27, the robot placed 'top_bun3' on top of 'lettuce3' at location 'table4'.
+
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains low-level actions because the trajectory mentions "moved", "picked up", etc. 
+I will summarize the low-level action trajectory into high-level subtasks. 
+High-level subtask trajectory is the most compacted form that cannot be summarized anymore.
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 1], at state 2-9, the subtask is "cook patty". This subtask contains: 1. moving to pick up 'patty1' (state 2-3) 2. moving to place 'patty1' on 'stove4' (state 4-5) 3. cooking 'patty1' until it is cooked (state 6-9)
+* At state 10-16, the subtask is "cut lettuce". This subtask contains: 1. moving to pick up 'lettuce1' (state 11-12) 2. moving to place 'lettuce1' on 'cutting_board1' (state 13) 3. cutting 'lettuce1' until it is cut (state 14-16)
+* At state 17-24, the subtask is "stack lettuce on top of patty". This subtask contains: 1. moving to pick up 'lettuce1' (state 22-23) 2. moving to stack 'lettuce1' on top of 'patty1' (state 24)
+* At state 25-28, the subtask is "stack top bun on top of lettuce". This subtask contains: 1. moving to pick up 'top_bun1' (state 26-27) 2. moving to stack 'top_bun1' on top of 'lettuce1' (state 28)
+
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains low-level actions because the trajectory mentions "picked up", "moved", etc. 
+I will summarize the low-level action trajectory into high-level subtasks. 
+High-level subtask trajectory is the most compacted form that cannot be summarized anymore.
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 2], at state 2-8, the subtask is "cook patty". This subtask contains: 1. picking up 'patty3' (state 2) 2. moving to place 'patty3' on 'stove3' (state 3-4) 3. cooking 'patty3' until it is cooked (state 5-8)
+* At state 9-15, the subtask is "cut lettuce". This subtask contains: 1. moving to pick up 'lettuce3' (state 9-10) 2. moving to place 'lettuce3' on 'cutting_board3' (state 11-12) 3. cutting 'lettuce3' until it is cut (state 13-15)
+* At state 16-23, the subtask is "stack lettuce on top of patty". This subtask contains: 1. moving to pick up 'patty3' (state 16-17) 2. moving to place 'patty3' on top of 'bottom_bun3' (state 18-19) 3. moving to pick up 'lettuce3' (state 20-21) 4. moving to place 'lettuce3' on top of 'patty3' (state 22-23)
+* At state 24-27, the subtask is "stack top bun on top of lettuce". This subtask contains: 1. moving to pick up 'top_bun3' (state 24-25) 2. moving to place 'top_bun3' on top of 'lettuce3' (state 26-27)
+
+==========================summary -> spec==========================
+[[Reasoning:]]
+* In [Scenario 1]'s unique kitchen environment, the subtasks were executed in this order: ['cook patty', 'cut lettuce', 'stack lettuce on top of patty', 'stack top bun on top of lettuce'].
+* In [Scenario 2]'s unique kitchen environment, the subtasks were executed in this order: ['cook patty', 'cut lettuce', 'stack lettuce on top of patty', 'stack top bun on top of lettuce'].
+* Both scenarios are executing the subtasks in the same order.
+* There is no repetition or loop in the subtask ordering for any individual scenario.
+[[Task Specification:]]
+Specifically:
+Get a list of all the patties in the kitchen.
+Get a list of all the lettuces in the kitchen.
+Get a list of all the bottom buns in the kitchen.
+Get a list of all the top buns in the kitchen.
+
+Decide a patty to use.
+Get a list of all the available stoves in the kitchen.
+Decide a stove to go to.
+Cook that patty at that stove.
+
+Decide a lettuce to use.
+Get a list of all the available cutting boards in the kitchen. 
+Decide a cutting board to go to.
+Cut that lettuce at that cutting board.
+
+Decide a lettuce to use.
+Stack the lettuce on top of the patty.
+
+Decide a top bun to use.
+Stack the top bun on top of the lettuce.
+

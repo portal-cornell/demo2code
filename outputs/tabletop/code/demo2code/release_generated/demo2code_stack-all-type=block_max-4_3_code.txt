@@ -1,0 +1,3 @@
+block_names = get_all_obj_names_that_match_type(type_name="block", objects_list=get_obj_names())
+stack_order = ['orange block', 'blue block', 'pink block', 'brown block', 'gray block', 'red block']
+stack_without_height_limit(objects_to_stack=stack_order)

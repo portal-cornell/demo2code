@@ -1,0 +1,80 @@
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the robot ('robot1' is at 'table1') and the status of the objects ('lettuce1' is not at 'table1'). 
+I will summarize the state trajectory into low-level actions. 
+Low-level actions are not compacted enough yet because low-level actions can still be combined into high-level subtasks. 
+The new trajectory will NOT be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+no
+[[Summarized trajectory:]]
+* In [Scenario 1], at state 2, the robot moved from 'table19' to 'table1'.
+* At state 3, the robot picked up 'lettuce1'.
+* At state 4, the robot moved from 'table1' to 'cutting_board1'.
+* At state 5, the robot placed 'lettuce1' at location 'cutting_board1'.
+* At state 6-8, the robot had cut 'lettuce1'.
+* At state 9, the robot moved from 'cutting_board1' to 'table18'.
+* At state 10, the robot picked up 'lettuce2'.
+* At state 11, the robot moved from 'table18' to 'cutting_board2'.
+* At state 12, the robot placed 'lettuce2' at location 'cutting_board2'.
+* At state 13-15, the robot had cut 'lettuce2'.
+
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the robot ('robot1' is at 'table12') and the status of the objects ('lettuce3' is not at 'table12'). 
+I will summarize the state trajectory into low-level actions. 
+Low-level actions are not compacted enough yet because low-level actions can still be combined into high-level subtasks. 
+The new trajectory will NOT be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+no
+[[Summarized trajectory:]]
+* In [Scenario 2], at state 2, the robot moved from 'table7' to 'table12'. 
+* At state 3, the robot picked up 'lettuce3'.
+* At state 4, the robot moved from 'table12' to 'cutting_board3'.
+* At state 5, the robot placed 'lettuce3' at location 'cutting_board3'.
+* At state 6-8, the robot had cut 'lettuce3'.
+* At state 9, the robot moved from 'cutting_board3' to 'table16'.
+* At state 10, the robot picked up 'lettuce4'.
+* At state 11, the robot moved from 'table16' to 'cutting_board4'.
+* At state 12, the robot placed 'lettuce4' at location 'cutting_board4'.
+* At state 13-15, the robot had cut 'lettuce4'.
+
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains low-level actions because the trajectory mentions "moved", "picked up", etc. 
+I will summarize the low-level action trajectory into high-level subtasks. 
+High-level subtask trajectory is the most compacted form that cannot be summarized anymore.
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 1], at state 2-8, the subtask is "cut lettuce". This subtask contains: 1. moving to pick up 'lettuce1' (state 2-3) 2. moving to place 'lettuce1' on 'cutting_board1' (state 4-5) 3. cutting 'lettuce1' until it is cut (state 6-8)
+* At state 9-15, the subtask is "cut lettuce". This subtask contains: 1. moving to pick up 'lettuce2' (state 9-10) 2. moving to place 'lettuce2' on 'cutting_board2' (state 11-12) 3. cutting 'lettuce2' until it is cut (state 13-15)
+
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains low-level actions because the trajectory mentions "moved", "picked up", etc. 
+I will summarize the low-level action trajectory into high-level subtasks. 
+High-level subtask trajectory is the most compacted form that cannot be summarized anymore.
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 2], at state 2-8, the subtask is "cut lettuce". This subtask contains: 1. moving to pick up 'lettuce3' (state 2-3) 2. moving to place 'lettuce3' on 'cutting_board3' (state 4-5) 3. cutting 'lettuce3' until it is cut (state 6-8)
+* At state 9-15, the subtask is "cut lettuce". This subtask contains: 1. moving to pick up 'lettuce4' (state 9-10) 2. moving to place 'lettuce4' on 'cutting_board4' (state 11-12) 3. cutting 'lettuce4' until it is cut (state 13-15)
+
+==========================summary -> spec==========================
+[[Reasoning:]]
+* In [Scenario 1]'s unique kitchen environment, the subtasks were executed in this order: ['cut lettuce', 'cut lettuce'].
+* In [Scenario 2]'s unique kitchen environment, the subtasks were executed in this order: ['cut lettuce', 'cut lettuce'].
+* Both scenarios are executing the subtasks in the same order.
+* In both scenarios, we see that the subset ['cut lettuce'] got repeated 2 times consecutively, so we can use a for-loop in our specification. 
+[[Task Specification:]]
+Specifically:
+Get a list of all the lettuces in the kitchen.
+Get a list of all the available cutting boards in the kitchen.
+
+For each lettuce, do:
+  Decide a lettuce to use.
+  Decide a cutting board to go to.
+  Cut that lettuce at that cutting board.
+

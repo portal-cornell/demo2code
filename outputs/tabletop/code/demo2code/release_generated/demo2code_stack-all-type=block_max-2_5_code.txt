@@ -1,0 +1,2 @@
+blocks_to_stack = ['gray block', 'yellow block']
+stack_without_height_limit(objects_to_stack=blocks_to_stack)

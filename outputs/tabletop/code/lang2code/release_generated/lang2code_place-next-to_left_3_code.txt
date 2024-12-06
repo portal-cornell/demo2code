@@ -1,0 +1,4 @@
+position_relation = np.random.choice(ALL_POSITION_RELATION_LIST)
+# must use parse position to get relative position
+location_pos = parse_position(f'{position_relation} the brown block')
+put_first_on_second('brown cylinder', location_pos)

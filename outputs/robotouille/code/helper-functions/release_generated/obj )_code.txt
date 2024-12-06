@@ -1,0 +1,4 @@
+def move_then_pick_up(obj, loc):
+    if get_curr_location() != loc:
+        move(get_curr_location(), loc)
+    pick_up(obj, loc)

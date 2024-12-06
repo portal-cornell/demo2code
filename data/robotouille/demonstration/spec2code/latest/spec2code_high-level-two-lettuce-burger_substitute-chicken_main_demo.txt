@@ -1,0 +1,32 @@
+```
+"""
+Make two burgers.
+You should substitute chicken for the patty.
+The lettuce should be stacked on the chicken.
+
+Specifically:
+Get a list of all the chicken in the kitchen.
+Get a list of all the bottom buns in the kitchen.
+Get a list of all the lettuce in the kitchen.
+Get a list of all the top buns in the kitchen.
+
+Repeat the following twice: 
+    Decide a chicken to cook. 
+    Get a list of all the available stoves in the kitchen.
+    Decide a stove to go to. 
+    Cook that chicken at that stove.
+
+    Decide a bottom bun to use.
+    Stack the chicken to cook on top of the bottom bun to use. 
+
+    Decide a lettuce to cut. 
+    Get a list of all the available cutting boards in the kitchen.
+    Decide a cutting board to go to.
+    Cut that lettuce at that cutting board. 
+
+    Stack the lettuce to cut on top of the chicken to cook.
+
+    Decide a top bun to use. 
+    Stack the top bun to use on top of the lettuce to cut.
+"""
+```

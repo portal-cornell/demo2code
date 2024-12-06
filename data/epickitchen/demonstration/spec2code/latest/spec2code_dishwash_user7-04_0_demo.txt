@@ -1,0 +1,18 @@
+"""
+Wash dishes at the sink. All cleaned objects should be placed at the dishrack.
+Specifically -
+Get a list of all objects to wash
+Pick up scrub_1
+For each fork in forks:
+        Scrub fork if fork is dirty
+Turn on tap_1
+For each fork in forks:
+        Rinse fork till clean
+Place forks on dishrack_1
+Move plate_1 from near-sink_1 to sink_1
+Pick up plate_1
+Scrub plate_1 if plate_1 is dirty
+Rinse plate_1 till clean
+Place plate_1 on dishrack_1
+Turn off tap_1
+"""

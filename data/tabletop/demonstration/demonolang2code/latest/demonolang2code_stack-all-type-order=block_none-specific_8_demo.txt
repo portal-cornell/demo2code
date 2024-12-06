@@ -1,0 +1,47 @@
+objects=['brown block', 'pink block', 'red block', 'green block', 'pink cylinder', 'blue cylinder', 'purple cylinder']
+"""
+Initial State (State 1):
+'brown block' has not moved
+'pink block' is on top of 'table'
+'pink block' has not moved
+'pink block' is not on top of 'brown block'
+'pink block' is to the left of 'pink cylinder'
+'red block' is on top of 'table'
+'red block' has not moved
+'red block' is not on top of 'brown block'
+'red block' is not on top of 'pink block'
+'green block' is on top of 'table'
+'green block' has not moved
+'green block' is not on top of 'brown block'
+'green block' is not on top of 'pink block'
+'green block' is not on top of 'red block'
+'pink cylinder' is to the right of 'pink block'
+
+[Scenario 1]
+State 2:
+'brown block' has moved
+'brown block' is to the left of 'pink block'
+'pink block' is to the right of 'brown block'
+
+State 3:
+'brown block' is not to the left of 'pink block'
+'pink block' is not on top of 'table'
+'pink block' has moved
+'pink block' is not to the right of 'brown block'
+'pink block' is on top of 'brown block'
+'pink block' is not to the left of 'pink cylinder'
+'pink cylinder' is not to the right of 'pink block'
+
+State 4:
+'red block' is not on top of 'table'
+'red block' has moved
+'red block' is on top of 'brown block'
+'red block' is on top of 'pink block'
+
+State 5:
+'green block' is not on top of 'table'
+'green block' has moved
+'green block' is on top of 'brown block'
+'green block' is on top of 'pink block'
+'green block' is on top of 'red block'
+"""

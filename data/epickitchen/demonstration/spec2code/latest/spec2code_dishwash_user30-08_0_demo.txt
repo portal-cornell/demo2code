@@ -1,0 +1,18 @@
+"""
+Wash objects at the sink. All cleaned objects should be placed in the drying rack.
+Specifically -
+Get a list of all objects to wash
+Bring all objects to sink_1
+Turn on tap_1 and place scrub_1 near sink_1
+Pick up scrub_1 and make washing_bowl_1 foamy
+Turn off tap_1
+For each object in all objects:
+    Go to sink_1
+    Turn off tap_1
+    Pick up object
+    Turn on tap_1
+    Rinse object till clean
+    Turn off tap_1
+    Place object on drying_rack_1
+Go from drying_rack_1 to sink_1 and turn off tap_1
+"""

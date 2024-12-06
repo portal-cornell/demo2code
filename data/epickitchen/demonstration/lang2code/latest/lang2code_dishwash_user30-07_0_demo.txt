@@ -1,0 +1,6 @@
+"""
+Wash objects at the sink. All cleaned objects should be placed on the counter.
+Objects to clean
+    - mug_1 at counter_1
+    - jug_1 at counter_1
+"""

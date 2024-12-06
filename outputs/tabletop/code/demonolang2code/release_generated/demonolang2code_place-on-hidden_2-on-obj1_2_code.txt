@@ -1,0 +1,3 @@
+objects_to_place_on_table = ['cyan block', 'red block', 'pink cylinder']
+for item in objects_to_place_on_table:
+  put_first_on_second(item, "table")

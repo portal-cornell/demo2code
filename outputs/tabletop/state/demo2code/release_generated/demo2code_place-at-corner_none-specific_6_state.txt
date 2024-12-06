@@ -1,0 +1,5 @@
+<state-2>
+is_at:yellow cylinder,bottom right corner:1
+
+<init-state>
+is_at:yellow cylinder,bottom right corner:0

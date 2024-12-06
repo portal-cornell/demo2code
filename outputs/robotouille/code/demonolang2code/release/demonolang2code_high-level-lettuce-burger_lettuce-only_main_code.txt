@@ -1,0 +1,30 @@
+# Move from 'table1' to 'table2'.
+move_to_location(from_location='table1', to_location='table2')
+
+# Get a list of all the lettuces in the kitchen.
+lettuces = get_all_obj_names_that_match_type('lettuce')
+# Get a list of all the bottom buns in the kitchen.
+bottom_buns = get_all_obj_names_that_match_type('bottom_bun')
+# Get a list of all the top buns in the kitchen.
+top_buns = get_all_obj_names_that_match_type('top_bun')
+
+# Decide a lettuce to use.
+lettuce_to_use = lettuces[0]
+# Get a list of all the available cutting boards in the kitchen. 
+cutting_boards = get_all_location_names_that_match_type('cutting_board')
+# Decide a cutting board to go to.
+cutting_board_to_cut_at = cutting_boards[0]
+# Cut that lettuce at that cutting board.
+cut_object_at_location(obj=lettuce_to_use, location=cutting_board_to_cut_at)
+
+# Decide a bottom bun to use.
+bottom_bun_to_use = bottom_buns[0]
+# Stack the lettuce on top of the bottom bun.
+# obj1 should be the lettuce, obj2 should be the bottom bun.
+stack_obj1_on_obj2(obj1=lettuce_to_use, obj2=bottom_bun_to_use)
+
+# Decide a top bun to use.
+top_bun_to_use = top_buns[0]
+# Stack that top bun on top of the lettuce.
+# obj1 should be the top bun, obj2 should be the lettuce.
+stack_obj1_on_obj2(obj1=top_bun_to_use, obj2=lettuce_to_use)

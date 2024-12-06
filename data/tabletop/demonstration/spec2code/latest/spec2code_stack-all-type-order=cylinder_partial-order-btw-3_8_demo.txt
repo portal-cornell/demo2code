@@ -1,0 +1,4 @@
+objects=['purple block', 'red block', 'brown cylinder', 'red cylinder', 'purple cylinder', 'orange cylinder']
+"""
+Stack all cylinders into one stack. Make sure that red cylinder is always directly on top of brown cylinder, and brown cylinder is always directly on top of purple cylinder.
+"""

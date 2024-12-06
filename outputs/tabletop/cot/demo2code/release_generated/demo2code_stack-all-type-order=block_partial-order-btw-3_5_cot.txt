@@ -1,0 +1,39 @@
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the objects ('gray block' has moved). 
+I will summarize the state trajectory into low-level actions.
+The low-level actions are the most compact form, so I should stop summarizing after this. 
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 1], at state 2, the robot moved 'gray block'.
+* At state 3, the robot picked up and placed 'orange block' on top of 'gray block'. 
+* At state 4, the robot picked up and placed 'pink block' on top of 'orange block'. 
+* At state 5, the robot picked up and placed 'cyan block' on top of 'pink block'.
+
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the objects ('cyan block' has moved). 
+I will summarize the state trajectory into low-level actions.
+The low-level actions are the most compact form, so I should stop summarizing after this. 
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 2], at state 2, the robot moved 'cyan block'.
+* At state 3, the robot picked up and placed 'gray block' on top of 'cyan block'. 
+* At state 4, the robot picked up and placed 'orange block' on top of 'gray block'. 
+* At state 5, the robot picked up and placed 'pink block' on top of 'orange block'.
+
+==========================summary -> spec==========================
+[[Reasoning:]]
+Because the task is "Stack all blocks into one stack, while enforcing the order...", we focus on whether there is any ordering requirement.
+
+In [Scenario 1], based on States 2-5, in the first stack, the blocks from bottom to top is ['gray block', 'orange block', 'pink block', 'cyan block'].
+In [Scenario 2], based on States 2-5, in the first stack, the blocks from bottom to top is ['cyan block', 'gray block', 'orange block', 'pink block'].
+
+Between the order of blocks in these two scenarios, the ordering that stays the same is ['gray block', 'orange block', 'pink block'].
+[[Task Specification:]]
+Stack all blocks into one stack. Also make sure that the stacking enforces the bottom to top order between these blocks: ['gray block', 'orange block', 'pink block'].
+

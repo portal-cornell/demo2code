@@ -1,0 +1,3 @@
+put_first_on_second('gray block', 'table')
+put_first_on_second('yellow block', 'table')
+put_first_on_second('blue block', 'red cylinder')

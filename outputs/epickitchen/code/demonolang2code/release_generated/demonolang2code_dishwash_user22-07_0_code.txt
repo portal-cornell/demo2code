@@ -1,0 +1,11 @@
+objects = get_all_objects()
+for object in objects:
+  soap(object)
+  place(object, "sink_1")
+  soap(object)
+  place(object, "sink_2")
+turn_on("tap_1")
+for object in objects:
+  clean_with(object, "sponge")
+  place(object, "dryingrack_1")
+turn_off("tap_1")

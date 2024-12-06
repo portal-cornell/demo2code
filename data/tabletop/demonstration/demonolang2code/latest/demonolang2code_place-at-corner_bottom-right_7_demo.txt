@@ -1,0 +1,7 @@
+objects=['red block', 'pink cylinder']
+"""
+[Scenario 1]
+State 2:
+'red block' has moved
+'red block' is at 'bottom right corner'
+"""

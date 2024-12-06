@@ -1,0 +1,6 @@
+# First, move the gray block on top of the yellow cylinder
+put_first_on_second('gray block', 'yellow cylinder')
+# Then, move the orange block on top of the yellow cylinder
+put_first_on_second('orange block', 'yellow cylinder')
+# Finally, move the blue cylinder on top of the yellow cylinder
+put_first_on_second('blue cylinder', 'yellow cylinder')

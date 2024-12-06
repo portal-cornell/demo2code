@@ -1,0 +1,5 @@
+"""
+Make a burger.
+You should cook or cut the ingredients first before stacking anything.
+The patty should be stacked on the lettuce.
+"""

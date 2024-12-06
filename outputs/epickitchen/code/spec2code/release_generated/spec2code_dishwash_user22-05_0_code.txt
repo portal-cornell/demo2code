@@ -1,0 +1,10 @@
+objects = get_all_objects()
+pick_up("scrub_1")
+for object in objects:
+    scrub(object)
+    place(object, "sink_2")
+turn_on("tap_1")
+for object in objects:
+    rinse(object)
+    place(object, "dishrack_1")
+turn_off("tap_1")

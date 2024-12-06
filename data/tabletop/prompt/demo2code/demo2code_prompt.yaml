@@ -1,0 +1,606 @@
+prompt_version: release
+stage1:
+  recursive_summarization:
+    main: |
+      You are a helpful summarizer that recursively summarizes a trajectory into a more and more compacted form.
+      <end_of_system_message>
+      You are given a trajectory. Your goal is to summarize the trajectory into a more compacted form and then determine whether the state trajectory is sufficiently summarized. 
+
+      You must respond using the following form (you must generate [[end of response]] at the very end):
+      [[Reasoning:]]
+      You should first identify what type of trajectory this is. Then, you should determine what type you will summarize the trajectory into. Finally, you should determine whether the new type of trajectory is sufficiently summarized or not. 
+      [[Is the new trajectory sufficiently summarized? (yes/no):]]
+      You should only respond using either "yes" or "no", and nothing else. 
+      [[Summarized trajectory:]]
+      You should actually summarize the input trajectory and output it here. 
+      [[end of response]]
+
+      You must follow these rules when you are summarizing a trajectory.
+      Rules:
+      * You must slowly summarize the trajectory from one type to another following this order: a state trajectory –> a low-level action trajectory.
+      * A low-level action trajectory is represented as an unordered list. Each line in the unordered list should only contain one low-level action. 
+      * The low-level actions must be one of the following: "move <item1>", "picked up and placed <item1> <relative_position_relation> <item2>", "picked up and placed <item1> at <loc1>", "picked up and placed <item1> on top of 'table'", "picked up and placed <item1> on top of <item2>". You should never define new low-level actions. 
+    examples:
+      - |
+        [[Input Trajectory:]]
+        [Scenario 1]
+        Place the green cylinder next to the yellow cylinder.
+
+        State 2:
+        'yellow cylinder' is to the right of 'green cylinder'
+        'green cylinder' has moved
+        'green cylinder' is to the left of 'yellow cylinder'
+        <end_of_example_user_query>
+        [[Reasoning:]]
+        The input trajectory contains state predicates because the trajectory talks about the status of the objects ('yellow cylinder' is to the right of 'green cylinder'). 
+        I will summarize the state trajectory into low-level actions.
+        The low-level actions are the most compact form, so I should stop summarizing after this. 
+        The new trajectory will be sufficiently summarized.
+        [[Is the new trajectory sufficiently summarized? (yes/no):]]
+        yes
+        [[Summarized trajectory:]]
+        * In [Scenario 1], at state 2, the robot picked up and placed 'green cylinder' to the left of 'yellow cylinder'.
+        [[end of response]]
+      - |
+        [[Input Trajectory:]]
+        [Scenario 1]
+        Place the purple cylinder next to the orange block.
+
+        State 2:
+        'orange block' is in front of 'purple cylinder'
+        'purple cylinder' has moved
+        'purple cylinder' is at 'top edge'
+        'purple cylinder' is behind 'orange block'
+        <end_of_example_user_query>
+        [[Reasoning:]]
+        The input trajectory contains state predicates because the trajectory talks about the status of the objects ('orange block' is in front of 'purple cylinder'). 
+        I will summarize the state trajectory into low-level actions.
+        The low-level actions are the most compact form, so I should stop summarizing after this. 
+        The new trajectory will be sufficiently summarized.
+        [[Is the new trajectory sufficiently summarized? (yes/no):]]
+        yes
+        [[Summarized trajectory:]]
+        * In [Scenario 1], at state 2, the robot picked up and placed 'purple cylinder' behind 'orange block'.
+        [[end of response]]
+      - |
+        [[Input Trajectory:]]
+        [Scenario 2]
+        Place the blue block at the corner.
+
+        State 2:
+        'blue block' has moved
+        'blue block' is at 'top right corner'
+        <end_of_example_user_query>
+        [[Reasoning:]]
+        The input trajectory contains state predicates because the trajectory talks about the status of the objects ('blue block' has moved). 
+        I will summarize the state trajectory into low-level actions.
+        The low-level actions are the most compact form, so I should stop summarizing after this. 
+        The new trajectory will be sufficiently summarized.
+        [[Is the new trajectory sufficiently summarized? (yes/no):]]
+        yes
+        [[Summarized trajectory:]]
+        * In [Scenario 1], at state 2, the robot picked up and placed 'blue block' at 'top right corner'.
+        [[end of response]]
+      - |
+        [[Input Trajectory:]]
+        [Scenario 1]
+        Place the cyan block on the blue block.
+
+        State 2:
+        'orange cylinder' is on top of 'table'
+        'orange cylinder' has moved
+        'orange cylinder' is not on top of 'red block'
+        'orange cylinder' is not on top of 'cyan block'
+        'orange cylinder' is not on top of 'yellow block'
+
+        State 3:
+        'yellow block' is on top of 'table'
+        'yellow block' has moved
+        'yellow block' is not on top of 'red block'
+        'yellow block' is not on top of 'cyan block'
+
+        State 4:
+        'red block' is on top of 'table'
+        'red block' has moved
+        'red block' is not on top of 'cyan block'
+        'red block' is to the right of 'orange cylinder'
+        'orange cylinder' is to the left of 'red block'
+
+        State 5:
+        'cyan block' is not on top of 'table'
+        'cyan block' has moved
+        'cyan block' is on top of 'blue block'
+        <end_of_example_user_query>
+        [[Reasoning:]]
+        The input trajectory contains state predicates because the trajectory talks about the status of the objects ('orange cylinder' is on top of 'table'). 
+        I will summarize the state trajectory into low-level actions.
+        The low-level actions are the most compact form, so I should stop summarizing after this. 
+        The new trajectory will be sufficiently summarized.
+        [[Is the new trajectory sufficiently summarized? (yes/no):]]
+        yes
+        [[Summarized trajectory:]]
+        * In [Scenario 1], at state 2, the robot picked up and placed the 'orange cylinder' on top of 'table'. 
+        * At state 3, the robot picked up and placed 'yellow block' on top of 'table'. 
+        * At state 4, the robot picked up and placed 'red block' on top of 'table'.
+        * At state 5, the robot picked up and placed 'cyan block' on top of 'blue block'.
+        [[end of response]]
+      - |
+        [[Input Trajectory:]]
+        [Scenario 1]
+        Stack all blocks, where enfocing the maximum stack height if there is a requirement.
+
+        State 2:
+        'orange block' has moved
+        'orange block' is not behind 'cyan cylinder'
+        'cyan cylinder' is not in front of 'orange block'
+
+        State 3:
+        'blue block' is not on top of 'table'
+        'blue block' has moved
+        'blue block' is on top of 'orange block'
+
+        State 4:
+        'brown block' is not on top of 'table'
+        'brown block' has moved
+        'brown block' is on top of 'orange block'
+        'brown block' is on top of 'blue block'
+
+        State 5:
+        'yellow block' has moved
+        'yellow block' is behind 'cyan cylinder'
+        'cyan cylinder' is in front of 'yellow block'
+
+        State 6:
+        'gray block' is not on top of 'table'
+        'gray block' has moved
+        'gray block' is on top of 'yellow block'
+        <end_of_example_user_query>
+        [[Reasoning:]]
+        The input trajectory contains state predicates because the trajectory talks about the status of the objects ('orange block' has moved). 
+        I will summarize the state trajectory into low-level actions.
+        The low-level actions are the most compact form, so I should stop summarizing after this. 
+        The new trajectory will be sufficiently summarized.
+        [[Is the new trajectory sufficiently summarized? (yes/no):]]
+        yes
+        [[Summarized trajectory:]]
+        * In [Scenario 1], at state 2, the robot moved 'orange block'.
+        * At state 3, the robot picked up and placed 'blue block' on top of 'orange block'. 
+        * At state 4, the robot picked up and placed 'brown block' on top of 'blue block'.
+        * At state 5, the robot moved 'yellow block'. 
+        * At state 6, the robot picked up and placed 'gray block' on top of 'yellow block'.
+        [[end of response]]
+      - |
+        [[Input Trajectory:]]
+        [Scenario 2]
+        Stack all blocks into one stack, while enforcing the order between blocks if there is a requirement.
+
+        State 2:
+        'blue block' has moved
+
+        State 3:
+        'red block' is not on top of 'table'
+        'red block' has moved
+        'red block' is on top of 'blue block'
+        'red block' is not to the right of 'red cylinder'
+        'red cylinder' is not to the left of 'red block'
+
+        State 4:
+        'yellow block' is not on top of 'table'
+        'yellow block' has moved
+        'yellow block' is on top of 'red block'
+        'yellow block' is on top of 'blue block'
+
+        State 5:
+        'cyan block' is not on top of 'table'
+        'cyan block' has moved
+        'cyan block' is on top of 'yellow block'
+        'cyan block' is on top of 'red block'
+        'cyan block' is on top of 'blue block'
+        <end_of_example_user_query>
+        [[Reasoning:]]
+        The input trajectory contains state predicates because the trajectory talks about the status of the objects ('pink block' has moved). 
+        I will summarize the state trajectory into low-level actions.
+        The low-level actions are the most compact form, so I should stop summarizing after this. 
+        The new trajectory will be sufficiently summarized.
+        [[Is the new trajectory sufficiently summarized? (yes/no):]]
+        yes
+        [[Summarized trajectory:]]
+        * In [Scenario 2], at state 2, the robot moved 'blue block'.
+        * At state 3, the robot picked up and placed 'red block' on top of 'blue block'. 
+        * At state 4, the robot picked up and placed 'yellow block' on top of 'red block'. 
+        * At state 5, the robot picked up and placed 'cyan block' on top of 'yellow block'.
+        [[end of response]]
+      - |
+        [[Input Trajectory:]]
+        [Scenario 1]
+        Stack all objects into two stacks, and objects may need to be categorized in the stacks.
+
+        State 2:
+        'brown block' is to the left of 'brown cylinder'
+        'brown cylinder' has moved
+        'brown cylinder' is to the right of 'brown block'
+        'brown cylinder' is to the left of 'blue cylinder'
+        'blue cylinder' is to the right of 'brown cylinder'
+
+        State 3:
+        'orange block' is not on top of 'table'
+        'orange block' has moved
+        'orange block' is on top of 'brown cylinder'
+
+        State 4:
+        'yellow block' is not on top of 'table'
+        'yellow block' has moved
+        'yellow block' is on top of 'orange block'
+        'yellow block' is on top of 'brown cylinder'
+
+        State 5:
+        'pink cylinder' is not on top of 'table'
+        'pink cylinder' has moved
+        'pink cylinder' is on top of 'yellow block'
+        'pink cylinder' is on top of 'orange block'
+        'pink cylinder' is on top of 'brown cylinder'
+
+        State 6:
+        'blue block' has moved
+
+        State 7:
+        'brown cylinder' is not to the left of 'blue cylinder'
+        'blue cylinder' is not on top of 'table'
+        'blue cylinder' has moved
+        'blue cylinder' is on top of 'blue block'
+        'blue cylinder' is not to the right of 'brown cylinder'
+
+        State 8:
+        'orange cylinder' is not on top of 'table'
+        'orange cylinder' has moved
+        'orange cylinder' is on top of 'blue block'
+        'orange cylinder' is on top of 'blue cylinder'
+
+        State 9:
+        'brown block' is not on top of 'table'
+        'brown block' has moved
+        'brown block' is on top of 'blue block'
+        'brown block' is not to the left of 'brown cylinder'
+        'brown block' is on top of 'orange cylinder'
+        'brown block' is on top of 'blue cylinder'
+        'brown cylinder' is not to the right of 'brown block'
+        <end_of_example_user_query>
+        [[Reasoning:]]
+        The input trajectory contains state predicates because the trajectory talks about the status of the objects ('brown block' is to the left of 'brown cylinder'). 
+        I will summarize the state trajectory into low-level actions.
+        The low-level actions are the most compact form, so I should stop summarizing after this. 
+        The new trajectory will be sufficiently summarized.
+        [[Is the new trajectory sufficiently summarized? (yes/no):]]
+        yes
+        [[Summarized trajectory:]]
+        * In [Scenario 1], at state 2, the robot moved 'brown cylinder'.
+        * At state 3, the robot picked up and placed 'orange block' on top of 'brown cylinder'. 
+        * At state 4, the robot picked up and placed 'yellow block' on top of 'orange block'.
+        * At state 5, the robot picked up and placed 'pink cylinder' on top of 'yellow block'.
+        * At state 6, the robot moved 'blue block'.
+        * At state 7, the robot picked up and placed 'blue cylinder' on top of 'blue block'. 
+        * At state 8, the robot picked up and placed 'orange cylinder' on top of 'blue cylinder'. 
+        * At state 9, the robot picked up and placed 'brown block' on top of 'orange cylinder'. 
+        [[end of response]]
+  summary_2_spec:
+    main: |
+      You are a helpful assistant who analyzes the trajectories and summarizes them into a concise pseudocode-style task specification. 
+      <end_of_system_message>
+      You are given (1) a high-level goal and (2) one or more trajectories where each one represents a different scenario. Your goal is to summarize these trajectories into a compact task specification, written in a pseudocode style. 
+
+      You must respond using the following format (you must generate [[end of response]] at the very end): 
+      [[Reasoning:]]
+      You should first list out the order of the high-level subtask trajectories in all scenarios. Then, you should consider if certain sections of the subtasks are repeated in the scenario and can be represented by a loop. Two scenarios having exactly the same list does not mean that there is a loop. A loop only exists among subtasks in one individual scenario. 
+      Overall, your task specification should work for all scenarios. You should make sure that the task specification matches the subtasks ordering across all scenarios. You should also make sure that the task specification uses loops when there is any repetition. 
+      [[Task Specification:]]
+      You should first state the high-level goal. Then, you should say "Specifically:" before outputting the pseudocode-style task specification.
+      [[end of response]]
+
+      You must follow these rules when you are writing the task specifications. 
+      * You must write the task specifications in pseudocode style. You should not write the task specification as a list. You cannot number any line.
+    examples:
+      - |
+        [[High-Level Goal:]]
+        Place the green cylinder next to the yellow cylinder.
+        [[Trajectories:]]
+        * In [Scenario 1], at state 2, the robot picked up and placed 'green cylinder' to the left of 'yellow cylinder'.
+        <end_of_example_user_query>
+        [[Reasoning:]]
+        With only 1 scenario, we assume that the 'green cylinder' must always be to the left of 'yellow cylinder'. 
+        [[Task Specification:]]
+        Place the green cylinder to the left of the yellow cylinder.
+        [[end of response]]
+      - |
+        [[High-Level Goal:]]
+        Place the purple cylinder next to the orange block.
+        [[Trajectories:]]
+        * In [Scenario 1], at state 2, the robot picked up and placed the 'purple cylinder' behind 'orange block'.
+        * In [Scenario 2], at state 2, the robot picked up and placed the 'purple cylinder' in front of 'orange block'.
+        <end_of_example_user_query>
+        [[Reasoning:]]
+        Because two scenarios have two different relative positions between 'purple cylinder' and 'orange block', we assume that the 'purple cylinder' can be anywhere next to 'orange block'.
+        [[Task Specification:]]
+        Place the purple cylinder at anywhere next to the orange block.
+        [[end of response]]
+      - |
+        [[High-Level Goal:]]
+        Place the blue block at the corner.
+        [[Trajectories:]]
+        * In [Scenario 1], at state 2, the robot picked up and placed the 'blue block' at 'bottom right corner'.
+        * In [Scenario 2], at state 2, the robot picked up and placed the 'blue block' at 'top right corner'
+        <end_of_example_user_query>
+        [[Reasoning:]]
+        Because two scenarios have two corners ('bottom right corner', 'top right corner'), we assume that the 'blue block' can be at any random corner. 
+        [[Task Specification:]]
+        Place the blue block at any random corner.
+        [[end of response]]
+      - |
+        [[High-Level Goal:]]
+        Place the cyan block on the blue block.
+        [[Trajectories:]]
+        * In [Scenario 1], at state 2, the robot picked up and placed the 'orange cylinder' on top of 'table'. 
+        * At state 3, the robot picked up and placed 'yellow block' on top of 'table'. 
+        * At state 4, the robot picked up and placed 'red block' on top of 'table'.
+        * At state 5, the robot picked up and placed 'cyan block' on top of 'blue block'.
+        <end_of_example_user_query>
+        [[Reasoning:]]
+        Although the goal is to place "cyan block" on the "blue block", the trajectories show that it needs to move other blocks ('orange cylinder', 'yellow block', 'red block') before finally placing 'cyan block' on top of 'blue block'. 
+        [[Task Specification:]]
+        1. place the orange cylinder on the table
+        2. place the yellow block on the table
+        3. place the red block on the table
+        4. place the cyan block on the blue block
+        [[end of response]]
+      - |
+        [[High-Level Goal:]]
+        Stack all blocks, where enforcing the maximum stack height if there is a requirement.
+        [[Trajectories:]]
+        * In [Scenario 1], at state 2, the robot moved 'orange block'.
+        * At state 3, the robot picked up and placed 'blue block' on top of 'orange block'. 
+        * At state 4, the robot picked up and placed 'brown block' on top of 'blue block'.
+        * At state 5, the robot moved 'yellow block'. 
+        * At state 6, the robot picked up and placed 'gray block' on top of 'yellow block'.
+        <end_of_example_user_query>
+        [[Reasoning:]]
+        Because the task is "Stack all blocks, where enfocing the maximum stack height...", we focus how high the stacks are.
+
+        Based on States 2-4, in the first stack, the blocks from bottom to top is ['orange block', 'blue block', 'brown block']. This is 3 blocks high.
+        Based on States 5-6, in the second stack, the blocks from bottom to top is ['yellow block', 'gray block']. This is 2 blocks high.
+
+        Because there are 2 stacks and the tallest stack is 3 block high, we assume that each stack needs to be at most 3 blocks high.
+        [[Task Specification:]]
+        Stack all blocks. However, the maximum height of a stack is 3.
+        [[end of response]]
+      - |
+        [[High-Level Goal:]]
+        Stack all blocks into one stack, while enforcing the order between blocks if there is a requirement.
+        [[Trajectories:]]
+        * In [Scenario 1], at state 2, the robot moved 'red block'.
+        * At state 3, the robot picked up and placed 'yellow block' on top of 'red block'. 
+        * At state 4, the robot picked up and placed 'cyan block' on top of 'yellow block'.
+        * At state 5, the robot picked up and placed 'blue block' on top of 'cyan block'.
+        * In [Scenario 2], at state 2, the robot moved 'blue block'.
+        * At state 3, the robot picked up and placed 'red block' on top of 'blue block'. 
+        * At state 4, the robot picked up and placed 'yellow block' on top of 'red block'. 
+        * At state 5, the robot picked up and placed 'cyan block' on top of 'yellow block'.
+        <end_of_example_user_query>
+        [[Reasoning:]]
+        Because the task is "Stack all blocks, while enforcing the order...", we focus on whether there is any ordering requirement.
+
+        In [Scenario 1], based on States 2-5, in the first stack, the blocks from bottom to top is ['red block', 'yellow block', 'cyan block', 'blue block'].
+        In [Scenario 2], based on States 2-5, in the first stack, the blocks from bottom to top is ['blue block', 'red block', 'yellow block', 'cyan block'].
+
+        Between the order of blocks in these two scenarios, the ordering that stays the same is ['red block', 'yellow block', 'cyan block'].
+        [[Task Specification:]]
+        Stack all blocks into one stack. Also make sure that the stacking enforces the bottom to top order between these objects: ['red block', 'yellow block', 'cyan block'].
+        [[end of response]]
+      - |
+        [[High-Level Goal:]]
+        Stack all objects into two stacks, and objects may need to be categorized in the stacks.
+        [[Trajectories:]]
+        * In [Scenario 1], at state 2, the robot moved 'brown cylinder'.
+        * At state 3, the robot picked up and placed 'orange block' on top of 'brown cylinder'. 
+        * At state 4, the robot picked up and placed 'yellow block' on top of 'orange block'.
+        * At state 5, the robot picked up and placed 'pink cylinder' on top of 'yellow block'.
+        * At state 6, the robot moved 'blue block'.
+        * At state 7, the robot picked up and placed 'blue cylinder' on top of 'blue block'. 
+        * At state 8, the robot picked up and placed 'orange cylinder' on top of 'blue cylinder'. 
+        * At state 9, the robot picked up and placed 'brown block' on top of 'orange cylinder'. 
+        <end_of_example_user_query>
+        [[Reasoning:]]
+        Because the task is "Stack all objects into two stacks, and objects may need to be categorized in the stacks", we focus on whether the objects are stacked by type.
+
+        Based on States 2-5, in the first stack, the blocks from bottom to top is ['brown cylinder', 'orange block', 'yellow block', 'pink cylinder'].
+        Based on States 6-9, in the first stack, the blocks from bottom to top is ['blue block', 'blue cylinder', 'orange cylinder', 'brown block'].
+
+        Because each stack has both blocks and cylinders, we assume that it doesn't matter whether the objects are categorized.
+        [[Task Specification:]]
+        Stack all objects into two stacks. It doesn't matter whether the objects are categorized.
+        [[end of response]]
+stage2:
+  spec_2_highlevelcode:
+    main: |
+      You are a Python code generator for robotics. The users will first provide the imported Python modules. Then, for each code they want you to generate, they provide the requirements and pseudocode in Python docstrings.
+      <end_of_system_message>
+      You need to write robot control scripts in Python code. The Python code should be general and applicable to different environments. 
+
+      Below are the imported Python libraries and functions that you can use. You CANNOT import new libraries. 
+      ```
+      # Python kitchen robot control script
+      import numpy as np
+      from robot_utils import put_first_on_second, stack_without_height_limit, stack_with_height_limit
+      from env_utils import get_obj_names, get_all_obj_names_that_match_type, determine_final_stacking_order, parse_position
+      ALL_CORNERS_LIST = ['top left corner', 'top right corner', 'bottom left corner', 'bottom right corner']
+      ALL_EDGES_LIST = ['top edge', 'bottom edge', 'left edge', 'right edge']
+      ALL_POSITION_RELATION_LIST = ['left of', 'right of', 'behind', 'in front of']
+      ```
+      Below shows the docstrings for these imported library functions that you must follow. You CANNOT add additional parameters to these functions. 
+      * robot_utils Specifications:
+      put_first_on_second(arg1, arg2)
+      """
+      You must not write things like:
+        put_first_on_second("red block", "left of yellow block")
+        put_first_on_second("red block", "top left corner")
+        put_first_on_second("red block", "top edge")
+      You can write something like:
+        put_first_on_second("red block", "yellow block")
+        put_first_on_second("red block", "table")
+
+      Pick up an object (arg1) and put it at arg2. If arg2 is an object, arg1 will be on top of arg2. If arg2 is 'table', arg1 will be somewhere random on the table. If arg2 is a list, arg1 will be placed at location [x, y]. 
+
+      Parameters:
+      arg1 (str): A string that defines the object by its color and type (which is either "block" or "cylinder"). For example, "red block", "orange cylinder".
+      arg2 (list or str): If it's a list, it needs to be a list of floats, and it represents the [x, y] position to place arg1. If it's a string, it can either be "table" or a string that defines the object by its color and type. arg2 must not be a free-from string that represents a description of a position. For example, it cannot be relative position (e.g. "left of yellow block"), or corner name (e.g "top left corner"), or edge name (e.g. "top edge").
+      """
+      stack_without_height_limit(objects_to_stack)
+      """
+      Stack the list of objects_to_stack into one stack without considering height limit. The first object (which is the object at the bottom of the stack) will also get moved and placed somewhere on the table.
+
+      Parameters:
+        objects_to_stack (list): a list of strings, where each defines the object by its color and type. 
+      """
+      stack_with_height_limit(objects_to_stack, height_limit)
+      """
+      Stack the list of objects_to_stack into potentially multiple stacks, and each stack has a maximum height based on height_limit. The first object (which is the object at the bottom of the stack) will also get moved and placed somewhere on the table.
+
+      Parameters:
+        objects_to_stack (list): a list of strings, where each string defines the object by its color and type. 
+        height_limit (int): an integer representing the maximum height for each stack. 
+      """
+      * env_utils Specifications:
+      get_obj_names()
+      """
+      Return:
+        a list of objects in the environment
+      """
+      get_all_obj_names_that_match_type(type_name, objects_list)
+      """
+      Return:
+        a list of objects in the environment that match the type_name
+      """
+      determine_final_stacking_order(objects_to_enforce_order, objects_without_order)
+      """
+      Return:
+        a sorted list of objects to stack. The first object in the list would be at the bottom of the stack. 
+      """
+      parse_position(description)
+      """
+      You must use parse_postion for
+        - relative position (e.g. "left of yellow block")
+        - corner position (e.g. "top left corner")
+        - edge position (e.g. "top edge") 
+      Return:
+        a list [x, y] that represents the position described by the description. 
+      """
+      You must follow these rules when you are generating Python code.
+      * You MUST ONLY use Python library functions imported above. You MUST follow the docstrings and specification for these functions.
+      * You must follow the instructions provided by the user. You CANNOT add additional steps, conditionals, or loops that are not in the instruction.
+    examples:
+      - |
+        ```
+        objects=['orange block', 'yellow cylinder', 'green cylinder']
+        """
+        Place the green cylinder to the left of the yellow cylinder.
+        """
+        ```
+        <end_of_example_user_query>
+        ```
+        # must use parse position to get relative position
+        location_pos = parse_position('left of the yellow cylinder')
+        put_first_on_second('green cylinder', location_pos)
+        ```
+      - |
+        ```
+        objects=['orange block', 'purple cylinder']
+        """
+        Place the purple cylinder at anywhere next to the orange block.
+        """
+        ```
+        <end_of_example_user_query>
+        ```
+        position_relation = np.random.choice(ALL_POSITION_RELATION_LIST)
+        # must use parse position to get relative position
+        location_pos = parse_position(f'{position_relation} the orange block')
+        put_first_on_second('purple cylinder', location_pos)
+        ```
+      - |
+        ```
+        objects=['blue block', 'brown block', 'orange cylinder', 'pink cylinder', 'purple cylinder']
+        """
+        Place the blue block at any random corner.
+        """
+        ```
+        <end_of_example_user_query>
+        ```
+        corner_name = np.random.choice(ALL_CORNERS_LIST)
+        # must use parse position to get corner position
+        corner_pos = parse_position(corner_name)
+        put_first_on_second('blue block', corner_pos)
+        ```
+      - |
+        ```
+        objects=['red block', 'blue block', 'cyan block', 'yellow block', 'orange cylinder']
+        """
+        1. place the orange cylinder on the table
+        2. place the yellow block on the table
+        3. place the red block on the table
+        4. place the cyan block on the blue block
+        """
+        ```
+        <end_of_example_user_query>
+        ```
+        items_to_place_first_in_order = ['orange cylinder', 'yellow block', 'red block']
+        for item in items_to_place_first_in_order:
+          put_first_on_second(item, "table")
+        put_first_on_second('cyan block', 'blue block')
+        ```
+      - |
+        ```
+        objects=['orange block', 'blue block', 'brown block', 'yellow block', 'gray block', 'pink block', 'cyan cylinder', 'blue cylinder']
+        """
+        Stack all blocks. However, the maximum height of a stack is 3.
+        """
+        ```
+        <end_of_example_user_query>
+        ```
+        block_names = get_all_obj_names_that_match_type(type_name="block", objects_list=get_obj_names())
+        stack_with_height_limit(objects_to_stack=block_names, height_limit=3)
+        ```
+      - |
+        ```
+        objects=['yellow block', 'cyan block', 'red block', 'blue block', 'green cylinder', 'red cylinder', 'blue cylinder']
+        """
+        Stack all blocks into one stack. Also make sure that the stacking enforces the bottom to top order between these objects: ['red block', 'yellow block', 'cyan block'].
+        """
+        ```
+        <end_of_example_user_query>
+        ```
+        # Based on the instruction, first define the blocks that have strict ordering
+        block_names_with_strick_order_from_bottom_to_top = ['red block', 'yellow block', 'cyan block']
+        # Then, find the rest of the blocks that don't have strict order
+        block_names = get_all_obj_names_that_match_type(type_name="block", objects_list=get_obj_names())
+        block_names_without_order = []
+        for block in block_names:
+          if block not in block_names_with_strick_order_from_bottom_to_top:
+                block_names_without_order.append(block)
+        # Call helper function to determine the final stacking order before stacking the blocks
+        stack_order_from_bottom_to_top = determine_final_stacking_order(objects_to_enforce_order=block_names_with_strick_order_from_bottom_to_top, objects_without_order=block_names_without_order)
+        stack_without_height_limit(objects_to_stack=stack_order_from_bottom_to_top)
+        ```
+      - |
+        ```
+        objects=['blue block', 'yellow block', 'brown block', 'orange block', 'pink cylinder', 'brown cylinder', 'orange cylinder', 'blue cylinder']
+        """
+        Stack all objects into two stacks (where each stack has maximum height of 4). It doesn't matter whether the objects are categorized.
+        """
+        ```
+        <end_of_example_user_query>
+        ```
+        object_names = get_obj_names()
+        # split the objects into 2 stacks. 
+        stack_1 = object_names[:4]
+        stack_2 = object_names[4:]
+        stack_without_height_limit(objects_to_stack=stack_1)
+        stack_without_height_limit(objects_to_stack=stack_2)
+        ```
+  recursive_expansion:

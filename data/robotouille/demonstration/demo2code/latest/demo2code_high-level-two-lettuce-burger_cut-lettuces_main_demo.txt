@@ -1,0 +1,105 @@
+[Scenario 1]
+Cut two lettuces.
+
+State 2:
+'robot1' is not at 'table19'
+'robot1' is at 'table1'
+
+State 3:
+'lettuce1' is not at 'table1'
+'robot1' is holding 'lettuce1'
+
+State 4:
+'robot1' is at 'cutting_board1'
+'robot1' is not at 'table1'
+
+State 5:
+'lettuce1' is at 'cutting_board1'
+'robot1' is not holding 'lettuce1'
+
+State 6:
+
+
+State 7:
+
+
+State 8:
+'lettuce1' is cut
+
+State 9:
+'robot1' is not at 'cutting_board1'
+'robot1' is at 'table18'
+
+State 10:
+'lettuce2' is not at 'table18'
+'robot1' is holding 'lettuce2'
+
+State 11:
+'robot1' is not at 'table18'
+'robot1' is at 'cutting_board2'
+
+State 12:
+'lettuce2' is at 'cutting_board2'
+'robot1' is not holding 'lettuce2'
+
+State 13:
+
+
+State 14:
+
+
+State 15:
+'lettuce2' is cut
+
+[Scenario 2]
+Cut two lettuces.
+
+State 2:
+'robot1' is at 'table12'
+'robot1' is not at 'table7'
+
+State 3:
+'lettuce3' is not at 'table12'
+'robot1' is holding 'lettuce3'
+
+State 4:
+'robot1' is at 'cutting_board3'
+'robot1' is not at 'table12'
+
+State 5:
+'lettuce3' is at 'cutting_board3'
+'robot1' is not holding 'lettuce3'
+
+State 6:
+
+
+State 7:
+
+
+State 8:
+'lettuce3' is cut
+
+State 9:
+'robot1' is not at 'cutting_board3'
+'robot1' is at 'table16'
+
+State 10:
+'lettuce4' is not at 'table16'
+'robot1' is holding 'lettuce4'
+
+State 11:
+'robot1' is not at 'table16'
+'robot1' is at 'cutting_board4'
+
+State 12:
+'lettuce4' is at 'cutting_board4'
+'robot1' is not holding 'lettuce4'
+
+State 13:
+
+
+State 14:
+
+
+State 15:
+'lettuce4' is cut

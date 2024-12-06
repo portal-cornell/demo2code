@@ -1,0 +1,24 @@
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the objects ('pink block' has moved). 
+I will summarize the state trajectory into low-level actions.
+The low-level actions are the most compact form, so I should stop summarizing after this. 
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 1], at state 2, the robot moved 'pink block'.
+* At state 3, the robot picked up and placed 'gray block' on top of 'pink block'. 
+* At state 4, the robot picked up and placed 'orange block' on top of 'gray block'. 
+* At state 5, the robot picked up and placed 'brown block' on top of 'orange block'.
+
+==========================summary -> spec==========================
+[[Reasoning:]]
+Because the task is "Stack all blocks, where enfocing the maximum stack height...", we focus on how high the stacks are.
+
+Based on States 2-5, in the first stack, the blocks from bottom to top is ['pink block', 'gray block', 'orange block', 'brown block']. This is 4 blocks high.
+
+Because there is only one stack and the stack is 4 blocks high, we assume that the maximum height of the stack is 4.
+[[Task Specification:]]
+Stack all blocks. However, the maximum height of the stack is 4.
+

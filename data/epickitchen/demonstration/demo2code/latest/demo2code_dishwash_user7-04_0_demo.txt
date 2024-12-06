@@ -1,0 +1,77 @@
+"""
+[Scenario 1]
+Wash dishes at the sink. All cleaned objects should be placed at the dishrack.
+Objects to clean
+    - fork_1 in hand
+    - fork_2 in hand
+    - fork_3 in hand
+    - plate_1 at near-sink
+
+Initial Condition (State 1):
+is_in_hand(`fork_1`)
+is_in_hand(`fork_2`)
+is_in_hand(`fork_3`)
+at(`near-sink_1`)
+
+State 2:
+at(`sink_1`)
+is_in_hand(`sponge_1`)
+is_foamy(`sponge_1`)
+
+State 3:
+is_soapy(`fork_1`)
+
+State 4:
+is_soapy(`fork_2`)
+
+State 5:
+is_soapy(`fork_3`)
+
+
+State 6:
+is_on(`tap_1`)
+
+State 7:
+is_clean(`fork_1`)
+
+State 8:
+is_clean(`fork_2`)
+
+State 9: 
+is_off(`tap_1`)
+is_clean(`fork_3`)
+
+State 10:
+at(`dishrack_1`)
+on(`fork_1`, `dishrack_1`)
+on(`fork_2`, `dishrack_1`)
+on(`fork_3`, `dishrack_1`)
+
+State 11:
+at(`near-sink_1`)
+is_dirty(`plate_1`)
+on(`plate_1`, `near-sink_1`)
+
+State 12:
+is_in_hand(`plate_1`)
+at(`sink_1`)
+
+State 13:
+is_on(`tap_1`)
+is_in_hand(`sponge_1`)
+is_foamy(`sponge_1`)
+
+State 14:
+is_soapy(`plate_1`)
+
+State 15:
+is_on(`tap_1`)
+
+State 16:
+is_clean(`plate_1`)
+is_off(`tap_1`)
+
+State 17:
+at(`dishrack_1`)
+on(`plate_1`, `dishrack_1`)
+"""

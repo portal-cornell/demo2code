@@ -1,0 +1,4 @@
+"""
+Cook a patty and cut a lettuce.
+Specifically, first cook a patty, then cut a lettuce.
+"""

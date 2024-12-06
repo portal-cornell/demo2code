@@ -1,0 +1,10 @@
+objects=['blue block', 'pink cylinder', 'red cylinder', 'yellow cylinder']
+"""
+[Scenario 1]
+Place the pink cylinder next to the red cylinder.
+
+State 2:
+'pink cylinder' has moved
+'pink cylinder' is in front of 'red cylinder'
+'red cylinder' is behind 'pink cylinder'
+"""

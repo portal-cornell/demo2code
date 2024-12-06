@@ -1,0 +1,59 @@
+objects=['yellow block', 'green block', 'brown block', 'red block', 'purple cylinder', 'gray cylinder', 'yellow cylinder', 'pink cylinder']
+"""
+[Scenario 1]
+Stack all objects into two stacks, and objects may need to be categorized in the stacks.
+
+State 2:
+'yellow block' is in front of 'pink cylinder'
+'green block' is to the left of 'pink cylinder'
+'pink cylinder' has moved
+'pink cylinder' is behind 'yellow block'
+'pink cylinder' is to the right of 'green block'
+
+State 3:
+'red block' is not on top of 'table'
+'red block' has moved
+'red block' is on top of 'pink cylinder'
+
+State 4:
+'brown block' is not on top of 'table'
+'brown block' has moved
+'brown block' is on top of 'red block'
+'brown block' is on top of 'pink cylinder'
+
+State 5:
+'purple cylinder' is not on top of 'table'
+'purple cylinder' has moved
+'purple cylinder' is on top of 'brown block'
+'purple cylinder' is on top of 'red block'
+'purple cylinder' is on top of 'pink cylinder'
+
+State 6:
+'yellow block' has moved
+'yellow block' is to the left of 'green block'
+'yellow block' is not in front of 'pink cylinder'
+'green block' is to the right of 'yellow block'
+'pink cylinder' is not behind 'yellow block'
+
+State 7:
+'yellow cylinder' is not on top of 'table'
+'yellow cylinder' has moved
+'yellow cylinder' is on top of 'yellow block'
+
+State 8:
+'yellow block' is not to the left of 'green block'
+'green block' is not on top of 'table'
+'green block' has moved
+'green block' is not to the right of 'yellow block'
+'green block' is on top of 'yellow block'
+'green block' is on top of 'yellow cylinder'
+'green block' is not to the left of 'pink cylinder'
+'pink cylinder' is not to the right of 'green block'
+
+State 9:
+'gray cylinder' is not on top of 'table'
+'gray cylinder' has moved
+'gray cylinder' is on top of 'yellow block'
+'gray cylinder' is on top of 'green block'
+'gray cylinder' is on top of 'yellow cylinder'
+"""

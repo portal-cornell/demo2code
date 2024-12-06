@@ -1,0 +1,14 @@
+# First, find the blue and yellow cylinders
+blue_cylinder = 'blue cylinder'
+yellow_cylinder = 'yellow cylinder'
+
+# Then, find the rest of the cylinders
+cylinder_names = get_all_obj_names_that_match_type(type_name="cylinder", objects_list=get_obj_names())
+cylinder_names.remove(blue_cylinder)
+cylinder_names.remove(yellow_cylinder)
+
+# Determine the final stacking order
+stack_order = [yellow_cylinder, blue_cylinder] + cylinder_names
+
+# Stack the cylinders without height limit
+stack_without_height_limit(objects_to_stack=stack_order)

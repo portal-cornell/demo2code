@@ -1,0 +1,3 @@
+objects_to_move = ['brown cylinder', 'red cylinder', 'orange block', 'pink block']
+for obj in objects_to_move:
+  put_first_on_second(obj, "table")

@@ -1,0 +1,18 @@
+def cook_object_at_location(obj, location):
+    # To cook an object, the robot first needs to be holding obj
+    if not is_holding(obj):
+        # If the robot is not holding obj, there are 2 scenarios: 
+        #   (1) if obj is in a stack ,unstack obj
+        #   (2) else, pick up obj.
+        if is_in_a_stack(obj):
+            # Because obj is in a stack, robot need to move then unstack the obj from the obj_at_bottom first
+            obj_at_bottom = get_obj_that_is_underneath(obj_at_top=obj)
+            # move then unstack: first you move to the obj_at_bottom's location, then you unstack obj from obj_at_bottom
+            move_then_unstack(obj_to_unstack=obj, obj_at_bottom=obj_at_bottom, unstack_location=get_obj_location(obj_at_bottom))
+        else:
+            # move_then_pick: first you move to obj's location, then you pick obj up
+            move_then_pick(obj=obj, pick_location=get_obj_location(obj))
+    # move then place: first you move to the location to cook at, then you place obj at that location
+    move_then_place(obj=obj, place_location=location)
+    # cook the object until it is cooked
+    cook_until_is_cooked(obj=obj)

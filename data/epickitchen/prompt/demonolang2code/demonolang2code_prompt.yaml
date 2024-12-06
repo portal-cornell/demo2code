@@ -1,0 +1,456 @@
+prompt_version: release
+stage1:
+  recursive_summarization:
+    main: |
+      You are a helpful summarizer that recursively summarizes a trajectory into a more and more compacted form.
+      <end_of_system_message>
+      You are given a trajectory. Your goal is to summarize the trajectory into a more compacted form and then determine whether the state trajectory is sufficiently summarized. 
+
+      You must respond using the following form (you must generate [[end of response]] at the very end):
+      [[Reasoning:]]
+      You should first identify what type of trajectory this is. Then, you should determine what type you will summarize the trajectory into. Finally, you should determine whether the new type of trajectory is sufficiently summarized or not. 
+      [[Is the new trajectory sufficiently summarized? (yes/no):]]
+      You should only respond using either "yes" or "no", and nothing else. 
+      [[Summarized trajectory:]]
+      You should actually summarize the input trajectory and output it here. 
+      [[end of response]]
+
+      You must follow these rules when you are summarizing a trajectory.
+      Rules:
+      * You must slowly summarize the trajectory from one type to another following this order: a state trajectory –> a low-level action trajectory --> a high-level subtask trajectory.
+      * You cannot skip a type (e.g. you cannot directly summarize a low-level action trajectory into a high-level subtask trajectory).
+      * A low-level action trajectory is represented as an unordered list.
+      * The low-level actions must be one of the following: "the robot moved from location1 to location2", "the robot picked up item1", "the robot placed down item1 at location1 ", "the robot soaped item1 until it became soapy because item1 was dirty", "the robot rinsed item1 until it became clean", "the robot turned on tap1", "the robot turned off tap2". You should never define new low-level actions.
+      * A high-level subtask trajectory is represented as an unordered list. This high-level subtask should refer to one continuous section of the states. For example, you cannot say "at states 1-5, and states 10-15, the robot did …". There can only be one interval of states.
+      * The high-level subtask must be one of the following: "brought [ITEMS] from [LOCATION 1] to [LOCATION 2]", "soaped [ITEM] until it became soap", "rinsed [ITEM] until it became clean", "picked up [ITEM]", "placed [ITEMS] in [LOCATION]", "turned on [TAP]", "turned off [TAP]". You should never define new high-level subtasks. You must choose from the list above. 
+    examples:
+      - |
+        [[Input Trajectory:]]
+        [Scenario 1]
+        Initial Condition (State 1):
+        at(`countertop_1`)
+        is_dirty(`spoon_1`)
+        is_dirty(`fork_1`)
+        near(`spoon_1`)
+        near(`fork_1`)
+
+        State 2:
+        is_in_hand(`fork_1`)
+        is_in_hand(`spoon_1`)
+        far(`sink_1`)
+
+        State 3:
+        at(`sink_1`)
+
+        State 4:
+        is_soapy(`fork_1`)
+        is_on((`tap_1`)
+
+        State 5:
+        is_soapy(`spoon_1`)
+
+        State 6:
+        is_clean(`spoon_1`)
+
+        State 7
+        is_clean(`fork_1`)
+
+        State 8
+        is_off(`tap_1`)
+        in(`fork_1`, `sink_1`)
+        in(`spoon_1`, `sink_1`)
+        <end_of_example_query>
+        [[Reasoning:]]
+        The input trajectory contains state predicates because the trajectory talks about the status of robot (at(`countertop_1`)) and the objects (is_dirty(`spoon_1`)). 
+        I will summarize the state trajectory into low-level actions.
+        Low-level actions are not compacted enough yet because low-level actions can still be combined into high-level subtasks. 
+        The new trajectory will NOT be sufficiently summarized.
+        [[Is the new trajectory sufficiently summarized? (yes/no):]]
+        no
+        [[Summarized trajectory:]]
+        * In [Scenario 1], at state 1-2, the robot picked up spoon_1. The robot picked up fork_1.
+        * At state 2-3, the robot moved from countertop_1 to sink_1.
+        * At state 3-4, the robot turned on tap_1. The robot soaped fork_1 until it became soapy because fork_1 was dirty.
+        * At state 4-5, the robot soaped spoon_1 until it became soapy because spoon_1 was dirty.
+        * At state 5-6, the robot rinsed spoon_1 until it became clean.
+        * At state 6-7, the robot rinsed fork_1 until it became clean.
+        * At state 7-8, the robot turned off tap_1. The robot placed spoon_1 in sink_1. The robot placed fork_1 in sink_1.
+        [[end of response]]
+      - |
+        [[Input Trajectory:]]
+        [Scenario 1]
+        Initial Condition (State 1):
+        in(`spoon_1`, `dishwasher_1`)
+        in(`plate_1`, `sink_1`)
+        in(`plate_2`, `sink_1`)
+
+        State 2:
+        is_in_hand(`spoon_1`)
+
+        State 3:
+        at(`sink_1`)
+        is_dirty('spoon_1')
+
+        State 4:
+        is_on((`tap_1`)
+
+        State 5:
+        is_foamy(`sponge_1`)
+
+        State 6:
+        is_soapy(`spoon_1`)
+
+        State 7:
+        is_clean(`spoon_1`)
+
+        State 8:
+        in(`spoon_1`, `sink_1`)
+
+        State 9:
+        is_off(`tap_1`)
+        is_in_hand(`plate_1`)
+        is_dirty(`plate_1`)
+
+        State 10:
+        is_on((`tap_1`)
+        is_in_hand(`sponge_1`)
+        is_foamy(`sponge_1`)
+
+        State 11:
+        is_soapy(`plate_1`)
+
+        State 12:
+        is_clean(`plate_1`)
+
+        State 13:
+        in(`plate_1`, `sink_1`)
+
+        State 14:
+        is_off(`tap_1`)
+
+        State 15:
+        is_in_hand(`plate_2`)
+        is_dirty(`plate_2`)
+
+        State 16:
+        is_on((`tap_1`)
+
+        State 17:
+        is_foamy(`sponge_1`)
+
+        State 18:
+        is_soapy(`plate_2`)
+
+        State 19:
+        is_clean(`plate_2`)
+        in(`plate_2`, `sink_1`)
+        <end_of_example_query>
+        [[Reasoning:]]
+        The input trajectory contains state predicates because the trajectory talks about the status of the objects (in(`spoon_1`, `dishwasher_1`)). 
+        I will summarize the state trajectory into low-level actions.
+        Low-level actions are not compacted enough yet because low-level actions can still be combined into high-level subtasks. 
+        The new trajectory will NOT be sufficiently summarized.
+        [[Is the new trajectory sufficiently summarized? (yes/no):]]
+        no
+        [[Summarized trajectory:]]
+        * In [Scenario 1], at state 1-2, the robot picked up spoon_1 from dishwasher_1.
+        * At state 2-3, the robot moved from dishwasher_1 to sink_1.
+        * At state 3-4, the robot turned on tap_1. 
+        * At state 4-5, the robot picked up sponge_1, which was foamy. 
+        * At state 5-6, the robot soaped spoon_1 until it became soapy because spoon_1 was dirty.
+        * At state 6-7, the robot rinsed spoon_1 until it became clean.
+        * At state 7-8, the robot placed spoon_1 in sink_1. The robot placed sponge_1 in sink_1.
+        * At state 8-9, the robot turned off tap_1. The robot picked up plate_1.
+        * At state 9-10, the robot turned on tap_1. The robot picked up sponge_1, which was foamy.
+        * At state 10-11 ,the robot soaped plate_1 until it became soapy because plate_1 was dirty.
+        * At state 11-12, the robot rinsed plate_1 until it became clean.
+        * At state 12-13, the robot placed plate_1 in sink_1. The robot placed sponge_1 in sink_1.
+        * At state 13-14, the robot turned off tap_1. 
+        * At state 14-15, the robot picked up plate_2.
+        * At state 15-16, the robot turned on tap_1. 
+        * At state 16-17, the robot picked up sponge_1, which was foamy.
+        * At state 17-18, the robot soaped plate_2 until it became soapy because plate_2 was dirty.
+        * At state 18-19, the robot rinsed plate_2 until it became clean. The robot placed plate_2 in sink_1. The robot turned off tap_1. 
+        [[end of response]]
+      - |
+        [[Input Trajectory:]]
+        [Scenario 1]
+        * In [Scenario 1], at state 1-2, the robot picked up spoon_1. The robot picked up fork_1.
+        * At state 2-3, the robot moved from countertop_1 to sink_1.
+        * At state 3-4, the robot turned on tap_1. The robot soaped fork_1 until it became soapy because fork_1 was dirty.
+        * At state 4-5, the robot soaped spoon_1 until it became soapy because spoon_1 was dirty.
+        * At state 5-6, the robot rinsed spoon_1 until it became clean.
+        * At state 6-7, the robot rinsed fork_1 until it became clean.
+        * At state 7-8, the robot turned off tap_1. The robot placed spoon_1 in sink_1. The robot placed fork_1 in sink_1.
+        <end_of_example_query>
+        [[Reasoning:]]
+        The input trajectory contains low-level actions because the trajectory mentions "picked up","moved", etc. 
+        I will summarize the low-level action trajectory into high-level subtasks. 
+        High-level subtasks are compacted enough because they cannot be combined together without losing important information. 
+        The new trajectory will be sufficiently summarized.
+        [[Is the new trajectory sufficiently summarized? (yes/no):]]
+        yes
+        [[Summarized trajectory:]]
+        * In [Scenario 1], at state 1-3, the robot brought spoon_1 and fork_1 from countertop_1 to the sink_1.
+        * At state 3-4, turned on tap_1
+        * At state 3-4, soaped fork_1 until it became soapy
+        * At state 4-5, soaped spoon_1 until it became soapy
+        * At state 5-6, rinsed spoon_1 until it became clean.
+        * At state 6-7, rinsed fork_1 until it became clean.
+        * At state 7-8, turned off tap_1, and placed spoon_1 and fork_1 in sink_1.
+        [[end of response]]
+      - |
+        [[Input Trajectory:]]
+        [Scenario 1]
+        * In [Scenario 1], at state 1-2, the robot picked up spoon_1 from dishwasher_1.
+        * At state 2-3, the robot moved from dishwasher_1 to sink_1.
+        * At state 3-4, the robot turned on tap_1. 
+        * At state 4-5, the robot picked up sponge_1, which was foamy. 
+        * At state 5-6, the robot soaped spoon_1 until it became soapy because spoon_1 was dirty.
+        * At state 6-7, the robot rinsed spoon_1 until it became clean.
+        * At state 7-8, the robot placed spoon_1 in sink_1. The robot placed sponge_1 in sink_1.
+        * At state 8-9, the robot turned off tap_1. The robot picked up plate_1.
+        * At state 9-10, the robot turned on tap_1. The robot picked up sponge_1, which was foamy.
+        * At state 10-11 ,the robot soaped plate_1 until it became soapy because plate_1 was dirty.
+        * At state 11-12, the robot rinsed plate_1 until it became clean.
+        * At state 12-13, the robot placed plate_1 in sink_1. The robot placed sponge_1 in sink_1.
+        * At state 13-14, the robot turned off tap_1. 
+        * At state 14-15, the robot picked up plate_2.
+        * At state 15-16, the robot turned on tap_1. 
+        * At state 16-17, the robot picked up sponge_1, which was foamy.
+        * At state 17-18, the robot soaped plate_2 until it became soapy because plate_2 was dirty.
+        * At state 18-19, the robot rinsed plate_2 until it became clean. The robot placed plate_2 in sink_1. The robot turned off tap_1. 
+        <end_of_example_query>
+        [[Reasoning:]]
+        The input trajectory contains low-level actions because the trajectory mentions "picked up","moved", etc. 
+        I will summarize the low-level action trajectory into high-level subtasks. 
+        High-level subtasks are compacted enough because they cannot be combined together without losing important information.
+        The new trajectory will be sufficiently summarized.
+        [[Is the new trajectory sufficiently summarized? (yes/no):]]
+        yes 
+        [[Summarized trajectory:]]
+        * In [Scenario 1], at state 1-3, brought spoon_1 from dishwasher_1 to sink_1
+        * At state 3-4, turned on tap_1. 
+        * At state 4-6, soaped spoon_1 until it became soapy
+        * At state 6-7, rinsed spoon_1 until it became clean
+        * At state 7-8, placed spoon_1 in sink_1
+        * At state 8-9, turned off tap_1 and picked up plate_1
+        * At state 9-10, turned on tap_1.
+        * At state 10-11, soaped plate_1 until it became soapy
+        * At state 11-12, rinsed plate_1 until it became clean
+        * At state 12-13, placed plate_1 in sink_1
+        * At state 13-15, turned off tap_1 and picked up plate_2
+        * At state 15-16, turned on tap_1
+        * At state 16-18, soaped plate_2 until it became soapy
+        * At state 18-19, rinsed plate_2 until it became clean, turned off tap_1, and placed plate_2 in sink_1
+        [[end of response]]
+  summary_2_spec:
+    main: |
+      You are a helpful assistant who analyzes the trajectories and summarizes them into a concise pseudocode-style task specification. 
+      <end_of_system_message>
+      You are given one or more trajectories where each one represents a different scenario. Your goal is to summarize these trajectories into a compact task specification, written in a pseudocode style. 
+
+      You must respond using the following format (you must generate [[end of response]] at the very end): 
+      [[Reasoning:]]
+      You should first list out the order of the high-level subtask trajectories in all scenarios. Then, you should consider if certain sections of the subtasks are repeated in the scenario and can be represented by a loop. Two scenarios having exactly the same list does not mean that there is a loop. A loop only exists among subtasks in one individual scenario. 
+      Overall, your task specification should work for all scenarios. You should make sure that the task specification matches the subtasks ordering across all scenarios. You should also make sure that the task specification uses loops when there is any repetition. 
+      [[Task Specification:]]
+      You should first state the high-level goal. Then, you should say "Specifically:" before outputting the pseudocode-style task specification.
+      [[end of response]]
+
+      You must follow these rules when you are writing the task specifications. 
+      * You must write the task specifications in pseudocode style. You should not write the task specification as a list. You cannot number any line.
+    examples:
+      - |
+        [[Trajectories:]]
+        * In [Scenario 1], at state 1-3, the robot brought spoon_1 and fork_1 from countertop_1 to the sink_1.
+        * At state 3-4, turned on tap_1
+        * At state 3-4, soaped fork_1 until it became soapy
+        * At state 4-5, soaped spoon_1 until it became soapy
+        * At state 5-6, rinsed spoon_1 until it became clean.
+        * At state 6-7, rinsed fork_1 until it became clean.
+        * At state 7-8, turned off tap_1, and placed spoon_1 and fork_1 in sink_1.
+        <end_of_example_user_query>
+        [[Reasoning:]]
+        * There are 2 dishes that got washed: [fork_1, spoon_1]
+        * The list of high level actions that happened in order is: [move dishes from A to B, turn on tap, soap, soap, rinse, rinse, turn off tap, placed dishes in sink_1]
+        * Because in [soap, soap], the high-level action of soapping got repeated twice (once for each dish we brought) we can use a for-loop.
+        * Because in [rinse, rinse], the high-level action rinsing gets repeated twice (once for each dish), we can use a for-loop.
+        * Since the dishes can be kept in hand, there is no “place” and “pick up” before soapping or rinsing.
+        * Rinsing involves the use of tap water, which is why it was turned on at some point before the rinse cycle, and turned off after.
+        [[Task Specification:]]
+        Wash objects at a sink. All cleaned objects should be placed in the sink.
+        Specifically -
+
+        Get a list of all objects to wash
+        Bring all objects from countertop_1 to sink_1
+        Turn on tap
+        For each object
+            Soap object
+        For each object
+            Rinse object
+        Turn off tap
+        For each object
+            Place object in sink_1
+        [[end of response]]
+      - |
+        [[Trajectories:]]
+        * In [Scenario 1], at state 1-3, brought spoon_1 from dishwasher_1 to sink_1
+        * At state 3-4, turned on tap_1. 
+        * At state 4-6, soaped spoon_1 until it became soapy
+        * At state 6-7, rinsed spoon_1 until it became clean
+        * At state 7-8, placed spoon_1 in sink_1
+        * At state 8-9, turned off tap_1 and picked up plate_1
+        * At state 9-10, turned on tap_1.
+        * At state 10-11, soaped plate_1 until it became soapy
+        * At state 11-12, rinsed plate_1 until it became clean
+        * At state 12-13, placed plate_1 in sink_1
+        * At state 13-15, turned off tap_1 and picked up plate_2
+        * At state 15-16, turned on tap_1
+        * At state 16-18, soaped plate_2 until it became soapy
+        * At state 18-19, rinsed plate_2 until it became clean, turned off tap_1, and placed plate_2 in sink_1
+        <end_of_example_user_query>
+        [[Reasoning:]]
+        * There are 3 dishes got washed: [spoon_1, plate_1, plate_2]
+        * The list of high level actions that happened in order is: [move dish from A to B, turn on tap, soap, rinse, place, turn off tap, pick up, turn on tap, soap, rinse, place, turn off tap, pick up, turn on tap, soap, rinse, place, turn off tap]
+        * Only spoon_1 is brought to the sink from the dishwasher, other dishes are already in the sink.
+        * The spoon_1 does not have a pick_up action associated with it because its already in hand when brought from dishwasher_1 to sink_1. The action can be added to the code for generalizing without a side effect.
+        * The actions [pick_up, turn on tap, soap, rinse, place, turn off tap] are repeated for each dish, so we can use a loop.
+        * Rinsing involves the use of tap water, which is why it is turned on at some point before the rinse cycle, and turned off after.
+        [[Task Specification:]]
+        Wash objects at a sink. All cleaned objects should be placed in the sink.
+        Specifically -
+
+        Get a list of all objects to wash
+        Bring all objects to sink_1
+        For each object in all objects:
+          Pick_up object
+          Turn on tap_1
+          Soap object
+          Rinse object
+          Place object in sink_1
+          Turn off tap_1
+        [[end of response]]
+      
+stage2:
+  spec_2_highlevelcode:
+    main: |
+      You are a Python code generator for robotics. The users will first provide the imported Python modules. Then, for each code they want you to generate, they provide the requirements and pseudocode in Python docstrings.
+      <end_of_system_message>
+      You need to write robot control scripts in Python code. The Python code should be general and applicable to different environments. 
+
+      Below are the imported Python libraries and functions that you can use. You CANNOT import new libraries. 
+
+      ```
+      """
+      All the code should follow the specification. Follow descriptions when writing code.
+
+      Specifications:
+      get_all_objects()
+        Return:
+            (list) a list of string of objects that need to be cleaned
+      bring_objects_to_loc(obj, loc)
+        involves calling pick_up, go_to and place within the function.
+        Parameters:
+            obj (List[str]): Strings of the form "object_id" (e.g. "plate_1") that need to be brought to the location loc
+            loc(str): location string of the form "loc_id" (e.g. "sink_1")
+        Return:
+            (void)
+      turn_off(tap_name)
+        turns off tap
+        Parameters:
+            tap_name (str): A string that has the type of a tap (must be 'tap') and an id. For example: 'tap1', 'tap2'
+      turn_on(tap_name)
+        turns on tap
+        Parameters:
+            tap_name (str): A string that has the type of a tap (must be 'tap') and an id. For example: 'tap1', 'tap2'
+      soap(obj)
+        soap the object "obj". It must be in hand before calling this function.
+        Parameters:
+            obj (str): String of the form "object_id" (e.g. "plate_1") that needs to be saoped
+      rinse(obj)
+        rinses the object "obj". It must be in hand before calling this function, tap must be turned on before calling this function, and switched off after
+        Parameters:
+            obj (str): String of the form "object_id" (e.g. "plate_1") that needs to be rinsed
+      pick_up(obj)
+        Parameters:
+            obj (str): String of the form "object_id" (e.g. "plate_1") to pick up
+      place(obj, loc)
+        Parameters:
+            obj (str): String of the form "object_id" (e.g. "plate_1") to pick up
+            loc (str): Location string (e.g. "sink_1") where obj is to be placed
+      go_to(loc):
+        Parameters
+            loc (str): Location string (e.g. "sink_1") to go to from current location.
+      clean_with(obj, tool)
+        Parameters:
+            obj (str): Object strings (e.g. "plate")  to clean
+            tool (str): Tool strings (e.g. "sponge" or "towel")  to clean with
+      """
+      ```
+
+      You must follow these rules when you are generating Python code.
+      * You MUST ONLY use Python library functions imported above. You MUST follow the docstrings and specifications for these functions.
+      * You must follow the instructions provided by the user. You CANNOT add additional steps, conditionals, or loops that are not in the instruction. 
+    examples:
+      - |
+        ```
+        """
+        Wash objects at a sink. All cleaned objects should be placed in the sink.
+        Specifically -
+
+        Get a list of all objects to wash
+        Bring all objects from countertop_1 to sink_1
+        Turn on tap
+        For each object
+            Soap object
+        For each object
+            Rinse object
+        Turn off tap
+        For each object
+            Place object in sink_1
+        """
+        ```
+        <end_of_user_query>
+        ```
+        objects = get_all_objects()
+        bring_objects_to_loc(objects, "sink_1")
+        turn_on("tap_1")
+        for object in objects:
+              scrub(object)
+        for object in objects:
+          rinse(object)
+        turn_off("tap_1")
+        for object in objects:
+          place(object, "sink_1")
+        ```
+      - |
+        ```
+        """
+        Wash objects at a sink. All cleaned objects should be placed in the sink.
+        Specifically -
+
+        Get a list of all objects to wash
+        Bring all objects to sink_1
+        For each object in all objects:
+        Pick_up object
+          Turn on tap_1
+          Soap object
+          Rinse object
+          Place object in sink_1
+          Turn off tap_1
+        """
+        ```
+        <end_of_user_query>
+        ```
+        objects = get_all_objects()
+        bring_objects_to_loc(objects, "sink_1")
+        for object in objects:
+          pick_up(object)
+        turn_on("tap_1")
+              soap(object)
+          rinse(object)
+          place(object, "sink_1")
+          turn_off("tap_1")
+        ```
+  recursive_expansion:

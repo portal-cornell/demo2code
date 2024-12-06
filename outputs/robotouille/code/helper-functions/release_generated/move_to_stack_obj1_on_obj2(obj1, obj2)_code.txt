@@ -1,0 +1,18 @@
+def move_to_stack_obj1_on_obj2(obj1, obj2):
+    # To stack obj1 on obj2, the robot needs to be holding obj1
+    if not is_holding(obj1):
+        # If the robot is not holding obj1, there are 2 scenarios: 
+        #   (1) if obj1 is in a stack ,unstack obj1
+        #   (2) else, pick up obj1.
+        if is_in_a_stack(obj1):
+            # Because obj1 is in a stack, robot need to move then unstack the obj from the obj_at_bottom first
+            obj_at_bottom = get_obj_that_is_underneath(obj_at_top=obj1)
+            # move then unstack: first you move to the obj_at_bottom's location, then you unstack obj from obj_at_bottom
+            move_then_unstack(obj_to_unstack=obj1, obj_at_bottom=obj_at_bottom, unstack_location=get_obj_location(obj_at_bottom))
+        else:
+            # move_then_pick: first you move to obj's location, then you pick obj up
+            move_then_pick(obj=obj, pick_location=get_obj_location(obj))
+    # determine the location of obj2 to stack on
+    obj2_location = get_obj_location(obj2)
+    # move to obj2's location
+    move_to_location(location=obj2_location)

@@ -1,0 +1,51 @@
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the robot (is_in_hand(`mug_1`)) and the objects (is_dirty(`mug_1`)). 
+I will summarize the state trajectory into low-level actions.
+Low-level actions are not compacted enough yet because low-level actions can still be combined into high-level subtasks. 
+The new trajectory will NOT be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+no
+[[Summarized trajectory:]]
+* In [Scenario 1], at state 2-3, the robot picked up mug_1. The robot picked up sponge_1.
+* At state 3-4, the robot moved from sink_1 to kitchentop_1.
+* At state 4-5, the robot turned on tap_1. The robot soaped mug_1 until it became soapy because mug_1 was dirty.
+* At state 5-6, the robot rinsed mug_1 until it became clean.
+* At state 6-7, the robot turned off tap_1.
+* At state 7-8, the robot placed mug_1 on kitchentop_1.
+
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains low-level actions because the trajectory mentions "picked up", "moved", etc. 
+I will summarize the low-level action trajectory into high-level subtasks. 
+High-level subtasks are compacted enough because they cannot be combined together without losing important information.
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 1], at state 2-3, the robot picked up mug_1 and sponge_1.
+* At state 3-4, the robot moved from sink_1 to kitchentop_1.
+* At state 4-5, the robot turned on tap_1 and soaped mug_1 until it became soapy because mug_1 was dirty.
+* At state 5-6, the robot rinsed mug_1 until it became clean.
+* At state 6-7, the robot turned off tap_1.
+* At state 7-8, the robot placed mug_1 on kitchentop_1.
+
+==========================summary -> spec==========================
+[[Reasoning:]]
+* There is 1 object that got washed: [mug_1]
+* The list of high level actions that happened in order is: [pick up, move from A to B, turn on tap, soap, rinse, turn off tap, place]
+* The actions are straightforward and do not require any loops.
+* The mug_1 is picked up and placed on the kitchentop_1, so there is no "place" action in the sink.
+* Rinsing involves the use of tap water, which is why it was turned on at some point before the rinse cycle, and turned off after.
+[[Task Specification:]]
+Wash an object at a sink. The cleaned object should be placed on the kitchentop.
+Specifically -
+
+Pick up mug_1 and sponge_1
+Move from sink_1 to kitchentop_1
+Turn on tap_1
+Soap mug_1 until it becomes soapy
+Rinse mug_1 until it becomes clean
+Turn off tap_1
+Place mug_1 on kitchentop_1
+

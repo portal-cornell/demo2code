@@ -1,0 +1,5 @@
+<state-2>
+has_moved:purple block:1
+
+<init-state>
+has_moved:purple block:0

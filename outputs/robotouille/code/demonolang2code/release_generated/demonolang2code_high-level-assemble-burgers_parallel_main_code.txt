@@ -1,0 +1,34 @@
+# Get a list of all the patties in the kitchen.
+patties = get_all_obj_names_that_match_type('patty')
+# Get a list of all the bottom buns in the kitchen.
+bottom_buns = get_all_obj_names_that_match_type('bottom_bun')
+# Get a list of all the top buns in the kitchen.
+top_buns = get_all_obj_names_that_match_type('top_bun')
+
+# Decide a patty to use.
+patty_to_use_1 = patties[0]
+# Decide a bottom bun to use.
+bottom_bun_to_use_1 = bottom_buns[0]
+# Stack the patty on top of the bottom bun.
+# obj1 should be the patty, obj2 should be the bottom bun.
+stack_obj1_on_obj2(obj1=patty_to_use_1, obj2=bottom_bun_to_use_1)
+
+# Decide a patty to use.
+patty_to_use_2 = patties[1]
+# Decide a bottom bun to use.
+bottom_bun_to_use_2 = bottom_buns[1]
+# Stack the patty on top of the bottom bun.
+# obj1 should be the patty, obj2 should be the bottom bun.
+stack_obj1_on_obj2(obj1=patty_to_use_2, obj2=bottom_bun_to_use_2)
+
+# Decide a top bun to use.
+top_bun_to_use_1 = top_buns[0]
+# Stack the top bun on top of the patty.
+# obj1 should be the top bun, obj2 should be the patty.
+stack_obj1_on_obj2(obj1=top_bun_to_use_1, obj2=patty_to_use_1)
+
+# Decide a top bun to use.
+top_bun_to_use_2 = top_buns[1]
+# Stack the top bun on top of the patty.
+# obj1 should be the top bun, obj2 should be the patty.
+stack_obj1_on_obj2(obj1=top_bun_to_use_2, obj2=patty_to_use_2)

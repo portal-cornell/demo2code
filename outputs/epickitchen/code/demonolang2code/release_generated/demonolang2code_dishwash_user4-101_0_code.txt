@@ -1,0 +1,8 @@
+pick_up("mug_1")
+pick_up("sponge_1")
+go_to("kitchentop_1")
+turn_on("tap_1")
+soap("mug_1")
+rinse("mug_1")
+turn_off("tap_1")
+place("mug_1", "kitchentop_1")

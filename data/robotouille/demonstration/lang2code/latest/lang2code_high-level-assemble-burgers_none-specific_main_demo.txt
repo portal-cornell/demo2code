@@ -1,0 +1,3 @@
+"""
+Make two burgers. Because there are already a stack of two cooked patties, use them to make the burgers.
+"""

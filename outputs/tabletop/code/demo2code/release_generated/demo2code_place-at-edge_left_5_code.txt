@@ -1,0 +1,2 @@
+edge_pos = parse_position('left edge')
+put_first_on_second('brown cylinder', edge_pos)

@@ -1,0 +1,4 @@
+position_relation = np.random.choice(['next to', 'behind'])
+# must use parse position to get relative position
+location_pos = parse_position(f'{position_relation} the cyan cylinder')
+put_first_on_second('brown block', location_pos)

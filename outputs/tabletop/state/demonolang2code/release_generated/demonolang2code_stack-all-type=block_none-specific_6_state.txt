@@ -1,0 +1,17 @@
+<state-2>
+has_moved:yellow block:1
+is_in_front_of:yellow block,red block:1
+is_behind:red block,yellow block:1
+
+<state-3>
+is_in_front_of:yellow block,red block:0
+on_top_of:red block,table:0
+has_moved:red block:1
+is_behind:red block,yellow block:0
+on_top_of:red block,yellow block:1
+
+<init-state>
+has_moved:yellow block:0
+on_top_of:red block,table:1
+has_moved:red block:0
+on_top_of:red block,yellow block:0

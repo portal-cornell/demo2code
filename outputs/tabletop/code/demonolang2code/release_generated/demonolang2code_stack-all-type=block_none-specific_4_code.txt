@@ -1,0 +1,4 @@
+# Move the pink block to the right of the gray cylinder
+put_first_on_second('pink block', 'right of gray cylinder')
+# Place the brown block on top of the pink block
+put_first_on_second('brown block', 'pink block')

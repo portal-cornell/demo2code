@@ -1,0 +1,39 @@
+<state-2>
+on_top_of:purple cylinder,table:1
+has_moved:purple cylinder:1
+on_top_of:purple cylinder,green block:0
+on_top_of:purple cylinder,blue block:0
+on_top_of:purple cylinder,orange cylinder:0
+
+<state-3>
+on_top_of:green block,table:1
+has_moved:green block:1
+on_top_of:green block,blue block:0
+on_top_of:green block,orange cylinder:0
+
+<state-4>
+on_top_of:blue block,table:1
+has_moved:blue block:1
+on_top_of:blue block,orange cylinder:0
+
+<state-5>
+on_top_of:orange cylinder,table:0
+has_moved:orange cylinder:1
+on_top_of:orange cylinder,cyan block:1
+
+<init-state>
+on_top_of:green block,table:0
+has_moved:green block:0
+on_top_of:green block,blue block:1
+on_top_of:green block,orange cylinder:1
+on_top_of:blue block,table:0
+has_moved:blue block:0
+on_top_of:blue block,orange cylinder:1
+on_top_of:purple cylinder,table:0
+has_moved:purple cylinder:0
+on_top_of:purple cylinder,green block:1
+on_top_of:purple cylinder,blue block:1
+on_top_of:purple cylinder,orange cylinder:1
+on_top_of:orange cylinder,table:1
+has_moved:orange cylinder:0
+on_top_of:orange cylinder,cyan block:0

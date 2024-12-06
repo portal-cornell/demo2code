@@ -1,0 +1,27 @@
+<state-2>
+has_moved:gray block:1
+is_behind:gray block,green block:1
+is_in_front_of:green block,gray block:1
+
+<state-3>
+is_behind:gray block,green block:0
+on_top_of:green block,table:0
+has_moved:green block:1
+is_in_front_of:green block,gray block:0
+on_top_of:green block,gray block:1
+
+<state-4>
+on_top_of:orange block,table:0
+has_moved:orange block:1
+on_top_of:orange block,gray block:1
+on_top_of:orange block,green block:1
+
+<init-state>
+has_moved:gray block:0
+on_top_of:green block,table:1
+has_moved:green block:0
+on_top_of:green block,gray block:0
+on_top_of:orange block,table:1
+has_moved:orange block:0
+on_top_of:orange block,gray block:0
+on_top_of:orange block,green block:0

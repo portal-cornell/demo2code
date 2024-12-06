@@ -1,0 +1,5 @@
+# Move the brown cylinder to the front of the cyan block on top of the table
+put_first_on_second('brown cylinder', 'front of the cyan block')
+
+# Place the yellow cylinder on top of the cyan block
+put_first_on_second('yellow cylinder', 'top of the cyan block')

@@ -1,0 +1,7 @@
+<state-2>
+on_top_of:red cylinder,table:0
+has_moved:red cylinder:1
+
+<init-state>
+on_top_of:red cylinder,table:1
+has_moved:red cylinder:0

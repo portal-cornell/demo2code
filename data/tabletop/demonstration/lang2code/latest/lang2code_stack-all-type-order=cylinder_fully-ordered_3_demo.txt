@@ -1,0 +1,4 @@
+objects=['cyan block', 'green cylinder', 'brown cylinder', 'red cylinder', 'blue cylinder']
+"""
+Stack all cylinders into one stack.
+"""

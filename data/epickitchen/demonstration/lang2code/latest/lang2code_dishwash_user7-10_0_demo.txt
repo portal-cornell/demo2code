@@ -1,0 +1,5 @@
+"""
+Wash dishes at the sink. All cleaned objects should be placed at the dishrack.
+Objects to clean
+    - pan_1 at stove
+"""

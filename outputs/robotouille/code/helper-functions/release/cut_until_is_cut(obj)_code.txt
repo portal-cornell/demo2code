@@ -1,0 +1,3 @@
+def cut_until_is_cut(obj):
+    while not is_cut(obj):
+        cut(obj)

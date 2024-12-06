@@ -1,0 +1,55 @@
+"""
+[Scenario 1]
+Cook a patty.
+
+State 2:
+'patty1' is not at 'table1'
+'robot1' is holding 'patty1'
+
+State 3:
+'robot1' is at 'stove1'
+'robot1' is not at 'table1'
+
+State 4:
+'patty1' is at 'stove1'
+'robot1' is not holding 'patty1'
+
+State 5:
+
+
+State 6:
+
+
+State 7:
+
+
+State 8:
+'patty1' is cooked
+
+[Scenario 2]
+Cook a patty.
+
+State 2:
+'patty3' is not at 'table4'
+'robot1' is holding 'patty3'
+
+State 3:
+'robot1' is at 'stove3'
+'robot1' is not at 'table4'
+
+State 4:
+'patty3' is at 'stove3'
+'robot1' is not holding 'patty3'
+
+State 5:
+
+
+State 6:
+
+
+State 7:
+
+
+State 8:
+'patty3' is cooked
+"""

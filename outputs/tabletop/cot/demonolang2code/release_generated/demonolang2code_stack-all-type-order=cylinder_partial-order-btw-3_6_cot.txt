@@ -1,0 +1,38 @@
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the objects ('gray cylinder' has moved). 
+I will summarize the state trajectory into low-level actions.
+The low-level actions are the most compact form, so I should stop summarizing after this. 
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 1], at state 2, the robot moved 'gray cylinder'.
+* At state 3, the robot picked up and placed 'yellow cylinder' on top of 'gray cylinder'. 
+* At state 4, the robot picked up and placed 'brown cylinder' on top of 'gray cylinder'. 
+* At state 5, the robot picked up and placed 'blue cylinder' on top of 'gray cylinder'.
+
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the objects ('yellow block' is to the left of 'yellow cylinder'). 
+I will summarize the state trajectory into low-level actions.
+The low-level actions are the most compact form, so I should stop summarizing after this. 
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 2], at state 2, the robot moved 'yellow cylinder'.
+* At state 3, the robot picked up and placed 'brown cylinder' on top of 'yellow cylinder'. 
+* At state 4, the robot picked up and placed 'blue cylinder' on top of 'brown cylinder'. 
+* At state 5, the robot picked up and placed 'gray cylinder' on top of 'blue cylinder'.
+
+==========================summary -> spec==========================
+[[Reasoning:]]
+In [Scenario 1], based on States 2-5, the 'gray cylinder' is the base and the other cylinders ('yellow cylinder', 'brown cylinder', 'blue cylinder') are stacked on top of it.
+In [Scenario 2], based on States 2-5, the 'yellow cylinder' is the base and the other cylinders ('brown cylinder', 'blue cylinder', 'gray cylinder') are stacked on top of it.
+
+Between the two scenarios, the only difference is the base cylinder. Therefore, we can use a loop to handle the stacking of the cylinders on top of the base cylinder.
+[[Task Specification:]]
+1. Set the base cylinder as the current cylinder.
+2. Loop through the remaining cylinders and stack each one on top of the current cylinder.
+

@@ -1,0 +1,17 @@
+objects=['purple block', 'pink block', 'orange cylinder', 'green cylinder', 'gray cylinder']
+"""
+[Scenario 1]
+State 2:
+'orange cylinder' has moved
+
+State 3:
+'green cylinder' is not on top of 'table'
+'green cylinder' has moved
+'green cylinder' is on top of 'orange cylinder'
+
+State 4:
+'gray cylinder' is not on top of 'table'
+'gray cylinder' has moved
+'gray cylinder' is on top of 'orange cylinder'
+'gray cylinder' is on top of 'green cylinder'
+"""

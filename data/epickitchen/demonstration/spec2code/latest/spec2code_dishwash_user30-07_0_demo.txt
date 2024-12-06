@@ -1,0 +1,11 @@
+"""
+Wash objects at the sink. All cleaned objects should be placed on the counter.
+Specifically -
+Get a list of all objects to wash
+For each object in all objects:
+    Bring object from counter_1 to sink_1
+    Scrub object if object is dirty
+    Rinse object till clean
+    Turn off tap_1
+    Place object on counter_1
+"""

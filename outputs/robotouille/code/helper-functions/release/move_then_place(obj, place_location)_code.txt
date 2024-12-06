@@ -1,0 +1,4 @@
+def move_then_place(obj, place_location):
+    if get_curr_location() != place_location:
+        move(get_curr_location(), place_location)
+    place(obj, place_location)

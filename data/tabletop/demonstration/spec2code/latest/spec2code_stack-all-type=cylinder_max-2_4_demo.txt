@@ -1,0 +1,4 @@
+objects=['red block', 'gray cylinder', 'pink cylinder', 'cyan cylinder', 'green cylinder']
+"""
+Stack all cylinders. However, the maximum height of a stack is 2.
+"""

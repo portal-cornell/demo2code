@@ -1,0 +1,30 @@
+objects=['cyan block', 'green cylinder', 'brown cylinder', 'red cylinder', 'blue cylinder']
+"""
+[Scenario 1]
+Stack all cylinders into one stack, while enforcing the order between cylinders if there is a requirement.
+
+State 2:
+'red cylinder' is in front of 'blue cylinder'
+'blue cylinder' has moved
+'blue cylinder' is behind 'red cylinder'
+
+State 3:
+'red cylinder' is not on top of 'table'
+'red cylinder' has moved
+'red cylinder' is not in front of 'blue cylinder'
+'red cylinder' is on top of 'blue cylinder'
+'blue cylinder' is not behind 'red cylinder'
+
+State 4:
+'green cylinder' is not on top of 'table'
+'green cylinder' has moved
+'green cylinder' is on top of 'red cylinder'
+'green cylinder' is on top of 'blue cylinder'
+
+State 5:
+'brown cylinder' is not on top of 'table'
+'brown cylinder' has moved
+'brown cylinder' is on top of 'green cylinder'
+'brown cylinder' is on top of 'red cylinder'
+'brown cylinder' is on top of 'blue cylinder'
+"""

@@ -1,0 +1,13 @@
+"""
+Wash objects in sink. All clean objects must be placed in drying rack.
+Specifically -
+Get a list of all objects to wash
+For each object in all objects:
+    Bring object from sink_1 to sink_2
+    Scrub object
+    Place object in sink_2
+For each object in all objects:
+    Rinse object
+    Place object in dryingrack_1
+Turn off tap_1
+"""

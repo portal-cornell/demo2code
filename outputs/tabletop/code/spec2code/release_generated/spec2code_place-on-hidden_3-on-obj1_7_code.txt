@@ -1,0 +1,4 @@
+items_to_place_first_in_order = ['brown block', 'yellow block', 'green cylinder']
+for item in items_to_place_first_in_order:
+  put_first_on_second(item, "table")
+put_first_on_second('pink cylinder', 'yellow cylinder')

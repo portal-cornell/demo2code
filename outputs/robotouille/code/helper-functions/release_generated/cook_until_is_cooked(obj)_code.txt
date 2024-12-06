@@ -1,0 +1,4 @@
+def cook_until_is_cooked(obj):
+    start_cooking(obj)
+    while not is_cooked(obj): 
+        noop()

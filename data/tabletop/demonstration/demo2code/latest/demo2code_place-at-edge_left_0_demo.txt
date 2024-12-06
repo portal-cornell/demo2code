@@ -1,0 +1,9 @@
+objects=['orange block', 'blue block', 'cyan cylinder']
+"""
+[Scenario 1]
+Place the orange block at the edge.
+
+State 2:
+'orange block' has moved
+'orange block' is at 'left edge'
+"""

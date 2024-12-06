@@ -1,0 +1,37 @@
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the objects ('orange block' has moved). 
+I will summarize the state trajectory into low-level actions.
+The low-level actions are the most compact form, so I should stop summarizing after this. 
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 1], at state 2, the robot moved 'orange block'.
+* At state 3, the robot picked up and placed 'yellow block' on top of 'orange block'. 
+* At state 4, the robot picked up and placed 'brown block' on top of 'yellow block'. 
+* At state 5, the robot picked up and placed 'green block' on top of 'brown block'.
+
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the objects ('orange block' has moved). 
+I will summarize the state trajectory into low-level actions.
+The low-level actions are the most compact form, so I should stop summarizing after this. 
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 2], at state 2, the robot moved 'orange block' to the right of 'green block' and behind 'yellow block'.
+* At state 3, the robot picked up and placed 'yellow block' on top of 'orange block'. 
+* At state 4, the robot picked up and placed 'green block' on top of 'orange block' and 'yellow block'.
+* At state 5, the robot picked up and placed 'brown block' on top of 'orange block', 'green block', and 'yellow block'.
+
+==========================summary -> spec==========================
+[[Reasoning:]]
+In [Scenario 1], based on States 2-5, the blocks are stacked in the order ['orange block', 'yellow block', 'brown block', 'green block'].
+In [Scenario 2], based on States 2-5, the blocks are stacked in the order ['orange block', 'yellow block', 'green block', 'brown block'].
+
+The only difference between the two scenarios is the order of the last two blocks, 'green block' and 'brown block'.
+[[Task Specification:]]
+Stack all blocks in the order ['orange block', 'yellow block', 'brown block', 'green block'].
+

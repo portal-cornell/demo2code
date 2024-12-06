@@ -1,0 +1,15 @@
+objects=['pink block', 'cyan cylinder', 'gray cylinder']
+"""
+[Scenario 1]
+Stack all cylinders, where enfocing the maximum stack height if there is a requirement.
+
+State 2:
+'pink block' is to the right of 'cyan cylinder'
+'cyan cylinder' has moved
+'cyan cylinder' is to the left of 'pink block'
+
+State 3:
+'gray cylinder' is not on top of 'table'
+'gray cylinder' has moved
+'gray cylinder' is on top of 'cyan cylinder'
+"""

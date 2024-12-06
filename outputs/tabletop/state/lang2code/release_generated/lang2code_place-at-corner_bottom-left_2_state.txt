@@ -1,0 +1,5 @@
+<state-2>
+is_at:pink block,top left corner:1
+
+<init-state>
+is_at:pink block,top left corner:0

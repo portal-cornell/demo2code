@@ -1,0 +1,8 @@
+objects = get_all_objects()
+for object in objects:
+    bring_objects_to_loc([object], "sink_1")
+    if is_dirty(object):
+        scrub(object)
+    rinse(object)
+    turn_off("tap_1")
+    place(object, "counter_1")

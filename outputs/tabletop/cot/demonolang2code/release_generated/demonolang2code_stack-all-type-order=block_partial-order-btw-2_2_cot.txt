@@ -1,0 +1,36 @@
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the objects ('yellow block' has moved). 
+I will summarize the state trajectory into low-level actions.
+The low-level actions are the most compact form, so I should stop summarizing after this. 
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 1], at state 2, the robot moved 'yellow block'.
+* At state 3, the robot picked up and placed 'pink block' on top of 'yellow block'. 
+* At state 4, the robot picked up and placed 'brown block' on top of 'pink block'. 
+* At state 5, the robot picked up and placed 'gray block' on top of 'brown block'.
+
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the objects ('yellow block' has moved). 
+I will summarize the state trajectory into low-level actions.
+The low-level actions are the most compact form, so I should stop summarizing after this. 
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 2], at state 2, the robot moved 'yellow block'.
+* At state 3, the robot picked up and placed 'pink block' on top of 'yellow block'. 
+* At state 4, the robot picked up and placed 'gray block' on top of 'pink block'. 
+* At state 5, the robot picked up and placed 'brown block' on top of 'gray block'.
+
+==========================summary -> spec==========================
+[[Reasoning:]]
+Based on States 2-5 in both scenarios, the blocks are stacked in the following order: ['yellow block', 'pink block', 'brown block', 'gray block'].
+
+Because the order of blocks is the same in both scenarios, we can assume that the order of blocks is fixed and does not change.
+[[Task Specification:]]
+Stack the blocks in the following order: ['yellow block', 'pink block', 'brown block', 'gray block'].
+

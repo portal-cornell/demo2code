@@ -1,0 +1,9 @@
+# Move the brown cylinder twice
+put_first_on_second('brown cylinder', 'table')
+put_first_on_second('brown cylinder', 'table')
+
+# Place the brown block to the left of the brown cylinder
+put_first_on_second('brown block', 'left of brown cylinder')
+
+# Place the brown cylinder behind the yellow cylinder
+put_first_on_second('brown cylinder', 'behind yellow cylinder')

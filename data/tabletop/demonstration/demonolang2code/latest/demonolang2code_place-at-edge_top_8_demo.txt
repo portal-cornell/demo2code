@@ -1,0 +1,7 @@
+objects=['purple block', 'brown block', 'blue block', 'blue cylinder', 'orange cylinder', 'pink cylinder']
+"""
+[Scenario 1]
+State 2:
+'blue block' has moved
+'blue block' is at 'top edge'
+"""

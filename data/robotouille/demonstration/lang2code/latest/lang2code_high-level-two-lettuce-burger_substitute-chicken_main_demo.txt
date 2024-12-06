@@ -1,0 +1,5 @@
+"""
+Make two burgers.
+You should substitute chicken for the patty.
+The lettuce should be stacked on the chicken.
+"""

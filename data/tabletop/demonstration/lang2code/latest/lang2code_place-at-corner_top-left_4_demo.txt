@@ -1,0 +1,4 @@
+objects=['blue block', 'yellow cylinder', 'gray cylinder']
+"""
+Place the blue block at the corner.
+"""

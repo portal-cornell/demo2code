@@ -1,0 +1,7 @@
+<state-2>
+has_moved:gray cylinder:1
+is_at:gray cylinder,bottom left corner:1
+
+<init-state>
+has_moved:gray cylinder:0
+is_at:gray cylinder,bottom left corner:0

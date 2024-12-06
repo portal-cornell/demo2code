@@ -1,0 +1,35 @@
+<state-2>
+has_moved:purple block:1
+
+<state-3>
+on_top_of:pink block,table:0
+has_moved:pink block:1
+on_top_of:pink block,purple block:1
+
+<state-4>
+on_top_of:yellow block,table:0
+has_moved:yellow block:1
+on_top_of:yellow block,pink block:1
+on_top_of:yellow block,purple block:1
+
+<state-5>
+on_top_of:blue block,table:0
+has_moved:blue block:1
+on_top_of:blue block,yellow block:1
+on_top_of:blue block,pink block:1
+on_top_of:blue block,purple block:1
+
+<init-state>
+on_top_of:yellow block,table:1
+has_moved:yellow block:0
+on_top_of:yellow block,pink block:0
+on_top_of:yellow block,purple block:0
+on_top_of:pink block,table:1
+has_moved:pink block:0
+on_top_of:pink block,purple block:0
+on_top_of:blue block,table:1
+has_moved:blue block:0
+on_top_of:blue block,yellow block:0
+on_top_of:blue block,pink block:0
+on_top_of:blue block,purple block:0
+has_moved:purple block:0

@@ -1,0 +1,15 @@
+# Move the green cylinder behind the purple cylinder
+put_first_on_second('green cylinder', 'behind the purple cylinder')
+
+# Move the green block behind the green cylinder and place the orange cylinder on top of the green cylinder
+put_first_on_second('green block', 'behind the green cylinder')
+put_first_on_second('orange cylinder', 'on top of the green cylinder')
+
+# Move the blue cylinder on top of the green cylinder
+put_first_on_second('blue cylinder', 'on top of the green cylinder')
+
+# Move the purple cylinder
+put_first_on_second('purple cylinder', 'table')
+
+# Move the yellow cylinder on top of the purple cylinder
+put_first_on_second('yellow cylinder', 'on top of the purple cylinder')

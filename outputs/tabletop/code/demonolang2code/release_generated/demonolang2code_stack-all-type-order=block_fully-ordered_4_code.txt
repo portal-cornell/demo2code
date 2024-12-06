@@ -1,0 +1,7 @@
+base_block = 'cyan block'
+blocks_to_stack = ['brown block', 'pink block', 'blue block']
+for block in blocks_to_stack:
+  put_first_on_second(block, base_block)
+cylinders_to_stack = ['yellow cylinder', 'green cylinder', 'blue cylinder']
+for cylinder in cylinders_to_stack:
+  put_first_on_second(cylinder, base_block)

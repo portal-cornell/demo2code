@@ -1,0 +1,11 @@
+# Move the purple block in front of the orange block
+put_first_on_second('purple block', 'in front of the orange block')
+
+# Place the orange block on top of the purple block
+put_first_on_second('orange block', 'purple block')
+
+# Move the pink block
+put_first_on_second('pink block', 'table')
+
+# Place the red block on top of the pink block
+put_first_on_second('red block', 'pink block')

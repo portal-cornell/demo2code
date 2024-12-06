@@ -1,0 +1,816 @@
+prompt_version: release_generated
+stage1:
+  recursive_summarization:
+    main: |
+      You are a helpful summarizer that recursively summarizes a trajectory into a more and more compacted form.
+      <end_of_system_message>
+      You are given a trajectory. Your goal is to summarize the trajectory into a more compacted form and then determine whether the state trajectory is sufficiently summarized. 
+
+      You must respond using the following form (you must generate [[end of response]] at the very end):
+      [[Reasoning:]]
+      You should first identify what type of trajectory this is. Then, you should determine what type you will summarize the trajectory into. Finally, you should determine whether the new type of trajectory is sufficiently summarized or not.
+      [[Is the new trajectory sufficiently summarized? (yes/no):]]
+      You should only respond using either "yes" or "no", and nothing else.  
+      [[Summarized trajectory:]]
+      You should actually summarize the input trajectory and output it here. 
+      [[end of response]]
+
+      In summary, you must follow these rules when you are summarizing a trajectory.
+      Rules:
+      * You must slowly summarize the trajectory from one type to another following this order: a state trajectory –> a low-level action trajectory --> a high-level subtask trajectory. 
+      * You cannot skip a type (e.g. you cannot directly summarize a low-level action trajectory into a high-level subtask trajectory). 
+      * A low-level action trajectory is represented as an unordered list. Each line in the unordered list should only contain one low-level action. 
+      * The low-level actions must be one of the following: "move from location1 to location2", "pick up item1", "place down item1 at location1 ", "stack item1 on top of item2", "unstack item1 from item 2", "cook item1", "cut item1". You should never define new low-level actions. 
+      * A high-level subtask trajectory is represented as an unordered list. Each line in the unordered list should only contain one high-level subtask. This high-level subtask should refer to one continuous section of the states. For example, you cannot say "at states 1-5, and states 10-15, the robot did …". There can only be one interval of states. 
+      * The high-level subtask must be one of the following: "cook [ITEM]", "cut [ITEM]", "stack [ITEM] on top of [ITEM]", and "unstack [ITEM] from [ITEM]". [ITEM] must be one of the following: "patty", "lettuce", "top bun", "bottom bun", "cheese", "tomato".
+      * For the high-level subtask, you cannot define any other subtasks that are not: cook, cut, stack, or unstack. You must use choose from the list above. 
+    examples:
+      - |
+        [[Input Trajectory:]]
+        [Scenario 2]
+        Cook a patty and cut a lettuce.
+
+        State 2:
+        'robot1' is at 'table6'
+        'robot1' is not at 'table7'
+
+        State 3:
+        'lettuce6' is not at 'table6'
+        'robot1' is holding 'lettuce6'
+
+        State 4:
+        'robot1' is at 'cutting_board6'
+        'robot1' is not at 'table6'
+
+        State 5:
+        'lettuce6' is at 'cutting_board6'
+        'robot1' is not holding 'lettuce6'
+
+        State 6:
+
+
+        State 7:
+
+
+        State 8:
+        'lettuce6' is cut
+
+        State 9:
+        'robot1' is not at 'cutting_board6'
+        'robot1' is at 'table7'
+
+        State 10:
+        'patty6' is not at 'table7'
+        'robot1' is holding 'patty6'
+
+        State 11:
+        'robot1' is at 'stove6'
+        'robot1' is not at 'table7'
+
+        State 12:
+        'patty6' is at 'stove6'
+        'robot1' is not holding 'patty6'
+
+        State 13:
+
+
+        State 14:
+
+
+        State 15:
+
+
+        State 16:
+        'patty6' is cooked
+        <end_of_example_user_query>
+        [[Reasoning:]]
+        The input trajectory contains state predicates because the trajectory talks about the status of the robot ('robot1' is at 'table6') and the status of the objects ('lettuce6' is not at 'table6'). 
+        I will summarize the state trajectory into low-level actions. 
+        Low-level actions are not compacted enough yet because low-level actions can still be combined into high-level subtasks. 
+        The new trajectory will NOT be sufficiently summarized.
+        [[Is the new trajectory sufficiently summarized? (yes/no):]]
+        no
+        [[Summarized trajectory:]]
+        * In [Scenario 2], at state 2, the robot moved from 'table7' to 'table 6'. 
+        * At state 3, the robot picked up 'lettuce6'.
+        * At state 4, the robot moved from 'table6' to 'cutting_board6'.
+        * At state 5, the robot placed 'lettuce6' at location 'cutting_board6'.
+        * At state 6-8, the robot had cut 'lettuce6'.
+        * At state 9, the robot moved from 'cutting_board6' to 'table7'.
+        * At state 10, the robot picked up 'patty6'.
+        * At state 11, the robot moved from 'table7' to 'stove6'.
+        * At state 12, the robot placed 'patty6' at 'stove6'.
+        * At state 13-16, the robot had cooked 'patty6'
+        [[end of response]]
+      - |
+        [[Input Trajectory:]]
+        * In [Scenario 2], at state 2, the robot moved from 'table5' to 'table9'.
+        * At state 3, the robot picked up 'patty9'.
+        * At state 4, the robot moved from 'table9' to 'stove5'.
+        * At state 5, the robot placed 'patty9' on 'stove5'.
+        * At state 6-9, the robot had cooked 'patty9'.
+        * At state 10, the robot moved from 'stove5' to 'table5'.
+        * At state 11, the robot picked up 'patty3'.
+        * At state 12, the robot moved from 'table5' to 'stove8'.
+        * At state 13, the robot placed 'patty3' on 'stove8'
+        * At state 14-17, the robot had cooked 'patty3'.
+        <end_of_example_user_query>
+        [[Reasoning:]]
+        The input trajectory contains low-level actions because the trajectory mentions "moved", "picked up", etc. 
+        I will summarize the low-level action trajectory into high-level subtasks. 
+        High-level subtask trajectory is the most compacted form that cannot be summarized anymore.
+        The new trajectory will be sufficiently summarized.
+        [[Is the new trajectory sufficiently summarized? (yes/no):]]
+        yes
+        [[Summarized trajectory:]]
+        * In [Scenario 2], at state 2-9, the subtask is "cook patty". This subtask contains: 1. moving to pick up 'patty9' (state 2-3) 2. moving to place 'patty9' on 'stove5' (state 4-5) 3. cooking 'patty9' until it is cooked (state 6-9)
+        * At state 10-17, the subtask is "cook patty". This subtask contains: 1. moving to pick up 'patty3' (state 10-11) 2. moving to place 'patty3' on 'stove8' (state 12-13) 3. cooking 'patty3' until it is cooked (state 14-17)
+        [[end of response]]
+      - |
+        [[Input Trajectory:]]
+        [Scenario 1]
+        Cut a lettuce before stacking it on top of a bottom bun. Then stack a top bun on top of the lettuce.
+
+        State 2:
+        'lettuce1' is not at 'table6'
+        'robot1' is holding 'lettuce1'
+
+        State 3:
+        'robot1' is not at 'table6'
+        'robot1' is at 'cutting_board1'
+
+        State 4:
+        'robot1' is not holding 'lettuce1'
+        'lettuce1' is at 'cutting_board1'
+
+        State 5:
+
+
+        State 6:
+
+
+        State 7:
+        'lettuce1' is cut
+
+        State 8:
+        'lettuce1' is not at 'cutting_board1'
+        'robot1' is holding 'lettuce1'
+
+        State 9:
+        'robot1' is not at 'cutting_board1'
+        'robot1' is at 'table2'
+
+        State 10:
+        'lettuce1' is at 'table2'
+        'lettuce1' is on top of 'bottom_bun1'
+        'robot1' is not holding 'lettuce1'
+
+        State 11:
+        'robot1' is not at 'table2'
+        'robot1' is at 'table5'
+
+        State 12:
+        'top_bun2' is not at 'table5'
+        'robot1' is holding 'top_bun2'
+
+        State 13:
+        'robot1' is not at 'table5'
+        'robot1' is at 'table2'
+
+        State 14:
+        'top_bun2' is at 'table2'
+        'top_bun2' is on top of 'lettuce1'
+        'robot1' is not holding 'top_bun2'
+        <end_of_example_user_query>
+        [[Reasoning:]]
+        The input trajectory contains state predicates because the trajectory talks about the status of the robot ('robot1' is holding 'lettuce1') and the status of the objects ('lettuce1' is not at 'table6'). 
+        I will summarize the state trajectory into low-level actions. 
+        Low-level actions are not compacted enough yet because low-level actions can still be combined into high-level subtasks. 
+        The new trajectory will NOT be sufficiently summarized.
+        [[Is the new trajectory sufficiently summarized? (yes/no):]]
+        no
+        [[Summarized trajectory:]]
+        * In [Scenario 1], at state 2, the robot picked up 'lettuce1'.
+        * At state 3, the robot moved from 'table6' to 'cutting_board1'.
+        * At state 4, the robot placed 'lettuce1' at location 'cutting_board1'.
+        * At state 5-7, the robot had cut 'lettuce1'.
+        * At state 8, the robot picked up 'lettuce1'.
+        * At state 9, the robot moved from 'cutting_board1' to 'table2'.
+        * At state 10, the robot placed 'lettuce1' on top of 'bottom_bun1' at location 'table2'.
+        * At state 11, the robot moved from 'table2' to 'table5'.
+        * At state 12, the robot picked up 'top_bun2'.
+        * At state 13, the robot moved from 'table5' to 'table2'.
+        * At state 14, the robot placed 'top_bun2' on top of 'lettuce1' at location 'table2'.
+        [[end of response]]
+      - |
+        [[Input Trajectory:]]
+        * In [Scenario 1], at state 2, the robot picked up 'lettuce1'.
+        * At state 3, the robot moved from 'table6' to 'cutting_board1'.
+        * At state 4, the robot placed 'lettuce1' at location 'cutting_board1'.
+        * At state 5-7, the robot had cut 'lettuce1'.
+        * At state 8, the robot picked up 'lettuce1'.
+        * At state 9, the robot moved from 'cutting_board1' to 'table2'.
+        * At state 10, the robot placed 'lettuce1' on top of 'bottom_bun1' at location 'table2'.
+        * At state 11, the robot moved from 'table2' to 'table5'.
+        * At state 12, the robot picked up 'top_bun2'.
+        * At state 13, the robot moved from 'table5' to 'table2'.
+        * At state 14, the robot placed 'top_bun2' on top of 'lettuce1' at location 'table2'.
+        <end_of_example_user_query>
+        [[Reasoning:]]
+        The input trajectory contains low-level actions because the trajectory mentions "picked up", "moved", etc. 
+        I will summarize the low-level action trajectory into high-level subtasks. 
+        High-level subtask trajectory is the most compacted form that cannot be summarized anymore.
+        The new trajectory will be sufficiently summarized.
+        [[Is the new trajectory sufficiently summarized? (yes/no):]]
+        yes
+        [[Summarized trajectory:]]
+        * In [Scenario 1], at state 2-7, the subtask is "cut lettuce". This subtask contains: 1. pick up 'lettuce1' (state 2) 2. moving to place 'lettuce1' on 'cutting_board1' (state 3-4) 3. cutting 'lettuce1' until it is cut (state 5-7)
+        * At state 8-10, the subtask is "stack lettuce on top of bottom bun". This subtask contains: 1. picking up 'lettuce1' (state 8) 2. moving to stack 'lettuce1' on 'bottom_bun1' (state 9-10)
+        * At state 11-14, the subtask is "stack top bun on top of lettuce". This subtask contains: 1. moving to pick up 'top_bun2' (state 11-12) 2. moving to stack 'top_bun2' on 'lettuce1' (state 13-14)
+        [[end of response]]
+  summary_2_spec:
+    main: |
+      You are a helpful assistant that analyzes the high-level subtask trajectories and summarizes them into a concise pseudocode-style task specification. 
+      <end_of_system_message>
+      You are given (1) a high-level goal and (2) one or more high-level subtask trajectories where each one represents a different scenario. Your goal is to summarize these trajectories into a compact task specification, written in a pseudocode style. 
+
+      You must respond using the following format (you must generate [[end of response]] at the very end): 
+      [[Reasoning:]]
+      You should first list out the order of the high-level subtask trajectories in all scenarios. Then, you should consider if certain sections of the subtasks are repeated in the scenario and can be represented by a loop. Two scenarios having exactly the same list does not mean that there is a loop. A loop only exists among subtasks in one individual scenario. 
+      Overall, your task specification should work for all scenarios. You should make sure that the task specification matches the subtasks ordering across all scenarios. You should also make sure that the task specification uses loops when there is any repetition. 
+      [[Task Specification:]]
+      You should first state the high-level goal. Then, you should say "Specifically:" before outputting the pseudocode-style task specification.
+      [[end of response]]
+
+      You must follow these rules when you are writing the task specifications. 
+      Rules:
+      * You must write the task specifications in pseudocode style. You should not write the task specification as a list. You cannot number any line. 
+      * When checking for loops, you cannot compare the subtasks across multiple scenarios. Even if two scenarios have the exact same list of subtasks, there is NOT any loop. Loops can only exist within the list of subtasks for one individual scenario. Do not consider loops across multiple scenarios.
+    examples:
+      - |
+        [[High-Level Goal:]]
+        Cook a patty and cut a lettuce.
+        [[Trajectories:]]
+        * In [Scenario 2], at state 2-8, the subtask is "cut lettuce". This subtask contains: 1. moving to pick up 'lettuce4' (state 2-3) 2. moving to place 'lettuce4' on 'cutting_board3' (state 4-5) 3. cutting 'lettuce4' until it is cut (state 6-8)
+        * At state 9-16, the subtask is "cook patty". This subtask contains: 1. moving to picking up 'patty2' (state 9-10) 2. moving to place 'patty2' at location 'stove8' (state 11-12) 3. cooking 'patty2' until it is cooked (state 13-16)
+        * In [Scenario 2], at state 2-8, the subtask is "cut lettuce". This subtask contains: 1. moving to pick up 'lettuce6' (state 2-3) 2. moving to place 'lettuce6' on 'cutting_board6' (state 4-5) 3. cutting 'lettuce6' until it is cut (state 6-8)
+        * At state 9-16, the subtask is "cook patty". This subtask contains: 1. moving to picking up 'patty6' (state 9-10) 2. moving to place 'patty6' at location 'stove6' (state 11-12) 3. cooking 'patty6' until it is cooked (state 13-16)
+        <end_of_example_user_query>
+        [[Reasoning:]]
+        * In [Scenario 1]'s unique kitchen environment, the subtasks were executed in this order: ['cut lettuce', 'cook patty'].
+        * In [Scenario 2]'s unique kitchen environment, the subtasks were executed in this order: ['cut lettuce', 'cook patty'].
+        * Both scenarios are executing the subtasks in the same order.
+        * There is no repetition or loop in the subtask ordering for any individual scenario.
+        [[Task Specification:]]
+        Cook a patty and cut a lettuce.
+
+        Specifically:
+        Get a list of all the lettuces in the kitchen.
+        Get a list of all the patties in the kitchen.
+
+        Decide a lettuce to use.
+        Get a list of all the available cutting boards in the kitchen. 
+        Decide a cutting board to go to.
+        Cut that lettuce at that cutting board.
+
+        Decide a patty to use.
+        Get a list of all the available stoves in the kitchen.
+        Decide a stove to go to.
+        Cook that patty at that stove.
+      - |
+        [[High-Level Goal:]]
+        Cook two patties. 
+        [[Trajectories:]]
+        * In [Scenario 1], at state 2-9, the subtask is "cook patty". This subtask contains: 1. moving to pick up 'patty4' (state 2-3) 2. moving to place 'patty4' on 'stove10' (state 4-5) 3. cooking 'patty4' until it is cooked (state 6-9)
+        * At state 10-17, the subtask is "cook patty". This subtask contains: 1. moving to pick up 'patty6' (state 10-11) 2. moving to place 'patty6' on 'stove11' (state 12-13) 3. cooking 'patty6' until it is cooked (state 14-17)
+        * In [Scenario 2], at state 2-9, the subtask is "cook patty". This subtask contains: 1. moving to pick up 'patty9' (state 2-3) 2. moving to place 'patty9' on 'stove5' (state 4-5) 3. cooking 'patty9' until it is cooked (state 6-9)
+        * At state 10-17, the subtask is "cook patty". This subtask contains: 1. moving to pick up 'patty3' (state 10-11) 2. moving to place 'patty3' on 'stove8' (state 12-13) 3. cooking 'patty3' until it is cooked (state 14-17)
+        <end_of_example_user_query>
+        [[Reasoning:]]
+        * In [Scenario 1]'s unique kitchen environment, the subtasks were executed in this order: ['cook patty', 'cook patty'].
+        * In [Scenario 2]'s unique kitchen environment, the subtasks were executed in this order: ['cook patty', 'cook patty'].
+        * Both scenarios are executing the subtasks in the same order.
+        * In both scenarios, we see that the subset ['cook patty'] got repeated 2 times consecutively, so we can use a for-loop in our specification. 
+        [[Task Specification:]]
+        Cook two patties. 
+
+        Specifically:
+        Get a list of all the patties in the kitchen.
+
+        For two patties, do:
+          Decide a patty to use.
+          Get a list of all the available stoves in the kitchen.
+          Decide a stove to go to.
+          Cook that patty at that stove.
+      - |
+        [[High-Level Goal:]]
+        Cut a lettuce before stacking it on top of a bottom bun. Then stack a top bun on top of the lettuce.
+        [[Trajectories:]]
+        * In [Scenario 1], at state 2-7, the subtask is "cut lettuce". This subtask contains: 1. pick up 'lettuce1' (state 2) 2. moving to place 'lettuce1' on 'cutting_board1' (state 3-4) 3. cutting 'lettuce1' until it is cut (state 5-7)
+        * At state 8-10, the subtask is "stack lettuce on top of bottom bun". This subtask contains: 1. picking up 'lettuce1' (state 8) 2. moving to stack 'lettuce1' on 'bottom_bun1' (state 9-10)
+        * At state 11-14, the subtask is "stack top bun on top of lettuce". This subtask contains: 1. moving to pick up 'top_bun2' (state 11-12) 2. moving to stack 'top_bun2' on 'lettuce1' (state 13-14)
+        * In [Scenario 2], at state 2-7, the subtask is "cut lettuce". This subtask contains: 1. pick up 'lettuce4' (state 2) 2. moving to place 'lettuce4' on 'cutting_board2' (state 3-4) 3. cutting 'lettuce4' until it is cut (state 5-7)
+        * At state 8-10, the subtask is "stack lettuce on top of bottom bun". This subtask contains: 1. picking up 'lettuce4' (state 8) 2. moving to stack 'lettuce4' on 'bottom_bun3' (state 9-10)
+        * At state 11-14, the subtask is "place top bun on top of lettuce". This subtask contains: 1. moving to pick up 'top_bun1' (state 11-12) 2. moving to place 'top_bun1' on top of 'lettuce4' (state 13-14)
+        <end_of_example_user_query>
+        [[Reasoning:]]
+        * In [Scenario 1]'s unique kitchen environment, the subtasks were executed in this order: ['cut lettuce', 'stack lettuce on top of bottom bun', 'stack top bun on top of lettuce'].
+        * In [Scenario 2]'s unique kitchen environment, the subtasks were executed in this order: ['cut lettuce', 'stack lettuce on top of bottom bun', 'place top bun on top of lettuce'].
+        * 'stack lettuce on top of bottom bun' and 'place top bun on top of lettuce' are essentially the same subtask. 
+        * Both scenarios are executing the subtasks in the same order.
+        * There is no repetition or loop in the subtask ordering for any individual scenario.
+        [[Task Specification:]]
+        Cut a lettuce before stacking it on top of a bottom bun. Then stack a top bun on top of the lettuce.
+
+        Specifically:
+        Get a list of all the lettuces in the kitchen.
+        Get a list of all the bottom buns in the kitchen.
+        Get a list of all the top buns in the kitchen.
+
+        Decide a lettuce to use.
+        Get a list of all the available cutting boards in the kitchen. 
+        Decide a cutting board to go to.
+        Cut that lettuce at that cutting board.
+
+        Decide a bottom bun to use. 
+        Stack the lettuce on top of the bottom bun.
+
+        Decide a top bun to use. 
+        Stack the top bun on top of the lettuce.
+stage2:
+  spec_2_highlevelcode:
+    main: |
+      You are a Python code generator for robotics. The users will first provide the imported Python modules. Then, for each code they want you to generate, they provide the requirements and pseudocode in Python docstrings.
+      <end_of_system_message>
+      You need to write kitchen robot control scripts in Python code. The Python code should be general and applicable to different kitchen environments. 
+
+      Below are the imported Python libraries and functions that you can use. You CANNOT import new libraries. 
+      ```
+      # Python kitchen robot control script
+      from env_utils import get_all_obj_names_that_match_type, get_all_location_names_that_match_type, is_cut, is_cooked
+      ```
+      Below shows the docstrings for these imported library functions that you must follow. You CANNOT add additional parameters to these functions. 
+      * env_utils Specifications:
+      get_all_obj_names_that_match_type(obj_type)
+      """
+      Parameters:
+      obj_type (str): A string that has to be one of 'patty', 'lettuce', 'bottom bun' ,'top bun'.
+      Return:
+            (list) a list of string of objects that match the obj_type
+      """
+      get_all_location_names_that_match_type(location_type)
+      """
+      Parameters:
+            location_type (str): A string that has to be one of 'table', 'cutting_board', 'stove'.
+      Return:
+            (list) a list of string of locations that match the location_type
+      """
+      is_cut(obj)
+      """
+      Parameters:
+            obj (str): A string that has the type of a cuttable object (must be 'lettuce') and an id. For example: 'lettuce3', 'lettuce1'
+      Return:
+            (boolean) true if obj is cut
+      """
+      is_cooked(obj)
+      """
+      Parameters:
+            obj (str): A string that has the type of a cookable object (must be 'patty') and an id. For example: 'patty1', 'patty2'
+      Return:
+            (boolean) true if obj is cooked
+      """
+      ```
+      
+      You must follow these rules when you are generating Python code.
+      * You can use Python library functions imported above. You MUST follow the docstrings and specification for these functions.
+      * You can also call new functions that are not yet defined. However, these functions must be completing general, high-level subtasks (cook, cut, place on top, unstack). These functions cannot be doing low-level actions. 
+      * You must follow the pseudocode provided by the user. You CANNOT add additional steps, conditionals, or loops that are not in the pseudocode. 
+    examples:
+      - |
+        ```
+        """
+        Cook a patty and cut a lettuce.
+
+        Specifically:
+        Get a list of all the lettuces in the kitchen.
+        Get a list of all the patties in the kitchen.
+
+        Decide a lettuce to use.
+        Get a list of all the available cutting boards in the kitchen. 
+        Decide a cutting board to go to.
+        Cut that lettuce at that cutting board.
+
+        Decide a patty to use.
+        Get a list of all the available stoves in the kitchen.
+        Decide a stove to go to.
+        Cook that patty at that stove.
+        """
+        ```
+        <end_of_example_user_query>
+        ```
+        # Get a list of all the lettuces in the kitchen.
+        lettuces = get_all_obj_names_that_match_type('lettuce')
+        # Get a list of all the patties in the kitchen.
+        patties = get_all_obj_names_that_match_type('patty')
+
+        # Decide a lettuce to use.
+        lettuce_to_use = lettuces[0]
+        # Get a list of all the available cutting boards in the kitchen. 
+        cutting_boards = get_all_location_names_that_match_type('cutting_board')
+        # Decide a cutting board to go to.
+        cutting_board_to_cut_at = cutting_boards[0]
+        # Cut that lettuce at that cutting board.
+        cut_object_at_location(obj=lettuce_to_use, location=cutting_board_to_cut_at)
+
+        # Decide a patty to use.
+        patty_to_use = patties[0]
+        # Get a list of all the available stoves in the kitchen. 
+        stoves = get_all_location_names_that_match_type('stove')
+        # Decide a stove to go to.
+        stove_to_cook_at = stoves[0]
+        # Cook that patty at that stove.
+        cook_object_at_location(obj=patty_to_use, location=stove_to_cook_at)
+        ```
+      - |
+        ```
+        """
+        Cook two patties.
+
+        Specifically:
+        Get a list of all the patties in the kitchen.
+
+        Decide a patty to use.
+        Get a list of all the available stoves in the kitchen. 
+        Decide a stove to go to.
+        Cook that patty at that stove.
+
+        Repeat the above steps for the second patty.
+        """
+        ```
+        <end_of_example_user_query>
+        ```
+        # Get a list of all the patties in the kitchen.
+        patties = get_all_obj_names_that_match_type('patty')
+
+        # For two patties, do
+        for i in range(2):
+          # Decide a patty to use.
+          patty_to_use = patties[i]
+          # Get a list of all the available stoves in the kitchen. 
+          stoves = get_all_location_names_that_match_type('stove')
+          # Decide a stove to go to.
+          stove_to_cook_at = stoves[i]
+          # Cook that patty at that stove.
+          cook_object_at_location(obj=patty_to_use, location=stove_to_cook_at)
+        ```
+      - |
+        ```
+        """
+        Cut a lettuce before stacking it on top of a bottom bun. Then stack a top bun on top of the lettuce.
+
+        Specifically:
+        Get a list of all the lettuces in the kitchen.
+        Get a list of all the bottom buns in the kitchen.
+        Get a list of all the top buns in the kitchen.
+
+        Decide a lettuce to use.
+        Get a list of all the available cutting boards in the kitchen. 
+        Decide a cutting board to go to.
+        Cut that lettuce at that cutting board.
+
+        Decide a bottom bun to use. 
+        Stack the lettuce on top of the bottom bun.
+
+        Decide a top bun to use. 
+        Stack the top bun on top of the lettuce.
+        """
+        ```
+        <end_of_example_user_query>
+        ```
+        # Get a list of all the lettuces in the kitchen.
+        lettuces = get_all_obj_names_that_match_type('lettuce')
+        # Get a list of all the bottom buns in the kitchen.
+        bottom_buns = get_all_obj_names_that_match_type('bottom_bun')
+        # Get a list of all the top buns in the kitchen.
+        top_buns = get_all_obj_names_that_match_type('top_bun')
+
+        # Decide a lettuce to use.
+        lettuce_to_use = lettuces[0]
+        # Get a list of all the available cutting boards in the kitchen. 
+        cutting_boards = get_all_location_names_that_match_type('cutting_board')
+        # Decide a cutting board to go to.
+        cutting_board_to_cut_at = cutting_boards[0]
+        # Cut that lettuce at that cutting board.
+        cut_object_at_location(obj=lettuce_to_use, location=cutting_board_to_cut_at)
+
+        # Decide a bottom bun to use.
+        bottom_bun_to_use = bottom_buns[0]
+        # Stack the lettuce on top of the bottom bun.
+        # obj1 should be the lettuce, obj2 should be the bottom bun.
+        stack_obj1_on_obj2(obj1=lettuce_to_use, obj2=bottom_bun_to_use)
+
+        # Decide a top bun to use.
+        top_bun_to_use = top_buns[0]
+        # Stack that top bun on top of the lettuce.
+        # obj1 should be the top bun, obj2 should be the lettuce.
+        stack_obj1_on_obj2(obj1=top_bun_to_use, obj2=lettuce_to_use)
+        ```
+  recursive_expansion:
+    step2:
+      main: |
+        You are a Python code generator for robotics. The users will first provide the imported Python modules. Then, for each code that they want you to generate, they provide the requirement in Python docstrings.
+        <end_of_system_message>
+        # Python kitchen robot control script
+        from env_utils import get_obj_location, is_holding, is_in_a_stack, get_obj_that_is_underneath
+        """
+        All the code should follow the specification. 
+
+        env_utils Specifications:
+        get_obj_location(obj)
+            Parameters:
+                obj (str): A string that has the type of object (one of 'lettuce', 'patty', 'bottom_bun' ,'top_bun') and an id. For example: 'lettuce5', 'patty7', 'bottom_bun1', 'top_bun4'
+            Return:
+                (str) location that the object is currently at. A string that has the type of location (one of 'table', 'cutting_board', 'stove') and an id. For example: 'table2', 'cutting_board1', 'stove5'
+        is_holding(obj)
+            Parameters:
+                obj (str): A string that has the type of object (one of 'lettuce', 'patty', 'bottom_bun' ,'top_bun') and an id. For example: 'lettuce5', 'patty7', 'bottom_bun1', 'top_bun4'
+            Return:
+                (bool) true if the robot is currently holding obj
+        is_in_a_stack(obj)
+            Parameters:
+                obj (str): A string that has the type of object (one of 'lettuce', 'patty', 'bottom_bun' ,'top_bun') and an id. For example: 'lettuce5', 'patty7', 'bottom_bun1', 'top_bun4'
+            Return:
+                (bool) true if the obj is in a stack and the robot needs to unstack the obj
+        get_obj_that_is_underneath(obj_at_top)
+            Parameters:
+                obj_at_top (str): A string that has the type of object (one of 'lettuce', 'patty', 'bottom_bun' ,'top_bun') and an id. For example: 'lettuce5', 'patty7', 'bottom_bun1', 'top_bun4'
+            Return:
+                (str) The name of the object that is directly underneath the obj_at_top. A string that has the type of object (one of 'lettuce', 'patty', 'bottom_bun' ,'top_bun') and an id. For example: 'lettuce5', 'patty7', 'bottom_bun1', 'top_bun4'
+        """
+        """
+        The robot is only capable of these basic actions: move, pick, place, stack, unstack, cook, cut. 
+        These functions require the robot to hold the object: place, stack
+        These functions require the robot to not hold anything: pick, unstack
+
+        You can define functions that combine two of these actions, but you cannot define new actions. 
+        """
+      examples:
+        - |
+          ```
+          """
+          You can use functions imported above and also call new functions
+
+          The robot might not be near any object or near any location specified in the function parameters.
+
+          Define the function: cut_object_at_location(obj, location)
+          """
+          ```
+          <end_of_example_user_query>
+          ```
+          def cut_object_at_location(obj, location):
+            # To cut an object, the robot first needs to be holding obj
+            if not is_holding(obj):
+                # If the robot is not holding obj, there are 2 scenarios: 
+                #   (1) if obj is in a stack ,unstack obj
+                #   (2) else, pick up obj.
+                if is_in_a_stack(obj):
+                    # Because obj is in a stack, robot need to move then unstack the obj from the obj_at_bottom first
+                    obj_at_bottom = get_obj_that_is_underneath(obj_at_top=obj)
+                    # move then unstack: first you move to the obj_at_bottom's location, then you unstack obj from obj_at_bottom
+                    move_then_unstack(obj_to_unstack=obj, obj_at_bottom=obj_at_bottom, unstack_location=get_obj_location(obj_at_bottom))
+                else:
+                    # move_then_pick: first you move to obj's location, then you pick obj up
+                    move_then_pick(obj=obj, pick_location=get_obj_location(obj))
+            # move then place: first you move to the location to cut at, then you place obj at that location
+            move_then_place(obj=obj, place_location=location)
+            # cut the object until it is cut
+            cut_until_is_cut(obj=obj)
+          ```
+        - |
+            ```
+            """
+            You can use functions imported above and also call new functions
+
+            The robot might not be near any object or near any location specified in the function parameters.
+
+            Define the function: stack_obj1_on_obj2(obj1, obj2)
+            """
+            ```
+            <end_of_example_user_query>
+            ```
+            def stack_obj1_on_obj2(obj1, obj2):
+                # To stack obj1 on obj2, the robot needs to be holding obj1
+                if not is_holding(obj1):
+                    # If the robot is not holding obj1, there are 2 scenarios: 
+                    #   (1) if obj1 is in a stack ,unstack obj1
+                    #   (2) else, pick up obj1.
+                    if is_in_a_stack(obj1):
+                        # Because obj1 is in a stack, robot need to move then unstack the obj from the obj_at_bottom first
+                        obj_at_bottom = get_obj_that_is_underneath(obj_at_top=obj1)
+                        # move then unstack: first you move to the obj_at_bottom's location, then you unstack obj from obj_at_bottom
+                        move_then_unstack(obj_to_unstack=obj1, obj_at_bottom=obj_at_bottom, unstack_location=get_obj_location(obj_at_bottom))
+                    else:
+                        # move_then_pick: first you move to obj's location, then you pick obj up
+                        move_then_pick(obj=obj, pick_location=get_obj_location(obj))
+                # determine the location of obj2 to stack on
+                obj2_location = get_obj_location(obj2)
+                # move then stack: first you move to obj2's location, then you stack obj1 on obj2
+                move_then_stack(obj_to_stack=obj1, obj_at_bottom=obj2, stack_location=obj2_location)
+            ```
+        - |
+          ```
+          """
+          You can use functions imported above and also call new functions
+
+          The robot might not be near any object or near any location specified in the function parameters.
+
+          Define the function: unstack_obj1_from_obj2(obj1, obj2)
+          """
+          ```
+          <end_of_example_user_query>
+          ```
+          def unstack_obj1_from_obj2(obj1, obj2):
+              # To unstack obj1 from obj2, the robot needs to not hold anything yet.
+              if is_holding(obj1):
+                  # Because the robot is holding obj1, unstacking must have been successful already
+                  return
+              # determine the location of obj2 to unstack from 
+              obj2_location = get_obj_location(obj2)
+              # move then unstack: first you move to obj2's location, then you unstack obj1 from obj2
+              move_then_unstack(obj_to_unstack=obj1, obj_at_bottom=obj2, unstack_location=obj2_location)
+          ```
+        - |
+          ```
+          """
+          You can use functions imported above and also call new functions
+
+          The robot might not be near any object or near any location specified in the function parameters.
+
+          Define the function: cook_object_at_location(obj, cook_location)
+          """
+          ```
+          <end_of_example_user_query>
+          ```
+          def cook_object_at_location(obj, cook_location):
+            # To cook an object, the robot first needs to be holding obj
+            if not is_holding(obj):
+                # If the robot is not holding obj, there are 2 scenarios: 
+                #   (1) if obj is in a stack ,unstack obj
+                #   (2) else, pick up obj.
+                if is_in_a_stack(obj):
+                    # Because obj is in a stack, robot need to move then unstack the obj from the obj_at_bottom first
+                    obj_at_bottom = get_obj_that_is_underneath(obj_at_top=obj)
+                    # move then unstack: first you move to the obj_at_bottom's location, then you unstack obj from obj_at_bottom
+                    move_then_unstack(obj_to_unstack=obj, obj_at_bottom=obj_at_bottom, unstack_location=get_obj_location(obj_at_bottom))
+                else:
+                    # move_then_pick: first you move to obj's location, then you pick obj up
+                    move_then_pick(obj=obj, pick_location=get_obj_location(obj))
+            # move then place: first you move to the location to cook at, then you place obj at that location
+            move_then_place(obj=obj, place_location=cook_location)
+            # cook the object until it is cooked
+            cook_until_is_cooked(obj=obj)
+          ```
+    step3:
+      main: |
+        You are a Python code generator for robotics. The users will first provide the imported Python modules. Then, for each code that they want you to generate, they provide the requirement in Python docstrings.
+        <system_message_separator>
+        # Python kitchen robot control script
+        import numpy as np
+        from robot_utils import move, pick_up, place, cut, start_cooking, noop, stack, unstack
+        from env_utils import is_cut, is_cooked, get_obj_location, get_curr_location
+        """
+        All the code should follow the specification. 
+
+        robot_utils Specifications:
+        move(curr_loc, target_loc)
+            Requirement:
+                The curr_loc cannot be the same as target_loc.
+            
+            Move from the curr_loc to the target_loc.
+
+            Parameters: 
+                curr_loc (str): a string that has the type of location (one of 'table', 'cutting_board', 'stove') and an id. For example: 'table2', 'cutting_board1', 'stove5'
+                target_loc (str): a string that has the type of location (one of 'table', 'cutting_board', 'stove') and an id. For example: 'table2', 'cutting_board1', 'stove5'
+        pick_up(obj, loc)
+            Requirement:
+                The robot must have moved to loc already, and it cannot be holding anything else.
+            
+            Pick up the obj from the loc.
+
+            Parameters:
+                obj (str): object to pick. A string that has the type of object (one of 'lettuce', 'patty', 'bottom bun' ,'top bun') and an id. For example: 'lettuce5', 'patty7', 'bun1'
+                loc (str): location to pick the object from. a string that has the type of location (one of 'table', 'cutting_board', 'stove') and an id. For example: 'table2', 'cutting_board1', 'stove5'
+        place(obj, loc)
+            Requirement:
+                The robot must have moved to loc already, and it cannot be holding anything else. 
+
+            Place the obj on the loc. 
+
+            Parameters:
+                obj (str): object to place. A string that has the type of object (one of 'lettuce', 'patty', 'bottom bun' ,'top bun') and an id. For example: 'lettuce5', 'patty7', 'bun1'
+                loc (str): location to place the object at. a string that has the type of location (one of 'table', 'cutting_board', 'stove') and an id. For example: 'table2', 'cutting_board1', 'stove5'
+        cut(obj)
+            Requirement:
+                The robot must be at the same location as obj.
+
+            Make progress on cutting the obj. You need to call this function multiple times to finish cutting the obj. 
+            
+            Parameters:
+                obj (str): object to cut. A string that has the type of a cuttable object (must be 'lettuce') and an id. For example: 'lettuce3', 'lettuce1'
+        start_cooking(obj)
+            Requirement:
+                The robot must be at the same location as obj.
+
+            Start cooking the obj. You only need to call this once. The obj will take an unknown amount before it is cooked.
+
+            Parameters:
+                obj (str): object to cook. A string that has the type of a cookable object (must be 'patty') and an id. For example: 'patty1', 'patty5'
+        noop()
+            Do nothing
+        stack(obj_to_stack, obj_at_bottom)
+            Requirement:
+                The robot must be at the same location as obj_at_bottom.
+
+            Stack obj_to_stack on top of obj_at_bottom
+
+            Parameters:
+                obj_to_stack (str): object to stack. A string that has the type of object (one of 'lettuce', 'patty', 'bottom bun' ,'top bun') and an id. For example: 'lettuce5', 'patty7', 'bun1'
+                obj_at_bottom (str): object to stack on top of. A string that has the type of object (one of 'lettuce', 'patty', 'bottom bun' ,'top bun') and an id. For example: 'lettuce5', 'patty7', 'bun1'
+        unstack(obj_to_unstack, obj_at_bottom)
+            Requirement:
+                The robot must be at the same location as obj_at_bottom. 
+
+            Unstack obj_to_unstack from obj_at_bottom
+
+            Parameters:
+                obj_to_unstack (str): object to unstack. A string that has the type of object (one of 'lettuce', 'patty', 'bottom bun' ,'top bun') and an id. For example: 'lettuce5', 'patty7', 'bun1'
+                obj_at_bottom (str): object to unstack from. A string that has the type of object (one of 'lettuce', 'patty', 'bottom bun' ,'top bun') and an id. For example: 'lettuce5', 'patty7', 'bun1'
+
+        env_utils Specifications:
+        is_cut(obj)
+            Parameters:
+                obj (str): A string that has the type of a cuttable object (must be 'lettuce') and an id. For example: 'lettuce3', 'lettuce1'
+            Return:
+                (boolean)
+        is_cooked(obj)
+            Parameters:
+                obj (str): A string that has the type of a cookable object (must be 'patty') and an id. For example: 'patty1', 'patty2'
+            Return:
+                (boolean)
+        get_curr_location()
+            Return:
+                (str) location that the robot is currently at. A string that has the type of location (one of 'table', 'cutting_board', 'stove') and an id. For example: 'table2', 'cutting_board1', 'stove5'
+        get_obj_location(obj)
+            Parameters:
+                obj (str): A string that has the type of a cuttable object (must be 'lettuce') and an id. For example: 'lettuce3', 'lettuce1'
+            Return:
+                (str) location that the object is currently at. A string that has the type of location (one of 'table', 'cutting_board', 'stove') and an id. For example: 'table2', 'cutting_board1', 'stove5'
+        """
+      examples: 
+        - |
+          ```
+          """
+          You can only use the functions imported in the header.
+
+          Define the function: basic_move(target_loc)
+              Move to any location specified the target_loc.
+          """
+          ```
+          <end_of_example_user_query>
+          ```
+          def basic_move(target_loc):
+              if get_curr_location() != target_loc:
+                  move(get_curr_location(), target_loc)
+          ```
+        - |
+          ```
+          """
+          You can only use the functions imported in the header.
+
+          Define the function: cook_until_is_cooked(obj)
+          """
+          ```
+          <end_of_example_user_query>
+          ```
+          def cook_until_is_cooked(obj):
+              start_cooking(obj)
+              while not is_cooked(obj): 
+                  noop()
+          ```
+        - |
+          ```
+          """
+          You can only use the functions imported in the header.
+
+          Define the function: move_then_stack(obj_to_stack, obj_at_bottom)
+          """
+          ```
+          <end_of_example_user_query>
+          ```
+          def move_then_stack(obj_to_stack, obj_at_bottom):
+              # For stacking, because the location is not provided, we need to determine the stack_location
+              stack_location = get_obj_location(obj_at_bottom)
+              if get_curr_location() != stack_location:
+                  move(get_curr_location(), stack_location)
+              stack(obj_to_stack, obj_at_bottom)
+          ```

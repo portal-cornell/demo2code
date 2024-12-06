@@ -1,0 +1,103 @@
+"""
+[Scenario 1]
+Wash objects in sink. All clean objects must be placed in drying rack.
+Objects to clean
+    - mezzaluna_1 in sink_1
+    - peeler:potato_1 in sink_1
+    - knife_1 in sink_1
+    - board:cutting_1 in sink_1
+
+Initial Condition (State 1):
+is_in_hand(`sponge_1`)
+in(`mezzaluna_1`, `sink_1`)
+at(`sink_1`)
+
+State 2:
+is_in_hand(`mezzaluna_1`)
+dirty(`mezzaluna_1`)
+
+State 3:
+is_soapy(`mezzaluna_1`)
+
+State 4:
+in(`mezzaluna_1`, `sink_2`)
+
+State 5:
+in(`peeler:potato_1`, `sink_1`)
+
+State 6:
+is_in_hand(`peeler:potato_1`)
+
+State 7:
+is_soapy(`peeler:potato_1`)
+
+
+State 8:
+in(`peeler:potato_1`, `sink_2`)
+
+State 9:
+in(`knife_1`, `sink_1`)
+
+State 10:
+is_in_hand(`knife_1`)
+
+State 11:
+is_soapy(`knife_1`)
+
+State 12:
+in(`knife_1`, `sink_2`)
+
+State 13:
+in(`board:cutting_1`, `sink_1`)
+
+State 14:
+is_in_hand(`board:cutting_1`)
+
+State 15:
+is_soapy(`board:cutting_1`)
+
+State 16:
+in(`board:cutting_1`, `sink_2`)
+
+State 17:
+is_on(`tap_1`)
+
+State 18:
+is_in_hand(`board:cutting_1`)
+
+State 19:
+is_clean(`board:cutting_1`)
+
+State 20:
+in(`board:cutting_1`, `dryingrack_1`)
+
+State 21:
+is_in_hand(`mezzaluna_1`)
+
+State 22:
+is_clean(`mezzaluna_1`)
+
+State 23:
+in(`mezzaluna_1`, `dryingrack_1`)
+
+State 24:
+is_in_hand(`peeler:potato_1`)
+
+State 25:
+is_clean(`peeler:potato_1`)
+
+State 26:
+in(`peeler:potato_1`, `dryingrack_1`)
+
+State 27:
+is_in_hand(`knife_1`)
+
+State 28:
+is_clean(`knife_1`)
+
+State 29:
+in(`knife_1`, `dryingrack_1`)
+
+State 30:
+is_off(`tap_1`)
+"""

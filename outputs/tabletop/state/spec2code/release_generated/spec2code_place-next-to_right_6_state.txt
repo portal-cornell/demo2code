@@ -1,0 +1,13 @@
+<state-2>
+is_right_of:orange block,pink cylinder:1
+is_left_of:cyan block,pink cylinder:1
+has_moved:pink cylinder:1
+is_left_of:pink cylinder,orange block:1
+is_right_of:pink cylinder,cyan block:1
+
+<init-state>
+is_right_of:orange block,pink cylinder:0
+is_left_of:cyan block,pink cylinder:0
+has_moved:pink cylinder:0
+is_left_of:pink cylinder,orange block:0
+is_right_of:pink cylinder,cyan block:0

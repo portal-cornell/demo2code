@@ -1,0 +1,17 @@
+overall-task-name,models,avg-exec-success-pct,avg-unit-test-success-pct,avg-token-comparison-score
+high-level-cook-and-cut,spec2code,1.0,1.0,1.0
+high-level-cook-and-cut,lang2code,1.0,1.0,0.8821957720356931
+high-level-cook-and-cut,demonolang2code,0.5,0.5,0.8419171500522197
+high-level-cook-and-cut,demo2code,1.0,1.0,0.8821957720356931
+high-level-two-lettuce-burger,spec2code,0.9555555555555556,0.9555555555555556,1.0
+high-level-two-lettuce-burger,lang2code,0.6444444444444445,0.17777777777777778,0.6890188882073194
+high-level-two-lettuce-burger,demonolang2code,0.5222222222222223,0.3111111111111111,0.693106438396704
+high-level-two-lettuce-burger,demo2code,0.8,0.5111111111111111,0.7401160205086724
+high-level-lettuce-burger,spec2code,1.0,1.0,1.0
+high-level-lettuce-burger,lang2code,0.625,0.125,0.5581513374001548
+high-level-lettuce-burger,demonolang2code,0.3125,0.25,0.6915694788907336
+high-level-lettuce-burger,demo2code,0.7375,0.4875,0.6801957772503775
+high-level-assemble-burgers,spec2code,1.0,1.0,1.0
+high-level-assemble-burgers,lang2code,0.0,0.0,0.2922452799553388
+high-level-assemble-burgers,demonolang2code,1.0,1.0,0.6385685099278877
+high-level-assemble-burgers,demo2code,0.5,0.5,0.7372769302559711

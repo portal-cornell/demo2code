@@ -1,0 +1,74 @@
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains state predicates because the trajectory talks about the status of the objects (is_dirty(`jug_1`)). 
+I will summarize the state trajectory into low-level actions.
+Low-level actions are not compacted enough yet because low-level actions can still be combined into high-level subtasks. 
+The new trajectory will NOT be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+no
+[[Summarized trajectory:]]
+* In [Scenario 1], at state 2-3, the robot picked up jug_1. 
+* At state 3-4, the robot moved to sink_1.
+* At state 4-5, the robot turned on tap_1.
+* At state 5-6, the robot placed sponge_1 near sink_1.
+* At state 6-7, the robot picked up sponge_1 and made it foamy using washing_bowl_1.
+* At state 7-8, the robot turned off tap_1.
+* At state 8-9, the robot soaped jug_1 until it became soapy.
+* At state 9-10, the robot turned on tap_1.
+* At state 10-11, the robot rinsed jug_1 until it became clean.
+* At state 11-12, the robot moved to drying_rack_1 and placed jug_1 on it.
+* At state 12-13, the robot moved to sink_1 and turned off tap_1.
+* At state 13-14, the robot picked up jug_2.
+* At state 14-15, the robot turned on tap_1.
+* At state 15-16, the robot rinsed jug_2 until it became clean.
+* At state 16-17, the robot turned off tap_1 and moved to drying_rack_1. The robot placed jug_2 on it.
+
+==========================summarizing demo==========================
+[[Reasoning:]]
+The input trajectory contains low-level actions because it mentions specific actions performed by the robot, such as "picked up", "moved", "turned on", etc.
+I will summarize the low-level action trajectory into high-level subtasks.
+High-level subtasks are compacted enough because they cannot be combined together without losing important information.
+The new trajectory will be sufficiently summarized.
+[[Is the new trajectory sufficiently summarized? (yes/no):]]
+yes
+[[Summarized trajectory:]]
+* In [Scenario 1], at state 2-3, the robot picked up jug_1 and moved to sink_1.
+* At state 3-4, the robot turned on tap_1.
+* At state 4-5, the robot placed sponge_1 near sink_1.
+* At state 5-6, the robot picked up sponge_1 and made it foamy using washing_bowl_1.
+* At state 6-7, the robot turned off tap_1.
+* At state 7-8, the robot soaped jug_1 until it became soapy.
+* At state 8-9, the robot turned on tap_1.
+* At state 9-10, the robot rinsed jug_1 until it became clean.
+* At state 10-11, the robot moved to drying_rack_1 and placed jug_1 on it.
+* At state 11-12, the robot moved to sink_1 and turned off tap_1.
+* At state 12-13, the robot picked up jug_2.
+* At state 13-14, the robot turned on tap_1.
+* At state 14-15, the robot rinsed jug_2 until it became clean.
+* At state 15-17, the robot turned off tap_1 and moved to drying_rack_1. The robot placed jug_2 on it.
+
+==========================summary -> spec==========================
+[[Reasoning:]]
+* There are 2 jugs that got washed: [jug_1, jug_2]
+* The list of high level actions that happened in order is: [pick up jug, move to sink, turn on tap, place sponge near sink, pick up sponge, make it foamy, turn off tap, soap jug, turn on tap, rinse jug, move to drying rack, place jug on drying rack]
+* The actions [pick up jug, move to sink, turn on tap, place sponge near sink, pick up sponge, make it foamy, turn off tap, soap jug, turn on tap, rinse jug, move to drying rack, place jug on drying rack] are repeated for each jug, so we can use a loop.
+* Rinsing involves the use of tap water, which is why it is turned on at some point before the rinse cycle, and turned off after.
+[[Task Specification:]]
+Wash jugs at a sink and place them on a drying rack.
+Specifically -
+
+Get a list of all jugs to wash
+For each jug in all jugs:
+  Pick up jug
+  Move to sink_1
+  Turn on tap_1
+  Place sponge_1 near sink_1
+  Pick up sponge_1
+  Make sponge_1 foamy using washing_bowl_1
+  Turn off tap_1
+  Soap jug
+  Turn on tap_1
+  Rinse jug
+  Move to drying_rack_1
+  Place jug on drying_rack_1
+

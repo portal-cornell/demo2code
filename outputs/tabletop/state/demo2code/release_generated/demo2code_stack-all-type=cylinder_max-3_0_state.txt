@@ -1,0 +1,53 @@
+<state-2>
+is_right_of:green block,brown cylinder:1
+has_moved:brown cylinder:1
+is_left_of:brown cylinder,green block:1
+is_right_of:brown cylinder,cyan cylinder:1
+is_left_of:cyan cylinder,brown cylinder:1
+
+<state-3>
+on_top_of:pink cylinder,table:0
+has_moved:pink cylinder:1
+on_top_of:pink cylinder,brown cylinder:1
+
+<state-4>
+on_top_of:purple cylinder,table:0
+has_moved:purple cylinder:1
+on_top_of:purple cylinder,brown cylinder:1
+on_top_of:purple cylinder,pink cylinder:1
+
+<state-5>
+is_right_of:brown cylinder,cyan cylinder:0
+has_moved:cyan cylinder:1
+is_left_of:cyan cylinder,brown cylinder:0
+
+<state-6>
+on_top_of:blue cylinder,table:0
+has_moved:blue cylinder:1
+on_top_of:blue cylinder,cyan cylinder:1
+
+<state-7>
+on_top_of:gray cylinder,table:0
+has_moved:gray cylinder:1
+on_top_of:gray cylinder,cyan cylinder:1
+on_top_of:gray cylinder,blue cylinder:1
+
+<init-state>
+is_right_of:green block,brown cylinder:0
+has_moved:brown cylinder:0
+is_left_of:brown cylinder,green block:0
+on_top_of:pink cylinder,table:1
+has_moved:pink cylinder:0
+on_top_of:pink cylinder,brown cylinder:0
+on_top_of:purple cylinder,table:1
+has_moved:purple cylinder:0
+on_top_of:purple cylinder,brown cylinder:0
+on_top_of:purple cylinder,pink cylinder:0
+has_moved:cyan cylinder:0
+on_top_of:blue cylinder,table:1
+has_moved:blue cylinder:0
+on_top_of:blue cylinder,cyan cylinder:0
+on_top_of:gray cylinder,table:1
+has_moved:gray cylinder:0
+on_top_of:gray cylinder,cyan cylinder:0
+on_top_of:gray cylinder,blue cylinder:0

@@ -1,0 +1,485 @@
+prompt_version: release
+stage1:
+  recursive_summarization:
+    main:
+    examples:
+  summary_2_spec:
+    main:
+    examples:
+stage2:
+  spec_2_highlevelcode:
+    main: |
+      You are a Python code generator for robotics. The users will first provide the imported Python modules. Then, for each code they want you to generate, they provide the requirements and pseudocode in Python docstrings.
+      <end_of_system_message>
+      You need to write kitchen robot control scripts in Python code. The Python code should be general and applicable to different kitchen environments. 
+
+      Below are the imported Python libraries and functions that you can use. You CANNOT import new libraries. 
+      ```
+      # Python kitchen robot control script
+      from env_utils import get_all_obj_names_that_match_type, get_all_location_names_that_match_type, is_cut, is_cooked
+      ```
+      Below shows the docstrings for these imported library functions that you must follow. You CANNOT add additional parameters to these functions. 
+      * env_utils Specifications:
+      get_all_obj_names_that_match_type(obj_type)
+      """
+      Parameters:
+      obj_type (str): A string that has to be one of 'patty', 'lettuce', 'bottom bun' ,'top bun'.
+      Return:
+            (list) a list of string of objects that match the obj_type
+      """
+      get_all_location_names_that_match_type(location_type)
+      """
+      Parameters:
+            location_type (str): A string that has to be one of 'table', 'cutting_board', 'stove'.
+      Return:
+            (list) a list of string of locations that match the location_type
+      """
+      is_cut(obj)
+      """
+      Parameters:
+            obj (str): A string that has the type of a cuttable object (must be 'lettuce') and an id. For example: 'lettuce3', 'lettuce1'
+      Return:
+            (boolean) true if obj is cut
+      """
+      is_cooked(obj)
+      """
+      Parameters:
+            obj (str): A string that has the type of a cookable object (must be 'patty') and an id. For example: 'patty1', 'patty2'
+      Return:
+            (boolean) true if obj is cooked
+      """
+      ```
+      
+      You must follow these rules when you are generating Python code.
+      * You can use Python library functions imported above. You MUST follow the docstrings and specification for these functions.
+      * You can also call new functions that are not yet defined. However, these functions must be completing general, high-level subtasks (cook, cut, place on top, unstack). These functions cannot be doing low-level actions. 
+      * You must follow the pseudocode provided by the user. You CANNOT add additional steps, conditionals, or loops that are not in the pseudocode. 
+    examples:
+      - |
+        ```
+        """
+        Cook a patty and cut a lettuce.
+
+        Specifically:
+        Get a list of all the lettuces in the kitchen.
+        Get a list of all the patties in the kitchen.
+
+        Decide a lettuce to use.
+        Get a list of all the available cutting boards in the kitchen. 
+        Decide a cutting board to go to.
+        Cut that lettuce at that cutting board.
+
+        Decide a patty to use.
+        Get a list of all the available stoves in the kitchen.
+        Decide a stove to go to.
+        Cook that patty at that stove.
+        """
+        ```
+        <end_of_example_user_query>
+        ```
+        # Get a list of all the lettuces in the kitchen.
+        lettuces = get_all_obj_names_that_match_type('lettuce')
+        # Get a list of all the patties in the kitchen.
+        patties = get_all_obj_names_that_match_type('patty')
+
+        # Decide a lettuce to use.
+        lettuce_to_use = lettuces[0]
+        # Get a list of all the available cutting boards in the kitchen. 
+        cutting_boards = get_all_location_names_that_match_type('cutting_board')
+        # Decide a cutting board to go to.
+        cutting_board_to_cut_at = cutting_boards[0]
+        # Cut that lettuce at that cutting board.
+        cut_object_at_location(obj=lettuce_to_use, location=cutting_board_to_cut_at)
+
+        # Decide a patty to use.
+        patty_to_use = patties[0]
+        # Get a list of all the available stoves in the kitchen. 
+        stoves = get_all_location_names_that_match_type('stove')
+        # Decide a stove to go to.
+        stove_to_cook_at = stoves[0]
+        # Cook that patty at that stove.
+        cook_object_at_location(obj=patty_to_use, location=stove_to_cook_at)
+        ```
+      - |
+        ```
+        """
+        Cook two patties.
+
+        Specifically:
+        Get a list of all the patties in the kitchen.
+
+        Decide a patty to use.
+        Get a list of all the available stoves in the kitchen. 
+        Decide a stove to go to.
+        Cook that patty at that stove.
+
+        Repeat the above steps for the second patty.
+        """
+        ```
+        <end_of_example_user_query>
+        ```
+        # Get a list of all the patties in the kitchen.
+        patties = get_all_obj_names_that_match_type('patty')
+
+        # For two patties, do
+        for i in range(2):
+          # Decide a patty to use.
+          patty_to_use = patties[i]
+          # Get a list of all the available stoves in the kitchen. 
+          stoves = get_all_location_names_that_match_type('stove')
+          # Decide a stove to go to.
+          stove_to_cook_at = stoves[i]
+          # Cook that patty at that stove.
+          cook_object_at_location(obj=patty_to_use, location=stove_to_cook_at)
+        ```
+      - |
+        ```
+        """
+        Cut a lettuce before stacking it on top of a bottom bun. Then stack a top bun on top of the lettuce.
+
+        Specifically:
+        Get a list of all the lettuces in the kitchen.
+        Get a list of all the bottom buns in the kitchen.
+        Get a list of all the top buns in the kitchen.
+
+        Decide a lettuce to use.
+        Get a list of all the available cutting boards in the kitchen. 
+        Decide a cutting board to go to.
+        Cut that lettuce at that cutting board.
+
+        Decide a bottom bun to use. 
+        Stack the lettuce on top of the bottom bun.
+
+        Decide a top bun to use. 
+        Stack the top bun on top of the lettuce.
+        """
+        ```
+        <end_of_example_user_query>
+        ```
+        # Get a list of all the lettuces in the kitchen.
+        lettuces = get_all_obj_names_that_match_type('lettuce')
+        # Get a list of all the bottom buns in the kitchen.
+        bottom_buns = get_all_obj_names_that_match_type('bottom_bun')
+        # Get a list of all the top buns in the kitchen.
+        top_buns = get_all_obj_names_that_match_type('top_bun')
+
+        # Decide a lettuce to use.
+        lettuce_to_use = lettuces[0]
+        # Get a list of all the available cutting boards in the kitchen. 
+        cutting_boards = get_all_location_names_that_match_type('cutting_board')
+        # Decide a cutting board to go to.
+        cutting_board_to_cut_at = cutting_boards[0]
+        # Cut that lettuce at that cutting board.
+        cut_object_at_location(obj=lettuce_to_use, location=cutting_board_to_cut_at)
+
+        # Decide a bottom bun to use.
+        bottom_bun_to_use = bottom_buns[0]
+        # Stack the lettuce on top of the bottom bun.
+        # obj1 should be the lettuce, obj2 should be the bottom bun.
+        stack_obj1_on_obj2(obj1=lettuce_to_use, obj2=bottom_bun_to_use)
+
+        # Decide a top bun to use.
+        top_bun_to_use = top_buns[0]
+        # Stack that top bun on top of the lettuce.
+        # obj1 should be the top bun, obj2 should be the lettuce.
+        stack_obj1_on_obj2(obj1=top_bun_to_use, obj2=lettuce_to_use)
+        ```
+  recursive_expansion:
+    step2:
+      main: |
+        You are a Python code generator for robotics. The users will first provide the imported Python modules. Then, for each code that they want you to generate, they provide the requirement in Python docstrings.
+        <end_of_system_message>
+        # Python kitchen robot control script
+        from env_utils import get_obj_location, is_holding, is_in_a_stack, get_obj_that_is_underneath
+        """
+        All the code should follow the specification. 
+
+        env_utils Specifications:
+        get_obj_location(obj)
+            Parameters:
+                obj (str): A string that has the type of object (one of 'lettuce', 'patty', 'bottom_bun' ,'top_bun') and an id. For example: 'lettuce5', 'patty7', 'bottom_bun1', 'top_bun4'
+            Return:
+                (str) location that the object is currently at. A string that has the type of location (one of 'table', 'cutting_board', 'stove') and an id. For example: 'table2', 'cutting_board1', 'stove5'
+        is_holding(obj)
+            Parameters:
+                obj (str): A string that has the type of object (one of 'lettuce', 'patty', 'bottom_bun' ,'top_bun') and an id. For example: 'lettuce5', 'patty7', 'bottom_bun1', 'top_bun4'
+            Return:
+                (bool) true if the robot is currently holding obj
+        is_in_a_stack(obj)
+            Parameters:
+                obj (str): A string that has the type of object (one of 'lettuce', 'patty', 'bottom_bun' ,'top_bun') and an id. For example: 'lettuce5', 'patty7', 'bottom_bun1', 'top_bun4'
+            Return:
+                (bool) true if the obj is in a stack and the robot needs to unstack the obj
+        get_obj_that_is_underneath(obj_at_top)
+            Parameters:
+                obj_at_top (str): A string that has the type of object (one of 'lettuce', 'patty', 'bottom_bun' ,'top_bun') and an id. For example: 'lettuce5', 'patty7', 'bottom_bun1', 'top_bun4'
+            Return:
+                (str) The name of the object that is directly underneath the obj_at_top. A string that has the type of object (one of 'lettuce', 'patty', 'bottom_bun' ,'top_bun') and an id. For example: 'lettuce5', 'patty7', 'bottom_bun1', 'top_bun4'
+        """
+        """
+        The robot is only capable of these basic actions: move, pick, place, stack, unstack, cook, cut. 
+        These functions require the robot to hold the object: place, stack
+        These functions require the robot to not hold anything: pick, unstack
+
+        You can define functions that combine two of these actions, but you cannot define new actions. 
+        """
+      examples:
+        - |
+          ```
+          """
+          You can use functions imported above and also call new functions
+
+          The robot might not be near any object or near any location specified in the function parameters.
+
+          Define the function: cut_object_at_location(obj, location)
+          """
+          ```
+          <end_of_example_user_query>
+          ```
+          def cut_object_at_location(obj, location):
+            # To cut an object, the robot first needs to be holding obj
+            if not is_holding(obj):
+                # If the robot is not holding obj, there are 2 scenarios: 
+                #   (1) if obj is in a stack ,unstack obj
+                #   (2) else, pick up obj.
+                if is_in_a_stack(obj):
+                    # Because obj is in a stack, robot need to move then unstack the obj from the obj_at_bottom first
+                    obj_at_bottom = get_obj_that_is_underneath(obj_at_top=obj)
+                    # move then unstack: first you move to the obj_at_bottom's location, then you unstack obj from obj_at_bottom
+                    move_then_unstack(obj_to_unstack=obj, obj_at_bottom=obj_at_bottom, unstack_location=get_obj_location(obj_at_bottom))
+                else:
+                    # move_then_pick: first you move to obj's location, then you pick obj up
+                    move_then_pick(obj=obj, pick_location=get_obj_location(obj))
+            # move then place: first you move to the location to cut at, then you place obj at that location
+            move_then_place(obj=obj, place_location=location)
+            # cut the object until it is cut
+            cut_until_is_cut(obj=obj)
+          ```
+        - |
+            ```
+            """
+            You can use functions imported above and also call new functions
+
+            The robot might not be near any object or near any location specified in the function parameters.
+
+            Define the function: stack_obj1_on_obj2(obj1, obj2)
+            """
+            ```
+            <end_of_example_user_query>
+            ```
+            def stack_obj1_on_obj2(obj1, obj2):
+                # To stack obj1 on obj2, the robot needs to be holding obj1
+                if not is_holding(obj1):
+                    # If the robot is not holding obj1, there are 2 scenarios: 
+                    #   (1) if obj1 is in a stack ,unstack obj1
+                    #   (2) else, pick up obj1.
+                    if is_in_a_stack(obj1):
+                        # Because obj1 is in a stack, robot need to move then unstack the obj from the obj_at_bottom first
+                        obj_at_bottom = get_obj_that_is_underneath(obj_at_top=obj1)
+                        # move then unstack: first you move to the obj_at_bottom's location, then you unstack obj from obj_at_bottom
+                        move_then_unstack(obj_to_unstack=obj1, obj_at_bottom=obj_at_bottom, unstack_location=get_obj_location(obj_at_bottom))
+                    else:
+                        # move_then_pick: first you move to obj's location, then you pick obj up
+                        move_then_pick(obj=obj, pick_location=get_obj_location(obj))
+                # determine the location of obj2 to stack on
+                obj2_location = get_obj_location(obj2)
+                # move then stack: first you move to obj2's location, then you stack obj1 on obj2
+                move_then_stack(obj_to_stack=obj1, obj_at_bottom=obj2, stack_location=obj2_location)
+            ```
+        - |
+          ```
+          """
+          You can use functions imported above and also call new functions
+
+          The robot might not be near any object or near any location specified in the function parameters.
+
+          Define the function: unstack_obj1_from_obj2(obj1, obj2)
+          """
+          ```
+          <end_of_example_user_query>
+          ```
+          def unstack_obj1_from_obj2(obj1, obj2):
+              # To unstack obj1 from obj2, the robot needs to not hold anything yet.
+              if is_holding(obj1):
+                  # Because the robot is holding obj1, unstacking must have been successful already
+                  return
+              # determine the location of obj2 to unstack from 
+              obj2_location = get_obj_location(obj2)
+              # move then unstack: first you move to obj2's location, then you unstack obj1 from obj2
+              move_then_unstack(obj_to_unstack=obj1, obj_at_bottom=obj2, unstack_location=obj2_location)
+          ```
+        - |
+          ```
+          """
+          You can use functions imported above and also call new functions
+
+          The robot might not be near any object or near any location specified in the function parameters.
+
+          Define the function: cook_object_at_location(obj, cook_location)
+          """
+          ```
+          <end_of_example_user_query>
+          ```
+          def cook_object_at_location(obj, cook_location):
+            # To cook an object, the robot first needs to be holding obj
+            if not is_holding(obj):
+                # If the robot is not holding obj, there are 2 scenarios: 
+                #   (1) if obj is in a stack ,unstack obj
+                #   (2) else, pick up obj.
+                if is_in_a_stack(obj):
+                    # Because obj is in a stack, robot need to move then unstack the obj from the obj_at_bottom first
+                    obj_at_bottom = get_obj_that_is_underneath(obj_at_top=obj)
+                    # move then unstack: first you move to the obj_at_bottom's location, then you unstack obj from obj_at_bottom
+                    move_then_unstack(obj_to_unstack=obj, obj_at_bottom=obj_at_bottom, unstack_location=get_obj_location(obj_at_bottom))
+                else:
+                    # move_then_pick: first you move to obj's location, then you pick obj up
+                    move_then_pick(obj=obj, pick_location=get_obj_location(obj))
+            # move then place: first you move to the location to cook at, then you place obj at that location
+            move_then_place(obj=obj, place_location=cook_location)
+            # cook the object until it is cooked
+            cook_until_is_cooked(obj=obj)
+          ```
+    step3:
+      main: |
+        You are a Python code generator for robotics. The users will first provide the imported Python modules. Then, for each code that they want you to generate, they provide the requirement in Python docstrings.
+        <system_message_separator>
+        # Python kitchen robot control script
+        import numpy as np
+        from robot_utils import move, pick_up, place, cut, start_cooking, noop, stack, unstack
+        from env_utils import is_cut, is_cooked, get_obj_location, get_curr_location
+        """
+        All the code should follow the specification. 
+
+        robot_utils Specifications:
+        move(curr_loc, target_loc)
+            Requirement:
+                The curr_loc cannot be the same as target_loc.
+            
+            Move from the curr_loc to the target_loc.
+
+            Parameters: 
+                curr_loc (str): a string that has the type of location (one of 'table', 'cutting_board', 'stove') and an id. For example: 'table2', 'cutting_board1', 'stove5'
+                target_loc (str): a string that has the type of location (one of 'table', 'cutting_board', 'stove') and an id. For example: 'table2', 'cutting_board1', 'stove5'
+        pick_up(obj, loc)
+            Requirement:
+                The robot must have moved to loc already, and it cannot be holding anything else.
+            
+            Pick up the obj from the loc.
+
+            Parameters:
+                obj (str): object to pick. A string that has the type of object (one of 'lettuce', 'patty', 'bottom bun' ,'top bun') and an id. For example: 'lettuce5', 'patty7', 'bun1'
+                loc (str): location to pick the object from. a string that has the type of location (one of 'table', 'cutting_board', 'stove') and an id. For example: 'table2', 'cutting_board1', 'stove5'
+        place(obj, loc)
+            Requirement:
+                The robot must have moved to loc already, and it cannot be holding anything else. 
+
+            Place the obj on the loc. 
+
+            Parameters:
+                obj (str): object to place. A string that has the type of object (one of 'lettuce', 'patty', 'bottom bun' ,'top bun') and an id. For example: 'lettuce5', 'patty7', 'bun1'
+                loc (str): location to place the object at. a string that has the type of location (one of 'table', 'cutting_board', 'stove') and an id. For example: 'table2', 'cutting_board1', 'stove5'
+        cut(obj)
+            Requirement:
+                The robot must be at the same location as obj.
+
+            Make progress on cutting the obj. You need to call this function multiple times to finish cutting the obj. 
+            
+            Parameters:
+                obj (str): object to cut. A string that has the type of a cuttable object (must be 'lettuce') and an id. For example: 'lettuce3', 'lettuce1'
+        start_cooking(obj)
+            Requirement:
+                The robot must be at the same location as obj.
+
+            Start cooking the obj. You only need to call this once. The obj will take an unknown amount before it is cooked.
+
+            Parameters:
+                obj (str): object to cook. A string that has the type of a cookable object (must be 'patty') and an id. For example: 'patty1', 'patty5'
+        noop()
+            Do nothing
+        stack(obj_to_stack, obj_at_bottom)
+            Requirement:
+                The robot must be at the same location as obj_at_bottom.
+
+            Stack obj_to_stack on top of obj_at_bottom
+
+            Parameters:
+                obj_to_stack (str): object to stack. A string that has the type of object (one of 'lettuce', 'patty', 'bottom bun' ,'top bun') and an id. For example: 'lettuce5', 'patty7', 'bun1'
+                obj_at_bottom (str): object to stack on top of. A string that has the type of object (one of 'lettuce', 'patty', 'bottom bun' ,'top bun') and an id. For example: 'lettuce5', 'patty7', 'bun1'
+        unstack(obj_to_unstack, obj_at_bottom)
+            Requirement:
+                The robot must be at the same location as obj_at_bottom. 
+
+            Unstack obj_to_unstack from obj_at_bottom
+
+            Parameters:
+                obj_to_unstack (str): object to unstack. A string that has the type of object (one of 'lettuce', 'patty', 'bottom bun' ,'top bun') and an id. For example: 'lettuce5', 'patty7', 'bun1'
+                obj_at_bottom (str): object to unstack from. A string that has the type of object (one of 'lettuce', 'patty', 'bottom bun' ,'top bun') and an id. For example: 'lettuce5', 'patty7', 'bun1'
+
+        env_utils Specifications:
+        is_cut(obj)
+            Parameters:
+                obj (str): A string that has the type of a cuttable object (must be 'lettuce') and an id. For example: 'lettuce3', 'lettuce1'
+            Return:
+                (boolean)
+        is_cooked(obj)
+            Parameters:
+                obj (str): A string that has the type of a cookable object (must be 'patty') and an id. For example: 'patty1', 'patty2'
+            Return:
+                (boolean)
+        get_curr_location()
+            Return:
+                (str) location that the robot is currently at. A string that has the type of location (one of 'table', 'cutting_board', 'stove') and an id. For example: 'table2', 'cutting_board1', 'stove5'
+        get_obj_location(obj)
+            Parameters:
+                obj (str): A string that has the type of a cuttable object (must be 'lettuce') and an id. For example: 'lettuce3', 'lettuce1'
+            Return:
+                (str) location that the object is currently at. A string that has the type of location (one of 'table', 'cutting_board', 'stove') and an id. For example: 'table2', 'cutting_board1', 'stove5'
+        """
+      examples: 
+        - |
+          ```
+          """
+          You can only use the functions imported in the header.
+
+          Define the function: basic_move(target_loc)
+              Move to any location specified the target_loc.
+          """
+          ```
+          <end_of_example_user_query>
+          ```
+          def basic_move(target_loc):
+              if get_curr_location() != target_loc:
+                  move(get_curr_location(), target_loc)
+          ```
+        - |
+          ```
+          """
+          You can only use the functions imported in the header.
+
+          Define the function: cook_until_is_cooked(obj)
+          """
+          ```
+          <end_of_example_user_query>
+          ```
+          def cook_until_is_cooked(obj):
+              start_cooking(obj)
+              while not is_cooked(obj): 
+                  noop()
+          ```
+        - |
+          ```
+          """
+          You can only use the functions imported in the header.
+
+          Define the function: move_then_stack(obj_to_stack, obj_at_bottom)
+          """
+          ```
+          <end_of_example_user_query>
+          ```
+          def move_then_stack(obj_to_stack, obj_at_bottom):
+              # For stacking, because the location is not provided, we need to determine the stack_location
+              stack_location = get_obj_location(obj_at_bottom)
+              if get_curr_location() != stack_location:
+                  move(get_curr_location(), stack_location)
+              stack(obj_to_stack, obj_at_bottom)
+          ```

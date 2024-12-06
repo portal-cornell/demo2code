@@ -1,0 +1,43 @@
+objects=['orange block', 'purple block', 'gray block', 'purple cylinder', 'brown cylinder', 'yellow cylinder', 'gray cylinder']
+"""
+Initial State (State 1):
+'purple cylinder' has not moved
+'brown cylinder' is on top of 'table'
+'brown cylinder' has not moved
+'brown cylinder' is not on top of 'purple cylinder'
+'yellow cylinder' is on top of 'table'
+'yellow cylinder' has not moved
+'yellow cylinder' is not on top of 'purple cylinder'
+'yellow cylinder' is not on top of 'brown cylinder'
+'gray cylinder' is on top of 'table'
+'gray cylinder' has not moved
+'gray cylinder' is not on top of 'purple cylinder'
+'gray cylinder' is not on top of 'brown cylinder'
+'gray cylinder' is not on top of 'yellow cylinder'
+
+[Scenario 1]
+State 2:
+'purple cylinder' has moved
+'purple cylinder' is in front of 'yellow cylinder'
+'yellow cylinder' is behind 'purple cylinder'
+
+State 3:
+'brown cylinder' is not on top of 'table'
+'brown cylinder' has moved
+'brown cylinder' is on top of 'purple cylinder'
+
+State 4:
+'purple cylinder' is not in front of 'yellow cylinder'
+'yellow cylinder' is not on top of 'table'
+'yellow cylinder' has moved
+'yellow cylinder' is not behind 'purple cylinder'
+'yellow cylinder' is on top of 'purple cylinder'
+'yellow cylinder' is on top of 'brown cylinder'
+
+State 5:
+'gray cylinder' is not on top of 'table'
+'gray cylinder' has moved
+'gray cylinder' is on top of 'purple cylinder'
+'gray cylinder' is on top of 'brown cylinder'
+'gray cylinder' is on top of 'yellow cylinder'
+"""

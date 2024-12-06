@@ -1,0 +1,51 @@
+<state-2>
+has_moved:pink cylinder:1
+is_right_of:pink cylinder,green cylinder:1
+is_behind:pink cylinder,brown cylinder:1
+is_in_front_of:pink cylinder,purple cylinder:0
+is_left_of:green cylinder,pink cylinder:1
+is_in_front_of:brown cylinder,pink cylinder:1
+is_behind:purple cylinder,pink cylinder:0
+
+<state-3>
+is_right_of:pink cylinder,green cylinder:0
+on_top_of:green cylinder,table:0
+has_moved:green cylinder:1
+is_left_of:green cylinder,pink cylinder:0
+on_top_of:green cylinder,pink cylinder:1
+
+<state-4>
+is_behind:pink cylinder,brown cylinder:0
+on_top_of:brown cylinder,table:0
+has_moved:brown cylinder:1
+is_in_front_of:brown cylinder,pink cylinder:0
+on_top_of:brown cylinder,pink cylinder:1
+on_top_of:brown cylinder,green cylinder:1
+
+<state-5>
+on_top_of:purple cylinder,table:0
+has_moved:purple cylinder:1
+on_top_of:purple cylinder,pink cylinder:1
+on_top_of:purple cylinder,green cylinder:1
+on_top_of:purple cylinder,brown cylinder:1
+
+<state-6>
+has_moved:cyan cylinder:1
+
+<init-state>
+has_moved:pink cylinder:0
+is_in_front_of:pink cylinder,purple cylinder:1
+on_top_of:green cylinder,table:1
+has_moved:green cylinder:0
+on_top_of:green cylinder,pink cylinder:0
+on_top_of:brown cylinder,table:1
+has_moved:brown cylinder:0
+on_top_of:brown cylinder,pink cylinder:0
+on_top_of:brown cylinder,green cylinder:0
+on_top_of:purple cylinder,table:1
+has_moved:purple cylinder:0
+is_behind:purple cylinder,pink cylinder:1
+on_top_of:purple cylinder,pink cylinder:0
+on_top_of:purple cylinder,green cylinder:0
+on_top_of:purple cylinder,brown cylinder:0
+has_moved:cyan cylinder:0

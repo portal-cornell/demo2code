@@ -1,0 +1,64 @@
+objects=['blue block', 'green cylinder', 'gray cylinder', 'brown cylinder', 'pink cylinder']
+"""
+[Scenario 1]
+Stack all cylinders into one stack, while enforcing the order between cylinders if there is a requirement.
+
+State 2:
+'green cylinder' has moved
+'green cylinder' is to the right of 'gray cylinder'
+'gray cylinder' is to the left of 'green cylinder'
+
+State 3:
+'pink cylinder' is not on top of 'table'
+'pink cylinder' has moved
+'pink cylinder' is on top of 'green cylinder'
+
+State 4:
+'brown cylinder' is not on top of 'table'
+'brown cylinder' has moved
+'brown cylinder' is on top of 'green cylinder'
+'brown cylinder' is on top of 'pink cylinder'
+
+State 5:
+'green cylinder' is not to the right of 'gray cylinder'
+'gray cylinder' is not on top of 'table'
+'gray cylinder' has moved
+'gray cylinder' is not to the left of 'green cylinder'
+'gray cylinder' is on top of 'green cylinder'
+'gray cylinder' is on top of 'brown cylinder'
+'gray cylinder' is on top of 'pink cylinder'
+
+[Scenario 2]
+Stack all cylinders into one stack, while enforcing the order between cylinders if there is a requirement.
+
+State 2:
+'blue block' is in front of 'green cylinder'
+'green cylinder' has moved
+'green cylinder' is behind 'blue block'
+'green cylinder' is in front of 'gray cylinder'
+'green cylinder' is to the right of 'pink cylinder'
+'gray cylinder' is behind 'green cylinder'
+'pink cylinder' is to the left of 'green cylinder'
+
+State 3:
+'green cylinder' is not in front of 'gray cylinder'
+'gray cylinder' is not on top of 'table'
+'gray cylinder' has moved
+'gray cylinder' is not behind 'green cylinder'
+'gray cylinder' is on top of 'green cylinder'
+
+State 4:
+'green cylinder' is not to the right of 'pink cylinder'
+'pink cylinder' is not on top of 'table'
+'pink cylinder' has moved
+'pink cylinder' is not to the left of 'green cylinder'
+'pink cylinder' is on top of 'green cylinder'
+'pink cylinder' is on top of 'gray cylinder'
+
+State 5:
+'brown cylinder' is not on top of 'table'
+'brown cylinder' has moved
+'brown cylinder' is on top of 'green cylinder'
+'brown cylinder' is on top of 'gray cylinder'
+'brown cylinder' is on top of 'pink cylinder'
+"""
